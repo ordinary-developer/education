@@ -1,0 +1,29 @@
+ #####################
+ the subprocess module
+ #####################
+
+ 
+ the subprocess module
+ =====================
+
+ "subprocess.call('command')"
+    runs the command 
+
+ Besides imitating os.system, we can similiarly use this module to emulate
+ the "os.popen" call, to run a shell command and obtain its standard output
+ text in our script:
+ --------------------------------------------------------------------
+ | >>> pipe = subprocess.Popen("ls", stdout = subprocess.PIPE)	    |
+ | >>> pipe.communicate()                   					    |
+ | (b'file.py', None)						                        |
+ | >>> pipe.retruncode                                              |
+ | 0                                                                |
+ --------------------------------------------------------------------
+
+ --------------------------------------------------------------------
+ | >>> pipe = subprocess.Popen('ls', stdout = subprocess.PIPE)      |
+ | >>> pipe.stdout.read()                                           |
+ | b'file.py'\n                                                     |
+ | >>> pipe.wait()                                                  |
+ | 0                                                                |
+ --------------------------------------------------------------------

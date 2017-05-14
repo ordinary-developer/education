@@ -1,0 +1,123 @@
+ rewriting history
+ #################
+
+ changing the last commit
+ ========================
+
+ to change the last commit: 
+ --------------------------------
+ | git commit --amend		|
+ --------------------------------
+ It's like a very small rebase - don't ammend you last commit
+ if you've already pushed it 
+
+
+ chaning multiple commit message
+ ===============================
+
+ if you want to change the last three commit messagse
+ --------------------------------
+ | git rebase -i HEAD~3		|
+ --------------------------------
+ (keep in mind that you're actually designating four (4) commits ago,
+  the parent of the last commit you want to edit:)
+  you will see these commits listed in the opposite order then log command
+
+ change the work 'pick' to the word 'edit' for each of the commit 
+ you want the script to stop after
+
+ type
+ --------------------------------
+ | git commit --amend		|
+ --------------------------------
+ change the commit message, and exit the editor
+
+ then, run
+ --------------------------------
+ | git rebase --continue	|
+ --------------------------------
+ 
+ and repeat these stepsf for each commit you change to edit
+
+
+ reordering commits
+ ==================
+
+ to change the order of commits, simply in your rebase script move the strings with necessary
+ commits to necessary position and then continue rebaseing
+
+ to remove the commit from history simply delete it from your rebasing script
+ and then continue rebasing
+
+
+ squashing commits
+ =================
+
+ to squash a series of commits down into a single commit, in your rebasing script
+ use the "squash" keyword for all commits except the upper commit you want
+ to squash (the upper commit must be "pick")
+
+ when you save and exit the editor, Git applies all three changes and then puts you back
+ into the editor to merge the three commit messags
+
+ when you save that you will have one commit instead of your old three commits
+
+
+ splitting a commit
+ ==================
+
+ to split the commit,
+ - in your rebasing script mark it as "edit", then save and exit
+   your rebasing script
+ - git reset HEAD^
+ - git add file_for_1_st_new_series_commit //(the lowermost commit in the series in log)
+ - git commit -m "1_st_new_series_commit"
+ - git add file_for_2_nd_new_series_commit // (more upper commit in the series in log)
+ - git commit -m "2_nd_new_series_commit"
+ ...
+ - git add file_for_N_th_new_series_commit // (the highest commit in the series in log)
+ - git commit -m "N_th_new_series_commit" // (ending)
+ - git rebase --continue
+
+
+ the "filter-branch" option
+ ==========================
+
+ with the "filter-branch" command you can scrub your entire history
+
+ for example, to remove a file named "password.txt" from your entire history:
+ ---------------------------------------------------------------------
+ | git filter-branch --tree-filter 'rm -f passwords.txt' HEAD        |
+ ---------------------------------------------------------------------
+ the "--tree-filter" option runs the specified command after each checkout of the project
+ and then recommits the results
+ 
+
+ to remove all accidentally committed editor backup files:
+ ---------------------------------------------------------------------
+ | git filter-branch --tree-filter 'rm -f *~' HEAD		     |
+ ---------------------------------------------------------------------
+
+ to make the "trunk" subdirectory 
+ (assume that is is an import from another source control system)
+ be the new project root for every commit:
+ ---------------------------------------------------------------------
+ | git filter-branch --subdirectory-filter trunk HEAD		     |
+ ---------------------------------------------------------------------
+
+ to change email addresses in multiple commits:
+ ---------------------------------------------------------------------
+ | $ git filter-branch --commit-filter '			     |
+ |     if [ "$GIT_AUTHOR_EMAIL" = "schacon@localhost" ];	     |
+ |     then							     |
+ |         GIT_AUTHOR_NAME="Scott Chacon";		             |
+ |         GIT_AUTHOR_EMAIL="schacon@example.com";		     |
+ |         git commit-tree "$@";			             |
+ |     else							     |
+ |         git commit-tree "$@";				     |
+ |     fi' HEAD							     |
+ ---------------------------------------------------------------------
+ (with ALL SPACES AND SEMICOLONS!!!)
+ this command changes EVERY commit SHA-1 in your history, not just those that have 
+ the matching e-mail address
+

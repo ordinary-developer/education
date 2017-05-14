@@ -1,0 +1,66 @@
+﻿ ####################
+ string method basics
+ ####################
+ 
+ 
+ string methods
+ ==============
+
+ "find(string)"
+    returns the offset of the first occurrence of a substring
+    (-1) if there are no occurrences
+
+ "replace(new_value)"
+    does global search and replacement.
+    returns a new string instead of changing its subject in-place
+    (strings are immutable)
+
+ "in" operator
+    tests for a substring's presence and returns "true" of "false"
+
+ "strip()"
+    removes all whitespaces
+
+ "rstrip()"
+    removes the whitespaces only on the right side
+
+ "lstrip()"
+    removes the whitespaces only on the left side
+
+ "lower()"
+    returns a lowercase string
+
+ "isalpha()"
+    returns "true" if the string contains only letters
+    else return "false"
+
+ "isdigit()"
+    return "true" if the string contains only digits
+    else return "false"
+
+ "split(delimiter)"
+    split up the string about a substring delimiter
+    default delimiter is a whitepsace character
+
+ "delimiter.join(list)"
+    joins and returns the substring list
+
+ 
+ string module properties (import string)
+ ========================
+
+ "string.ascii_lowercase"
+    contains all lowercase letters
+
+ "string.whitespace"
+    contains all whitespace characters
+  
+
+ other methods
+ =============
+
+ "int(string_value)", "eval(string_value)"
+    string to int conversion
+
+ "str(int_value)", "repr(int_value)"
+    int to string conversion

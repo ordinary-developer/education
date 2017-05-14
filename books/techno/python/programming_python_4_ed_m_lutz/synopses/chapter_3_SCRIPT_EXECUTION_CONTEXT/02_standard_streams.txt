@@ -1,0 +1,50 @@
+ ################
+ standard streams
+ ################
+
+ standard streams
+ ================
+
+ The "sys" module is the place where the standard input, output,
+ and error streams of your Python programs live;
+ (sys.stdin, sys.stdout, sys.stderr)
+
+ 
+ redirecting streams to python objects
+ =====================================
+
+ Anything that looks like a file in terms of methods will work 
+ as a stadard stream in Python. The object's interface
+ (sometimes called its protocol), and not the object's 
+ specific datatype, is all that matters.
+ That is
+ - Any object that provides file-like "read" methods
+   can be assigned to "sys.stdin" to make input come
+   from that object's read methods
+ - Any object that defines file-like "write" methods
+   can be assigned to "sys.stdout"; all standard
+   output will be sent to that object's methods.
+
+ "io.StringIO"
+ methods
+    - write(string)
+    - getvalue()
+    - readline()
+  maps a file object interface to and from in-memory strings
+
+ "io.BytesIO" - a class with similar behavior, but which maps
+ file operations to an in memory bytes buffer,
+ instead of a "str" string
+
+
+ redirection syntax in print calls
+ =================================
+
+ python "print" built-in is alos extended to include an explicit
+ file to which output is to be sent
+ A statement of this form
+ --------------------------------------------------------------------
+ | print(stuff, file = afile)                                       |
+ --------------------------------------------------------------------
+
+

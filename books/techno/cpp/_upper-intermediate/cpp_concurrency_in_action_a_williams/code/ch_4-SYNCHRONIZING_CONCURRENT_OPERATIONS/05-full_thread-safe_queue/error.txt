@@ -1,0 +1,15 @@
+main.cpp: In constructor ‘data_processing_thread<T>::data_processing_thread(std::unique_ptr<threadsafe_queue<T> >&, unsigned int)’:
+main.cpp:128:9: error: expected ‘{’ before ‘void’
+         void operator() () {
+         ^
+In file included from /usr/include/c++/4.9/mutex:42:0,
+                 from main.cpp:1:
+/usr/include/c++/4.9/functional: In instantiation of ‘struct std::_Bind_simple<data_processing_thread<data_chunk>()>’:
+/usr/include/c++/4.9/thread:140:47:   required from ‘std::thread::thread(_Callable&&, _Args&& ...) [with _Callable = data_processing_thread<data_chunk>&; _Args = {}]’
+main.cpp:148:30:   required from here
+/usr/include/c++/4.9/functional:1665:61: error: no type named ‘type’ in ‘class std::result_of<data_processing_thread<data_chunk>()>’
+       typedef typename result_of<_Callable(_Args...)>::type result_type;
+                                                             ^
+/usr/include/c++/4.9/functional:1695:9: error: no type named ‘type’ in ‘class std::result_of<data_processing_thread<data_chunk>()>’
+         _M_invoke(_Index_tuple<_Indices...>)
+         ^

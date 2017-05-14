@@ -1,0 +1,19 @@
+tom
+name=>'Tom Tom'
+age=>50
+job=>None
+pay=>0
+endrec
+bob
+name=>'Bob Smith'
+age=>42
+job=>'dev'
+pay=>30000
+endrec
+sue
+name=>'Sue Jones'
+age=>45
+job=>'hdw'
+pay=>44000.0
+endrec
+enddb.

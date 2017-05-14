@@ -1,0 +1,27 @@
+ #####################
+ file operation basics
+ #####################
+
+
+ reading operations
+ ==================
+ 
+ "open('file').read()"
+    reads entire file into the string
+
+ "open('file').read(N)"
+    reads next N bytes into the string
+
+ "open('file').readlines()"
+    reads entire file into line strings list
+ 
+ "open('file').readline()"
+    reads the next line, through '\n'
+
+
+ writing operations
+ ==================
+ 
+ "write('string')"
+    writes the string into the file 
+  

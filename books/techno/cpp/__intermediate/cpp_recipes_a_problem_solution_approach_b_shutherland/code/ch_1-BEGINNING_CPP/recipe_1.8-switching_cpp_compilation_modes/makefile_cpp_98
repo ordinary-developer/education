@@ -1,0 +1,2 @@
+HelloWorld: HelloWorld.cpp
+	g++ --std=c++98 --output HelloWorld HelloWorld.cpp

@@ -1,0 +1,159 @@
+ stashing and cleaning
+ #####################
+ 
+ stashing
+ ========
+
+ common
+ ------
+
+ stashing takes the dirty state of your working directory - that is,
+ your modified tracked files and staged changes - and saves it on a stack
+ of unfinished changes that you can reapply at any time
+
+ let's assume that you work, and you see your dirty state,
+ to push a new stash onto your stack, run:
+ --------------------------------    --------------------------------
+ | "git stash"                  | or | git stash save               |
+ --------------------------------    --------------------------------
+ by default "git stash" will only store files that are alredy in the index
+ (i.e. they are trackable and staged or unstaged)
+
+ to see which stashes you've stored:
+ --------------------------------
+ | "git stash list"             |
+ --------------------------------
+ where stash@{0} - is the last stashed work 
+
+ to apply a stash, specify it by name:
+ --------------------------------
+ | "git stash apply stash@{2}"  |
+ --------------------------------
+ 
+ to apply the most recent stash:
+ --------------------------------
+ | "git stash apply"            |
+ --------------------------------
+
+ having a clean working directory and stash applying on the same branch
+ aren't necessary
+ you can save a stash on one branch, switch to another branch later,
+ and try to reapply the changes you can also have modified and uncommited
+ files in your working directory when you apply a stash
+ - Git gives you merge conflicts if anything no longer applies cleanly
+
+ to try to reapply the staged changes
+ (will try to reapply all: staged and unstaged changes):
+ --------------------------------
+ | "git stash apply --index"    |      
+ --------------------------------
+
+ to remove the stashed work (without unstashing):
+ --------------------------------
+ | git stash drop stash@{0}     |
+ --------------------------------
+
+ to apply the stash (the last stashed work in the stash list)
+ and then immediately drop it from your stack:
+ --------------------------------
+ | git stash pop                |
+ --------------------------------
+
+ 
+ auxiliary
+ ---------
+ 
+ to stash anything that you've alredy staged with the "git add" command, 
+ --------------------------------
+ | git stash --keep-index       |
+ --------------------------------
+ it is "git stash" + saving staged in your working directory
+
+ to stash untracked files as well as the tracked ones:
+ --------------------------------    --------------------------------
+ | git stash --include-untracked| or | git stash -u                 |
+ --------------------------------    --------------------------------
+
+ for interactively select changes to stash:
+ --------------------------------
+ | git stash --patch            |
+ --------------------------------
+
+ the next command:
+ --------------------------------
+ | git statsh branch branch-name| 
+ --------------------------------
+ creates a new branch for you, checks out the commit you were on when
+ you stashed your work, reapplies your work there, and then drops the stash
+ if it applies successfully
+
+
+ 
+ cleaning
+ ========
+
+ to clean working directory (to delete untracked files and directories):
+ --------------------------------    --------------------------------
+ | git clean -d -f              | or | git clean -d -n              |
+ --------------------------------    --------------------------------
+       "real" running                         "dry" running
+ this commands will only remove untracked files that are not ignored.
+ Any file that matches a pattern in your ".gitignore" or other 
+ ignore files will not be removed.
+ To remove these files too:
+ --------------------------------    --------------------------------
+ | git clean -d -x -f           | or | git clean -d -x -n           |
+ --------------------------------    --------------------------------
+       "real" running                         "dry" running
+
+ to clean in interactive mode:
+ --------------------------------
+ | git clean -x -i              |
+ --------------------------------
+
+
+ summary
+ ======= 
+ 
+ "git stash save" 
+ save staged, and not staged modificated file to stash
+ doesn't save untrackabe files
+ delete all changed in working directory,
+ doesn't delete untrackable files (they will remain in the working dir)
+
+
+ "git stash apply"
+ After reapplying:
+ staged in stash -> modificated trackable, not staged in working dir
+ modificated trackable in stash -> modificated trackable in working dir
+
+ "git stash apply --index"
+ After reapplying:
+ staged in stash -> staged in working directory
+ modificated trackable in stash -> modificated trackable in working dir
+ 
+ ----------------------------------------
+
+ "git stash save --include-untracked"
+ save staged, and not staged modificated file to stash
+ save untracked files to stash
+ delete all changed in working directory,
+ delete all untracked files from working dir (and pyshically deletes them)
+
+ "git stash apply"
+ After reapplying:
+ untracked in stash -> untracked in working dir
+ staged in stash -> modificated trackable, not staged in working dir
+ modificated trackable in stash -> modificated trackable in working dir
+
+ "git stash apply --index"
+ After reapplying:
+ untracked in stash -> untracked in working dir
+ staged in stash -> staged in working directory
+ modificated trackable in stash -> modificated trackable in working dir
+ 
+ 
+
+
+
+ 

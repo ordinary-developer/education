@@ -1,0 +1,21 @@
+ ##################
+ os and sys modules
+ ##################
+
+ 
+ os and sys modules
+ ==================
+
+ Most system-level interfaces in Python are shipped in just two modules:
+ sys and os.
+
+ 
+ split methods
+ =============
+
+ "splitlines()" 
+    string object method returns a list of subsequent strings
+ "split("\n")" 
+    string object method returns a list of subsequent strings
+    but retains an empty line at the end of the result
+    if the last line is \n terminated

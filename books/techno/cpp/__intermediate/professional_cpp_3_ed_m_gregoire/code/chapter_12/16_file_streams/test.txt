@@ -1,0 +1,5 @@
+There were 3 arguments to this program.
+They are: 
+./application
+firstParamter
+secondParameter

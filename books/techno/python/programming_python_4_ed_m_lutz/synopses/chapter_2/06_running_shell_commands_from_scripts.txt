@@ -1,0 +1,15 @@
+ ###################################
+ running shell commands from scripts
+ ###################################
+
+
+ running shell commands from scripts
+ ===================================
+
+ "os.system('command')"
+    runs a shell command from a Python script
+
+ "os.popen('command')"
+    runs a shell command and connects to its
+    input or output streams
+

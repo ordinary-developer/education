@@ -1,0 +1,19 @@
+ #########################
+ script execution context
+ #########################
+
+ cwd, files, and import paths
+ ============================
+
+ Script's home directory and cwd these are not the same things
+
+
+ shell environment variables
+ ===========================
+
+ Shell variables, sometimes known as environment variables, are made
+ available to Python scripts as 
+ "os.environ"
+ a Python dictionary-like object with one entry per variable
+ setting in the shell
+

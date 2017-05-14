@@ -1,0 +1,217 @@
+ advanced merging
+ ################
+
+ merge conflicts 
+ ===============
+
+ aborting a merge
+ ----------------
+
+ try to make sure your working directory is clean before doing 
+ a merge that may have conflicts
+
+ to abort a merge use
+ --------------------------------
+ | $ git merge --abort		|
+ --------------------------------
+
+ the "git merge --abort" option tires to revert back to yousr state
+ before you ran the merge
+ the only cases where it may not be able to do this perfectly
+ would be if you had unstashed, uncommitted changes in your
+ working directory when you ran it
+
+ generally, if you find yourself in a horrible state and just want
+ to start over
+ --------------------------------
+ | $ git reset --hard HEAD	| or wherever you want to get back to
+ --------------------------------
+ this will blow away your working directory, so make sure you don't
+ want any changes there
+
+
+ ignoring whitespace
+ -------------------
+
+ if you see that you have a lot of whitespace issues in a merge
+
+ to ignore changes in any amount existing whitespace
+ --------------------------------------------------------------------
+ | $ git merge -Xignore-all-space branch-name			    |
+ --------------------------------------------------------------------
+
+ to ignore all whitespace changes altogether
+ --------------------------------------------------------------------
+ | $ git merge -Xignore-space-change branch-name		    |
+ --------------------------------------------------------------------
+
+
+ manual file re-merging
+ ----------------------
+
+ we can get copies of my version of the file, 
+ their version (from the branch we're merging in) 
+ and the commont version (from where both sides branched off)
+
+ stage 1 is the common ancestor,
+ stage 2 is your version
+ stage 3 is from the MERGE_HEAD, the vesion you're merging in ('theirs)
+  
+ you can extract a copy of each of these versions 
+ of the conflicted file with the "git show" command:
+ --------------------------------------------------------------------
+ | $ git show :1:hello.rb > hello.common.rb			    |
+ | $ git show :2:hello.rb > hello.ours.rb			    |
+ | $ git show :3:hello.rb > hello.theirs.rb			    |
+ --------------------------------------------------------------------
+
+ to get the actual SHA-1s of the Git blobs for each of these files:
+ --------------------------------
+ | $ git ls-files -u		|
+ --------------------------------
+
+ you can edit the file "hello.theirs.rb" and then
+ --------------------------------------------------------------------
+ | $ git merge-file -p hello.ours.rb hello.common.rb		    |
+ |                     hello.theirs.rb > hello.rb		    |
+ --------------------------------------------------------------------
+
+ to compare your result to what you had in your branch before the merge
+ (to see what the merge introduced):
+ --------------------------------
+ | $ git diff --ours		|
+ --------------------------------
+
+ to see how the result of  the merge differed from what 
+ was on their side:
+ --------------------------------
+ | $ git diff --theirs		|
+ --------------------------------
+
+ to see how the file has changed from both sides:
+ --------------------------------
+ | $ git diff --base		|
+ --------------------------------
+
+ to clear out the extra files we create to do the manual merge
+ but no longer need:
+ --------------------------------
+ | $ git clean --force		|
+ --------------------------------
+
+  
+ checking out conflicts
+ ----------------------
+
+ to see conflicts markers for "ours", "theirs" and "base" use
+ --------------------------------------------------------------------
+ | $ git checkout --conflict=diff3 file.txt			    |
+ --------------------------------------------------------------------
+ and then see the "file.txt" file
+
+  
+ merge log
+ ---------
+
+ to get a full list of all the unique commits that were included
+ in either branch involved in this merge
+ --------------------------------------------------------------------
+ | $ git log --oneline --left-right HEAD...MERGE_HEAD		    |
+ --------------------------------------------------------------------
+
+ to show only the commits in either side of the merge that touch 
+ a file that's currently conflicted
+ --------------------------------------------------------------------
+ | $ git log --oneline --left-right --merge			    |
+ --------------------------------------------------------------------
+
+
+ undoing merges
+ --------------
+
+ []
+
+
+ other types of merges
+ =====================
+
+ our or theirs preference
+ ------------------------
+
+ if you would prefer for Git to simply choose a specific side
+ and ignore the other side instead of letting you manually merge 
+ the conflict:
+ --------------------------------------------------------------------
+ | $ git merge -Xours topic-branch				    |
+ --------------------------------------------------------------------
+ or 
+ --------------------------------------------------------------------
+ | $ git merge -Xtheirs topic-branch				    |
+ --------------------------------------------------------------------
+
+ you also can use these options for individual file merges:
+ --------------------------------------------------------------------
+ | $ git merge-file --ours filename				    |
+ --------------------------------------------------------------------
+ or:
+ --------------------------------------------------------------------
+ | $ git merge-file --theirs filename				    |
+ --------------------------------------------------------------------
+
+ to do a fake merge
+ (to record a new merge commit with both branches as parents,
+  but it will not even look at the branch you're merging in):
+ --------------------------------------------------------------------
+ | $ git merge -s ours branch-name				    |
+ --------------------------------------------------------------------
+
+  
+ subtree merging
+ ---------------
+
+ to go to rack_remote/master
+ --------------------------------------------------------------------
+ | $ git checkout -b rack_branch rack_remote/master		    |
+ --------------------------------------------------------------------
+
+ to pull the "Rack" project into our "master" project as a subdirectory
+ use "read-tree" (it reads the root tree of one branch into your
+ current staging area and working directory):
+
+ under your master branch:
+ --------------------------------------------------------------------
+ | $ git read-tree --prefix=rack/ -u rack_branch		    |
+ --------------------------------------------------------------------
+
+ when we commit, it looks like we have all the Rack files under
+ that subdirectory - as though we copied them in from a tarball
+
+ we can easily merge changes from one of the branches to the other
+ so if the "Rack" project updates, we can pull in upstream changes
+ by switching to that branch and pulling
+ --------------------------------------------------------------------
+ | $ git checkout rack_branch					    |
+ | $ git pull							    |
+ --------------------------------------------------------------------
+
+ then, we can merge those changes back into our master branch
+ --------------------------------------------------------------------
+ | $ git checkout master					    |
+ | $ git merge --sqaush -s recursive -Xsubtree=rack  --no-commit    |
+ |             rack_branch					    |
+ --------------------------------------------------------------------
+ all the changes from the Rack project are merged in and read to
+ be commited locally
+  
+ to get a diff between what you have in your "rack" subdirectory 
+ and the code in your "rack_branch" branch use "diff-tree" (not "diff")
+ --------------------------------------------------------------------
+ | $ gt diff-tree -p rack_branch				    |
+ --------------------------------------------------------------------
+
+ to compare what is in your rack subdirectory with what the master 
+ branch on the server was the las time you fetched
+ --------------------------------------------------------------------
+ | $ git diff-tree -p rack_remote/master			    |
+ --------------------------------------------------------------------
+

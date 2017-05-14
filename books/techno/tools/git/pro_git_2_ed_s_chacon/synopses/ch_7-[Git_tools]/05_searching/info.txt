@@ -1,0 +1,64 @@
+ searching
+ #########
+
+ git grep
+ ========
+
+ to search through any committed tree or the working directory 
+ for a string or regular expression:
+ --------------------------------
+ | git grep -n string_to_find   |
+ --------------------------------
+ "-n" - for printing line numbers
+
+ to show which files matched and how many matches here were in each file
+ use the "--count" option: 
+ --------------------------------------------------------------------
+ | git grep --count string_to_find                                  |
+ --------------------------------------------------------------------
+
+ to see what method or function it thinks it has found a match in,
+ use the "-p" option:
+ --------------------------------------------------------------------
+ | git grep -p string_to_find *.c                                   |
+ --------------------------------------------------------------------
+
+ for more powerfull mode:
+ --------------------------------------------------------------------
+ | git grep --break --heading -n -e '#define'                       |
+ |          --and \( -e LINK -e BUF_MAX \) v1.8.0                   |
+ --------------------------------------------------------------------
+ "--break" and "--heading" for spliting up the ouptup into 
+ a more readable format,
+ "--and" - for specifying multiple matches in the same line
+
+
+ git log
+ =======
+
+ to show the commits that either added or removed the specified string,
+ use the "-S" option:
+ --------------------------------------------------------------------
+ | git log -Sstring_to_find --oneline                               |
+ --------------------------------------------------------------------
+ 
+ for a regular expression search use the "-G" option
+
+ to see every change made to the function "git_deflate_bound" 
+ in the "zlib.c" file:
+ --------------------------------------------------------------------
+ | git log -L :git_deflate_bound:zlib.c                             |
+ --------------------------------------------------------------------
+
+ also you can pass a regular expression:
+ --------------------------------------------------------------------
+ | git log -L '/unsigned long git_deflate_bound/',/^}/:zlib.c       |
+ --------------------------------------------------------------------
+
+ 
+
+
+
+
+
+ 

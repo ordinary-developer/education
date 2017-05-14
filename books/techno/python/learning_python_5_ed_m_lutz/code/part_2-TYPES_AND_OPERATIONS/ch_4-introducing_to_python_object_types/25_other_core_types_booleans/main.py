@@ -1,0 +1,12 @@
+if __name__ == '__main__':
+    print(1 > 2, 1 < 2)
+    print(bool('spam'))
+    print(bool(True))
+    print(bool(False))
+    print(bool(1))
+    print(bool(10))
+    print(bool(0))
+    print(bool(-1))
+    print(bool(-1.5))
+    print(bool(0.0))
+    print(bool(0.00000000000000000000000000000001))

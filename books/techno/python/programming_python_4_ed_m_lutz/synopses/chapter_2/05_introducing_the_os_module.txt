@@ -1,0 +1,89 @@
+ #########################
+ introducing the os module
+ #########################
+
+ 
+ common
+ ======
+
+ this module provides POSIX tools - 
+ a portable standard for operating-system calls
+ - along with platform-independent directory processing tools
+ as the nested module os.path
+
+ 
+ adminitstrative tools
+ =====================
+
+ "os.getpid()"
+    gives the calling process's process ID
+ 
+ "os.getcwd()"
+    returns the current working directory.
+    The current working directory is where files
+    opened by your script are assumed to live,
+    unless their names include explicit directory paths.
+
+ "os.chdir('new_dir')"
+    changes your working directory to a new directory
+
+
+ portability constants
+ ====================
+ 
+ "os.pathsep"
+    provides the character that separated directories on directory lists
+
+ "os.sep"
+    provides the charecter that separated directory components on the platform
+    on which python is running
+
+ "os.pardir"
+    parent directory character
+
+ "os.curdir"
+    current directory character
+
+ "os.linesep"
+    line separator
+  
+   
+ common os.path tools
+ ====================
+
+ "os.path.isdir('full_path')"
+    checking if 'full_path' is a directory
+
+ "os.path.isfile('full_path')"
+    checking if 'full_path' is a file
+
+ "os.path.exists('full_path')"
+    checking if 'full_path' exists
+
+ "os.path.getsize('full_path')"
+    get the size of the 'full_path' (file or directory) (in bytes)
+
+ "os.path.split('full_path')"
+    returns a tuple with the directory path and filename
+
+ "os.path.join('directory_path', 'file_name')"
+    returns a union of 'directory_path' and 'file_name'
+
+ "os.path.basedir('full_path')"
+    returns the first item returned by "split"
+
+ "os.path.basename('full_path')"
+    returns the second item returned by "split"
+
+ "os.path.splitext('full_path')"
+    returns a tuple with the full name but without the extension
+    and the extension itself.
+
+ "os.path.normpath('mixed_path')"
+    returns a correct path when your path
+    becomes a jumple of Unix and Windows separators
+
+ "os.path.abspath('file')"
+    returns the full directory pathname of a file;
+    it accounts for adding the current directory
+    as a path prefix

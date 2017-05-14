@@ -1,0 +1,6 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file alias="drive.jpg">images/drive.jpg</file>
+    <file alias="folder.jpg">images/folder.jpg</file>
+</qresource>
+</RCC>

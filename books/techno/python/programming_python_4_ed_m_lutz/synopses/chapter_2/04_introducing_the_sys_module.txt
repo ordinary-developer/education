@@ -1,0 +1,57 @@
+ ##########################
+ inrtoducing the sys Module
+ ##########################
+
+ sys.argv
+ ========
+
+ Command-line arguments show up as a list of strings called sys.argv
+
+ 
+ platforms and versions
+ ======================
+
+ "sys.platform"
+    the name of the underlying operating system
+
+ "sys.maxsize"
+    the largest possible "natively sized" integer on this machine
+    (though integers can be arbitrarily long in Python 3.X)
+
+ "sys.version"
+    the verion number of the python interpreter
+
+
+ the module search path
+ ======================
+ 
+ the "sys.path" is a list of directory name strings representning the true search path
+ in a running Python interpreter
+ 
+ The "sys.path" list is simply initialized from your "PYTHONPATH" setting - 
+ the content of any .pth path files located in Python's directories on your machine plus
+ system defaults - when the interpreter is first started up.
+
+ You can change this list with "append", "extend", "insert", "pop", "remove" and "del" operations.
+
+
+ the loaded modules table
+ ========================
+
+ "sys.modules"
+    is a dictionary containing one "name:module" entry for every
+    module imported in your Python session or program
+
+ "sys.builtin_module_names"
+    is a list containing names of the modules built-in to the Python executable
+
+ "sys.getrefcount"
+    an object's reference count  
+ 
+
+ exception details
+ =================
+
+ "sys.exc_info"
+    a function returning a tuple with the latest exception's type,
+    value, and tracebakc object.
