@@ -1,0 +1,14 @@
+# all files must can have access both from windows and linux
+# without troubles
+* text eol=lf
+
+# settings for csharp projects
+*.sln text eol=crlf
+*.csproj text eol=crlf
+
+# setings for binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.bmp binary
+
