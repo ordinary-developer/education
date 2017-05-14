@@ -1,6 +1,0 @@
-E:\__REPS\win_education\books\tech\.net\csharp_6.0_and_.net_4.6_7_ed_a_troelsen\ch_3-CORE_C#_PROGRAMMING_CONSTRUCTS-PART_1\07-variable_declaration_and_initialization\Project\bin\Debug\Project.exe.config
-E:\__REPS\win_education\books\tech\.net\csharp_6.0_and_.net_4.6_7_ed_a_troelsen\ch_3-CORE_C#_PROGRAMMING_CONSTRUCTS-PART_1\07-variable_declaration_and_initialization\Project\bin\Debug\Project.exe
-E:\__REPS\win_education\books\tech\.net\csharp_6.0_and_.net_4.6_7_ed_a_troelsen\ch_3-CORE_C#_PROGRAMMING_CONSTRUCTS-PART_1\07-variable_declaration_and_initialization\Project\bin\Debug\Project.pdb
-E:\__REPS\win_education\books\tech\.net\csharp_6.0_and_.net_4.6_7_ed_a_troelsen\ch_3-CORE_C#_PROGRAMMING_CONSTRUCTS-PART_1\07-variable_declaration_and_initialization\Project\obj\Debug\Project.csprojResolveAssemblyReference.cache
-E:\__REPS\win_education\books\tech\.net\csharp_6.0_and_.net_4.6_7_ed_a_troelsen\ch_3-CORE_C#_PROGRAMMING_CONSTRUCTS-PART_1\07-variable_declaration_and_initialization\Project\obj\Debug\Project.exe
-E:\__REPS\win_education\books\tech\.net\csharp_6.0_and_.net_4.6_7_ed_a_troelsen\ch_3-CORE_C#_PROGRAMMING_CONSTRUCTS-PART_1\07-variable_declaration_and_initialization\Project\obj\Debug\Project.pdb
