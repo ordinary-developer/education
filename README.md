@@ -32,3 +32,12 @@ Contributing
 ------------
 This project is a study project and doesn't need to be contributed.
 
+
+Miscellaneous
+-------------
+To provide correct access both in linux and windows os 
+it is necessary to use the next option:
+```
+$ git config --global core.longpaths true
+```
+
