@@ -47,6 +47,8 @@ Unit-tests
 For every message you listed (message protocol) first tests are:
 - When the message is sent to the object, 
   is the expected object returned?
-- Is is an instance of the right class?
+- Is it an instance of the right class?
 - Is it in the correct state?
+  (It has a reasonable value or 
+   its instance variables have reasonble values).
 
