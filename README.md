@@ -13,16 +13,10 @@ Simply copy (clone the repository) and see and read it.
 Basic usage
 -----------
 ```
-$ git clone https://gitlab.com/ordinary-developer/education.git 
-```
-
-or
-
-```
 $ git clone https://github.com/ordinary-developer/education.git
 ```
-
  
+
 License
 -------
 This project is offered under the MIT license.
