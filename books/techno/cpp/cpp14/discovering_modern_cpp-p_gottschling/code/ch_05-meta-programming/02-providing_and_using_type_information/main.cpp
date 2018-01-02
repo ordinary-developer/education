@@ -319,6 +319,249 @@ void run() {
 
 } // namespace example06
 
+// domain specific type properties
+#include <type_traits>
+#include <assert.h>
+namespace example07 {
+
+template <typename T>
+struct is_const {
+    static const bool value{false};
+};
+
+template <typename T>
+struct is_const<T const> {
+    static const bool value{true};
+};
+
+template <typename T>
+class dense2D;
+
+template <typename Matrix>
+class transposed_view;
+
+template <typename T>
+struct is_matrix0 {
+    static const bool value{false};
+};
+
+template <typename T>
+struct is_matrix : std::false_type {};
+
+template <typename T>
+struct is_matrix<T const> : is_matrix<T> {};
+
+template <typename T>
+struct is_matrix<dense2D<T>> : std::true_type {};
+
+template <typename Matrix>
+struct is_matrix<transposed_view<Matrix>> : std::true_type {};
+
+template <typename T>
+class dense2D {
+    public:
+        using value_type = T;
+        using size_type = size_t;
+
+        dense2D(std::initializer_list<std::vector<T>> const& src)
+            : contents_(src) {}
+
+        value_type& operator()(size_type r, size_type c) {
+            return contents_[c][r];
+        }
+
+        value_type const& operator()(size_type r, size_type c) const {
+            return contents_[c][r];
+        }
+
+    private:
+        std::vector<std::vector<T>> contents_;
+};
+
+template <typename Matrix>
+class transposed_view {
+    public:
+        static_assert(is_matrix<Matrix>::value,
+                      "Argument of view must be a matrix!");
+
+        using value_type = typename Matrix::value_type;
+        using size_type = typename Matrix::size_type;
+        using vref_type = std::conditional_t<is_const<Matrix>::value,
+                                             value_type const&,
+                                             value_type&>;
+
+        transposed_view(Matrix& A) : ref(A) {}
+
+        vref_type operator()(size_type r, size_type c)
+        { return ref(c, r); }
+
+        value_type const& operator()(size_type r, size_type c) const 
+        { return ref(c, r); }
+
+    private:
+        Matrix& ref;
+};
+
+
+void run() {
+    dense2D<float> A{ {2, 3, 4}, 
+                      {5, 6, 7},
+                      {8, 9, 10}};
+    transposed_view<dense2D<float>> B{A};
+
+    dense2D<float> const A2{A};
+    transposed_view<dense2D<float> const> B2(A2);
+}
+} // namespace example07
+
+// enable_if using
+#include <iostream>
+#include <type_traits>
+#include <complex>
+#include <cmath>
+namespace example08 {
+
+// #region [forward declarations]
+template <typename T>
+class dense_vector;
+
+template <typename T>
+class dense2D;
+// #endregion [forward declarations]
+
+template <bool Condition, typename T = void>
+struct enable_if {
+    using type = T;
+};
+
+template <typename T>
+struct enable_if<false, T> {};
+
+template <bool Condition, typename T = void>
+using enable_if_t = typename enable_if<Condition, T>::type;
+
+template <typename T>
+struct Magnitude {
+    using type = T;
+};
+
+template <typename T>
+struct Magnitude<std::complex<T>> {
+    using type = T;
+};
+
+template <typename T>
+struct Magnitude<dense_vector<T>> {
+    using type = typename Magnitude<T>::type;
+};
+
+template <typename T>
+struct Magnitude<dense2D<T>> {
+    using type = typename Magnitude<T>::type;
+};
+
+template <typename T>
+struct is_matrix : std::false_type {};
+
+template <typename T>
+struct is_matrix<T const> : is_matrix<T> {};
+
+template <typename T>
+struct is_matrix<dense2D<T>> : std::true_type {};
+
+template <typename T>
+struct is_vector : std::false_type {};
+
+template <typename T>
+struct is_vector<T const> : is_vector<T> {};
+
+template <typename T>
+struct is_vector<dense_vector<T>> : std::true_type {};
+
+template <bool B, typename T>
+struct enable_if_c {
+    using type = T;
+};
+
+template <typename T>
+struct enable_if_c<false, T> {};
+
+template <typename Condition, typename T>
+struct enable_if_ : enable_if_c<Condition::value, T> {};
+
+template <typename T>
+typename enable_if_c<is_matrix<T>::value, typename Magnitude<T>::type>::type
+inline one_norm(T const& A)
+{}
+
+template <typename T>
+typename enable_if_<is_vector<T>, typename Magnitude<T>::type>::type
+inline one_norm(T const& v)
+{}
+
+// #region [class declarations]
+template <typename T>
+class dense_vector {
+
+};
+
+template <typename T>
+class dense2D {
+    public:
+        using value_type = T;
+        using size_type = size_t;
+
+        dense2D(std::initializer_list<std::vector<T>> const& src)
+            : contents_(src) {}
+
+        value_type& operator()(size_type r, size_type c) {
+            return contents_[c][r];
+        }
+
+        value_type const& operator()(size_type r, size_type c) const {
+            return contents_[c][r];
+        }
+
+        unsigned num_cols() const { return contents_.size(); }
+
+    private:
+        std::vector<std::vector<T>> contents_;
+};
+
+template <typename T>
+unsigned num_cols(dense2D<T> const& matrix) {
+    return matrix.num_cols();
+}
+// #endregion [class declarations]
+
+template <typename T>
+using Magnitude_t = typename Magnitude<T>::type;
+
+template <typename T>
+enable_if_t<is_matrix<T>::value, Magnitude_t<T>>
+inline one_norm(T const& A)
+{
+    Magnitude_t<T> max{0};
+    for (unsigned c{0}; c < num_cols(A); ++c) {
+        Magnitude_t<T> sum{0};
+        for (unsigned r{0}; r < num_cols(A); ++r) {
+            sum += std::abs(A[r][c]);
+        }
+        max = max < sum ? sum : max;
+    }
+    return max;
+}
+
+void run() {
+    dense2D<float> A{ {2, 3, 4}, 
+                      {5, 6, 7},
+                      {8, 9, 10}};
+    auto value = one_norm(A);
+
+}
+
+} // namespace example08
+
 int main() {
     example01::run();
     example02::run();
@@ -326,6 +569,8 @@ int main() {
     example04::run();
     example05::run();
     example06::run();
+    example07::run();
+    example08::run();
 
     return 0;
 }
