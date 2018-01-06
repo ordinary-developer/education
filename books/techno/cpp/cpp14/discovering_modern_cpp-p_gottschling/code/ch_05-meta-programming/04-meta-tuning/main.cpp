@@ -217,6 +217,43 @@ struct fsize_assign<Target, Source, 0> {
     }
 };
 
+template <typename Matrix, typename Vector>
+struct mat_vec_et {
+    static int const MY_ROWS = Matrix::MY_ROWS;
+    static int const MY_COLS = Matrix::MY_COLS;
+
+    mat_vec_et(Matrix const& A, Vector const& v) : A(A), v(v) {}
+
+    Matrix const& A;
+    Vector const& v;
+};
+
+template <int Row, int Col>
+struct fsize_mat_vec_mult {
+    template <typename Matrix, typename VecIn, typename VecOut>
+    void operator()(Matrix const& A, VecIn const& v, VecOut& w) {
+        fsize_mat_vec_mult<Row, Col - 1>()(A, v, w);
+        w[Row] += A[Row][Col] * v[Col];
+    }
+};
+
+template <int Row>
+struct fsize_mat_vec_mult<Row, 0> {
+    template <typename Matrix, typename VecIn, typename VecOut>
+    void operator()(Matrix const& A, VecIn const& v, VecOut& w) {
+        fsize_mat_vec_mult<Row - 1, Matrix::MY_COLS - 1>()(A, v, w);
+        w[Row] = A[Row][0] * v[0];
+    }
+};
+
+template <>
+struct fsize_mat_vec_mult<0, 0>
+{
+    template <typename Matrix, typename VecIn, typename VecOut>
+    void operator()(Matrix const& A, VecIn const& v, VecOut& w) {
+        w[0] = A[0][0] * v[0];
+    }
+};
 
 template <typename T, int Rows, int Cols>
 class fsize_matrix {
@@ -230,7 +267,11 @@ class fsize_matrix {
         static int const MY_ROWS{ Rows };
         static int const MY_COLS{ Cols };
 
-        fsize_matrix() {}
+        fsize_matrix() {
+            for (int i{0}; i < MY_ROWS; ++i)
+                for (int j{0}; j < MY_COLS; ++j)
+                    data_[i][j] = T(0);
+        }
 
         fsize_matrix(self const& that) {
             for (int i{0}; i < MY_ROWS; ++i)
@@ -246,16 +287,13 @@ class fsize_matrix {
         T data_[Rows][Cols];
 };
 
-template <typename T, int Rows, int Cols>
-class fsize_matrix {
-    private:
-        T data_[Rows][Cols];
-};
-
 void run() {
     std::vector<int> v1{ 1, 2, 3}, v2{1, 2, 3};
     fsize_assign<std::vector<int>, std::vector<int>, 3> fsize_assign_functor{};
     fsize_matrix<int, 3, 3> matrix{};
+
+    mat_vec_et<fsize_matrix<int, 3, 3>, std::vector<int>> mat_vec_et(matrix,
+                                                                     v1);
 }
 } // namespace example04
 
