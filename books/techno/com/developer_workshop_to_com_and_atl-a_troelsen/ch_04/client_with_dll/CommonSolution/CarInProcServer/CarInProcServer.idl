@@ -1,0 +1,56 @@
+import "oaidl.idl";
+import "ocidl.idl";
+
+// IStats
+[
+	object,
+	uuid(A533DA31-D372-11d2-B8CF-0020781238D4),
+	helpstring("Get Info about this car")
+]
+interface IStats : IUnknown
+{
+	HRESULT DisplayStats();
+	HRESULT GetPetName([out, retval] BSTR* petName);
+};
+
+// IEngine
+[
+	object,
+	uuid(A533DA30-D372-11d2-B8CF-0020781238D4),
+	helpstring("Rev your car & slow it down")
+]
+interface IEngine : IUnknown
+{
+	HRESULT SpeedUp();
+	HRESULT GetMaxSpeed([out, retval] int* maxSpeed);
+	HRESULT GetCurSpeed([out, retval] int* curSpeed);
+};
+
+// ICreateCar
+[
+	object,
+	uuid(A533DA32-D372-11d2-B8CF-0020781238D4),
+	helpstring("This lets you create a car")
+]
+interface ICreateCar : IUnknown
+{
+	HRESULT SetPetName([in]BSTR petName);
+	HRESULT SetMaxSpeed([in]int maxSp);
+};
+
+[
+	uuid(070F1346-7C75-4488-A306-D7C850AD7550),
+	version(1.0),
+	helpstring("CoCar server with TypeLib")
+]
+library CarInProcServer
+{
+	importlib("stdole32.tlb");
+	[uuid(7AD2D539-EE35-11d2-B8DE-0020781238D4)]
+	coclass CoCar
+	{
+		interface ICreateCar;
+		interface IStats;
+		interface IEngine;
+	};
+}
