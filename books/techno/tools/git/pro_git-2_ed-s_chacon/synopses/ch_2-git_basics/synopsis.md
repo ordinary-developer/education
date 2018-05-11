@@ -1,6 +1,5 @@
 Git basics
-==========
-
+============
 
 Base material
 -------------
@@ -28,14 +27,14 @@ tracked or untracked
 ```
 
 
-#### git add
+### git add
 
 "git add" - is a multipurpose command - you use it to begin tracking
 new files, to stage files, and to do other things like marking 
 merge-conflicted files as resolved.
 
 
-#### git diff
+### git diff
 
 To see what you've changed but not yet staged type:
 ```
@@ -51,7 +50,7 @@ $ git diff --staged --color
 This command compares your staged changes to your last commit.
 
 
-#### git commit
+### git commit
 
 To commit your changed use the command:
 ```
@@ -61,7 +60,7 @@ $ git commit --all --message "Commit message"
 ```
 
 
-#### git rm
+### git rm
 
 To remove file it is not neccessary to use standard unix "rm" 
 command, instead you can type:
@@ -86,7 +85,7 @@ $ git rm --cached file-name
 after that you must commit your changes.
  
 
-#### git mv
+### git mv
 
 If you want to rename a file in Git, you can run something like:
 ```
@@ -102,7 +101,7 @@ $ git add file_to
 ```
 
 
-#### git log
+### git log
 
 To see your history:
 ```
@@ -149,7 +148,7 @@ $ git log --oneline --decorate --graph --color
 ```
 
 
-#### git commit --amend
+### git commit --amend
 
 This command is useful when you commit too early and possibly forget
 to add some files, or you mess up your commit message.
@@ -162,18 +161,18 @@ $ git commit --amend
 ```
 
 
-#### git reset HEAD filename
+### git reset HEAD filename
 
 This command is used to unstage the 'filename' 
 but to keep it modified.
 
 
-#### git checkout -- filename
+### git checkout -- filename
 
 This commnad unmodifies a modifiled file.
  
 
-#### git fetch [remote-name]
+### git fetch [remote-name]
 
 "git fetch" command pulls the data to your local repository,
 it doesn't automatically merge it with any of your work or
@@ -182,12 +181,12 @@ You have to merge it manually into your work when you're ready;
 instead you can use "git pull" command.
 
 
-#### git push [remote-name] [branch-name]
+### git push [remote-name] [branch-name]
 
 This command pushes the data to the server.
 
 
-#### tags
+### tags
 
 Git uses two main types of tags: lightweight and annotated.
 Difference:
