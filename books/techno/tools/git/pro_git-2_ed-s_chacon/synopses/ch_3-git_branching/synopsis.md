@@ -1,7 +1,6 @@
 Git Branching
 =============
 
-
 Base material
 -------------
 
