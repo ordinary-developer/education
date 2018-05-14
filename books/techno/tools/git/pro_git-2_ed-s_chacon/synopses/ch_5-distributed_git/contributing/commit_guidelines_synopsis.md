@@ -3,10 +3,9 @@ Commit guidelines
 
 Base material
 -------------
-
-- do not submit any whitespace errors:
+- do not submit any whitespace errors;
   to identify possible whitespace errors (trail spaces) in your
-  sources files before staging your files
+  sources files before staging your files:
   ```   
   $ git diff --check --color  
   ```
