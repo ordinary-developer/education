@@ -1,10 +1,8 @@
 Distributed git
 ===============
 
-
 Base
 ----
-
 This example describes contributing via e-mail
 (without Git hosting platforms).
   
@@ -17,7 +15,6 @@ e-mail them to the developer mailing list:
 
 Public project over e-mail
 --------------------------
- 
 Let's assume that you begin your work:
 ```
 $ git checkout -b topicA
@@ -46,7 +43,7 @@ Here we shall demostrate how to send a patch via Gmail
  
 First, set up the "imap" section in your "~/.gitconfig"
 You can set each value separately with a series of "git config"
-commands, or you can add it manually, but your config file shoold look
+commands, or you can add it manually, but your config file shoold look:
 ```
 [imap]
     folder = "[Gmail]/Drafts"
