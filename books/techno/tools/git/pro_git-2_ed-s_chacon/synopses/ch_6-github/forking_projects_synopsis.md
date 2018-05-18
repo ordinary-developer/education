@@ -3,18 +3,17 @@ Forking projects via GitHub
 
 Fork projects
 -------------
- 
 To contribute to a project you must
- - create a fork of the project by clicking on the fork button   
- - create a topic branch from master
- - make some commits to improve the project
- - push this branch to your GitHub project
- - open a pull request on GitHub
- - discuss, and optionally continue committing
+ - create a fork of the project by clicking on the fork button; 
+ - create a topic branch from master;
+ - make some commits to improve the project;
+ - push this branch to your GitHub project;
+ - open a pull request on GitHub;
+ - discuss, and optionally continue committing;
  - the project owner merges or closes the Pull requests  
    (he can create a topic branch based on the master branch,
     merge all data from your topic branch to his topic branch, 
-    test his topic branch and merge it to the master branch)
+    test his topic branch and merge it to the master branch).
 
 ```
 $ git clone https://github.com/projectowner/project
@@ -29,7 +28,8 @@ After that GitHub will present us with a big green button
 "Compare and pull request" to check out our changes 
 and open a Pull Request to the original project.
  
-Or you can alternatively go to the "Branches" page at "https://github.com/<user>/<project>/branches" 
+Or you can alternatively go to the "Branches" page
+at "https://github.com/<user>/<project>/branches" 
 to locate your branch and open a new Pull Request from there.
 
 If we click that green button, we'll see a screen 
@@ -57,10 +57,10 @@ in the same repository.
 If you want to merge in the target branch 
 to make your Pull Request mergeable,
 you would
-- add the original repository as a new remote
-- fetch from it
-- merge the main branch of that repository into your topic branch 
-- fix any issues 
+- add the original repository as a new remote;
+- fetch from it;
+- merge the main branch of that repository into your topic branch;
+- fix any issues; 
 - and finally push it back up to the same branch 
   you opened the Pull Request on.
 
