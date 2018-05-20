@@ -3,10 +3,9 @@ Template for the README.md file
 
 Base
 ----
-
 The "README.md" file generally includes things like:
-- What the project is for
-- How to configure and install it
-- An example of how to use it or get it running
-- The license that the project is offered under
-- How to contribute to it
+- what the project is for;
+- how to configure and install it;
+- an example of how to use it or get it running;
+- the license that the project is offered under;
+- how to contribute to it.
