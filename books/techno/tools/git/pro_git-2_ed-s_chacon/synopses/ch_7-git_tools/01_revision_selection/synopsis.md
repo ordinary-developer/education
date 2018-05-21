@@ -1,11 +1,10 @@
-# Revision selection
+Revision selection
+====================
 
 Single revisions
-================
+----------------
  
-Short SHA
----------
-
+### Short SHA
 To see one commit:
 ```
 $ git show 1c002d
@@ -23,11 +22,9 @@ $ git show branch-name
 ```
 
  
-Reflog shortnames
------------------
-
-To see a log, where your HEAD and branch references have been for the
-last few months:
+### Reflog shortnames
+To see a log, where your HEAD and branch references have been
+for the last few months:
 ```
 $ git reflog
 ```
@@ -46,9 +43,7 @@ It's important to note that the reflog information is strictly local
  - it is a log of what you've done in your repository.
 
 
-Ancestry references
--------------------
-
+### Ancestry references
 to see the first parent of HEAD:
 ```
 git show HEAD^
@@ -74,11 +69,9 @@ $ git show HEAD^^^
 
 
 Commit ranges
-=============
+-------------
 
-Double dot
-----------
-
+### Double dot
 To see what commits are in the "branch2" and not in "branch1"
 (all commits reachable by "branch2" that aren't reachable by "branch1")
 this allow preview what you're about to merge in:
@@ -93,9 +86,7 @@ $ git log origin/master..HEAD
 $ git log origin/master..
 ```
 
-Multiple points
----------------
-
+### Multiple points
 The next 3 strings are equivalent:
 ```
 $ git log refA..refB
@@ -111,9 +102,7 @@ $ git log refA refB ^refC
 $ git log refA refB --not refC
 ```
  
-Triple dot
-----------
- 
+### Triple dot
 To see the commits, that are reachable (contained) 
 by either of two refs but not by both of them:
 ```
