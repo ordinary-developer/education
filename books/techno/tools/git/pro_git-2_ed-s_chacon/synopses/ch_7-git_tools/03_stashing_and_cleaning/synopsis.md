@@ -1,68 +1,69 @@
- stashing and cleaning
- #####################
+Stashing and cleaning
+=====================
  
- stashing
- ========
+Stashing
+--------
 
- common
- ------
+### Base material
+Stashing takes the dirty state of your working directory - that is,
+your modified tracked files and staged changes - and saves it on a stack
+of unfinished changes that you can reapply at any time
 
- stashing takes the dirty state of your working directory - that is,
- your modified tracked files and staged changes - and saves it on a stack
- of unfinished changes that you can reapply at any time
+Let's assume that you work, and you see your dirty state,
+to push a new stash onto your stack, run:
+```
+$ git stash
+```
+or
+```
+$ git stash save
+```
 
- let's assume that you work, and you see your dirty state,
- to push a new stash onto your stack, run:
- --------------------------------    --------------------------------
- | "git stash"                  | or | git stash save               |
- --------------------------------    --------------------------------
- by default "git stash" will only store files that are alredy in the index
- (i.e. they are trackable and staged or unstaged)
+By default "git stash" will only store files that are alredy in the index
+(i.e. they are trackable and staged or unstaged).
 
- to see which stashes you've stored:
- --------------------------------
- | "git stash list"             |
- --------------------------------
- where stash@{0} - is the last stashed work 
+to see which stashes you've stored:
+```
+$ git stash list
+```
+Where stash@{0} - is the last stashed work .
 
- to apply a stash, specify it by name:
- --------------------------------
- | "git stash apply stash@{2}"  |
- --------------------------------
- 
- to apply the most recent stash:
- --------------------------------
- | "git stash apply"            |
- --------------------------------
+To apply a stash, specify it by name:
+```
+$ git stash apply stash@{2}
+```
 
- having a clean working directory and stash applying on the same branch
- aren't necessary
- you can save a stash on one branch, switch to another branch later,
- and try to reapply the changes you can also have modified and uncommited
- files in your working directory when you apply a stash
- - Git gives you merge conflicts if anything no longer applies cleanly
+To apply the most recent stash:
+```
+$ git stash apply
+```
 
- to try to reapply the staged changes
- (will try to reapply all: staged and unstaged changes):
- --------------------------------
- | "git stash apply --index"    |      
- --------------------------------
+Having a clean working directory and stash applying on the same branch
+aren't necessary you can save a stash on one branch, switch to another branch later,
+and try to reapply the changes you can also have modified and uncommited
+files in your working directory when you apply a stash
+Git gives you merge conflicts if anything no longer applies cleanly.
 
- to remove the stashed work (without unstashing):
- --------------------------------
- | git stash drop stash@{0}     |
- --------------------------------
+To try to reapply the staged changes
+(will try to reapply all: staged and unstaged changes):
+```
+$ git stash apply --index
+```
 
- to apply the stash (the last stashed work in the stash list)
- and then immediately drop it from your stack:
- --------------------------------
- | git stash pop                |
- --------------------------------
+To remove the stashed work (without unstashing):
+```
+$ git stash drop stash@{0}
+```
+
+To apply the stash (the last stashed work in the stash list)
+and then immediately drop it from your stack:
+```
+$ git stash pop
+```
 
  
  auxiliary
  ---------
- 
  to stash anything that you've alredy staged with the "git add" command, 
  --------------------------------
  | git stash --keep-index       |
