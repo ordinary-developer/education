@@ -62,32 +62,34 @@ $ git stash pop
 ```
 
  
- auxiliary
- ---------
- to stash anything that you've alredy staged with the "git add" command, 
- --------------------------------
- | git stash --keep-index       |
- --------------------------------
- it is "git stash" + saving staged in your working directory
+### Auxiliary material
+To stash anything that you've alredy staged with the "git add" command:
+```
+$ git stash --keep-index
+```  
+it is "git stash" + saving staged in your working directory
 
- to stash untracked files as well as the tracked ones:
- --------------------------------    --------------------------------
- | git stash --include-untracked| or | git stash -u                 |
- --------------------------------    --------------------------------
+To stash untracked files as well as the tracked ones:
+```
+$ git stash --incldue-untracked
+```
+or
+```
+$ git stash -u
+```
 
- for interactively select changes to stash:
- --------------------------------
- | git stash --patch            |
- --------------------------------
+For interactively select changes to stash:
+```
+$ git stash --patch
+```
 
- the next command:
- --------------------------------
- | git statsh branch branch-name| 
- --------------------------------
- creates a new branch for you, checks out the commit you were on when
- you stashed your work, reapplies your work there, and then drops the stash
- if it applies successfully
-
+The next command:
+```
+$ git stash branch branch-name
+```
+creates a new branch for you, checks out the commit you were on when
+you stashed your work, reapplies your work there, and then drops the stash
+if it applies successfully.
 
  
  cleaning
