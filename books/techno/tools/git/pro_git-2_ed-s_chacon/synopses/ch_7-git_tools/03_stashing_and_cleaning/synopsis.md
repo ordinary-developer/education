@@ -92,27 +92,34 @@ you stashed your work, reapplies your work there, and then drops the stash
 if it applies successfully.
 
  
- cleaning
- ========
+### Cleaning
 
- to clean working directory (to delete untracked files and directories):
- --------------------------------    --------------------------------
- | git clean -d -f              | or | git clean -d -n              |
- --------------------------------    --------------------------------
-       "real" running                         "dry" running
- this commands will only remove untracked files that are not ignored.
- Any file that matches a pattern in your ".gitignore" or other 
- ignore files will not be removed.
- To remove these files too:
- --------------------------------    --------------------------------
- | git clean -d -x -f           | or | git clean -d -x -n           |
- --------------------------------    --------------------------------
-       "real" running                         "dry" running
+To clean working directory (to delete untracked files and directories):
+```
+$ git clean -d -f
+```
+or  for "dry" running
+```
+$ git clean -d -n
+```
 
- to clean in interactive mode:
- --------------------------------
- | git clean -x -i              |
- --------------------------------
+These commands will only remove untracked files that are not ignored.
+Any file that matches a pattern in your ".gitignore" or other 
+ignore files will not be removed.
+
+To remove these files too:
+```
+$ git clean -d -x -f
+```
+or for "dry" running
+```
+$ git clean -d -x -n
+```
+
+To clean in interactive mode:
+```
+$ git clean -x -i
+```
 
 
  summary
