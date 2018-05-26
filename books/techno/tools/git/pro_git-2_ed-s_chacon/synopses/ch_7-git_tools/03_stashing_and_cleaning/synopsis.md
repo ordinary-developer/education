@@ -122,48 +122,38 @@ $ git clean -x -i
 ```
 
 
- summary
- ======= 
+### Summary
+**git stash save**
+Save staged, and not staged modificated file to stash
+doesn't save untrackabe files
+delete all changed in working directory,
+doesn't delete untrackable files (they will remain in the working dir).
+
+
+**git stash apply**
+After reapplying:
+staged in stash -> modificated trackable, not staged in working dir
+modificated trackable in stash -> modificated trackable in working dir.
+
+**git stash apply --index**
+After reapplying:
+staged in stash -> staged in working directory
+modificated trackable in stash -> modificated trackable in working dir.
  
- "git stash save" 
- save staged, and not staged modificated file to stash
- doesn't save untrackabe files
- delete all changed in working directory,
- doesn't delete untrackable files (they will remain in the working dir)
+**git stash save --include-untracked**
+Save staged, and not staged modificated file to stash
+save untracked files to stash
+delete all changed in working directory,
+delete all untracked files from working dir (and pyshically deletes them).
 
+**git stash apply**
+After reapplying:
+untracked in stash -> untracked in working dir
+staged in stash -> modificated trackable, not staged in working dir
+modificated trackable in stash -> modificated trackable in working dir.
 
- "git stash apply"
- After reapplying:
- staged in stash -> modificated trackable, not staged in working dir
- modificated trackable in stash -> modificated trackable in working dir
-
- "git stash apply --index"
- After reapplying:
- staged in stash -> staged in working directory
- modificated trackable in stash -> modificated trackable in working dir
- 
- ----------------------------------------
-
- "git stash save --include-untracked"
- save staged, and not staged modificated file to stash
- save untracked files to stash
- delete all changed in working directory,
- delete all untracked files from working dir (and pyshically deletes them)
-
- "git stash apply"
- After reapplying:
- untracked in stash -> untracked in working dir
- staged in stash -> modificated trackable, not staged in working dir
- modificated trackable in stash -> modificated trackable in working dir
-
- "git stash apply --index"
- After reapplying:
- untracked in stash -> untracked in working dir
- staged in stash -> staged in working directory
- modificated trackable in stash -> modificated trackable in working dir
- 
- 
-
-
-
- 
+**git stash apply --index**
+After reapplying:
+untracked in stash -> untracked in working dir
+staged in stash -> staged in working directory
+modificated trackable in stash -> modificated trackable in working dir.
