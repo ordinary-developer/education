@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = 01-points
+TARGET = app
 INCLUDEPATH += .
 QMAKE_CXXFLAGS += -std=c++14 -Wall -Wextra -pedantic
 CONFIG += console
