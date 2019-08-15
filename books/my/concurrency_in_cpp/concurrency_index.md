@@ -1,0 +1,1 @@
+- std::future, get(), wait(), wait_until(), wait_for() [Josuttis]
