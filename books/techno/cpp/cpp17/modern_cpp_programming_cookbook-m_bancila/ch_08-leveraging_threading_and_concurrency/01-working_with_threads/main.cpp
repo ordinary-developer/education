@@ -1,157 +1,151 @@
 #include <chrono>
-#include <ctime>
-#include <iostream>
 #include <iomanip>
-
-
+#include <iostream>
+#include <ctime>
 inline void print_time() {
-    auto now = std::chrono::system_clock::now();
-    auto stime = std::chrono::system_clock::to_time_t(now);
-    auto ltime = std::localtime(&stime);
+    auto const& now = std::chrono::system_clock::now();
+    auto const& stime = std::chrono::system_clock::to_time_t(now);
+    auto const& ltime = std::localtime(&stime);
     
     std::cout << std::put_time(ltime, "%c") << std::endl;
 }
 
+
 #include <thread>
-namespace example_01 {
+namespace example_01 { // <- thread_without_starting
 void run() {
-    std::thread t{};    
+    std::thread{};    
 }
 } // example_01
 
 
 #include <thread>
-#include <iostream>
-namespace example_02 {
+namespace example_02 { // <- thread func without params and with a free function
+    
 void func() {
-    std::cout << "thread func without parameters" << std::endl;
-}    
+    std::cout << "thread func without params" << std::endl;
+}
     
 void run() {
-    std::thread t{ func };
-    t.join();
-}    
+    std::thread{ func }.join();
+}
 } // example_02
 
 
 #include <thread>
-#include <iostream>
-namespace example_03 {
+namespace example_03 { // <- thread func without params and with a lambda
 void run() {
-    std::thread t{ []() {
+    std::thread{ [](){
         std::cout << "thread func without params" << std::endl;
-    } };
-    t.join();
-}
+    }}.join();
+}    
 } // example_03
 
 
 #include <thread>
-#include <iostream>
 #include <string>
-namespace example_04 {
-void func(int const i, double const d, std::string const& s) {
+#include <iostream>
+namespace example_04 { // <- thread func with params
+    
+void func(int const i, double const d, std::string const s) {
     std::cout << i << ", " << d << ", " << s << std::endl;
 }
-
+    
 void run() {
-    std::thread t{ func, 42, 42., "42" };
-    t.join();
-}
+    std::thread{ func, 42, 42.0, "42" }.join();
+}    
 } // example_04
 
 
 #include <thread>
-#include <iostream>
-#include <string>
 #include <functional>
-namespace example_05 {
-void func(int& i) {
-    i *= 2;
-}
+#include <iostream>
+namespace example_05 { // <- thread and passing args by reference
 
+void func(int& i) { i *= 2; }
+    
 void run() {
     int n{42};
-    std::thread t{ func, std::ref(n) };
-    t.join();
+    std::thread{ func, std::ref(n) }.join();
     std::cout << n << std::endl;
 }
+    
 } // example_05
 
 
 #include <thread>
-#include <iostream>
-namespace example_06 {
+#include <chrono>
+namespace example_06 { // <- suspending a thread for specified time
+    
 void func() {
     using namespace std::literals;
     print_time();
     std::this_thread::sleep_for(2s);
     print_time();
 }
-
+    
 void run() {
-    std::thread t{ func };
-    t.join();
+    std::thread{ func }.join();    
 }
 } // example_06
 
 
 #include <thread>
 #include <chrono>
-#include <iostream>
-namespace example_07 {
+namespace example_07 { // <- suspending a thread until specified time
+    
 void func() {
     using namespace std::literals;
     print_time();
     std::this_thread::sleep_until(
         std::chrono::system_clock::now() + 2s);
-    print_time();        
+    print_time();
 }
+
 void run() {
-    std::thread t{ func };
-    t.join(); 
+    std::thread{ func }.join();
 }
 } // example_07
 
 
 #include <thread>
 #include <chrono>
-namespace example_08 {
-void func(std::chrono::seconds const & timeout) {
+namespace example_08 { // <- reshedule thread execution to allow another thread run
+    
+void func(std::chrono::seconds const timeout) {
     auto const now = std::chrono::system_clock::now();
     auto const then = now + timeout;
     do {
         std::this_thread::yield();
     } while (std::chrono::system_clock::now() < then);
 }
+    
 void run() {
     print_time();
-    std::thread t{ func, std::chrono::seconds(2) };
-    t.join();
+    std::thread{ func, std::chrono::seconds{2} }.join();
     print_time();
 }
 } // example_08
 
 
 #include <functional>
-#include <array>
 #include <cstddef>
 #include <string>
+#include <iostream>
 int main() {
     using FuncDelegate = std::function<void(void)>;
-    int const N = 8;
-    std::array<FuncDelegate, N> const funcs{ {
-        example_01::run, example_02::run, example_03::run, 
-        example_04::run, example_05::run, example_06::run,
-        example_07::run, example_08::run } };
     
-    std::size_t index{ 1 };
-    for (auto const func : funcs) {
+    FuncDelegate const funcs[] {
+        example_01::run, example_02::run, example_03::run, example_04::run,
+        example_05::run, example_06::run, example_07::run, example_08::run
+    };
+    
+    unsigned int index{1};
+    for (auto const& func : funcs) {
         std::string const exampleName = "example_" + std::to_string(index++);
-        std::cout << exampleName << " =>" << std::endl;
+        std::cout << exampleName << " =>\n";
         func();
-        std::cout << "[ok] - " << exampleName << std::endl << std::endl;
+        std::cout << "[ok] - " << exampleName << "\n\n";
     }
-        
     return 0;
 }
