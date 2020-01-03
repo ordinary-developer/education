@@ -1,0 +1,32 @@
+cmake_minimum_required(VERSION 3.2)
+
+if(2 GREATER 1)
+    message("condition \"2 GREATER 1\"")
+else()
+    message("no condition \"2 GREATER 1\"")
+endif()
+
+if("23" EQUAL 23)
+    message("condition \"\"23\" EQUAL 23\"")
+else()
+    message("no condition \"\"23\" EQUAL 23\"")
+endif()
+
+set(val 42)
+if(${val} EQUAL 42)
+    message("condition \"{val} EQUAL 42\"")
+else()
+    message("no condition \"{val} EQUAL 42\"")
+endif()
+if("${val}" EQUAL 42)
+    message("condition \"\"${val}\" EQUAL 42\"")
+else()
+    message("no condition \"\"${val}\" EQUAL 42\"")
+endif()
+
+if("23a" EQUAL 23)
+    message("condition \"\"23a\" EQUAL 23\"")
+else()
+    message("no condition \"\"23a\" EQUAL 23\"")
+endif()
+
