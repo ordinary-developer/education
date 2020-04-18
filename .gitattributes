@@ -1,12 +1,14 @@
-# all files must can have access both from windows and linux
-# without troubles
+# base settings
 * text eol=lf
 
-# settings for csharp projects
+# settings for microsoft projects (c++, c#)
 *.sln text eol=crlf
+*.vcxproj
+*.vcxproj.filters
+*.cs text eol=crlf
 *.csproj text eol=crlf
 
-# setings for binary files
+# setings bin files
 *.png binary
 *.jpg binary
 *.jpeg binary
