@@ -1,34 +1,35 @@
 #include <QApplication>
-
 #include <QtWidgets>
 
+int main(int argc, char** argv) {
+    QApplication app{ argc, argv };
 
-int main(int argc, char **argv) {
-    QApplication app{argc, argv};
-    
-    QMenuBar menubar;
-    QMenu *pMenu = new QMenu{"&Menu"};
-    
-    pMenu->addAction("&About Qt", &app, SLOT(aboutQt()), Qt::CTRL + Qt::Key_Q);
+    QMenuBar menuBar{};
+
+    QMenu *pMenu{ new QMenu{ "&menu" } };
+    pMenu->addAction("&about qt", 
+        &app, &QApplication::aboutQt,
+        Qt::CTRL + Qt::Key_Q);
     pMenu->addSeparator();
-    
-    QAction *pCheckableAction = pMenu->addAction("&CheckableItem");
+
+    QAction *pCheckableAction = pMenu->addAction("&checkable_item");
     pCheckableAction->setCheckable(true);
     pCheckableAction->setChecked(true);
-    
-    QMenu *pSubmenu = new QMenu{"&Submenu", pMenu};
+
+    pMenu->addAction(QPixmap{ ":/img.jpg" }, "&icon_item");
+
+    QMenu *pSubmenu{ new QMenu{ "&submenu", pMenu } };
     pMenu->addMenu(pSubmenu);
-    pSubmenu->addAction("&Test");
-    
-    QAction *pDisabledAction = pMenu->addAction("&DisabledItem");
+    pSubmenu->addAction("&test");
+
+    QAction *pDisabledAction = pMenu->addAction("&disabled_item");
     pDisabledAction->setEnabled(false);
-    
+
     pMenu->addSeparator();
-    
-    pMenu->addAction("&Exit", &app, SLOT(quit()));
-    
-    menubar.addMenu(pMenu);
-    menubar.show();
-    
+    pMenu->addAction("&exit", &app, &QApplication::quit);
+
+    menuBar.addMenu(pMenu);
+    menuBar.show();
+
     return app.exec();
 }
