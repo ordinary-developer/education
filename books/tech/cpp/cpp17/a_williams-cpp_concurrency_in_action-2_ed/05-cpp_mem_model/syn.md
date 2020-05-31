@@ -74,3 +74,13 @@ there are three  models:
   (std::memory_order_consume, std::memory_order_acquire, std::memory_order_release, std::memory_order_acq_rel)
 - *relaxed* ordering
   (std::memory_order_relaxed)
+
+
+## sequentially consistent ordering
+according to *sequentially consistent* ordering the behavior of a multithreaded program
+is as if all operations were performed in some particular sequence by a single thread,
+it means that operations can't be reordered (accross threads)
+
+obeying "happen-before" relationships by atomic operations:
+- within a thread - yes
+- accross threads - yes
