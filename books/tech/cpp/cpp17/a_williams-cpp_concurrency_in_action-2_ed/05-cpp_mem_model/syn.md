@@ -64,3 +64,13 @@ the operations can have the next orderings:
 - *memory_order_release*
 - *memory_order_acq_rel*
 - *memory_order_seq_cst*
+
+
+## memory orderings
+there are three  models:
+- *sequentially consistent* ordering
+  (std::memory_order_seq_cst)
+- *acquire-release* ordering
+  (std::memory_order_consume, std::memory_order_acquire, std::memory_order_release, std::memory_order_acq_rel)
+- *relaxed* ordering
+  (std::memory_order_relaxed)
