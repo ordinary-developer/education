@@ -84,3 +84,27 @@ it means that operations can't be reordered (accross threads)
 obeying "happen-before" relationships by atomic operations:
 - within a thread - yes
 - accross threads - yes
+
+
+## realxed ordering
+the only requirement is that all threads agree on the modification order of each individual variable
+
+obeying "happen-before" relationships by atomic operations:
+- within a thread - yes
+- accross threads - NO (no "synchronizes-with" relationship)
+
+
+## acquire-release ordering
+under this ordering model
+- atomic loads (`a.load()`) are *acquire* operations (std::memory_order_acquire)
+- atomic stores (`a.store()`) are *release* operations (std::memory_order_release)
+- atomic read-modify-write (`fetch_add()`, `exchange()`, etc.) are either *acquire*, *release* or both (std::memory_order_acq_rel)
+
+*a release operation synchronizes-with an acquire operation that reads the value written*
+
+in order to provide any synchronization, acquire and release operations must be paired up;
+
+the value stored by a release operation must be seen by an acquire operation for either
+
+*if A inter-thread happens before B* and *B inter-thread happens before C*,
+then *A inter-thread happens before C*
