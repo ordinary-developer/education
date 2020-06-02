@@ -37,6 +37,11 @@ a *modification order* is composed of all the writes to an object from all threa
 ## atomics
 an *atomic operation* is an indivisible operation
 
+the standard atomic types ar note copyable or assignable
+(they have no cpy constructors or copy assignment operations)
+but they support assginment from and implicit convertion to
+the corresponding built-in types
+
 atomic types (allmost all) have member functions:
 - `is_lock_free()`
   `true` means that operations are done directory with atomic instructions (*lock-free*)
@@ -44,6 +49,11 @@ atomic types (allmost all) have member functions:
 - `is_always_lock_free()` (*static constexpr*)
   `true` - atomic type is lock-free for all supported hardware
   `false` - otherwise
+- `load()`, `store()`, `exchange()`, `compare_exchange_weak()`,
+  `compare_exchange_strong()`
+- `+=`, `-=`, `*=`, `|=` opertators and so on (where appropriate)
+- `fetch_add()`, `fetch_or()` and so on (where approapriate)
+- `++' and `--` operators for atomic integrals and atomic pointers
 
 the operations can have the next orderings:
 *store* operations:
