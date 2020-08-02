@@ -52,15 +52,15 @@ but they support assginment from and implicit convertion to
 the corresponding built-in types
 
 atomic types (allmost all) have member functions:
-- `is_lock_free()`
-  `true` means that operations are done directory with atomic instructions (*lock-free*)
-  `false` means that operations are done by using a lock internal to the compiler
-- `is_always_lock_free()` (*static constexpr*)
-  `true` - atomic type is lock-free for all supported hardware
-  `false` - otherwise
+- `is_lock_free()`  
+  'true' means that operations are done directory with atomic instructions (*lock-free*)  
+  'false' means that operations are done by using a lock internal to the compiler
+- `is_always_lock_free()` (*static constexpr*)  
+  'true' - atomic type is lock-free for all supported hardware  
+  'false' - otherwise
 - `load()`, `store()`, `exchange()`, `compare_exchange_weak()`,
   `compare_exchange_strong()`
-- `+=`, `-=`, `*=`, `|=` opertators and so on (where appropriate)
+- `+=`, `-=`, `*=`, `|=` operators and so on (where appropriate)
 - `fetch_add()`, `fetch_or()` and so on (where approapriate)
 - `++' and `--` operators for atomic integrals and atomic pointers
 
