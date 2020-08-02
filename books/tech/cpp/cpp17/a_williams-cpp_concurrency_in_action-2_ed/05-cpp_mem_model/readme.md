@@ -64,7 +64,7 @@ atomic types (allmost all) have member functions:
 - `fetch_add()`, `fetch_or()` and so on (where approapriate)
 - `++' and `--` operators for atomic integrals and atomic pointers
 
-the operations can have the next orderings:
+the operations can have the next orderings:  
 *store* operations:
 - *memory_order_relaxed* 
 - *memory_order_release* 
