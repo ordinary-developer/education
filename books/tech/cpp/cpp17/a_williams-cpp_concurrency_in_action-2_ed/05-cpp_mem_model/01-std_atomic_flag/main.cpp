@@ -4,6 +4,8 @@
 #include <list>
 #include <mutex>
 #include <thread>
+#include <cassert>
+
 
 namespace { // spinlock declaration
 
@@ -41,7 +43,7 @@ int main() {
     auto const is_val_contained = list_contains(1);
     t.join();
 
-    std::cout << std::boolalpha << is_val_contained << std::endl;
+    assert(is_val_contained or not is_val_contained);
 
     return 0;
 }
