@@ -6,20 +6,20 @@
 #include <thread>
 
 namespace { // spinlock declaration
+
 class spinlock_mutex {
     std::atomic_flag flag_;
 public:
-    spinlock_mutex() : flag_{ ATOMIC_FLAG_INIT } {} 
-    void lock() { while(flag_.test_and_set(std::memory_order_acquire)); }
-    void unlock() { flag_.clear(std::memory_order_release); }
-};    
-
+    spinlock_mutex() : flag_{ ATOMIC_FLAG_INIT } {}
+    void lock() { while (flag_.test_and_set()); }
+    void unlock() { flag_.clear(); }
+};
 } // anonymous namespace
 
 std::list<int> l{};
 spinlock_mutex mut{};
 
-void add_to_list(int const val) { 
+void add_to_list(int const val) {
     std::lock_guard<spinlock_mutex> guard{mut};
     l.push_back(val);
 }
@@ -41,7 +41,7 @@ int main() {
     auto const is_val_contained = list_contains(1);
     t.join();
 
-    std::cout << is_val_contained << std::endl;
+    std::cout << std::boolalpha << is_val_contained << std::endl;
 
     return 0;
 }
