@@ -3,32 +3,40 @@
 ## memory locations
 two aspects to the memory model:
 - basic *structural* aspects
-  (how thins are laid out in memory)
+  (how things are laid out in memory)
 - concurrency aspects
 
-all data in C++ is made up of *objects* - region of storage (with their type and lifetime)
+all data in C++ is made up of *objects* - regions of storage (with their type and lifetime)
 
 an object is stored in one or more *memory locations* - 
-an entity (or sub-entity) of a scalar type (`int` or `my_class*`) or a sequence of adjacent bit fields
+entities (or sub-entities) of a scalar type (`int` or `my_class*`) or a sequence of adjacent bit fields
 
 remarks:
 - every variable is an object (members of other objects are also objects)
 - every object occupies *at least one* memory location
 - variables of fundamental types (int, char, etc.) 
   occupy *excatly one* memory locaion
-  (whaterver ther size, even if they're adjacent or part of an array)
+  (whaterver their size, even if they're adjacent or part of an array)
 - adjacent bit fields are part of the same memory location
 
 
 ## memory locations and concurrency
 - two threads access *separate* memory locations - [ok]
 - two threads access *the same* memory locations only for reading - [ok]
-- one of two threads access *the same* memory location for writing - [race condition - sync is needed]
+- one of two threads access *the same* memory location for writing - [race condition with UB - sync is needed]
 
-to avoid the race condition it is necessary to enforce an ordering between the accesses in the two threads
+*data race* - it is not specified which thread touches the memory location first (without UB is ok)
 
-if more than two threads access the same memory location, each pair of access must have a defined ordering
+to avoid the race condition with UB it is necessary to enforce an ordering between the accesses in the two threads or make accesses atomic
 
+if more than two threads access the same memory location, each pair of accesses must have a defined ordering
+
+*data race with UB conditions*
+- there is not enforced ordering between two accesses to a single memory location
+  from separate threads
+- one or both of thoses accesses is not atomic
+- one or both is a write
+    
 
 ## modification order (i.e. memory model)
 a *modification order* is composed of all the writes to an object from all threads, starting with the object's initialization
