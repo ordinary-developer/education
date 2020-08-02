@@ -40,6 +40,7 @@ if more than two threads access the same memory location, each pair of accesses 
 
 ## modification order (i.e. memory model)
 a *modification order* is composed of all the writes to an object from all threads, starting with the object's initialization
+(this order may vary between runs)
 
 
 ## atomics
