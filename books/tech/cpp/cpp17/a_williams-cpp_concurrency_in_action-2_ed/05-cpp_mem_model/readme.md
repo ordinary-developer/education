@@ -85,6 +85,13 @@ the operations can have the next orderings:
 - *memory_order_seq_cst*
 
 
+## shared_ptr
+accessing the same `std::shared_ptr<T>` object from multiple threads
+without using the atomic access functions from all threads,
+or using suitalbe external synchronization,
+is a data race and UB
+
+
 ## memory orderings
 there are three  models:
 - *sequentially consistent* ordering
