@@ -27,7 +27,7 @@ void run() {
     std::thread t1{ write_x }, t2{ write_y }, t3{ read_x_then_y }, t4{ read_y_then_x };
     t1.join(), t2.join(), t3.join(), t4.join();
     
-    assert(0 != z.load());
+    assert(1 == z.load() or 2 == z.load());
 }
 } // example_01
 
