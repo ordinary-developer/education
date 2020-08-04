@@ -107,6 +107,10 @@ according to *sequentially consistent* ordering the behavior of a multithreaded 
 is as if all operations were performed in some particular sequence by a single thread,
 it means that operations can't be reordered (accross threads)
 
+*sync issues*  
+a sequentially consistent store synchronizes with a sequentially constisten load
+of the same variable that reads the value stored
+
 obeying "happen-before" relationships by atomic operations:
 - within a thread - yes
 - accross threads - yes
