@@ -108,7 +108,7 @@ is as if all operations were performed in some particular sequence by a single t
 it means that operations can't be reordered (accross threads)
 
 *sync issues*  
-a sequentially consistent store synchronizes with a sequentially constisten load
+a sequentially consistent store synchronizes with a sequentially constistent load
 of the same variable that reads the value stored
 
 obeying "happen-before" relationships by atomic operations:
