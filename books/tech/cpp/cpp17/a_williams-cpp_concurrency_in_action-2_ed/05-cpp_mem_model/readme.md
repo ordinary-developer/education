@@ -141,4 +141,4 @@ then *A inter-thread happens before C*
 
 
 ## std::memory_order_consume
-DON'T USE std::memory_order_consume
+DON'T USE *std::memory_order_consume*
