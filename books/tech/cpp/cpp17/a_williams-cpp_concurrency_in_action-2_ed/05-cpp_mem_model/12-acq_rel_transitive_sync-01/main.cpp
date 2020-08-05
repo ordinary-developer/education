@@ -1,8 +1,8 @@
 #include <atomic>
 #include <thread>
 #include <cassert>
-namespace example_01 {  // acquire-release and relaxed orederings
-
+namespace example_01 { // transitive sync with acquire-release ordering
+    
 std::atomic<int> data[5];
 std::atomic<bool> sync1{ false }, sync2{ false };
 
@@ -14,12 +14,12 @@ void thread_1() {
     data[4].store(2003, std::memory_order_relaxed);
     sync1.store(true, std::memory_order_release);
 }
-
+    
 void thread_2() {
     while (not sync1.load(std::memory_order_acquire));
     sync2.store(true, std::memory_order_release);
 }
-
+    
 void thread_3() {
     while (not sync2.load(std::memory_order_acquire));
     assert(42 == data[0].load(std::memory_order_relaxed));
@@ -28,18 +28,16 @@ void thread_3() {
     assert(-141 == data[3].load(std::memory_order_relaxed));
     assert(2003 == data[4].load(std::memory_order_relaxed));
 }
-
+    
 void run() {
     std::thread t1{ thread_1 }, t2{ thread_2 }, t3{ thread_3 };
-    t1.join(); t2.join(); t3.join();
-}
-
+    t1.join(), t2.join(), t3.join();
+}    
 } // example_01
-
 
 #include <iostream>
 int main() {
-    std::cout << "example_01 => [OK]"; example_01::run(); std::cout << std::endl << std::endl;
-
+    std::cout << "[ok] - example_01" << std::endl; example_01::run(); std::cout << std::endl;
+    
     return 0;
 }
