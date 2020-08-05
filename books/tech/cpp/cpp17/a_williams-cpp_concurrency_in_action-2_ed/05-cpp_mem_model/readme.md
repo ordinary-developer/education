@@ -138,3 +138,7 @@ the value stored by a release operation must be seen by an acquire operation for
 
 *if A inter-thread happens before B* and *B inter-thread happens before C*,
 then *A inter-thread happens before C*
+
+
+## std::memory_order_consume
+DON'T USE std::memory_order_consume
