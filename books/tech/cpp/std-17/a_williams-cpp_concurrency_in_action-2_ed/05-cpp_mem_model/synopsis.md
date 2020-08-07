@@ -158,3 +158,32 @@ or *dependency-ordered-before*(for `memory_order_consume`) the final load
 
 any atomic read-modify-write operations in the chain
 can have *ANY* memory_ordering (even `memory_order_relaxed`)
+
+
+## fences (memory_barriers)
+fences are operations that enfore memory-ordering constraints 
+without modifying any data
+and are typically combined with atomic operations
+that use the `memory_order_relaxed` ordering constraints
+
+fences are global operations
+and affect the ordering of other atomic operations in the thread
+that executed the fence
+
+fences introduce *happens-before* and *synchronizes-with* relationships
+for relaxed operations on separate variables
+
+[the general idea]:
+if an acquire operation sees the result of a store operation
+that takes place after a release fence,
+the fence synchronizes with that acquire operation;
+
+if a load that take place before an acquire fence
+sees the result of a release operation,
+the release operation synchronizes with the acquire fence;
+
+you can have fences on both sides, in which case
+if a load that takes place before the acquire fence
+sees a value written by a store
+that takes place after the release fence,
+the release fences synchronizes with the acquire fence 
