@@ -142,3 +142,19 @@ then *A inter-thread happens before C*
 
 ## std::memory_order_consume
 DON'T USE *std::memory_order_consume*
+
+
+## release sequences
+if the store is tagged with 
+`memory_order_release`, `memory_order_aqc_rel`, or `memory_order_seq_cst`,
+and the load is tagged with
+`memory_order_consume`, memory_order_acquire`, or `memory_order_seq_cst`,
+and each operation in the chain
+loads the value written by the previous operation,
+then the chain of operations constitues a *release sequence*
+and the initial store *synchronizes with*
+(for `memory_order_acquire` or `memory_order_seq_cst`)
+or *dependency-ordered-before*(for `memory_order_consume`) the final load
+
+any atomic read-modify-write operations in the chain
+can have *ANY* memory_ordering (even `memory_order_relaxed`)
