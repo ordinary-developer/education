@@ -148,7 +148,7 @@ DON'T USE *std::memory_order_consume*
 if the store is tagged with 
 `memory_order_release`, `memory_order_aqc_rel`, or `memory_order_seq_cst`,
 and the load is tagged with
-`memory_order_consume`, memory_order_acquire`, or `memory_order_seq_cst`,
+`memory_order_consume`, `memory_order_acquire`, or `memory_order_seq_cst`,
 and each operation in the chain
 loads the value written by the previous operation,
 then the chain of operations constitues a *release sequence*
