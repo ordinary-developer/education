@@ -187,3 +187,10 @@ if a load that takes place before the acquire fence
 sees a value written by a store
 that takes place after the release fence,
 the release fences synchronizes with the acquire fence 
+
+
+## ordering non-atomic operations
+if a non-atomic operation is sequences before an atomic operation,
+and that atomic operation happens before an operation in another thread,
+the non-atomic operation alos happens before that operation
+in the other thread
