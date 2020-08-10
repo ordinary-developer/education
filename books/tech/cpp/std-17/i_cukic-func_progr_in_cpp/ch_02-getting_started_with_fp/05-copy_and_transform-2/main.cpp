@@ -26,13 +26,12 @@ class person_t final {
 };
 
 std::ostream& operator << (std::ostream& out, person_t const& person) {
-    out << person.name() << " ";
+    out << person.name();
     return out;
 }
 } // anonymous namespace
 
 
-std::string name(person_t const& person) { return person.name(); }
 bool is_female(person_t const& person) { return person_t::female == person.gender(); }
 bool is_not_female(person_t const& person) { return not is_female(person); }
 
