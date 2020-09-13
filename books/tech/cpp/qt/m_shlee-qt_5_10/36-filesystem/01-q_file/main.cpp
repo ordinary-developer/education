@@ -1,19 +1,22 @@
 #include <QFile>
 #include <QDebug>
-namespace example_01 { // -> QFile: setFileName, QFile.isOpen
+namespace example_01 { // -> QFile::setFileName, QFile::isOpen
 void run() {
-    QFile file{};
-    file.setFileName("no_existing_file-aabbccddeeff");
-    qDebug() << "file is opened: " << file.isOpen();
-}    
+    QFile file1{};
+    file1.setFileName("no_existing_file-aabbccddeeff1");
+    qDebug() << "file is opened: " << file1.isOpen();
+    
+    QFile file2{ "no_existing_file-aabbccddeeff2" };
+    qDebug() << "file is opened: " << file2.isOpen();
+}
 } // example_01
 
 
 #include <QFile>
 #include <QDebug>
-namespace example_02 { // -> QFile: exists, read, write
+namespace example_02 { // -> QFile::exists, QFile::read, QFile::write
 void run() {
-    char buf[1024] = { 0 };
+    char buf[1024]{};
 
     QFile file1{ "file1.dat" };
     QFile file2{ "file2.dat" };
@@ -42,7 +45,7 @@ void run() {
         file2.write(buf, size);
     }
     file1.close();
-    file2.close(); 
+    file2.close();
 
     QFile::remove(file1.fileName());
     QFile::remove(file2.fileName());
@@ -52,13 +55,13 @@ void run() {
 
 #include <QFile>
 #include <QDebug>
-namespace example_03 { // -> QFile: readAll
+namespace example_03 { // -> QFile::readAll
 void run() {
-    char buf[1024] = { 1 };
+    char buf[1024]{};
 
     QFile file1{ "file1.dat" };
     QFile file2{ "file2.dat" };
-
+ 
     if (not file1.open(QIODevice::WriteOnly)) {
         qDebug() << "error with file1 opening for writing";
         return;
