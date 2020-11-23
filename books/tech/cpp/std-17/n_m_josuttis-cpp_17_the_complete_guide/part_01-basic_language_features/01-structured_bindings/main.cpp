@@ -287,6 +287,186 @@ void run() {
 } // example_06
 
 
+// example 07 -> read-only structured bindings
+#include <string>
+#include <utility>
+#include <vector>
+
+class Customer1 {
+    public:
+        Customer1(std::string f, std::string l, long v)
+            : first_(std::move(f)), last_(std::move(l)), val_(v) {}
+
+        std::string getFirst() const { return first_; }
+        std::string getLast() const { return last_; }
+        long getValue() const { return val_; }
+        
+    private:
+        std::string first_;
+        std::string last_;
+        long val_;
+};
+
+template<>
+struct std::tuple_size<Customer1> {
+    static constexpr int value = 3;
+};
+
+template <>
+struct std::tuple_element<2, Customer1> {
+    using type = long;
+};
+
+template <std::size_t Idx>
+struct std::tuple_element<Idx, Customer1> {
+    using type = std::string;
+};
+
+template<std::size_t I> auto get(Customer1 const& c) {
+    static_assert(I < 3);
+    if constexpr(0 == I)
+        return c.getFirst();
+    else if constexpr(1 == I)
+        return c.getLast();
+    else
+        return c.getValue();
+}
+
+template<> auto get<0>(Customer1 const& c) { return c.getFirst(); }
+template<> auto get<1>(Customer1 const& c) { return c.getLast(); }
+template<> auto get<2>(Customer1 const& c) { return c.getValue(); }
+
+namespace example_07 { 
+
+void run() {
+    {
+    using namespace std::literals::string_literals;
+
+    Customer1 c("Tim"s, "Starr"s, 42);
+    auto [f, l, v] = c;
+    assert(("Tim"s == f and "Starr"s == l and 42 == v));
+
+    std::string s = std::move(f);
+    l = "Waters"s;
+    v += 10;
+    assert(("Tim"s == s));
+    assert((""s == f and "Waters"s == l and 52 == v));
+    assert(("Tim"s == c.getFirst() and "Starr"s == c.getLast() and 42 == c.getValue()));
+    }
+
+    {
+    using namespace std::literals::string_literals;
+
+    std::vector<Customer1> coll{ { "first1"s, "last1", 1 }, { "first2"s, "last2"s, 2 }, { "first3"s, "last3"s, 3 }};
+    for (auto const& [first, last, val]: coll)
+        assert((
+            ("first1"s == first or "first2"s == first or "first3"s == first) and
+            ("last1"s == last or "last2"s == last or "last3"s == last) and
+            (1 == val or 2 == val or 3 == val)));
+    }    
+}
+} // example_07
+
+
+
+#include <string>
+#include <utility>
+
+class Customer2 {
+    public:
+        Customer2(std::string f, std::string l, long v)
+            : first_(std::move(f)), last_(std::move(l)), val_(v) {}
+
+        const std::string& firstname() const {
+            return first_;
+        }
+        std::string& firstname() { 
+            return first_;
+        }
+
+        const std::string& lastname() const {
+            return last_;
+        }
+        std::string& lastname() {
+            return last_;
+        }
+
+        long value() const {
+            return val_;
+        }
+        long& value() { 
+            return val_;
+        } 
+
+    private:
+        std::string first_;
+        std::string last_;
+        long val_;
+};
+
+
+template<>
+struct std::tuple_size<Customer2> {
+    static constexpr int value = 3;
+};
+
+template<>
+struct std::tuple_element<2, Customer2> {
+    using type = long;
+};
+template<std::size_t Idx>
+struct std::tuple_element<Idx, Customer2> {
+    using type = std::string;
+};
+
+template<std::size_t I> decltype(auto) get(Customer2& c) {
+    static_assert(I < 3);
+    if constexpr(0 == I)
+        return c.firstname();
+    else if constexpr (1 == I)
+        return c.lastname();
+    else
+        return c.value();
+}
+template<std::size_t I> decltype(auto) get(Customer2 const& c) {
+    static_assert(I < 3);
+    if constexpr (0 == I)
+        return c.firstname();
+    else if constexpr (1 == I)
+        return c.lastname();
+    else
+        return c.value();
+}
+template<std::size_t I> decltype(auto) get(Customer2&& c) {
+    static_assert(I < 3);
+    if constexpr (0 == I)
+        return std::move(c.firstname());
+    else if constexpr (1 == I)
+        return std::move(c.lastname());
+    else
+        return c.value();
+}
+
+namespace example_08 { // -> structured bindings with write-access
+void run() {    
+    Customer2 c{ "Tim", "Starr", 42 };
+    auto [f, l, v] = c;
+    assert(("Tim" == f and "Starr" == l and 42 == v));
+
+    // modify structured bindings via refs
+    auto&& [f2, l2, v2] = c;
+    std::string s = std::move(f2);
+    f2 = "Ringo";
+    v2 += 10;
+    assert((
+        ("Ringo" == f2 and "Ringo" == c.firstname()) and
+        ("Starr" == l2 and "Starr" == c.lastname()) and
+        (52 == v2 and 52 == c.value()) and
+        ("Tim" == s ) ));    
+}
+}
+
+
 #include <iostream>
 int main() {
     std::cout << "[ok] - example 01 =>" << std::endl; example_01::run(); std::cout << std::endl << std::endl;
@@ -295,6 +475,8 @@ int main() {
     std::cout << "[ok] - example 04 =>" << std::endl; example_04::run(); std::cout << std::endl << std::endl;
     std::cout << "[ok] - example 05 =>" << std::endl; example_05::run(); std::cout << std::endl << std::endl;
     std::cout << "[ok] - example 06 =>" << std::endl; example_06::run(); std::cout << std::endl << std::endl;
+    std::cout << "[ok] - example 07 =>" << std::endl; example_07::run(); std::cout << std::endl << std::endl;
+    std::cout << "[ok] - example 08 =>" << std::endl; example_08::run(); std::cout << std::endl << std::endl;
 
     return 0;
 }
