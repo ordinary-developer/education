@@ -13,7 +13,7 @@ For A to have access to B
 - A can fetch a B instance from a known location (*service location*);
 - A can get a B instance injected upon construction (*dependency injection*).
 
-Objects must ALWAYS not be in an inpcomplete state.
+Objects must ALWAYS  be in an complete state (domain invariants must be held).
 
 Don't use getters and setters.
 
@@ -21,7 +21,8 @@ Don't use getters and setters.
 Two object types:
 - *Service* objects (services -"er"s) - perfom a task or return a piece of information
   (can be created directly or fetched via a service locator);
-- *Entity* objects (domain objects).
+- *Entity*(models) and *value* objects (domain objects)
+  (are the materials that services use to perform their tasks).
 
 
 ### Services
