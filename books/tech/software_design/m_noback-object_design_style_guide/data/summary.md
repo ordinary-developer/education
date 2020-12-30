@@ -41,7 +41,9 @@ To to figure out arugment should be passed to ctor or method:
 - Use Factory (Builder) objects to validate params for object ctor;
   (may put this Factory(Builder) object as static methods of built objects);
 - In ctor only assign properties (and maybe validate them);
-- Consider throw an exception on params validation.
+- Consider throw an exception on params validation
+  (use std InvalidException, don't use your own)
+  (when throw exception on param validattion test exceptions also on the messages).
 
 
 # Testing
