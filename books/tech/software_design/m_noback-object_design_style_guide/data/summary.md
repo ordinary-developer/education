@@ -45,6 +45,16 @@ To to figure out arugment should be passed to ctor or method:
   (use std InvalidException, don't use your own)
   (when throw exception on param validattion test exceptions also on the messages).
 
+### Value objects
+Value objects wrap values inside an object.
+To figure out if necessary to introduce a value object:
+> "Would any string, int, etc., be acceptable here?" - if no, introduce a value object
+
+When to create value objects:
+- extract new objects to prevent domain invariants
+  from being verified in multiple places;
+- extract new objects to represent composite values;
+
 
 # Testing
 *Test Doubles (stand-ins)*
