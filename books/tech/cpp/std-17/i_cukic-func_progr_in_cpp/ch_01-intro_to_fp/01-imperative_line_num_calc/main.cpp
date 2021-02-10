@@ -1,31 +1,37 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
-#include <fstream>
+namespace test { // -> imperatively read from a file 
 
+std::vector<int> countLines(std::vector<std::string> const& files) {
+    std::vector<int> ret{};
+    char c{0};
 
-std::vector<int> count_lines_in_files(std::vector<std::string> const& files) {
-    std::vector<int> results{};
-
-    char c = 0;
     for (auto const& file : files) {
-        int line_count{0};
-        
         std::ifstream in{file};
-        while (in.get(c)) 
+
+        int lineCnt{0};
+        while (in.get(c))
             if ('\n' == c)
-                line_count++;
-        
-        results.push_back(line_count);
+                ++lineCnt;
+
+        ret.push_back(lineCnt);
     }
 
-    return results;
+    return ret;
 }
+
+void run() {
+    for (auto const cnt : countLines({ "main.cpp", "main.cpp", "main.cpp" }))
+        std::cout << "line count: " << cnt << std::endl;
+
+}
+} // test
 
 
 int main() {
-    for (auto const line_count : count_lines_in_files( { "main.cpp" }))
-        std::cout << line_count << " line(s)\n";
+    std::cout << "test => [ok]" << std::endl; test::run(); std::cout << std::endl;
 
     return 0;
 }
