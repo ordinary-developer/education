@@ -1,32 +1,38 @@
+#include <algorithm>
 #include <iostream>
+#include <iterator>
+#include <fstream>
 #include <string>
 #include <vector>
-#include <fstream>
-#include <algorithm>
-#include <iterator>
+namespace test { // -> declaritvely read from a file
 
+int countLines(std::string const& file) {
+    std::ifstream in{file};
 
-int count_lines(std::string const& filename) {
-    std::ifstream in{filename};
     return std::count(
         std::istreambuf_iterator<char>{in},
         std::istreambuf_iterator<char>{},
         '\n');
 }
 
-std::vector<int> count_lines_in_files(std::vector<std::string> const& files) {
-    std::vector<int> results{};
+std::vector<int> countLines(std::vector<std::string> const& files) {
+    std::vector<int> ret{};
 
     for (auto const& file : files)
-        results.push_back(count_lines(file));
+        ret.push_back(countLines(file));
 
-    return results;    
+    return ret;
 }
+
+void run() {
+    for (auto const cnt : countLines( { "main.cpp", "main.cpp", "main.cpp"}))
+        std::cout << "line count: " << cnt << std::endl;
+}
+} // test
 
 
 int main() {
-    for (auto const line_count : count_lines_in_files( { "main.cpp" }))
-        std::cout << line_count << " line(s)\n";
+    std::cout << "test => [ok]" << std::endl; test::run(); std::cout << std::endl;
 
     return 0;
 }
