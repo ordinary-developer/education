@@ -7,6 +7,7 @@ Some useful refs:
 
 Solutions:
 [scheme-wiki](http://community.schemewiki.org/?SICP-Solutions)
+[scheme-drewhess.com](http://wiki.drewhess.com/wiki/Category:SICP_solutions)
 [solutions from JoT](http://jots-jottings.blogspot.com/p/sicp-exercise-index.html)
 [solutions from Adrian Stoll](https://adrianstoll.com/sicp/)
 [another person's solutions](https://www.inchmeal.io/)
@@ -16,4 +17,10 @@ Solutions:
 [solution on codology](https://codology.net/)
 [solutions from qiao](https://github.com/qiao/sicp-solutions)
 [solutions from sarabander](https://github.com/sarabander/p2pu-sicp)
+[solutions from Ken Dyck] (https://kendyck.com/?s=SICP)
+[solutions from zv](http://zv.github.io/)
+[solutions from evarga](https://evarga.gitbooks.io/solutions-guide-for-the-sicp-book/content/)
 [solutions with comments on russian](http://sicp.sergeykhenkin.com/)
+
+Other releated books:
+[Teach Yourself Scheme in Fixnum Days (by Dorai Sitaram)](https://ds26gte.github.io/tyscheme/)
