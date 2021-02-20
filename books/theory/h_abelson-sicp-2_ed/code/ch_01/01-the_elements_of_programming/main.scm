@@ -104,3 +104,28 @@
 (define (gtoe x y) (not (< x y)))
 (display (gtoe 5 4)) (newline)
 
+
+;; example: square roots by Newton's Method
+(newline)(newline)
+(display "[example: square roots by Newton's Method] =>") (newline)
+(define (sqrt x) (sqrt_iter 1.0 x))
+
+(define (sqrt_iter guess x)
+    (if (good_enough? guess x)
+        guess
+        (sqrt_iter (improve guess x) x)))
+
+(define (good_enough? guess x)
+    (< (abs (- (* guess guess) x)) 0.001))
+
+(define (improve guess x)
+    (average guess (/ x guess)))
+
+(define (average x y)
+    (/ (+ x y) 2))
+
+
+(display (sqrt 9)) (newline)
+(display (sqrt (+ 100 37))) (newline)
+(display (sqrt (+ (sqrt 2) (sqrt 3)))) (newline)
+(display (* (sqrt 1000) (sqrt 1000))) (newline)
