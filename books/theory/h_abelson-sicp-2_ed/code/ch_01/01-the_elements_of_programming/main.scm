@@ -129,3 +129,49 @@
 (display (sqrt (+ 100 37))) (newline)
 (display (sqrt (+ (sqrt 2) (sqrt 3)))) (newline)
 (display (* (sqrt 1000) (sqrt 1000))) (newline)
+
+
+;; procedures as black-box abstractions
+(newline)(newline)
+(display "[procedures as black-box abstractions =>") (newline)
+
+(define (square x) (* x x))
+(display (square 2.0)) (newline)
+
+(define (square x) (exp (double (log x))))
+(define (double x) (+ x x))
+(display (square 2.0)) (newline)
+
+
+;; internal definitions and block structure
+(newline) (newline)
+(display "[internal definitions and block structure] =>") (newline)
+
+(define (sqrt x)
+    (define (square x) (* x x))
+    (define (good_enough? guess x)
+        (< (abs (- (square guess) x)) 0.001))
+    (define (average x y) (/ (+ x y) 2))
+    (define (improve guess x) (average guess (/ x guess)))
+    (define (sqrt_iter guess x)
+        (if (good_enough? guess x)
+            guess
+            (sqrt_iter (improve guess x) x)))
+    
+    (sqrt_iter 1.0 x))
+(display (sqrt 2.0)) (newline)
+
+(define (sqrt x)
+    (define (average a b) (/ (+ a b) 2))
+    (define (square a) (* a a))
+    (define (good_enough? guess)
+        (< (abs (- (square guess) x)) 0.001))
+    (define (improve guess)
+        (average guess (/ x guess)))
+    (define (sqrt_iter guess)
+        (if (good_enough? guess)
+            guess
+            (sqrt_iter (improve guess))))
+    
+    (sqrt_iter 1.0))
+(display (sqrt 2.0)) (newline)
