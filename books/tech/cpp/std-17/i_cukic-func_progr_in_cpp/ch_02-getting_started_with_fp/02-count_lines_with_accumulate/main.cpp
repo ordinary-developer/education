@@ -1,21 +1,28 @@
-#include <iostream>
-#include <string>
 #include <numeric>
+#include <string>
+#include <cassert>
+namespace test { // folding
 
-int counter(int const prev_cnt, char const ch) {
-    return ('\n' == ch ? prev_cnt + 1 : prev_cnt);
+int f(int const prevCnt, char const c) {
+    return ('\n' != c
+        ? prevCnt : prevCnt + 1);
 }
 
-int count_lines(std::string const& str) {
+int countLines(std::string const& s) {
     return std::accumulate(
-        std::cbegin(str), std::cend(str), 0, counter);
+        std::cbegin(s), std::cend(s), 0, f);
 }
 
-int main(int, char**) {
-    std::cout << count_lines(
-        "an ancient pond \n"
-        "a frog jumps in \n"
-        "the splash of water\n") << std::endl;
+void run() {
+    assert(2 == countLines("a\nb\nc"));
+}
+
+} // test
+
+
+#include <iostream>
+int main() {
+    std::cout << "test_01 => [ok]" << std::endl; test::run(); std::cout << std::endl;
 
     return 0;
 }
