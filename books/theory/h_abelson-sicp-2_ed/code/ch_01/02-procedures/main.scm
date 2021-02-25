@@ -100,3 +100,14 @@
 (define (square n)
     (* n n))
 (display (fast_exp 18 3))(newline)
+
+
+;; greatest common divisors
+(newline)(newline)
+(display "[greatest common divisors] =>") (newline)
+
+(define (gcd a b)
+    (if (= b 0)
+        a
+        (gcd b (remainder a b))))
+(display (gcd 8 4))(newline)
