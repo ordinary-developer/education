@@ -67,3 +67,36 @@
           ((= kinds_of_coins 4) 25) 
           ((= kinds_of_coins 5) 50) ))
 (display (count_change 100)) (newline)
+
+
+;; exponentiation
+(newline)(newline)
+(display "[exponentiation] =>")(newline)
+
+(define (exponent b n)
+    (if (= n 0)
+        1
+        (* b (exponent b (- n 1)))))
+(display (exponent 18 3))(newline)
+(display (exponent 17 3))(newline)
+
+(define (exponent b n)
+    (exponent_iter b n 1))
+(define (exponent_iter b counter product)
+    (if (= counter 0)
+        product
+        (exponent_iter b
+                       (- counter 1)
+                       (* b product))))
+(display (exponent 18 3))(newline)
+(display (exponent 17 3))(newline)
+
+(define (fast_exp b n)
+    (cond ((= n 0) 1)
+          ((even? n) (square (fast_exp b (/ n 2))))
+          (else (* b (fast_exp b (- n 1))))))
+(define (even? n)
+    (= (remainder n 2) 0))
+(define (square n)
+    (* n n))
+(display (fast_exp 18 3))(newline)
