@@ -20,6 +20,9 @@ Solutions:
 [solutions from Ken Dyck] (https://kendyck.com/?s=SICP)
 [solutions from zv](http://zv.github.io/)
 [solutions from evarga](https://evarga.gitbooks.io/solutions-guide-for-the-sicp-book/content/)
+[solutions from Dan Boykis](http://danboykis.com/categories/sicp/)
+[solutions from Alex Grebenyuk](https://github.com/kean/SICP)
+[solutions from Paige Finkelstein (only for the first chapter)](https://github.com/bolducp/SICP)
 [solutions with comments on russian](http://sicp.sergeykhenkin.com/)
 
 Other releated books:
