@@ -1,60 +1,61 @@
 #include <algorithm>
-#include <iostream>
 #include <iterator>
 #include <string>
 #include <vector>
+#include <cassert>
+namespace test {
 
-
-namespace {
-class person_t final {
+class Person final {
     public:
-        enum gender_t { male, female, other };
+        enum class Gender { Male, Female, Other };
 
-        person_t() : name_{ "none" }, gender_{ gender_t::male } { }
+        Person(std::string const& name = "none", Gender const gender = Gender::Male)
+            : name_{name}, gender_{gender} {}
 
-        person_t(std::string const& name, gender_t const gender)
-            : name_{ name }, gender_{ gender } {}
+        bool operator ==(Person const& other) const { return other.name_ == name_ and other.gender_ == gender_; }
 
         std::string name() const { return name_; }
-        gender_t gender() const { return gender_; }
-
-        friend std::ostream& operator << (std::ostream&, person_t const&);
+        Gender gender() const { return gender_; }
 
     private:
         std::string name_;
-        gender_t gender_;
+        Gender gender_;
 };
 
-std::ostream& operator << (std::ostream& out, person_t const& person) {
-    out << person.name();
-    return out;
+bool isFemale(Person const& person) { return Person::Gender::Female == person.gender(); }
+bool isNotFemale(Person const& person) { return not isFemale(person); }
+std::string name(Person const& person) { return person.name(); }
+
+void run() {
+    std::vector<Person> people {
+        { "David" , Person::Gender::Male   },
+        { "Jane"  , Person::Gender::Female },
+        { "Martha", Person::Gender::Female },
+        { "Peter" , Person::Gender::Male   },
+        { "Rose"  , Person::Gender::Female },
+        { "Tom"   , Person::Gender::Male   }};
+
+    std::vector<Person> separated(people.size());
+    const auto last = std::copy_if(std::cbegin(people), std::cend(people),
+        std::begin(separated), isFemale);
+    std::copy_if(std::cbegin(people), std::cend(people), last, isNotFemale);
+
+    std::vector<Person> const expected {
+        { "Jane"  , Person::Gender::Female },
+        { "Martha", Person::Gender::Female },
+        { "Rose"  , Person::Gender::Female },
+        { "David" , Person::Gender::Male   },
+        { "Peter" , Person::Gender::Male   },
+        { "Tom"   , Person::Gender::Male   }};    
+
+    assert(expected == separated);
 }
-} // anonymous namespace
+} // test
 
 
-bool is_female(person_t const& person) { return person_t::female == person.gender(); }
-bool is_not_female(person_t const& person) { return not is_female(person); }
-
+#include <iostream>
 int main() {
-    std::vector<person_t> people {
-        { "David",  person_t::male   },
-        { "Jane",   person_t::female },
-        { "Martha", person_t::female },
-        { "Peter",  person_t::male   },
-        { "Rose",   person_t::female },
-        { "Tom",    person_t::male   }
-    };
-
-    std::vector<person_t> separated(people.size());
-    const auto last = std::copy_if(
-        std::cbegin(people), std::cend(people),
-        separated.begin(),
-        is_female);
-    std::copy_if(std::cbegin(people), std::cend(people),
-        last, is_not_female);                 
-
-    std::copy(std::cbegin(separated), std::cend(separated),
-        std::ostream_iterator<person_t>(std::cout, " "));              
+    std::cout << "test => [ok]" << std::endl; test::run(); std::cout << std::endl;
 
     return 0;
 }
