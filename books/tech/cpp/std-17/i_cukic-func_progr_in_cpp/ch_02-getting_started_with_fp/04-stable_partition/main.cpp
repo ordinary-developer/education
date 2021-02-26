@@ -1,37 +1,52 @@
 #include <algorithm>
-#include <iostream>
 #include <string>
+#include <utility>
 #include <vector>
+#include <cassert>
+namespace test {
 
-typedef std::pair<std::string, bool> list_item;
+typedef std::pair<std::string, bool> ListItem;
 
-std::string title(list_item const& item) {
+std::string title(ListItem const& item) {
     return item.first + std::string(item.second, '*');
 }
 
-bool is_selected(list_item const& item) { return item.second; }
-bool is_not_selected(list_item const& item) { return not is_selected(item); }
+bool isSelected(ListItem const& item) { return item.second; }
+bool isNotSelected(ListItem const& item) { return not isSelected(item); }
 
 template <typename It>
-void move_selected_to(It first, It last, It dest) {
-    std::stable_partition(first, dest, is_not_selected);
-    std::stable_partition(dest, last, is_selected);
-} 
+void moveSelectedTo(It first, It last, It dest) {
+    std::stable_partition(first, dest, isNotSelected);
+    std::stable_partition(dest, last, isSelected);
+}
 
-int main() {
-    std::vector<list_item> people {
-        { "David",  true  },
-        { "Jane",   false },
+void run() {
+    std::vector<ListItem> people {
+        { "David", true },
+        { "Jane", false },
         { "Martha", false },
-        { "Peter",  false },
-        { "Rose",   true  },
-        { "Tom",    true  }
-    };
+        { "Peter", false },
+        { "Rose", true },
+        { "Tom", true } };
 
-    move_selected_to(people.begin(), people.end(), people.begin() + 3);
+    moveSelectedTo(std::begin(people), std::end(people), std::begin(people) + 3);
 
-    for (auto const& person : people)
-        std::cout << title(person) << std::endl;
+    const std::vector<ListItem> expected {
+        { "Jane", false },
+        { "Martha", false },
+        { "David", true },
+        { "Rose", true },
+        { "Tom", true },
+        { "Peter", false } };
+    assert(expected == people);
+}
+
+} // test
+
+
+#include <iostream>
+int main() {
+    std::cout << "test => [ok]" << std::endl; test::run(); std::cout << std::endl;
 
     return 0;
 }
