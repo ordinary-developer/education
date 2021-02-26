@@ -1,51 +1,56 @@
 #include <algorithm>
-#include <iostream>
 #include <iterator>
 #include <string>
 #include <vector>
+#include <cassert>
+namespace test {
 
-
-namespace {
-class person_t final {
+class Person final {
     public:
-        enum gender_t { female, male, other };
+        enum class Gender { Male, Female, Other };
 
-        person_t(std::string const& name, gender_t const gender)
-            : name_{ name }, gender_{ gender } {}
+        Person(std::string const& name = "none", Gender const gender = Gender::Male)
+            : name_{name}, gender_{gender} {}
+
+        bool operator ==(Person const& other) const { return other.name_ == name_ and other.gender_ == gender_; }
 
         std::string name() const { return name_; }
-        gender_t gender() const { return gender_; }
+        Gender gender() const { return gender_; }
 
     private:
-        std::string const name_;
-        gender_t const gender_;
+        std::string name_;
+        Gender gender_;
 };
-} // anonymous namespace
+
+bool isFemale(Person const& person) { return Person::Gender::Female == person.gender(); }
+std::string name(Person const& person) { return person.name(); }
+
+void run() {
+    std::vector<Person> people {
+        { "David" , Person::Gender::Male   },
+        { "Jane"  , Person::Gender::Female },
+        { "Martha", Person::Gender::Female },
+        { "Peter" , Person::Gender::Male   },
+        { "Rose"  , Person::Gender::Female },
+        { "Tom"   , Person::Gender::Male   }};
 
 
-std::string name(person_t const& person) { return person.name(); }
-bool is_female(person_t const& person) { return person_t::female == person.gender(); }
-
-int main() {
-    std::vector<person_t> people {
-        { "David",  person_t::male   },
-        { "Jane",   person_t::female },
-        { "Martha", person_t::female },
-        { "Peter",  person_t::male   },
-        { "Rose",   person_t::female },
-        { "Tom",    person_t::male   }
-    };
-
-    std::vector<person_t> females{};
-    std::copy_if(std::cbegin(people), std::cend(people),
-        std::back_inserter(females), is_female);
+    std::vector<Person> females{};
+    std::copy_if(std::cbegin(people), std::cend(people), 
+        std::back_inserter(females), isFemale);
 
     std::vector<std::string> names(females.size());
     std::transform(std::cbegin(females), std::cend(females),
-        names.begin(), name);
-    
-    std::copy(std::cbegin(names), std::cend(names),
-        std::ostream_iterator<std::string>{ std::cout, " " });
+        std::begin(names), name);
+
+    assert((std::vector<std::string>{ "Jane", "Martha", "Rose" } == names));
+}
+} // test
+
+
+#include <iostream>
+int main() {
+    std::cout << "test => [ok]" << std::endl; test::run(); std::cout << std::endl;
 
     return 0;
 }
