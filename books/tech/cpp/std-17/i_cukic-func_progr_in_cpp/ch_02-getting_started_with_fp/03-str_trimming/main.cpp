@@ -1,33 +1,44 @@
-#include <iostream>
+#include <algorithm>
 #include <memory>
 #include <string>
+#include <cassert>
 #include <cctype>
+namespace test {
 
-
-bool is_not_space(char const ch) {
+bool isNotSpace(const char ch) {
     return not std::isspace(static_cast<unsigned char>(ch));
 }
 
-std::string trim_left(std::string str) {
-    str.erase(str.begin(), 
-          std::find_if(str.begin(), str.end(), is_not_space));
-    return str;
+std::string trimLeft(std::string s) {
+    s.erase(std::begin(s), 
+        std::find_if(std::begin(s), std::end(s), isNotSpace));
+
+    return s;
 }
 
-std::string trim_right(std::string str) {
-    str.erase(
-        std::find_if(str.rbegin(), str.rend(), is_not_space).base(),
-        str.end());
-    return str;
+std::string trimRight(std::string s) {
+    s.erase(std::find_if(std::rbegin(s), std::rend(s), isNotSpace).base(),
+        std::end(s));
+
+    return s;
 }
 
-std::string trim(std::string str) {
-    return trim_left(trim_right(std::move(str)));
+std::string trim(std::string s) {
+    return trimLeft(trimRight(std::move(s)));
 }
 
+void run() {
+    assert("abc" == trimLeft("   abc"));
+    assert("abc" == trimRight("abc   "));
+    assert("abc" == trim("   abc   "));
+}
 
+} // test
+
+
+#include <iostream>
 int main() {
-    std::cout << "[" << trim("   abc   ") << "]" << std::endl;
+    std::cout << "test => [ok]" << std::endl; test::run(); std::cout << std::endl;
 
     return 0;
 }
