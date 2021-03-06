@@ -4,15 +4,15 @@ namespace workspace {
 
 class Position {
 public:
-    Position(const int x, const int y) : _x(x), _y(y) {}
+    Position(const int x, const int y) : x_(x), y_(y) {}
 
     double distanceTo(const Position& other) const {
-        return std::sqrt(std::pow(other._x - _x, 2) + std::pow(other._y - _y, 2));
+        return std::sqrt(std::pow(other.x_ - x_, 2) + std::pow(other.y_ - y_, 2));
     }
 
 private:
-    const int _x;
-    const int _y;
+    const int x_;
+    const int y_;
 }; 
 
 void run() {
@@ -30,5 +30,6 @@ void run() {
 
 int main() {
     workspace::run();
+
     return 0;
 }
