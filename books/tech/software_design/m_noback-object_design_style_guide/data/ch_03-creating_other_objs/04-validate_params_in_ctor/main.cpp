@@ -5,19 +5,19 @@ namespace workspace {
 class Deal {
 public:
     Deal(const int firstPartyAmount, const int secondPartyAmount)
-        : _firstPartyAmount(firstPartyAmount), _secondPartyAmount(secondPartyAmount)
+        : firstPartyAmount_(firstPartyAmount), secondPartyAmount_(secondPartyAmount)
     {
-        if (_firstPartyAmount <= 0)
+        if (firstPartyAmount_ <= 0)
             throw std::invalid_argument("invalid the first party amount");
-        if (_secondPartyAmount <= 0)
+        if (secondPartyAmount_ <= 0)
             throw std::invalid_argument("invalid the second party amount");
     }
 
-    int totalAmount() const { return _firstPartyAmount + _secondPartyAmount; }
+    int totalAmount() const { return firstPartyAmount_ + secondPartyAmount_; }
 
 private:
-    const int _firstPartyAmount;
-    const int _secondPartyAmount;
+    const int firstPartyAmount_;
+    const int secondPartyAmount_;
 };
 
 void run() {
@@ -57,5 +57,6 @@ void run() {
 
 int main() {
     workspace::run();
+    
     return 0;
 }

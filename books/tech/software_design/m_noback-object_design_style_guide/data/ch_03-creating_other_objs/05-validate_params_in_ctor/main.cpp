@@ -17,11 +17,11 @@ public:
 
 private:
     Line(const bool isDotted, const int distanceBetweenDots) 
-        : _isDotted(isDotted), _distanceBetweenDots(distanceBetweenDots)
+        : isDotted_(isDotted), distanceBetweenDots_(distanceBetweenDots)
     {}
 
-    const bool _isDotted;
-    const int _distanceBetweenDots;
+    const bool isDotted_;
+    const int distanceBetweenDots_;
 };
 
 void run() {
@@ -48,5 +48,6 @@ void run() {
 
 int main() {
     workspace::run();
+
     return 0;
 }

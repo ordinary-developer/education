@@ -4,17 +4,17 @@ namespace workspace {
 
 class Coords {
 public:
-    Coords(const double latitude, const double longitude) : _latitude(latitude), _longitude(longitude) 
+    Coords(const double latitude, const double longitude) : latitude_(latitude), longitude_(longitude) 
     {
-        if (_latitude > 90 || _latitude < -90)
+        if (latitude _> 90 || latitude_ < -90)
             throw std::invalid_argument("latitude should be between -90 and 90");
-        if (_longitude > 180 || _longitude < -180)
+        if (longitude_ > 180 || longitude_ < -180)
             throw std::invalid_argument("longitude should be between -180 and 180");
     }
 
 private:
-    const double _latitude;
-    const double _longitude;
+    const double latitude_;
+    const double longitude_;
 };
 
 void run() {

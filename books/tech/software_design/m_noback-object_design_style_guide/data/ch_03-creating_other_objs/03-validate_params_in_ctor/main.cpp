@@ -8,24 +8,25 @@ public:
         const int numOfRooms,
         const int numOfAdults,
         const int numOfChildren
-        ) : _numOfRooms(numOfRooms), _numOfAdults(numOfAdults), _numOfChildren(numOfChildren) 
+        ) : numOfRooms_(numOfRooms), numOfAdults_(numOfAdults), numOfChildren_(numOfChildren) 
         {
-            if (_numOfRooms > _numOfAdults + _numOfChildren)
+            if (numOfRooms_ > numOfAdults_+ numOfChildren_)
                 throw std::invalid_argument("num of rooms should not exceed num of guests");
-            if (_numOfRooms < 1)
+            if (numOfRooms_< 1)
                 throw std::invalid_argument("num of rooms should at least be 1");
-            if (_numOfAdults < 1)
+            if (numOfAdults_< 1)
                 throw std::invalid_argument("num of adults should at least be 1");
-            if (_numOfChildren < 0)
+            if (numOfChildren_< 0)
                 throw std::invalid_argument("num of children should at least be 0");
         }
+
 private:
-    const int _numOfRooms;
-    const int _numOfAdults;
-    const int _numOfChildren;
+    const int numOfRooms_;
+    const int numOfAdults_;
+    const int numOfChildren_;
 };
 
-void _run_with_exception(const int numOfRooms, const int numOfAdults, const int numOfChildren) {
+void run_with_exception(const int numOfRooms, const int numOfAdults, const int numOfChildren) {
     bool wasException = false;
 
     try {
@@ -38,10 +39,10 @@ void _run_with_exception(const int numOfRooms, const int numOfAdults, const int 
 }
 
 void run() {
-    _run_with_exception(5, 1, 1);
-    _run_with_exception(0, 1, 1);
-    _run_with_exception(1, 0, 1);
-    _run_with_exception(1, 1, -1);
+    run_with_exception(5, 1, 1);
+    run_with_exception(0, 1, 1);
+    run_with_exception(1, 0, 1);
+    run_with_exception(1, 1, -1);
 }
 
 } // workspace
@@ -49,5 +50,6 @@ void run() {
 
 int main() {
     workspace::run();
+
     return 0;
 }
