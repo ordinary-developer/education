@@ -21,6 +21,7 @@ public:
             throw std::invalid_argument(
                 "the longitude is invalid");
     }
+
 private:
     const double latitude_;
     const double longitude_;
@@ -78,5 +79,6 @@ void run() {
 
 int main() {
     workspace::run();
+
     return 0;
 }
