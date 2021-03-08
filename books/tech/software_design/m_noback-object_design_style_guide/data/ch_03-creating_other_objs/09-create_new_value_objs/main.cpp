@@ -26,16 +26,16 @@ void run() {
         const std::string invalidCode = "ABC";
     
         try {
-            CountryCode countryCode(invalidCode);    
+            CountryCode _(invalidCode);    
         }
         catch (const std::invalid_argument& e) {        
             assert((std::string("unknown country code ").append(invalidCode) 
                 == std::string(e.what())));
             assert((wasException = true));
         }       
-        catch (...) { assert((false)); }
+        catch (...) { assert(false); }
         
-        assert((wasException));
+        assert(wasException);
     }
 }
 
@@ -44,5 +44,6 @@ void run() {
 
 int main() {
     workspace::run();
+
     return 0;
 }
