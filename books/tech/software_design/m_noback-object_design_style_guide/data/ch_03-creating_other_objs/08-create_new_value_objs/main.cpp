@@ -13,6 +13,7 @@ public:
         if (!is_valid_email_address(emailAddress)) 
             throw std::invalid_argument("invalid email address");
     }
+
 private:
     const std::string& emailAddress_;
 };
@@ -22,6 +23,7 @@ public:
     User(const EmailAddress& emailAddress) : emailAddress_(emailAddress) {}
 
     User changeEmailAddress(const EmailAddress& emailAddress) { return User(emailAddress); }
+
 private:
     EmailAddress emailAddress_;
 };
@@ -29,7 +31,7 @@ private:
 void run() {
     User user(EmailAddress("correct_email_address@domain"));
     user.changeEmailAddress(EmailAddress("new_correct_email_address@domain"));
-    assert((true));
+    assert(true);
 
     {
         bool wasException = false;
@@ -41,9 +43,9 @@ void run() {
             assert((std::string("invalid email address") == std::string(e.what())));
             assert((wasException = true));
         }
-        catch (...) { assert((false)); }
+        catch (...) { assert(false); }
 
-        assert((wasException));
+        assert(wasException);
     }
 
     {
@@ -67,5 +69,6 @@ void run() {
 
 int main() {
     workspace::run();
+
     return 0;
 }
