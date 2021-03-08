@@ -58,9 +58,9 @@ void run() {
             assert((std::string("invalid email address") == std::string(e.what())));
             assert((wasException = true));
         }
-        catch (...) { assert((false)); }
+        catch (...) { assert(false); }
 
-        assert((wasException));
+        assert(wasException);
     }
 }
 
