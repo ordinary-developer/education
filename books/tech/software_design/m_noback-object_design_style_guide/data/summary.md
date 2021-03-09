@@ -39,7 +39,8 @@ To figure out if necessary to introduce a value object:
 When to create value objects:
 - extract new objects to prevent domain invariants
   from being verified in multiple places;
-- extract new objects to represent composite values.
+- extract new objects to represent composite values
+  (when values belong together).
 
 
 # Construction
