@@ -3,7 +3,6 @@
 #include <cassert>
 namespace workspace {
 
-
 class Distance {
 public:
     Distance(const int distance, const std::string unit) 
@@ -52,9 +51,9 @@ void run() {
                 == std::string(e.what())));
             assert((wasException = true));
         }
-        catch (...) { assert((false)); }
+        catch (...) { assert(false); }
 
-        assert((wasException));        
+        assert(wasException);        
     }
 
     {
@@ -68,9 +67,9 @@ void run() {
                 == std::string(e.what())));
             assert((wasException = true));
         }
-        catch (...) { assert((false)); }
+        catch (...) { assert(false); }
 
-        assert((wasException));
+        assert(wasException);
     }
 }
 
@@ -79,5 +78,6 @@ void run() {
 
 int main() {
     workspace::run();
+
     return 0;
 }
