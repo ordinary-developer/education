@@ -1,12 +1,13 @@
 # Short summary
-- Prefer composition (mainly via ctor injection) to inheritance
-- Where possible use immutable objects
+- Prefer composition (mainly via ctor injection) to inheritance.
+- Where possible use immutable objects.
+
 
 
 # Class issues
 Objects must ALWAYS  be in a complete state (also just after construction) (domain invariants must be held).
 
-`private` should be your default scope (for vars).
+`private` should be your default scope (for member vars).
 
 Don't use getters and setters.
 
@@ -16,14 +17,18 @@ For A to have access to B
 - A can fetch a B instance from a known location (*service location*);
 - A can get a B instance injected upon construction (*dependency injection*).
 
-Two object types:
+Three object types:
 - *Service* objects (services -"er"s) - perfom a task or return a piece of information
   (can be created directly or fetched via a service locator);
 - *Entity* (models) and *value* objects (domain objects)
   (are the materials that services use to perform their tasks).
+- *DTO* (data transfer objects) (structs in C++)
+  (carry date provided by the world outside or
+   ommand objects (for providing data for operations)).
 
 
-### Services
+
+## Services
 Services must be immutable.
 Create wrapper (new service) classes for complicated and system methods.
 
@@ -31,7 +36,8 @@ Info about performed tasks itself (context, current context) should be provided 
 To to figure out arugment should be passed to ctor or method:
 > "Could I run this service in a batch, without requiring it to be instantiated over and over again?"
 
-### Value objects
+
+## Value objects
 Value objects wrap values inside an object.
 To figure out if necessary to introduce a value object:
 > "Would any string, int, etc., be acceptable here?" - if no, introduce a value object.
@@ -41,6 +47,20 @@ When to create value objects:
   from being verified in multiple places;
 - extract new objects to represent composite values
   (when values belong together).
+  
+Value objects shouldn't get any dependencies injected, only values, value objects, or lists of them.
+If a value object still need a service to perform some taks, inject it as a method argument
+(or better pass a value object to a service).
+
+  
+## DTO
+- all of its properties are exposed;
+- its properties contain only primitive-type values, other DTOs, or simple arrays of DTOs;
+- can be created using a regular ctor,
+  or its properties can be set one by one,
+  or they can be filled via a property filler (from raw data (as array or something else)) as a named ctor;
+- dto can hava the "validate" method, that collects error lists or the whole status.
+
 
 
 # Construction
@@ -52,6 +72,20 @@ When to create value objects:
 - Consider throw an exception on params validation
   (use std InvalidException, don't use your own).
 - Use assertions for class invariants.
+- For sevices use a normal ctor,
+  for value objects use a *named* ctor 
+  (usually static method in the same object, normal ctor can (should?) be private)
+  (for named ctors use domain terms (create, place, establish, etc...)).
+
+
+
+# Lifecycle  
+## Getters
+Only add getters to expose internal data when this data is needed by some other client than the test itself.
+
+## Don't use property fillers 
+Don't copy data from a raw array to instance members (through reflection for example).
+
 
 
 # Testing
@@ -64,3 +98,5 @@ Objects must be testable
 
 When throw exception on param validattion test exceptions also on the messages
 (with full or partial equalness).
+
+Don't test the normal ctor flow, test a ctor for ways in which it should fail.
