@@ -37,6 +37,13 @@ To to figure out arugment should be passed to ctor or method:
 > "Could I run this service in a batch, without requiring it to be instantiated over and over again?"
 
 
+## Entity objects
+Represent important concepts from the buisiness domain. (Maybe use an internal id for an entity object).
+Entities are mutable objects
+
+Change methods should have a void return type and their names should be in the imperative form.
+
+
 ## Value objects
 Value objects wrap values inside an object.
 To figure out if necessary to introduce a value object:
