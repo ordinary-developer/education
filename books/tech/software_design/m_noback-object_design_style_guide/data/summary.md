@@ -45,6 +45,8 @@ Change methods should have a void return type and their names should be in the i
 
 
 ## Value objects
+> "A value object is any immutable object that wraps primitive-type values."
+
 Value objects wrap values inside an object.
 To figure out if necessary to introduce a value object:
 > "Would any string, int, etc., be acceptable here?" - if no, introduce a value object.
@@ -58,6 +60,9 @@ When to create value objects:
 Value objects shouldn't get any dependencies injected, only values, value objects, or lists of them.
 If a value object still need a service to perform some taks, inject it as a method argument
 (or better pass a value object to a service).
+
+We don't need value objects to be identifiable.
+In fact, we shouldn't change a value object at all.
 
   
 ## DTO
