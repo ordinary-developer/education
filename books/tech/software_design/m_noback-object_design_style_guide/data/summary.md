@@ -73,6 +73,8 @@ In fact, we shouldn't change a value object at all.
   or they can be filled via a property filler (from raw data (as array or something else)) as a named ctor;
 - dto can hava the "validate" method, that collects error lists or the whole status.
 
+DTOs not necessarily need to be immutable, and its members (properties) can be public.
+
 
 
 # Construction
