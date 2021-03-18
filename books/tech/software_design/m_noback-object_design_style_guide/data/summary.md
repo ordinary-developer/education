@@ -26,6 +26,7 @@ Three object types:
   (carry date provided by the world outside or
    ommand objects (for providing data for operations)).
 
+Most objects that are not entities should be implemented as immutable objects.
 
 
 ## Services
@@ -63,6 +64,8 @@ If a value object still need a service to perform some taks, inject it as a meth
 
 We don't need value objects to be identifiable.
 In fact, we shouldn't change a value object at all.
+
+Create values instead of modifying them.
 
   
 ## DTO
