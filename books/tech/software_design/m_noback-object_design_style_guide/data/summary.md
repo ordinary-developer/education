@@ -67,6 +67,8 @@ In fact, we shouldn't change a value object at all.
 
 Create values instead of modifying them.
 
+Compare values objects as whole objects (not via its properities).
+
   
 ## DTO
 - all of its properties are exposed;
