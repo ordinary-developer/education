@@ -68,6 +68,11 @@ In fact, we shouldn't change a value object at all.
 Create values instead of modifying them.
 
 Compare values objects as whole objects (not via its properities).
+When comparing immutable objects, assert equality, not sameness.
+
+*Optional*:
+For the equality method you can apply the rule for getters: only add this method if some other client than a test uses it.
+(For tests it is better to use something like a standard assertEquals (that compare all internal members by default (if such assertEquals exists))).
 
   
 ## DTO
