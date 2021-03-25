@@ -8,7 +8,6 @@ Some useful refs:
 Solutions:
 [scheme-wiki](http://community.schemewiki.org/?SICP-Solutions)
 [scheme-drewhess.com](http://wiki.drewhess.com/wiki/Category:SICP_solutions)
-[solutions from JoT](http://jots-jottings.blogspot.com/p/sicp-exercise-index.html)
 [solutions from Adrian Stoll](https://adrianstoll.com/sicp/)
 [another person's solutions](https://www.inchmeal.io/)
 [solutions from Eli Bendersky](https://eli.thegreenplace.net/tag/sicp)
@@ -19,11 +18,15 @@ Solutions:
 [solutions from sarabander](https://github.com/sarabander/p2pu-sicp)
 [solutions from Ken Dyck] (https://kendyck.com/?s=SICP)
 [solutions from zv](http://zv.github.io/)
-[solutions from evarga](https://evarga.gitbooks.io/solutions-guide-for-the-sicp-book/content/)
 [solutions from Dan Boykis](http://danboykis.com/categories/sicp/)
 [solutions from Alex Grebenyuk](https://github.com/kean/SICP)
 [solutions from Paige Finkelstein (only for the first chapter)](https://github.com/bolducp/SICP)
 [solutions with comments on russian](http://sicp.sergeykhenkin.com/)
+
+some links are not correct:
+[solutions from JoT](http://jots-jottings.blogspot.com/p/sicp-exercise-index.html)
+[solutions from evarga](https://evarga.gitbooks.io/solutions-guide-for-the-sicp-book/content/)
+[other solutions from evarga]https://github.com/evarga/sicp-solutions
 
 Other releated books:
 [Teach Yourself Scheme in Fixnum Days (by Dorai Sitaram)](https://ds26gte.github.io/tyscheme/)
