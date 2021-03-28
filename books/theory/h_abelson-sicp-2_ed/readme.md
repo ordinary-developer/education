@@ -26,7 +26,7 @@ Solutions:
 some links are not correct:
 [solutions from JoT](http://jots-jottings.blogspot.com/p/sicp-exercise-index.html)
 [solutions from evarga](https://evarga.gitbooks.io/solutions-guide-for-the-sicp-book/content/)
-[other solutions from evarga]https://github.com/evarga/sicp-solutions
+[other solutions from evarga](https://github.com/evarga/sicp-solutions)
 
 Other releated books:
 [Teach Yourself Scheme in Fixnum Days (by Dorai Sitaram)](https://ds26gte.github.io/tyscheme/)
