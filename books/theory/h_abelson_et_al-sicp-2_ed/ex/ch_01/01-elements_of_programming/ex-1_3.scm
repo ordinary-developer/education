@@ -358,3 +358,79 @@ yet another solution
     (sum_of_largest 2 0 1)
     (sum_of_largest 2 1 0)))
 (display ret) (newline)
+
+
+;; ----------------
+;; another solution
+(define (sum_of_largest param1 param2 param3)
+    (define (sqr param) (* param param))
+
+    (cond ((>= param1 param2) (+ (sqr param1) (cond ((>= param2 param3) (sqr param2)) 
+                                                    (else (sqr param3)))))
+          (else (+ (sqr param2) (cond ((>= param1 param3) (sqr param1)) 
+                                      (else (sqr param3)))))))
+                                  
+
+(define ret (=
+    5
+    (sum_of_largest 0 1 2)
+    (sum_of_largest 0 2 1)
+    (sum_of_largest 1 0 2)
+    (sum_of_largest 1 2 0)
+    (sum_of_largest 2 0 1)
+    (sum_of_largest 2 1 0)))
+(display ret) (newline)
+
+
+;; ----------------
+;; another solution
+(define (sum_of_largest param1 param2 param3)
+    (define (sum_of_sqrs param1 param2) (+ (* param1 param1) (* param2 param2)))
+    
+    (cond ((> (min param1 param2) param3) (sum_of_sqrs param1 param2))
+          ((> (min param2 param3) param1) (sum_of_sqrs param2 param3))
+          (else (sum_of_sqrs param1 param3))))
+      
+
+(define ret (=
+    5
+    (sum_of_largest 0 1 2)
+    (sum_of_largest 0 2 1)
+    (sum_of_largest 1 0 2)
+    (sum_of_largest 1 2 0)
+    (sum_of_largest 2 0 1)
+    (sum_of_largest 2 1 0)))
+(display ret) (newline)
+
+
+;; ----------------
+;; another solution
+;; applicable only for non-negative numbers
+(define (sum_of_largest param1 param2 param3)
+    (define (sqr param) (* param param))
+    
+    (define sum1 (cond ((> param1 param2) param1)
+                       ((> param1 param3) param1)
+                       (else 0)))
+                   
+    (define sum2 (cond ((> param2 param1) param2)
+                       ((> param2 param3) param2)
+                       (else 0)))
+                   
+    (define sum3 (cond ((> param3 param1) param3)
+                       ((> param3 param2) param3)
+                       (else 0)))
+                   
+    (+ (sqr sum1) (sqr sum2) (sqr sum3))
+)
+      
+
+(define ret (=
+    5
+    (sum_of_largest 0 1 2)
+    (sum_of_largest 0 2 1)
+    (sum_of_largest 1 0 2)
+    (sum_of_largest 1 2 0)
+    (sum_of_largest 2 0 1)
+    (sum_of_largest 2 1 0)))
+(display ret) (newline)
