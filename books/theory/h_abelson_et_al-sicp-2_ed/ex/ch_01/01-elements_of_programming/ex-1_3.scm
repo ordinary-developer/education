@@ -434,3 +434,47 @@ yet another solution
     (sum_of_largest 2 0 1)
     (sum_of_largest 2 1 0)))
 (display ret) (newline)
+
+;; ----------------
+;; another solution
+(define (sum_of_largest param1 param2 param3)
+    (define (sum_of_sqrs param1 param2) (+ (* param1 param1) (* param2 param2)))
+    
+    (cond ((and (< param3 param1) (< param3 param2)) (sum_of_sqrs param1 param2))
+          (else (cond ((< param2 param1) (sum_of_sqrs param1 param3))
+                      (else (sum_of_sqrs param2 param3))))))
+
+
+(define ret (=
+    5
+    (sum_of_largest 0 1 2)
+    (sum_of_largest 0 2 1)
+    (sum_of_largest 1 0 2)
+    (sum_of_largest 1 2 0)
+    (sum_of_largest 2 0 1)
+    (sum_of_largest 2 1 0)))
+(display ret) (newline)
+
+
+;; ----------------
+;; another solution
+(define (sum_of_largest param1 param2 param3)
+    (define (sum_of_sqrs param1 param2) (+ (* param1 param1) (* param2 param2)))
+    
+    (cond ((and (or (> param1 param2) (> param1 param3)) 
+                (or (> param2 param1) (> param2 param3))) (sum_of_sqrs param1 param2))
+          ((and (or (> param2 param1) (> param2 param3)) 
+                (or (> param3 param1) (> param3 param2))) (sum_of_sqrs param2 param3))
+          ((and (or (> param1 param2) (> param1 param3)) 
+                (or (> param3 param1) (> param3 param2))) (sum_of_sqrs param1 param3))))
+
+
+(define ret (=
+    5
+    (sum_of_largest 0 1 2)
+    (sum_of_largest 0 2 1)
+    (sum_of_largest 1 0 2)
+    (sum_of_largest 1 2 0)
+    (sum_of_largest 2 0 1)
+    (sum_of_largest 2 1 0)))
+(display ret) (newline)
