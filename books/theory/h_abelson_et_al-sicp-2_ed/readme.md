@@ -1,6 +1,9 @@
 This subfolder contains my files (my code snippets and my synopses about the main book's topics) 
 for the book  **"Structure and interpretation of computer programs"** by **H. Abelson**, **G.J. Sussman**, **Julie Sussman**.
 
+[online book version](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)
+[online book version (contents)](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-4.html)
+
 Some useful refs:
 [scheme-wiki](http://community.schemewiki.org/)
 [some usefull thoughts about scip (and a few solutions to exercises)](https://tekkie.wordpress.com/)
