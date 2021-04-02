@@ -110,6 +110,14 @@ Only add getters to expose internal data when this data is needed by some other 
 ## Don't use property fillers 
 Don't copy data from a raw array to instance members (through reflection for example).
 
+## Methods
+A modifier method (both in mutable in immutable objects) must (like a ctor)
+- check the client provides meaningful data;
+- protect domain invariants.
+
+So a modifier can resuse the existing ctor (especially for immutable objects).
+
+
 
 
 # Testing
