@@ -114,8 +114,11 @@ Don't copy data from a raw array to instance members (through reflection for exa
 A modifier method (both in mutable in immutable objects) must (like a ctor)
 - check the client provides meaningful data;
 - protect domain invariants.
+(A modifier for a mutable object should verify that the requested state change is valid).
 
 So a modifier can resuse the existing ctor (especially for immutable objects).
+
+
 
 
 
