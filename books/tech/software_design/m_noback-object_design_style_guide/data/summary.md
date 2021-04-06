@@ -44,6 +44,9 @@ Entities are mutable objects
 
 Change methods should have a void return type and their names should be in the imperative form.
 
+Consider to introduce events in every mutable object ("entity"),
+which (events) can be later analyzed to see the object "history".
+
 
 ## Value objects
 > "A value object is any immutable object that wraps primitive-type values."
@@ -117,6 +120,8 @@ A modifier method (both in mutable in immutable objects) must (like a ctor)
 (A modifier for a mutable object should verify that the requested state change is valid).
 
 So a modifier can resuse the existing ctor (especially for immutable objects).
+
+Don't implement fluetn interfaces on mutable objects
 
 
 
