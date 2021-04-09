@@ -121,11 +121,54 @@ A modifier method (both in mutable in immutable objects) must (like a ctor)
 
 So a modifier can resuse the existing ctor (especially for immutable objects).
 
-Don't implement fluetn interfaces on mutable objects
+Don't implement fluent interfaces on mutable objects
 
+Objects can give you information or perform tasks for you.
 
+A template for methods
+```
+[scope] function methodName(type name, ...) : void | [return-type]
+{
+	[precondition checks]
+	[failure scenarios]
+	[postcondition checks]
+	[return void|specific-return-type]
+}
+```
 
+Always look for ways to get rid of the else part of an if statement
 
+## Exceptions
+### common
+add a custom exception class if:
+- you want to catch a specific exception type higher up
+- there are multiple ways to instantiate a single type of exception
+- you want use named constructors for instantiating the exception
+  (here the name of the exception class combined with the name of the ctor method
+   reads like a sentence
+   ingredients of the exception
+   ```
+   class CouldNotFindProduct extends RuntimeException {
+       CouldNotFindProduct withId() { return ... }
+   }
+   ```
+   
+   reason of the exception
+   ```
+   class InvalidTargetPosition extends LogicException {
+   		InvalidTargetPosition becauseItIsOutsideMap() { return ... }
+   }
+   ```
+   )
+   
+### naming
+- for logic exceptions don't use the "Exception" postfix, use the "Invalid" prefix
+  (e.g. InvalidEmailAddress, InvalidTargetPosition)
+- for runtime exceptions use and idiom "Sorry, [I] ..."
+  (e.g. CouldNotFindProduct, CouldNotStoreFile etc.)
+  
+### misc
+Add detailed messages
 
 
 # Testing
