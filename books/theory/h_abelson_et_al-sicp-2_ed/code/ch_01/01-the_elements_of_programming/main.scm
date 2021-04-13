@@ -25,20 +25,14 @@
 
 
 ;; naming and the environment
-(newline)(newline)
-(display "[naming and the environment] =>") 
-
-(newline)
+(display "[naming and the environment] =>") (newline)
 (define size 2)
 (display size) (newline)
 (display (* 5 size)) (newline)
 
-(newline)
 (define pi 3.14159)
 (define radius 10)
 (display (* pi (* radius radius))) (newline)
-
-(newline)
 (define circumference (* 2 pi radius))
 (display circumference) (newline)
 
