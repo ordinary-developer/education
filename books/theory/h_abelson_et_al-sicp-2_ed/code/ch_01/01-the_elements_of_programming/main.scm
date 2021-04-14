@@ -47,54 +47,19 @@
 
 
 ;; compound procedures
-(newline)(newline)
 (display "[compound procedures] =>") (newline)
-(define (square x) (* x x))
+(define (square x x) (* x x))
 (display (square 21)) (newline)
 (display (square (+ 2 5))) (newline)
-(display (square 3)) (newline)
+(display (square (square 3))) (newline)
 
 (newline)
+(define (square x x) (* x x))
 (define (sum_of_squares x y)
     (+ (square x) (square y)))
-(display (sum_of_squares 3 4)) (newline)
-
 (define (f a)
     (sum_of_squares (+ a 1) (* a 2)))
 (display (f 5)) (newline)
-
-(newline)
-(define (abs x)
-    (cond ((> x 0) x)
-          ((= x 0) 0)
-          ((< x 0) (-x))))
-(display (abs 42)) (newline)
-
-(define (abs x)
-    (cond ((< x 0) (-x))
-          (else x)))
-(display (abs 42)) (newline)
-
-(define (abs x)
-    (if (< x 0) (- x) x))
-(display (abs 42)) (newline)
-
-(define x 2)
-(define undef_cond
-    (cond ((< x 2) "true"))
-)
-(display undef_cond) (newline) 
-
-(newline)
-(define x 7)
-(define assert (and (> x 5) (< x 10)))
-(display assert) (newline)
-
-(define (gtoe x y) (or (> x y) (= x y)))
-(display (gtoe 5 4)) (newline)
-
-(define (gtoe x y) (not (< x y)))
-(display (gtoe 5 4)) (newline)
 
 
 ;; example: square roots by Newton's Method
