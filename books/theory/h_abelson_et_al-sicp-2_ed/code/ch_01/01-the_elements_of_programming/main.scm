@@ -62,6 +62,54 @@
 (display (f 5)) (newline)
 
 
+;; conditional expressions and predicates
+(display "[conditional expressions] =>") (newline)
+(define (abs x)
+    (cond ((> x 0) x)
+          ((= x 0) 0)
+          ((< x 0) (- x))))
+(display (abs (- 42))) (newline)
+(display (abs 0)) (newline)
+(display (abs 42)) (newline)
+
+(newline)
+(define (abs x)
+    (cond ((< x 0) (- x))
+          (else x)))
+(display (abs (- 42))) (newline)
+(display (abs 0)) (newline)
+(display (abs 42)) (newline)
+
+(newline)
+(define (abs x)
+    (if (< x 0) (- x) x))
+(display (abs (- 42))) (newline)
+(display (abs 0)) (newline)
+(display (abs 42)) (newline)
+
+(newline)
+(define x 3)
+(display (and (> x 5) (< x 10))) (newline)
+(define x 7)
+(display (and (> x 5) (< x 10))) (newline)
+
+(newline)
+(define (>= x y)
+    (display "{>= operator}: ")
+    (or (> x y) (= x y)))
+(display (>= 17 42)) (newline)
+(display (>= 42 42)) (newline)
+(display (>= 69 42)) (newline)
+
+(newline)
+(define (>= x y)
+    (display "{>= operator (aux)}: ")
+    (not (< x y)))
+(display (>= 17 42)) (newline)
+(display (>= 42 42)) (newline)
+(display (>= 69 42)) (newline)
+
+
 ;; example: square roots by Newton's Method
 (newline)(newline)
 (display "[example: square roots by Newton's Method] =>") (newline)
