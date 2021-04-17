@@ -24,7 +24,7 @@
 
 
 ;; naming and the environment
-(display "[naming and the environment] =>") (newline)
+(display "=> naming and the environment") (newline)
 (define size 2)
 (display size) (newline)
 (display (* 5 size)) (newline)
