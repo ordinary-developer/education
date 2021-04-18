@@ -37,11 +37,10 @@
 
 
 ;; evaluating combinations
-(newline)(newline)
-(display "[evaluating combinations] =>") (newline)
+(display "=> evaluating combinations") (newline)
 (display
-    (* (+ 2 (* 4 6))
-       (+ 3 5 7))
+(* (+ 2 (* 4 6)) 
+   (+ 3 5 7))
 ) (newline)
 
 
