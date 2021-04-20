@@ -60,6 +60,16 @@
 (display (f 5)) (newline)
 
 
+;; the substitution model
+;; # Applicative-order evalution
+;; The interpreter first evaluates the operator and operands
+;; and then applies the resulting arguments.
+;;
+;; # Normal-order evalution
+;; The interpreter will not evaluate the operatns 
+;; unitl their values were needed.
+
+
 ;; conditional expressions and predicates
 (display "[conditional expressions] =>") (newline)
 (define (abs x)
