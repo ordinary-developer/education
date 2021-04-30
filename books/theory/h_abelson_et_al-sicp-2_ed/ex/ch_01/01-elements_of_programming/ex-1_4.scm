@@ -1,11 +1,14 @@
+; [exercise] =>
 ; Observe that our model of evaluation allows for combinations
 ; whose operators are compound expressions.
 ; Use this observaration to describe the behavior
 ; of the following procedure
 ; (define (a-plus-abs-b a b)
 ;   ((if (> b 0) + -) a b))     
-;
 
+
+; -------------
+; [solution] =>
 (define (a_plus_abs_b a b)
     ((if (> b 0) + -) a b))
 
@@ -19,5 +22,5 @@
 
 (if require (display "test => [ok]") (display "test => [fail]"))
 
-; oral answer:
-; this procedure returns the sum of the "a" parameter and the modulo of the "b" parameter
+; Notes:
+; This procedure returns the sum of the "a" parameter and the modulo of the "b" parameter.
