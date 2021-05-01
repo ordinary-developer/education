@@ -1,7 +1,11 @@
-;; define a procedure that takes three numbers
-;; as arguments and returns the sum of the squares of the two
-;; larger numbers
+; [exercise] =>
+; define a procedure that takes three numbers
+; as arguments and returns the sum of the squares of the two
+; larger numbers
 
+
+; -------------
+; [solution] =>
 (define (sum_of_largest param1 param2 param3)
     (define (square p) (* p p))
     (define maximum (max param1 param2 param3))
