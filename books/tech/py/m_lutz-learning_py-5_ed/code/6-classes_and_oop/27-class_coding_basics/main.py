@@ -1,4 +1,4 @@
-# classes generate multiple instance objects
+# the "classes generate multiple instance objects" section
 def example_01(): 
     print("example 01 (classes generate multiple instance objects) =>")
 
