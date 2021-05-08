@@ -23,5 +23,25 @@ def example_01():
     x.anothername = "spam"
 
 
+# the "classes are customized by inheritance" section
+def example_02():
+    print("example 02 (classes are customized by inheritance) =>")
+
+    class FirstClass:
+        def setdata(self, value):
+            self.data = value
+        def display(self):
+            print(self.data)
+
+    class SecondClass(FirstClass):
+        def display(self):
+            print('Current value = "%s"' % self.data)
+
+    z = SecondClass()
+    z.setdata(42)
+    z.display()
+
+
 if __name__ == '__main__':
     example_01()
+    example_02()
