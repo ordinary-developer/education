@@ -77,9 +77,46 @@ def example_03():
     print(a)
 
 
+# the "the world's simplest Python class" section
+def example_04():
+    print("example 04 (the world's simplest Python class) =>")
+
+    class rec:
+        pass
+
+    rec.name = 'Bob'
+    rec.age = 41
+    print(rec.name)
+
+    x = rec()
+    y = rec()
+    print(x.name, y.name)
+    x.name = 'Sue'
+    print(rec.name, x.name, y.name)
+
+    print(list(rec.__dict__.keys()))
+    print(list(name for name in rec.__dict__ if not name.startswith('__')))
+    print(list(x.__dict__.keys()))
+    print(list(y.__dict__.keys()))
+
+    print(x.name, x.__dict__['name'])
+    print(x.age)
+
+    print(x.__class__)
+    print(rec.__bases__)
+
+    def uppername(obj):
+        return obj.name.upper()
+
+    print(uppername(x))
+    rec.method = uppername
+    print(x.method())
+    print(y.method())
+    print(rec.method(x))
 
 
 if __name__ == '__main__':
     example_01()
     example_02()
     example_03()
+    example_04()
