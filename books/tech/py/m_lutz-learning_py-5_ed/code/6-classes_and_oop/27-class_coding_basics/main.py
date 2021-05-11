@@ -115,8 +115,68 @@ def example_04():
     print(rec.method(x))
 
 
+# the "records revisited" section
+def example_05():
+    print("example 05 (records revisited: classes versus dictionaries) =>")
+
+    rec = ('Bob', 40.5, ['dev', 'mgr'])
+    print(rec[0])
+
+    rec = {}
+    rec['name'] = 'Bob'
+    rec['age'] = 40.5
+    rec['jobs'] = ['dev', 'mgr']
+    print(rec['name'])
+
+    class rec:
+        pass
+
+    rec.name = 'Bob'
+    rec.age = 40.5
+    rec.jobs = ['dev', 'mgr']
+    print(rec.name)
+
+    class rec:
+        pass
+
+    pers1 = rec()
+    pers1.name = 'Bob'
+    pers1.jobs = ['dev', 'mgr']
+    pers1.age = 40.5
+
+    pers2 = rec()
+    pers2.name = 'Sue'
+    pers2.jobs = ['dev', 'cto']
+
+    print(pers1.name, pers2.name)
+
+    class Person:
+        def __init__(self, name, jobs, age = None):
+            self.name = name
+            self.jobs = jobs
+            self.age = age
+        def info(self):
+            return (self.name, self.jobs)                        
+
+    rec1 = Person('Bob', ['dev', 'mgr'], 40.5)
+    rec2 = Person('Sue', ['dev', 'cto'])
+    print(rec1.jobs, rec2.info())
+
+    rec = dict(name = 'Bob', age = 40.5, jobs = ['dev', 'mgr'])
+    print(rec)
+
+    rec = {'name': 'Bob', 'age': 40.5, 'jobs': ['dev', 'mgr']}
+    print(rec)
+
+    from collections import namedtuple
+    Rec = namedtuple('Rec', ['name', 'age', 'jobs'])
+    rec = Rec('Bob', 40.5, ['dev', 'mgr'])
+    print(rec)
+
+
 if __name__ == '__main__':
     example_01()
     example_02()
     example_03()
     example_04()
+    example_05()
