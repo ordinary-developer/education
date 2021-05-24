@@ -1,101 +1,132 @@
-#include <QFile>
 #include <QDebug>
-namespace example_01 { // -> QFile::setFileName, QFile::isOpen
-void run() {
-    QFile file1{};
-    file1.setFileName("no_existing_file-aabbccddeeff1");
-    qDebug() << "file is opened: " << file1.isOpen();
+#include <QFile>
+namespace example_01 { // -> block reading
     
-    QFile file2{ "no_existing_file-aabbccddeeff2" };
-    qDebug() << "file is opened: " << file2.isOpen();
-}
+void run() {
+    // creating a file for reading (copying)
+    {
+        QFile file1{"file1.dat"};
+        if (file1.exists())
+            file1.remove();
+    
+        if (not file1.open(QIODevice::WriteOnly)) {
+            qDebug() << "err on file1 opening: fatal err";
+            return;
+        }
+    
+        constexpr const int len = 1024;
+        char data[len];
+        if (not file1.write(data, len)) {
+            qDebug() << "err on file1 writing";
+        }
+
+        file1.close();
+    }
+    
+    // make reading (make a copy)
+    QFile file1{"file1.dat"};
+    if (not file1.open(QIODevice::ReadOnly)) {
+        qDebug() << "err on file1 opening: fatal err";
+        file1.remove();
+        return;
+    }
+    
+    QFile file2{"file2.dat"};
+    if (file2.exists()) {
+        qDebug() << "file2 already exists: it will be rewritten";
+    }
+    if (not file2.open(QIODevice::WriteOnly)) {
+        qDebug() << "err on file2 opening: fatal err";
+        file1.remove();
+    }
+    
+    constexpr const int len = 1024;
+    char data[len];
+    while (not file1.atEnd()) {
+        const int blockSize = file1.read(data, sizeof(data));
+        file2.write(data, blockSize);
+    }
+    
+    file1.close();
+    file2.close();
+    
+    
+    // cleaning
+    if (not file1.remove()) {
+        qDebug() << "err on file1 removing";
+    }
+    
+    if (not file2.remove()) {
+        qDebug() << "err on file2 removing";
+    }
+}    
+
 } // example_01
 
 
 #include <QFile>
 #include <QDebug>
-namespace example_02 { // -> QFile::exists, QFile::read, QFile::write
+namespace example_02 { // -> "all at once" reading
+
 void run() {
-    char buf[1024]{};
-
-    QFile file1{ "file1.dat" };
-    QFile file2{ "file2.dat" };
-    qDebug() << "file1 exists: " << QFile::exists(file1.fileName());
-    qDebug() << "file2 exists: " << file2.exists();
-
-    if (not file1.open(QIODevice::WriteOnly)) {
-        qDebug() << "error with file1 opening for writing";
-        return;
+    // creating a file for reading
+    {
+        QFile file1{"file1.dat"};
+        if (file1.exists()) 
+            file1.remove();
+        
+        if (not file1.open(QIODevice::WriteOnly)) {
+            qDebug() << "err on file1 opening: fatal err";
+            return;
+        }
+        
+        constexpr const int len = 1024;
+        char data[len];
+        if (not file1.write(data, len)) {
+            qDebug() << "err on file1 writing";
+        }
+        
+        file1.close();
     }
-    file1.write(buf, sizeof(buf));
-    file1.close();
-
+    
+    // make reading (make a copy)
+    QFile file1{"file1.dat"};
     if (not file1.open(QIODevice::ReadOnly)) {
-        qDebug() << "error with file1 opening for reading";
+        qDebug() << "err on file1 opening: fatal err";
+        file1.remove();
         return;
     }
-
+    
+    QFile file2{"file2.dat"};
+    if (file2.exists()) {
+        qDebug() << "file2 already exists: it will be rewritten";
+    }
     if (not file2.open(QIODevice::WriteOnly)) {
-        qDebug() << "error with file2 opening for writing";
-        return;
+        qDebug() << "err on file2 opening: fatal err";
+        file1.remove();
     }
-
-    while (not file1.atEnd()) {
-        int const size = file1.read(buf, sizeof(buf));
-        file2.write(buf, size);
-    }
-    file1.close();
-    file2.close();
-
-    QFile::remove(file1.fileName());
-    QFile::remove(file2.fileName());
-}
-} // example_02
-
-
-#include <QFile>
-#include <QDebug>
-namespace example_03 { // -> QFile::readAll
-void run() {
-    char buf[1024]{};
-
-    QFile file1{ "file1.dat" };
-    QFile file2{ "file2.dat" };
- 
-    if (not file1.open(QIODevice::WriteOnly)) {
-        qDebug() << "error with file1 opening for writing";
-        return;
-    }
-    file1.write(buf, sizeof(buf));
-    file1.close();
-
-    if (not file1.open(QIODevice::ReadOnly)) {
-        qDebug() << "error with file1 opening for reading";
-        return;
-    }
-
-    if (not file2.open(QIODevice::WriteOnly)) {
-        qDebug() << "error with file2 opening for writing";
-        return;
-    }
-
-    QByteArray const& data = file1.readAll();
+    
+    QByteArray data = file1.readAll();
     file2.write(data);
-
+    
     file1.close();
     file2.close();
-
-    QFile::remove(file1.fileName());
-    QFile::remove(file2.fileName());
+    
+    // cleaning
+    if (not file1.remove()) {
+        qDebug() << "err on file1 removing";
+    }
+    if (not file2.remove()) {
+        qDebug() << "err on file2 removing";
+    }
 }
-} // example_03
 
+} // example_02
+    
 
-#include <QDebug>
 int main(int, char**) {
-    qDebug() << "example_01 =>"; example_01::run(); qDebug() << "";
-    qDebug() << "example_02 =>"; example_02::run(); qDebug() << "";
-    qDebug() << "example_03 =>"; example_03::run(); qDebug() << "";
-
+    example_01::run();
+    example_02::run();
+    
     return 0;
 }
