@@ -1,7 +1,7 @@
 #include <QIODevice>
 #include <QFile>
 #include <QDebug>
-namespace workspace { // print contents from any QIODevice
+namespace example { // -> print contents from any QIODevice
     
 void print(QIODevice * device) {
     char ch;
@@ -38,11 +38,11 @@ void run() {
         qDebug() << "err on removing";
     }
 }
-} // workspace
+} // example
 
 
 int main(int, char**) {
-    workspace::run();
+    example::run();
     
     return 0;
 }
