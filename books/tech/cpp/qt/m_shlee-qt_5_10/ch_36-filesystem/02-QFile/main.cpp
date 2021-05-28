@@ -124,9 +124,10 @@ void run() {
 } // example_02
     
 
+#include <QDebug>
 int main(int, char**) {
-    example_01::run();
-    example_02::run();
+    qDebug() << "example_01 =>"; example_01::run(); qDebug() << "";
+    qDebug() << "example_02 =>"; example_02::run(); qDebug() << "";
     
     return 0;
 }
