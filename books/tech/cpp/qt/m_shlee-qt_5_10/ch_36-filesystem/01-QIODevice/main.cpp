@@ -41,8 +41,9 @@ void run() {
 } // example
 
 
+#include <QDebug>
 int main(int, char**) {
-    example::run();
+    qDebug() << "example =>"; example::run(); qDebug() << "";
     
     return 0;
 }
