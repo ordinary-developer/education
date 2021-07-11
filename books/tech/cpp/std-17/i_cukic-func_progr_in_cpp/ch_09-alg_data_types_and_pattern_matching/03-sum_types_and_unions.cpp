@@ -15,7 +15,7 @@ private:
 class finished_t {
 public:
     finished_t(unsigned const count) : m_count{count} {}
-
+        
     unsigned count() const { return m_count; }
 
 private:
@@ -29,32 +29,32 @@ public:
 
     void start() {
         assert((nullptr != std::get_if<init_t>(&m_state)));
-
         m_state = running_t{};
     }
 
     void finish() {
         auto * state = std::get_if<running_t>(&m_state);
-        assert(nullptr != state);
-
-        m_state = finished_t{state->count()};
+        assert((nullptr != state));
+        m_state = finished_t(state->count());
     }
 
 private:
     std::variant<init_t, running_t, finished_t> m_state;
 };
 
+
 void run() {
     program_t program{};
     program.start();
     program.finish();
 }
+
 } // workspace
 
 
 #include <iostream>
 int main() {
-    std::cout << "[test] => ok" << std::endl;
+    std::cout << "test => [ok]" << std::endl;
     workspace::run();
     std::cout << std::endl;
 
