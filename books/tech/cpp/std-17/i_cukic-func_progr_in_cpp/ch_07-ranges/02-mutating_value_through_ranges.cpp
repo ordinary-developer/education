@@ -27,4 +27,4 @@ int main() {
     std::cout << "test => [ok]" << std::endl; test::run(); std::cout << std::endl;   
         
     return 0;
-} 
+}
