@@ -1,11 +1,13 @@
-;; the "linear recursion and iteration" section
-(display "linear recursion and iteration =>") (newline)
+;; linear recursion and iteration
+(display "[linear recursion and iteration] =>")(newline)
+
 (define (factorial n)
     (if (= n 1)
         1
         (* n (factorial (- n 1)))))
-    
-(display (factorial 6)) (newline)
+
+(display "6! = ")(display (factorial 6))(newline)
+
 
 (define (factorial n)
     (fact_iter 1 1 n))
@@ -14,18 +16,23 @@
         product
         (fact_iter (* counter product)
                    (+ counter 1)
-                   max_count))) 
+                   max_count))
+)
 
-(display (factorial 6)) (newline)
+(display "6! = ")(display (factorial 6))(newline)
+
 
 (define (factorial n)
     (define (iter product counter)
         (if (> counter n)
             product
-            (iter (* counter product) (+ counter 1))))
+            (iter (* counter product)
+                  (+ counter 1)))
+    )
+
     (iter 1 1))
-    
-(display (factorial 6)) (newline)
+
+(display "6! = ")(display (factorial 6))(newline)
 
 
 ;; tree recursion
