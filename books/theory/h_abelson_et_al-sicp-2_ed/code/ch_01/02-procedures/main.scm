@@ -36,14 +36,16 @@
 
 
 ;; tree recursion
-(newline) (newline)
+;; tree recursion
 (display "[tree recursion] =>") (newline)
 
 (define (fib n)
     (cond ((= n 0) 0)
           ((= n 1) 1)
           (else (+ (fib (- n 1)) (fib (- n 2))))))
+
 (display (fib 17)) (newline)
+
 
 (define (fib n)
     (fib_iter 1 0 n))
@@ -51,23 +53,25 @@
     (if (= count 0)
         b
         (fib_iter (+ a b) a (- count 1))))
+
 (display (fib 17)) (newline)
 
+
 (define (count_change amount) (cc amount 5))
+
 (define (cc amount kinds_of_coins)
     (cond ((= amount 0) 1)
           ((or (< amount 0) (= kinds_of_coins 0)) 0)
-          (else (+ (cc amount
-                       (- kinds_of_coins 1)) 
-                   (cc (- amount 
-                          (first_denomination kinds_of_coins)) 
-                       kinds_of_coins)))))
+          (else (+ (cc amount (- kinds_of_coins 1))
+                   (cc (- amount (first_denomination kinds_of_coins)) kinds_of_coins)))))
+
 (define (first_denomination kinds_of_coins)
     (cond ((= kinds_of_coins 1) 1)
-          ((= kinds_of_coins 2) 5) 
-          ((= kinds_of_coins 3) 10) 
-          ((= kinds_of_coins 4) 25) 
-          ((= kinds_of_coins 5) 50) ))
+          ((= kinds_of_coins 2) 5)
+          ((= kinds_of_coins 3) 10)
+          ((= kinds_of_coins 4) 25)
+          ((= kinds_of_coins 5) 50)))
+
 (display (count_change 100)) (newline)
 
 
