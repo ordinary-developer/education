@@ -108,3 +108,53 @@
      (display " ") (display (= (h 4) (h_reduced 4))) (newline)
 
 ; now `(h 5)`, `(h 6)` and so on due to stack overflow of the `pow` function
+
+
+
+;; [auxiliary]
+; an iterative process
+(define (h_reduced_i n)
+    (define (pow x n)
+        (define (iter accum counter)
+            (if (> counter n) accum (iter (* x accum) (+ counter 1))))
+        (iter 1 1))
+
+    (define (iter accum counter)
+        (if (= counter 0)
+            accum
+            (iter (pow 2 accum) (- counter 1))))
+
+    (iter 1 n))
+
+; iterative process with a block structure
+(define (h_reduced_i_aux n)
+    (define (pow x n)
+        (define (iter accum counter)
+            (if (> counter n) accum (iter (* x accum) (+ counter 1))))
+        (iter 1 1))
+
+    (define (iter accum counter)
+        (if (= counter n)
+            accum
+            (iter (pow 2 accum) (+ counter 1))))
+
+    (iter 1 0))
+
+; iterative process with a block structure (another variant)
+(define (h_reduced_i_aux2 n)
+    (define (pow x n)
+        (define (iter accum counter)
+            (if (> counter n) accum (iter (* x accum) (+ counter 1))))
+        (iter 1 1))
+
+    (define (iter accum counter)
+        (if (> counter n)
+            accum
+            (iter (pow 2 accum) (+ counter 1))))
+
+    (iter 1 1))
+
+
+(display (= (h_reduced 2) (h_reduced_i 2) (h_reduced_i_aux 2) (h_reduced_i_aux2 2)))
+    (display " ") (display (= (h_reduced 3) (h_reduced_i 3) (h_reduced_i_aux 3) (h_reduced_i_aux2 3)))
+    (display " ") (display (= (h_reduced 4) (h_reduced_i 4) (h_reduced_i_aux 4) (h_reduced_i_aux2 4))) (newline)
