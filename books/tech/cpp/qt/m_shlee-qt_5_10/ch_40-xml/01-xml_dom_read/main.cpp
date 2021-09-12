@@ -1,9 +1,11 @@
 #include <QtXml>
+#include <QFile>
 #include <QDebug>
+
 
 void traverseNode(QDomNode const& node);
 
-int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {  
+int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
     QDomDocument domDoc{};
     QFile file{"address_book.xml"};
     if (file.open(QIODevice::ReadOnly)) {
@@ -14,7 +16,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char** argv) {
         file.close();
     }
     
-	return 0; 
+    return 0;
 }
 
 void traverseNode(QDomNode const& node) {
@@ -25,11 +27,11 @@ void traverseNode(QDomNode const& node) {
             if (not domElement.isNull()) {
                 if ("contact" == domElement.tagName()) {
                     qDebug() << "attr: " << domElement.attribute("number", "");
-                }
+                }                    
                 else {
                     qDebug() << "TagName: " << domElement.tagName() << "\tText: " << domElement.text();
                 }
-            }
+           }
         }
         traverseNode(domNode);
         domNode = domNode.nextSibling();
