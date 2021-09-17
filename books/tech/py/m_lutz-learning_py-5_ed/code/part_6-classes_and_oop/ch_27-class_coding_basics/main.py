@@ -36,10 +36,15 @@ def example_02():
     class SecondClass(FirstClass):
         def display(self):
             print('Current value = "%s"' % self.data)
+            
+    x = FirstClass()
+    x.setdata(17)
 
     z = SecondClass()
     z.setdata(42)
     z.display()
+    
+    x.display()
 
 
 # the "classes can intercept Python operators" section
