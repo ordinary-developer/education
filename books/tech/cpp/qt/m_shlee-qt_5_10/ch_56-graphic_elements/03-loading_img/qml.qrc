@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file alias = "image.jpg">image.jpg</file>
     </qresource>
 </RCC>
