@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Button.qml</file>
+        <file alias = "button.png">button.png</file>
+        <file alias = "button_pressed.png">button_pressed.png</file>
+    </qresource>
+</RCC>
