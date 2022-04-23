@@ -2,6 +2,7 @@
 <head>
 	<title>04</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	<script src="./04_journal.js"></script>
 	<script type="text/javascript"> 
 	window.onload = function() {
 		// data sets
@@ -103,6 +104,220 @@
 			score.visitors = 1;
 			console.log(score);
 		}
+		
+		// the lycanthrope's log
+        console.log("\n\n[the lyncathrope's log] =>\n");
+        {
+            let journal = [];
+            
+            function addEntry(events, squirrel) {
+                journal.push({events, squirrel});
+            }
+            
+            console.log(journal);
+            addEntry(["work", "touched tree", "pizza", "running",
+                      "television"], false);
+            addEntry(["work", "ice cream", "cauliflower", "lasagna",
+                      "touched tree", "brushed teeth"], false);
+            addEntry(["weekend", "cycling", "break", "peanuts",
+                      "beer"], true);
+            console.log(journal);
+            
+            function phi(table) {
+                return (table[3] * table[0] - table[2] * table[1]) /
+                    Math.sqrt((table[2] + table[3]) *
+                              (table[0] + table[1]) *
+                              (table[1] + table[3]) *
+                              (table[0] + table[2]));
+            }
+            console.log(phi([76, 9, 4, 1]));
+            
+            function tableFor(event, journal) {
+                let table = [0, 0, 0, 0];
+                for (let i = 0; i < journal.length; i++) {
+                    let entry = journal[i], index = 0;
+                    if (entry.events.includes(event))
+                        index += 1;
+                    if (entry.squirrel)
+                        index += 2;
+                    table[index] += 1;
+                }
+                return table;
+            }
+            
+            console.log(tableFor("pizza", JOURNAL));
+        }
+        
+        // array loops
+        console.log("\n\n[array loops] =>\n");
+        {
+            for (let entry of JOURNAL) {
+                console.log(`${entry.events.length} events.`);
+            }
+        }
+        
+        // the final analysis
+        console.log("\n\n[the final analysis] =>\n");
+        {
+            function journalEvents(journal) {
+                let events = [];
+                for (let entry of journal) {
+                    for (let event of entry.events) {
+                        if (!events.includes(event)) {
+                            events.push(event);
+                        }
+                    }
+                }
+                return events;
+            }
+            console.log(journalEvents(JOURNAL));
+            
+            // 'phi' and 'tableFor' are declared above
+            for (let event of journalEvents(JOURNAL)) {
+                console.log(event + ":", phi(tableFor(event, JOURNAL)));
+            }
+            
+            for (let event of journalEvents(JOURNAL)) {
+                let correlation = phi(tableFor(event, JOURNAL));
+                if (correlation > 0.1 || correlation < -0.1) {
+                    console.log(event + ":", correlation);
+                }
+            }
+            
+            for (let entry of JOURNAL) {
+                if (entry.events.includes("peanuts") &&
+                   !entry.events.includes("brushed teeth"))
+                {
+                    entry.events.push("peanut teeth");
+                }
+            }
+            console.log(phi(tableFor("peanut teeth", JOURNAL)));
+        }
+        
+        console.log("\n\n[further arrayology] =>\n");
+        {
+            let todoList = [];
+            function remember(task) {
+                todoList.push(task);
+            }
+            function getTask() {
+                return todoList.shift();
+            }
+            function rememberUrgently(task) {
+                todoList.unshift(task);
+            }
+            
+            console.log(todoList);
+            
+            remember("task1");
+            remember("task2");
+            console.log(todoList);
+            
+            console.log(getTask());
+            
+            remember("task3");
+            rememberUrgently("task4");
+            console.log(todoList);
+            
+            console.log([1, 2, 3, 2, 1].indexOf(2));
+            console.log([1, 2, 3, 2, 1].lastIndexOf(2));
+            
+            console.log([0, 1, 2, 3, 4].slice(2, 4));
+            console.log([0, 1, 2, 3, 4].slice(2));
+            
+            function remove(array, index) {
+                return array.slice(0, index)
+                    .concat(array.slice(index + 1));
+            }
+            console.log(remove(["a", "b", "c", "d", "e"], 2));
+        }
+        
+        // strings and their properties
+        console.log("\n\n[strings and their properties] =>\n");
+        {
+            let kim = "Kim";
+            console.log(kim);
+            
+            console.log("coconuts".slice(4, 7));
+            console.log("coconut".indexOf("u"));
+            console.log("one two three".indexOf("ee"));
+            
+            console.log("   okay  \n  ".trim());
+            
+            console.log(String(6).padStart(3, "0"));
+            
+            let sentence = "Secretarybirds specialize in stomping";
+            let words = sentence.split(" ");
+            console.log(words);
+            console.log(words.join(". "));
+            
+            console.log("LA".repeat(3));
+            
+            let string = "abc";
+            console.log(string.length);
+            console.log(string[1]);
+        }
+        
+        // rest parameters
+        console.log("\n\n[rest parameters] =>\n");
+        {
+            function max(...numbers) {
+                let result = -Infinity;
+                for (let number of numbers) {
+                    if (number > result)
+                        result = number;
+                }
+                return result;
+            }
+            console.log(max(4, 1, 9, -2));
+            
+            let numbers = [5, 1, 7];
+            console.log(max(...numbers));
+            console.log(max(9, ...numbers, 2));
+            
+            let words = ["never", "fully"];
+            console.log(["will", ...words, "understand"]);
+        }
+        
+        // the math object
+        console.log("\n\n[the math object] =>\n");
+        {
+            function randomPointOnCircle(radius) {
+                let angle = Math.random() * 2 * Math.PI;
+                return {x: radius * Math.cos(angle),
+                        y: radius * Math.sin(angle)};
+            }
+            console.log(randomPointOnCircle(2));
+            
+            console.log(Math.random());
+            console.log(Math.random());
+            console.log(Math.random());
+            
+            console.log(Math.floor(Math.random() * 10));
+        }
+        
+        // destructuring
+        console.log("\n\n[destructuring] =>\n");
+        {
+            function phi([n00, n01, n10, n11]) {
+                return (n11 * n00 - n10 * n01) /
+                    Math.sqrt((n10 + n11) * (n00 + n01) *
+                              (n01 + n11) * (n00 + n10));
+            }
+            console.log([76, 9, 4, 1]);
+            
+            let {name} = {name: "Faraji", age: 23};
+            console.log(name);
+        }
+        
+        // JSON
+        console.log("\n\n[JSON] =>\n");
+        {
+            let string = JSON.stringify({squirrel: false,
+                                         events: ["weekend"]});
+            console.log(string);
+            console.log(JSON.parse(string).events);
+        }
 	}
 	</script>
 </head>
