@@ -1,0 +1,88 @@
+<html>
+<head>
+	<title>04_exercises</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script type="text/javascript"> 
+	window.onload = function() {
+        // the sum of range
+        console.log("[the sum of range] =>\n");
+        {
+            function range(start, stop) {
+                ret = [];
+                for (let num = start; num <= stop; num++) {
+                    ret.push(num);
+                }
+                return ret;
+            }
+            console.log(range(1, 10));
+            
+            function sum(nums) {
+                ret = 0;
+                for (let num of nums) {
+                    ret += num;
+                }
+                return ret;
+            }
+            console.log(sum([1, 2, 3]));
+            console.log(sum(range(1, 10)));
+            
+            function rangeByStep(start, stop, step = 1) {
+                if (step === 0)
+                    return [];
+                                
+                if ((start < stop && step < 0) ||
+                    (start > stop && step > 0))
+                {
+                    return [];
+                }
+                
+                ret = [];                
+                for (let num = start;
+                     start < stop ? num <= stop : num >= stop;
+                     num += step)
+                {
+                    ret.push(num);
+                }
+                return ret;
+            }
+            console.log(rangeByStep(1, 10, 2));
+            console.log(sum(rangeByStep(1, 10, 2)));
+            console.log(rangeByStep(5, 2, -1));
+            console.log(rangeByStep(5, 2, -1));
+            
+            // ex cases
+            console.log(rangeByStep(-5, 2));
+            console.log(rangeByStep(2, 5));
+            console.log(rangeByStep(5, 2));
+            console.log(rangeByStep(2, -5));
+            console.log(rangeByStep(2, 5, 0));
+        }
+       
+        // author's soluion
+        console.log("\n\n[author's solution] =>\n");
+		{
+			function range(start, end, step = start < end ? 1 : -1) {
+				let array = [];
+				
+				for (let i = start; (step > 0 ? i <= end : i >= end); i += step)
+					array.push(i);
+					
+				return array;
+			}
+			
+			function sum(array) {
+				let total = 0;
+				for (let value of array)
+					total += value;
+				return total;
+			}
+			
+			console.log(range(1, 10));
+			console.log(range(5, 2, -1));
+			console.log(sum(range(1, 10)));
+		}
+	}
+	</script>
+</head>
+<body>
+</body>
