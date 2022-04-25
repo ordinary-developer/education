@@ -81,6 +81,87 @@
 			console.log(range(5, 2, -1));
 			console.log(sum(range(1, 10)));
 		}
+				
+		// reversing an array
+		console.log("\n\n[reversing an array] =>\n");
+		{
+			function reverseArray(array) {
+				if (array.legnth === 0)
+					return [];
+					
+				ret = [];
+				for (let i = array.length - 1; i >= 0; i--) 
+					ret.push(array[i]);
+				return ret;
+			}
+			
+			console.log(reverseArray([1, 2, 3, 4, 5]));
+			console.log(reverseArray([1, 2, 3, 4]));
+			console.log(reverseArray([1]));
+			console.log(reverseArray([]));
+			
+			function reverseArrayInPlace(array) {
+				for (let i = 0; i < array.length / 2; i++) {
+					let left = i, right = array.length - 1 - i;
+					
+					// swap
+					let tmp = array[left]
+					array[left] = array[right];
+					array[right] = tmp;
+				}
+				
+				return array;
+			}
+			
+			let array = [1, 2, 3, 4, 5];
+			reverseArrayInPlace(array);
+			console.log(array);
+			
+			array = [1, 2, 3, 4];
+			reverseArrayInPlace(array);
+			console.log(array);
+			
+			array = [1];
+			reverseArrayInPlace(array);
+			console.log(array);
+			
+			array = [];
+			reverseArrayInPlace(array);
+			console.log(array);
+			
+			//std 
+			console.log([1, 2, 3, 4, 5].reverse());
+			console.log([1, 2, 3, 4].reverse());
+			console.log([1, 2].reverse());
+			console.log([1].reverse());
+			console.log([].reverse());
+		}
+		
+		// author's solution
+		console.log("\n\n[author's solution] =>\n");
+		{
+			function reverseArray(array) {
+				let output = [];
+				for (let i = array.length - 1; i >= 0; i--) {
+					output.push(array[i]);
+				}
+				return output;
+			}
+			
+			function reverArrayInPlace(array) {
+				for (let i = 0; i < Math.floor(array.length / 2); i++) {
+					let old = array[i];
+					array[i] = array[array.legnth - 1 - i];
+					array[array.length - 1 - i] = old;
+				}
+				return array;
+			}
+			
+			console.log(reverseArray(["A", "B", "C"]));
+			let arrayValue = [1, 2, 3, 4, 5];
+			reverseArrayInPlace(arrayValue);
+			console.log(arrayValue);
+		}
 	}
 	</script>
 </head>
