@@ -4,8 +4,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script type="text/javascript"> 
 	window.onload = function() {
-		// defining a function
-		console.log("[minimu] =>");
+		// minimum
+		console.log("[minimum] =>");
 		{
 			function min(number1, number2) {
 				return (number1 < number2 ? number1 : number2);
@@ -24,6 +24,98 @@
 			console.log(min(0, 10));
 			console.log(min(0, -10));
 		}
+		console.log("\n\n");
+		
+		
+		// recursion
+		console.log("[recursion] =>");
+		{
+			function isEven(num) {
+				if (num < 0)
+					num = -num;
+				
+				return (num === 0 ? true : (num === 1 ? false : isEven(num - 2)));
+			}
+			console.log(isEven(50));
+			console.log(isEven(75));
+			console.log(isEven(-1));
+		}
+		console.log("\n\n");
+		
+		console.log("[author's version] =>");
+		{
+			function isEven(n) {
+				if (n == 0)
+					return true;
+				else if (n === 1)
+					return false;
+				else if (n < 0)
+					return isEven(-n);
+				else
+					return isEven(n - 2);
+			}
+			
+			console.log(isEven(50));
+			console.log(isEven(75));
+			console.log(isEven(-1));
+		}
+		console.log("\n\n");
+		
+		
+		// bean counting
+		console.log("[bean counting] =>");
+		{
+			function countBs(str) {
+				let count = 0;
+				for (let i = 0; i < str.length; i++) 
+					if ('B' === str[i])
+						count++;
+				
+				return count;
+			}
+			console.log(countBs("AAABCCC"));
+			console.log(countBs("AAABBBCCC"));
+			console.log(countBs("AAACCC"));
+			
+			function countChar(str, ch) {
+				let count = 0;
+				for (let i = 0; i < str.length; i++)
+					if (ch === str[i])
+						count++;
+						
+				return count;
+			}
+			console.log(countChar("AAABCCC", 'B'));
+			console.log(countChar("AAABBBCCC", 'B'));
+			console.log(countChar("AAACCC", 'B'));
+			
+			function countBsEx(str) { return countChar(str, 'B'); }
+			console.log(countBsEx("AAABCCC"));
+			console.log(countBsEx("AAABBBCCC"));
+			console.log(countBsEx("AAACCC"));
+		}
+		console.log("\n\n");
+		
+		console.log("[author's version] =>");
+		{
+			function countChar(string, ch) {
+				let counted = 0;
+				for (let i = 0; i < string.length; i++) {
+					if (string[i] == ch) {
+						counted += 1;
+					}
+				}
+				return counted;
+			}
+			
+			function countBs(string) {
+				return countChar(string, "B");
+			}
+			
+			console.log(countBs("BBC"));
+			console.log(countChar("kakkerlak", "k"));
+		}
+		console.log("\n\n");
 	}
 	</script>
 </head>
