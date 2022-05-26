@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title>05</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script type="text/javascript"> 
+	window.onload = function() {
+		// abstract repetition
+		console.log("[abstracting repetition] =>");
+		{
+			for (let i = 0; i < 10; i++) {
+				console.log(i);
+			}
+			
+			function repeatLog(n) {
+				for (let i = 0; i < n; i++) {
+					console.log(i);
+				}
+			}
+			repeatLog(10);
+			
+			function repeat(n, action) {
+				for (let i = 0; i < n; i++) {
+					action(i);
+				}
+			}
+			repeat(3, console.log);
+			
+			let labels = [];
+			repeat(5, i => {
+				labels.push(`Unit ${i + 1}`);
+			});
+			console.log(labels);
+		}
+		console.log("\n\n");
+		
+		
+		// higher-order functions
+		console.log("[higher-order functions] =>");
+		{
+			function greaterThan(n) {
+				return m => m > n;
+			}
+			let greaterThan10 = greaterThan(10);
+			console.log(greaterThan10(11));
+			
+			function noisy(f) {
+				return (...args) => {
+					console.log("calling with", args);
+					let result = f(...args);
+					console.log("called with", args, ", returned", result);
+					return result;
+				};
+			}
+			noisy(Math.min)(3, 2, 1);
+			
+			function unless(test, then) {
+				if (!test)
+					then();
+			}
+			
+			repeat(3, n => {
+				unless(n % 2 == 1, () => {
+					console.log(n, "is even");
+				});
+			});
+			
+			["A", "B"].forEach(l => console.log(l));
+		}
+		console.log("\n\n");
+	}
+	</script>
+</head>
+<body>
+</body>
