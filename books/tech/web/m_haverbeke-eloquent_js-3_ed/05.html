@@ -2,6 +2,7 @@
 <head>
 	<title>05</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script src="./05_scripts.js"></script>
 	<script type="text/javascript"> 
 	window.onload = function() {
 		// abstract repetition
@@ -65,6 +66,112 @@
 			});
 			
 			["A", "B"].forEach(l => console.log(l));
+		}
+		console.log("\n\n");
+		
+		
+		// script data set
+		console.log("[filtering arrays] =>");
+		{
+			function filter(array, test) {
+				let passed = [];
+				for (let element of array) {
+					if (test(element)) {
+						passed.push(element);
+					}
+				}
+				return passed;
+			}
+			console.log(filter(SCRIPTS, script => script.living));
+			
+			console.log(SCRIPTS.filter(s => s.direction == "ttb"));
+		}
+		console.log("\n\n");
+		
+		
+		// transforming with map
+		console.log("[transforming with map] =>");
+		{
+			function map(array, transform) {
+				let mapped = [];
+				for (let element of array) {
+					mapped.push(transform(element));
+				}
+				return mapped;
+			}
+			let rtlScripts = SCRIPTS.filter(s => s.direction == "rtl");
+			console.log(map(rtlScripts, s => s.name));
+			
+			console.log(SCRIPTS.map(s => s.name));
+			console.log(SCRIPTS.filter(s => s.direction == "rtl").map(s => s.name));
+		}
+		console.log("\n\n");
+		
+		
+		// summarizing with reduce
+		console.log("[summarizing with reduce] =>");
+		{
+			function reduce(array, combine, start) {
+				let current = start;
+				for (let element of array) {
+					current = combine(current, element);
+				}
+				return current;
+			}
+			console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));
+		
+			console.log([1, 2, 3, 4].reduce((a, b) => a + b));
+		
+			function characterCount(script) {
+				return script.ranges.reduce((count, [from, to]) => {
+					return count + (to - from);
+				}, 0);
+			}
+			
+			console.log(SCRIPTS.reduce((a, b) => {
+				return characterCount(a) < characterCount(b) ? b : a;
+			}));
+		}
+		console.log("\n\n");
+		
+		
+		// composability
+		console.log("[composability] =>");
+		{
+			function characterCount(script) {
+				return script.ranges.reduce((count, [from, to]) => {
+					return count + (to - from);
+				}, 0);
+			}
+			
+			let biggest = null;
+			for (let script of SCRIPTS)
+			{
+				if (biggest == null ||
+					characterCount(biggest) < characterCount(script))
+				{
+					biggest = script;
+				}
+			}
+			console.log(biggest);
+			
+			function average(array) {
+				return array.reduce((a, b) => a + b) / array.length;
+			}
+			
+			console.log(Math.round(average(
+				SCRIPTS.filter(s => s.living).map(s => s.year))));
+			console.log(Math.round(average(
+				SCRIPTS.filter(s => !s.living).map(s => s.year))));
+				
+			let total = 0, count = 0;
+			for (let script of SCRIPTS) {
+				if (script.living) {
+					total += script.year;
+					count += 1;
+				}
+			}
+			console.log(Math.round(total / count));
 		}
 		console.log("\n\n");
 	}
