@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>05_exercises</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script type="text/javascript"> 
+	window.onload = function() {
+        // the sum of range
+        console.log("[flattening] =>\n");
+        {
+			function flatten(arrOfArrs) {
+				return arrOfArrs.reduce((ret, array) => ret.concat(array), []);
+			}
+			
+			console.log(flatten([[1, 2], [3, 4, 5], [6]]));
+			console.log(flatten([]));
+			console.log(flatten([[]]));
+			console.log(flatten([[], [], []]));
+			console.log(flatten([[1, 2], [], [3, 4]]));
+ 
+        }
+		console.log("\n\n");
+       
+        // author's soluion
+        console.log("[author's solution] =>\n");
+		{
+			let arrays = [[1, 2, 3], [4, 5], [6]];
+			
+			console.log(arrays.reduce((flat, current) => flat.concat(current), []));
+		}
+		console.log("\n\n");
+	}
+	</script>
+</head>
+<body>
+</body>
