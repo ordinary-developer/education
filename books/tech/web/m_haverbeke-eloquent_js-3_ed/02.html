@@ -34,7 +34,9 @@
 		// functions
 		console.log("[functions] =>");
 		{
-			//prompt("Enter passcode");
+			let toShowPrompt = false;
+			if (toShowPrompt)
+				prompt("Enter passcode");
 		}
 		console.log("\n\n");
 		
@@ -47,6 +49,59 @@
 			console.log(Math.min(2, 4) + 100);
 		}
 		console.log("\n\n");
+		
+		
+		// control flow
+		console.log("[control flow] =>");
+		{
+			let toShowPrompt = false;
+			let theNumber = (toShowPrompt ? Number(prompt("Pick a number")) : 42);
+			console.log("you number is the square root of " + theNumber * theNumber);
+		}
+		console.log("\n\n");
+		
+		
+		// conditional execution
+		console.log("[conditional execution] =>");
+		{
+			{
+				let toShowPrompt = false;
+				let theNumber = (toShowPrompt ? Number(prompt("Pick a number")) : 5);
+				if (!Number.isNaN(theNumber)) {
+					console.log("Your number is the square root of " + theNumber * theNumber);
+				}
+			}
+			
+			if (1 + 1 == 2) console.log("It's true");
+			
+			{
+				let toShowPrompt = false;
+				let theNumber = (toShowPrompt ? Number(prompt("Pick a number")) : 5);
+				if (!Number.isNaN(theNumber)) {
+					console.log("Your number is the square root of " + theNumber * theNumber);
+				}
+				else {
+					console.log("Hey. why didn't you give me a number?");
+				}
+			}
+			
+			{
+				let toShowPrompt = true;
+				let num = (toShowPrompt ? Number(prompt("Pick a number")) : 5);
+				
+				if (num < 10) {
+					console.log("Small");
+				}
+				else if (num < 100) {
+					console.log("Medium");
+				}
+				else {
+					console.log("Large");
+				}
+			}
+		}
+		console.log("\n\n");
+	
 	}	
 	</script>
 </head>
