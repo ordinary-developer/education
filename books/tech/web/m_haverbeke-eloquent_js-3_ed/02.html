@@ -178,6 +178,53 @@
 			}
 		}
 		console.log("\n\n");
+		
+		
+		// updating bindings succinctly
+		console.log("[updating bindings succinctly] =>");
+		{
+			let counter = 0;
+			
+			counter = counter + 1;
+			console.log(counter);
+			
+			counter += 1;
+			console.log(counter);
+			
+			counter++;
+			console.log(counter);
+			
+			counter--;
+			console.log(counter);
+			
+			for (let number = 0; number <= 12; number += 2) {
+				console.log(number);
+			}
+		}
+		console.log("\n\n");
+		
+		
+		// dispatching on a value with switch
+		console.log("[dispatching on a value with switch] =>");
+		{
+			let toShowPrompt = false;
+			
+			let choice = (toShowPrompt ? prompt("What is the weather like?") : "");
+			switch (choice) {
+				case "rainy":
+					console.log("Remember to bring an umbrella.");
+					break;
+				case "sunny":
+					console.log("Dress lightly.");
+				case "cloudy":
+					console.log("Go outside.");
+					break;
+				default:
+					console.log("Unknown weather type!");
+					break;
+			}
+		}
+		console.log("\n\n");
 	}	
 	</script>
 </head>
