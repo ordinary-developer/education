@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>02</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script type="text/javascript"> 
+	window.onload = function() {
+		// looping a triangle
+		console.log("[looping a triangle] =>");
+		{
+			for (let i = 1; i <= 8; i++) {
+				let str = '';
+				for (let j = 0; j < i; j++) {
+					str += '#';
+				}
+				console.log(str);
+			}
+		}
+		console.log("\n\n");
+		
+		
+		// author's solution
+		console.log("[author's solution] =>");
+		{
+			for (let line = "#"; line.length < 8; line += "#")
+				console.log(line);
+		}
+		console.log("\n\n");
+	}
+	</script>
+</head>
+<body></body>
+</html>
