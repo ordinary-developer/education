@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>TLineEditV1.qml</file>
+    </qresource>
+</RCC> 
