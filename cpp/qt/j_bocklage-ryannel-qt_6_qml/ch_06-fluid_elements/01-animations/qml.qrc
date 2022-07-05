@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file alias = "background.png">background.png</file>
+        <file alias = "box_green.png">box_green.png</file>
+    </qresource>
+</RCC> 
