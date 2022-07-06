@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+		<file>EasingType.qml</file>
+		<file>Box.qml</file>
+        <file alias = "blueprint.jpg">blueprint.jpg</file>
+    </qresource>
+</RCC> 
