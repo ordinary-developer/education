@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ClickableImageV2.qml</file>
+        <file alias = "background_medium.png">background_medium.png</file>
+        <file alias = "box_green.png">box_green.png</file>
+        <file alias = "box_blue.png">box_blue.png</file>
+        <file alias = "box_red.png">box_red.png</file>
+    </qresource>
+</RCC> 
