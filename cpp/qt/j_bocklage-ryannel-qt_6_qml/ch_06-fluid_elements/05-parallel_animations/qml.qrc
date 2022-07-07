@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>		
+		<file>BrightSquare.qml</file>
+		<file>ClickableImageV3.qml</file>
+		<file alias = "ufo_background.png">ufo_background.png</file>
+		<file alias = "ufo.png">ufo.png</file>
+    </qresource>
+</RCC> 
