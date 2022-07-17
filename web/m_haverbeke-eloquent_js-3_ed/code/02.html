@@ -1,11 +1,10 @@
 <html>
 <head>
-	<title>02</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<script type="text/javascript"> 
-	window.onload = function() {
+	window.onload = function() {	
 		// bindings
-		console.log("[bindings] =>");
+		console.log("bindings ->\n");
 		{
 			let caught = 5 * 5;
 			
@@ -14,97 +13,88 @@
 			
 			let mood = "light";
 			console.log(mood);
+			
 			mood = "dark";
 			console.log(mood);
 			
 			let luigisDebt = 140;
 			luigisDebt = luigisDebt - 35;
 			console.log(luigisDebt);
-		
+			
 			let one = 1, two = 2;
 			console.log(one + two);
-		
+			
 			var name = "Ayda";
 			const greeting = "Hello ";
 			console.log(greeting + name);
 		}
-		console.log("\n\n");
+		console.log("\n");
 		
 		
 		// functions
-		console.log("[functions] =>");
+		console.log("functions ->\n");
 		{
-			let toShowPrompt = false;
-			if (toShowPrompt)
-				prompt("Enter passcode");
+			//prompt("Enter passcode");
 		}
-		console.log("\n\n");
+		console.log("\n");
 		
 		
 		// return values
-		console.log("[return values] =>");
+		console.log("return values ->\n");
 		{
 			console.log(Math.max(2, 4));
 			
 			console.log(Math.min(2, 4) + 100);
 		}
-		console.log("\n\n");
+		console.log("\n");
 		
 		
 		// control flow
-		console.log("[control flow] =>");
+		console.log("control flow ->\n");
 		{
-			let toShowPrompt = false;
-			let theNumber = (toShowPrompt ? Number(prompt("Pick a number")) : 42);
-			console.log("you number is the square root of " + theNumber * theNumber);
+			/*let theNumber = Number(prompt("Pick a number"));
+			console.log("Your number is the square root of " + theNumber * theNumber);*/
 		}
-		console.log("\n\n");
+		console.log("\n");
 		
 		
 		// conditional execution
-		console.log("[conditional execution] =>");
+		console.log("conditional execution ->\n");
 		{
-			{
-				let toShowPrompt = false;
-				let theNumber = (toShowPrompt ? Number(prompt("Pick a number")) : 5);
-				if (!Number.isNaN(theNumber)) {
-					console.log("Your number is the square root of " + theNumber * theNumber);
-				}
-			}
+			/*let theNumber = Number(prompt("Pick a number"));
+			if (!Number.isNaN(theNumber)) {
+				console.log("Your number is the square root of " +
+							theNumber * theNumber);
+			}*/
 			
-			if (1 + 1 == 2) console.log("It's true");
-			
-			{
-				let toShowPrompt = false;
-				let theNumber = (toShowPrompt ? Number(prompt("Pick a number")) : 5);
-				if (!Number.isNaN(theNumber)) {
-					console.log("Your number is the square root of " + theNumber * theNumber);
-				}
-				else {
-					console.log("Hey. why didn't you give me a number?");
-				}
-			}
-			
-			{
-				let toShowPrompt = false;
-				let num = (toShowPrompt ? Number(prompt("Pick a number")) : 5);
+			if (1 + 1 == 2)
+				console.log("It's true");
 				
-				if (num < 10) {
-					console.log("Small");
-				}
-				else if (num < 100) {
-					console.log("Medium");
-				}
-				else {
-					console.log("Large");
-				}
+			/*let theNumber = Number(prompt("Pick a number"));
+			if (!Number.isNaN(theNumber)) {
+				console.log("Your number is the square root of " +
+							theNumber * theNumber);
 			}
+			else {
+				console.log("Hey. Why didn't you give me a number?");
+			}*/
+			
+			/*let num = Number(prompt("Pick a number"));
+			if (num < 10) {
+				console.log("Small");
+			}
+			else  if (num < 100) {
+				console.log("Medium");
+			}
+			else {
+				console.log("Large");
+			}*/
 		}
-		console.log("\n\n");
+		console.log("\n");
 		
 		
 		// while and do loops
-		console.log("[while and do loops] =>");
+		console.log("while and do loops ->\n");
 		{
 			console.log(0);
 			console.log(2);
@@ -112,7 +102,7 @@
 			console.log(6);
 			console.log(8);
 			console.log(10);
-			console.log(10);
+			console.log(12);
 			
 			let number = 0;
 			while (number <= 12) {
@@ -128,31 +118,30 @@
 			}
 			console.log(result);
 			
-			let toShowPrompt = false;
-			let yourName;
+			/*let yourName;
 			do {
-				yourName = (toShowPrompt ? prompt("Who are you?") : "no_name");
+				yourName = prompt("Who are you?");
 			} while (!yourName);
-			console.log(yourName);
+			console.log(yourName);*/
 		}
-		console.log("\n\n");
+		console.log("\n");
 		
-	
+		
 		// indenting code
-		console.log("[indenting code] =>");
+		console.log("indenting code ->\n");
 		{
 			if (false != true) {
-				console.log("that make sense.");
+				console.log("That makes sense.");
 				if (1 < 2) {
 					console.log("No surprise there.");
 				}
 			}
 		}
-		console.log("\n\n");
+		console.log("\n");
 		
 		
 		// for loops
-		console.log("[for loops] =>");
+		console.log("for loops ->\n");
 		{
 			for (let number = 0; number <= 12; number = number + 2) {
 				console.log(number);
@@ -163,13 +152,7 @@
 				result = result * 2;
 			}
 			console.log(result);
-		}
-		console.log("\n\n");
-		
-		
-		// breaking out of a loop
-		console.log("[breaking out of a loop] =>");
-		{
+			
 			for (let current = 20; ; current = current + 1) {
 				if (current % 7 == 0) {
 					console.log(current);
@@ -177,42 +160,34 @@
 				}
 			}
 		}
-		console.log("\n\n");
+		console.log("\n");
 		
 		
-		// updating bindings succinctly
-		console.log("[updating bindings succinctly] =>");
+		// updates bindings succinctly
+		console.log("update bindings succinctly ->\n");
 		{
 			let counter = 0;
-			
 			counter = counter + 1;
-			console.log(counter);
-			
-			counter += 1;
-			console.log(counter);
-			
-			counter++;
-			console.log(counter);
-			
-			counter--;
+			counter + 1;
 			console.log(counter);
 			
 			for (let number = 0; number <= 12; number += 2) {
 				console.log(number);
 			}
+			
+			counter--;
+			counter++;
+			console.log(counter);
 		}
-		console.log("\n\n");
+		console.log("\n");
 		
 		
 		// dispatching on a value with switch
-		console.log("[dispatching on a value with switch] =>");
+		console.log("dispatching on a value with switch\n");
 		{
-			let toShowPrompt = false;
-			
-			let choice = (toShowPrompt ? prompt("What is the weather like?") : "");
-			switch (choice) {
+			/*switch (prompt("What is the weather like?")) {
 				case "rainy":
-					console.log("Remember to bring an umbrella.");
+					console.log("Remember to brin an umbrella.");
 					break;
 				case "sunny":
 					console.log("Dress lightly.");
@@ -222,9 +197,9 @@
 				default:
 					console.log("Unknown weather type!");
 					break;
-			}
+			}*/
 		}
-		console.log("\n\n");
+		console.log("\n");
 	}	
 	</script>
 </head>
