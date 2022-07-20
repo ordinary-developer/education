@@ -1,0 +1,3 @@
+Box {
+	color: "#ffbb33"
+}
