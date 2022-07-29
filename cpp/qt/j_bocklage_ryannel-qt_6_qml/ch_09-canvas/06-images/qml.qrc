@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+		<file>main.qml</file>
+		<file alias="ball.png">ball.png</file>
+    </qresource>
+</RCC>
