@@ -2,16 +2,16 @@ import QtQuick
 
 Window {
 	id: root
-	
+
 	visible: true
-    width: 222
-    height: 220
-	
+	width: 140
+	height: 140
+
 	Canvas {
-		id: canvasObj
+		id: canvas
 		
 		width: 120; height: 120
-		
+
 		onPaint: {
 			var ctx = getContext("2d")
 			
@@ -19,9 +19,9 @@ Window {
 			ctx.strokeStyle = "blue"
 			ctx.lineWidth = 4
 			
-			ctx.fillRect(20, 20, 80, 80);
-			ctx.clearRect(30, 30, 60, 60);
-			ctx.strokeRect(20, 20, 40, 40);
+			ctx.fillRect(20, 20, 80, 80)
+			ctx.clearRect(30, 30, 60, 60)
+			ctx.strokeRect(20, 20, 40, 40)
 		}
 	}
 }
