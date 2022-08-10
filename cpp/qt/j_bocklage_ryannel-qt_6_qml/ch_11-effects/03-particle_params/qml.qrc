@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+		<file>main.qml</file>
+		<file>Tracer.qml</file>
+		<file alias="star.png">star.png</file>
+    </qresource>
+</RCC>
