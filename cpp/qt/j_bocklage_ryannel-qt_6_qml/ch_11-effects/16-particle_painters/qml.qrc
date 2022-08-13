@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+		<file>main.qml</file>
+		<file alias="box_blue.png">box_blue.png</file>
+		<file alias="box_red.png">box_red.png</file>
+		<file alias="box_green.png">box_green.png</file>
+		<file alias="circle_blue.png">circle_blue.png</file>
+		<file alias="circle_red.png">circle_red.png</file>
+		<file alias="circle_green.png">circle_green.png</file>
+		<file alias="triangle_blue.png">triangle_blue.png</file>
+		<file alias="triangle_red.png">triangle_red.png</file>		
+		<file alias="triangle_green.png">triangle_green.png</file>		
+    </qresource>
+</RCC>
+			
