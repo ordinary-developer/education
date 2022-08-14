@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+		<file>main.qml</file>
+		<file alias="tulips.jpg">tulips.jpg</file>
+		<file>default.vert.qsb</file>
+		<file>default.frag.qsb</file>
+    </qresource>
+</RCC>
