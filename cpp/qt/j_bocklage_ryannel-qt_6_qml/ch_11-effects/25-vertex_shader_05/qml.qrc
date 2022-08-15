@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+		<file>main.qml</file>
+		<file alias="lighthouse.jpg">lighthouse.jpg</file>
+		<file alias="genie4.vert.qsb">genie4.vert.qsb</file>
+    </qresource>
+</RCC>

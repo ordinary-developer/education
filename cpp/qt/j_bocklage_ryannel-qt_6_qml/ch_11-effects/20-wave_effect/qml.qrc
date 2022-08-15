@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+		<file>main.qml</file>
+		<file alias="coastline.jpg">coastline.jpg</file>
+		<file alias="wave.frag.qsb">wave.frag.qsb</file>
+    </qresource>
+</RCC>
