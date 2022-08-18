@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+		<file>main.qml</file>
+		<file>Thumbnail.qml</file>
+    </qresource>
+</RCC>
