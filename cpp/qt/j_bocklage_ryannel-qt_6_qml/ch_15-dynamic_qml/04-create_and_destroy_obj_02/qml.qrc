@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+		<file>main.qml</file>
+		<file>dynamic-image.qml</file>
+		<file>create-component.js</file>
+		<file alias="image1.png">image1.png</file>
+		<file alias="image2.png">image2.png</file>
+    </qresource>
+</RCC>
