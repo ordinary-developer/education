@@ -1,7 +1,7 @@
 #lang sicp
 
 ;; Expressions
-(display "=> Expressions") (newline)
+(display "=> Expressions")(newline)
 
 486
 (+ 137 349)
