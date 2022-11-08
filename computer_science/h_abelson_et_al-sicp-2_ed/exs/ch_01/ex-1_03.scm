@@ -1,3 +1,5 @@
+#lang sicp
+
 ; [exercise] =>
 ; define a procedure that takes three numbers
 ; as arguments and returns the sum of the squares of the two
@@ -6,6 +8,32 @@
 
 ; -------------
 ; [solution] =>
+(define (max a b) (if (> a b) a b))
+(define (min a b) (if (< a b) a b))
+
+(define (max1 a b c) (max (max a b) c))
+(define (max2 a b c)
+    (cond ((= a (max1 a b c)) (max b c))
+          ((= b (max1 a b c)) (max a c))
+          ((= c (max1 a b c)) (max a b))))
+          
+(define (square a) (* a a))
+(define (sum-of-two-max-squares a b c) (+ (square (max1 a b c)) (square (max2 a b c))))
+
+(define assert 
+    (= 5
+       (sum-of-two-max-squares 0 1 2)
+       (sum-of-two-max-squares 0 2 1)
+       (sum-of-two-max-squares 1 0 2)
+       (sum-of-two-max-squares 1 2 0)
+       (sum-of-two-max-squares 2 0 1)
+       (sum-of-two-max-squares 2 1 0)))
+assert
+
+
+
+;; --------------------
+;; yet another solution
 (define (sum_of_largest param1 param2 param3)
     (define (square p) (* p p))
     (define maximum (max param1 param2 param3))
