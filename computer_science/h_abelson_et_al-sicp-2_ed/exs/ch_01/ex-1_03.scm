@@ -12,10 +12,7 @@
 (define (min a b) (if (< a b) a b))
 
 (define (max1 a b c) (max (max a b) c))
-(define (max2 a b c)
-    (cond ((= a (max1 a b c)) (max b c))
-          ((= b (max1 a b c)) (max a c))
-          ((= c (max1 a b c)) (max a b))))
+(define (max2 a b c) (- (+ a b c) (max1 a b c) (min (min a b) c)))
           
 (define (square a) (* a a))
 (define (sum-of-two-max-squares a b c) (+ (square (max1 a b c)) (square (max2 a b c))))
