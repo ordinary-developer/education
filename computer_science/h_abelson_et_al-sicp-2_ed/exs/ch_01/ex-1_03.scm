@@ -31,24 +31,27 @@ assert
 
 ;; --------------------
 ;; yet another solution
-(define (sum_of_largest param1 param2 param3)
-    (define (square p) (* p p))
-    (define maximum (max param1 param2 param3))
-    (cond ((= maximum param1) (+ (square param1) (square (max param2 param3))))
-          ((= maximum param2) (+ (square param2) (square (max param1 param3))))
-          ((= maximum param3) (+ (square param3) (square (max param1 param2)))))        
-)
+(define (sum-of-two-max-squares-02 param1 param2 param3)
+	(define (max p1 p2) (if (> p1 p2) p1 p2))
+	(define (first-max p1 p2 p3) (max (max p1 p2) p3))
+	(define (square p) (* p p))
+	
+	(cond ((= param1 (first-max param1 param2 param3))
+		      (+ (square param1) (square (max param2 param3))))
+		  ((= param2 (first-max param1 param2 param3))
+		      (+ (square param2) (square (max param1 param3))))
+		  ((= param3 (first-max param1 param2 param3))
+		      (+ (square param3) (square (max param1 param2))))))
 
-
-(define ret (=
-    5
-    (sum_of_largest 0 1 2)
-    (sum_of_largest 0 2 1)
-    (sum_of_largest 1 0 2)
-    (sum_of_largest 1 2 0)
-    (sum_of_largest 2 0 1)
-    (sum_of_largest 2 1 0)))
-(display ret) (newline)
+(define assert-02
+	(= 5
+       (sum-of-two-max-squares-02 0 1 2)
+       (sum-of-two-max-squares-02 0 2 1)
+       (sum-of-two-max-squares-02 1 0 2)
+       (sum-of-two-max-squares-02 1 2 0)
+       (sum-of-two-max-squares-02 2 0 1)
+       (sum-of-two-max-squares-02 2 1 0)))
+assert-02
 
 
 
