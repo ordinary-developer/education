@@ -84,22 +84,23 @@ assert-03
 
 ;; --------------------
 ;; yet another solution
-(define (sum_of_largest param1 param2 param3)
-    (define (square param) (* param param))
+(define (sum-of-two-max-squares-04 param1 param2 param3)
+    (define (square p) (* p p))
+    (define (min2 p1 p2) (if (< p1 p2) p1 p2))
+    (define (min3 p1 p2 p3) (min2 (min2 p1 p2) p3))
     
-    (- (+ (square param1) (square param2) (square param3))    
-       (square (min param1 param2 param3))))
-   
-   
-(define ret (=
-    5
-    (sum_of_largest 0 1 2)
-    (sum_of_largest 0 2 1)
-    (sum_of_largest 1 0 2)
-    (sum_of_largest 1 2 0)
-    (sum_of_largest 2 0 1)
-    (sum_of_largest 2 1 0)))
-(display ret) (newline)
+    (- (+ (square param1) (square param2) (square param3))
+       (square (min3 param1 param2 param3))))
+    
+(define assert-04
+    (= 5
+        (sum-of-two-max-squares-03 0 1 2)
+        (sum-of-two-max-squares-03 0 2 1)
+        (sum-of-two-max-squares-03 1 0 2)
+        (sum-of-two-max-squares-03 1 2 0)
+        (sum-of-two-max-squares-03 2 0 1)
+        (sum-of-two-max-squares-03 2 1 0)))
+assert-04
 
 
 
