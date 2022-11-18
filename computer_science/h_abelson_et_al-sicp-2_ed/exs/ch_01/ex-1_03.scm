@@ -94,12 +94,12 @@ assert-03
     
 (define assert-04
     (= 5
-        (sum-of-two-max-squares-03 0 1 2)
-        (sum-of-two-max-squares-03 0 2 1)
-        (sum-of-two-max-squares-03 1 0 2)
-        (sum-of-two-max-squares-03 1 2 0)
-        (sum-of-two-max-squares-03 2 0 1)
-        (sum-of-two-max-squares-03 2 1 0)))
+        (sum-of-two-max-squares-04 0 1 2)
+        (sum-of-two-max-squares-04 0 2 1)
+        (sum-of-two-max-squares-04 1 0 2)
+        (sum-of-two-max-squares-04 1 2 0)
+        (sum-of-two-max-squares-04 2 0 1)
+        (sum-of-two-max-squares-04 2 1 0)))
 assert-04
 
 
