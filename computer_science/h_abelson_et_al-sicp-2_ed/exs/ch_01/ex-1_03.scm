@@ -8,23 +8,26 @@
 
 ; -------------
 ; [solution] =>
-(define (max a b) (if (> a b) a b))
-(define (min a b) (if (< a b) a b))
-
-(define (max1 a b c) (max (max a b) c))
-(define (max2 a b c) (- (+ a b c) (max1 a b c) (min (min a b) c)))
-          
-(define (square a) (* a a))
-(define (sum-of-two-max-squares a b c) (+ (square (max1 a b c)) (square (max2 a b c))))
+(define (sum-of-squares-of-two-max param1 param2 param3)
+    (define (min2 p1 p2) (if (< p1 p2) p1 p2))    
+    (define (max2 p1 p2) (if (> p1 p2) p1 p2))
+    
+    (define (first-max p1 p2 p3) (max2 (max2 p1 p2) p3))
+    (define (second-max p1 p2 p3)
+        (- (+ p1 p2 p3) (first-max p1 p2 p3) (min2 (min2 p1 p2) p3)))
+    
+    (define (square p) (* p p))
+    
+    (+ (square (first-max param1 param2 param3)) (square (second-max param1 param2 param3))))
 
 (define assert 
     (= 5
-       (sum-of-two-max-squares 0 1 2)
-       (sum-of-two-max-squares 0 2 1)
-       (sum-of-two-max-squares 1 0 2)
-       (sum-of-two-max-squares 1 2 0)
-       (sum-of-two-max-squares 2 0 1)
-       (sum-of-two-max-squares 2 1 0)))
+       (sum-of-squares-of-two-max 0 1 2)
+       (sum-of-squares-of-two-max 0 2 1)
+       (sum-of-squares-of-two-max 1 0 2)
+       (sum-of-squares-of-two-max 1 2 0)
+       (sum-of-squares-of-two-max 2 0 1)
+       (sum-of-squares-of-two-max 2 1 0)))
 assert
 
 
