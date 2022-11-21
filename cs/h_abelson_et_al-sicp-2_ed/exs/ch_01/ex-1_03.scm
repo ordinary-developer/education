@@ -8,6 +8,16 @@
 
 ; -------------
 ; [solution] =>
+#lang sicp
+
+; [exercise] =>
+; define a procedure that takes three numbers
+; as arguments and returns the sum of the squares of the two
+; larger numbers
+
+
+; -------------
+; [solution] =>
 (define (sum-of-squares-of-two-max param1 param2 param3)
     (define (min2 p1 p2) (if (< p1 p2) p1 p2))    
     (define (max2 p1 p2) (if (> p1 p2) p1 p2))
@@ -34,7 +44,7 @@ assert
 
 ;; --------------------
 ;; yet another solution
-(define (sum-of-two-max-squares-02 param1 param2 param3)
+(define (sum-of-squares-of-two-max-02 param1 param2 param3)
 	(define (max p1 p2) (if (> p1 p2) p1 p2))
 	(define (first-max p1 p2 p3) (max (max p1 p2) p3))
 	(define (square p) (* p p))
@@ -48,19 +58,19 @@ assert
 
 (define assert-02
 	(= 5
-       (sum-of-two-max-squares-02 0 1 2)
-       (sum-of-two-max-squares-02 0 2 1)
-       (sum-of-two-max-squares-02 1 0 2)
-       (sum-of-two-max-squares-02 1 2 0)
-       (sum-of-two-max-squares-02 2 0 1)
-       (sum-of-two-max-squares-02 2 1 0)))
+       (sum-of-squares-of-two-max-02 0 1 2)
+       (sum-of-squares-of-two-max-02 0 2 1)
+       (sum-of-squares-of-two-max-02 1 0 2)
+       (sum-of-squares-of-two-max-02 1 2 0)
+       (sum-of-squares-of-two-max-02 2 0 1)
+       (sum-of-squares-of-two-max-02 2 1 0)))
 assert-02
 
 
 
 ;; --------------------
 ;; yet another solution
-(define (sum-of-two-max-squares-03 param1 param2 param3)
+(define (sum-of-squares-of-two-max-03 param1 param2 param3)
     (define (square p) (* p p))
     (define (sum-of-squares p1 p2) (+ (square p1) (square p2)))
     
@@ -75,19 +85,19 @@ assert-02
 
 (define assert-03
     (= 5
-        (sum-of-two-max-squares-03 0 1 2)
-        (sum-of-two-max-squares-03 0 2 1)
-        (sum-of-two-max-squares-03 1 0 2)
-        (sum-of-two-max-squares-03 1 2 0)
-        (sum-of-two-max-squares-03 2 0 1)
-        (sum-of-two-max-squares-03 2 1 0)))
+        (sum-of-squares-of-two-max-03 0 1 2)
+        (sum-of-squares-of-two-max-03 0 2 1)
+        (sum-of-squares-of-two-max-03 1 0 2)
+        (sum-of-squares-of-two-max-03 1 2 0)
+        (sum-of-squares-of-two-max-03 2 0 1)
+        (sum-of-squares-of-two-max-03 2 1 0)))
 assert-03
-
-
-
+    
+    
+    
 ;; --------------------
 ;; yet another solution
-(define (sum-of-two-max-squares-04 param1 param2 param3)
+(define (sum-of-squares-of-two-max-04 param1 param2 param3)
     (define (square p) (* p p))
     (define (min2 p1 p2) (if (< p1 p2) p1 p2))
     (define (min3 p1 p2 p3) (min2 (min2 p1 p2) p3))
@@ -97,34 +107,34 @@ assert-03
     
 (define assert-04
     (= 5
-        (sum-of-two-max-squares-04 0 1 2)
-        (sum-of-two-max-squares-04 0 2 1)
-        (sum-of-two-max-squares-04 1 0 2)
-        (sum-of-two-max-squares-04 1 2 0)
-        (sum-of-two-max-squares-04 2 0 1)
-        (sum-of-two-max-squares-04 2 1 0)))
+        (sum-of-squares-of-two-max-04 0 1 2)
+        (sum-of-squares-of-two-max-04 0 2 1)
+        (sum-of-squares-of-two-max-04 1 0 2)
+        (sum-of-squares-of-two-max-04 1 2 0)
+        (sum-of-squares-of-two-max-04 2 0 1)
+        (sum-of-squares-of-two-max-04 2 1 0)))
 assert-04
 
 
 
 ;; --------------------
 ;; yet another solution
-(define (sum-of-two-max-squares-05 param1 param2 param3)
+(define (sum-of-squares-of-two-max-05 param1 param2 param3)
     (define (square p) (* p p))
     (define (sum-of-squares p1 p2) (+ (square p1) (square p2)))
     
     (cond
         ((not (or (> param1 param2) (> param1 param3))) (sum-of-squares param2 param3))
-        (else (sum-of-two-max-squares-05 param2 param3 param1))))
+        (else (sum-of-squares-of-two-max-05 param2 param3 param1))))
 
 (define assert-05
     (= 5
-        (sum-of-two-max-squares-05 0 1 2)
-        (sum-of-two-max-squares-05 0 2 1)
-        (sum-of-two-max-squares-05 1 0 2)
-        (sum-of-two-max-squares-05 1 2 0)
-        (sum-of-two-max-squares-05 2 0 1)
-        (sum-of-two-max-squares-05 2 1 0)))
+        (sum-of-squares-of-two-max-05 0 1 2)
+        (sum-of-squares-of-two-max-05 0 2 1)
+        (sum-of-squares-of-two-max-05 1 0 2)
+        (sum-of-squares-of-two-max-05 1 2 0)
+        (sum-of-squares-of-two-max-05 2 0 1)
+        (sum-of-squares-of-two-max-05 2 1 0)))
 assert-05
 
 
@@ -149,7 +159,7 @@ assert-05
         (sum-of-squares-of-two-max-06 1 2 0)
         (sum-of-squares-of-two-max-06 2 0 1)
         (sum-of-squares-of-two-max-06 2 1 0)))
-assert-06
+assert-06    
 
 
 
