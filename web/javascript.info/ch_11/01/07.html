@@ -1,0 +1,42 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>07</title>
+	<script type="text/javascript"> 
+    window.onload = function() {
+		function loadScript(src, callback) {
+			let script = document.createElement('script');
+            script.src = src;
+            
+            script.onload = () => callback(null, script);
+            
+            document.head.append(script);
+		}
+        
+        loadScript('07_01.js', function(error, script) {
+            if (error) {
+                console.log("was an error on the step 1");
+            }
+            else {
+                loadScript('07_02.js', function(error, script) {
+                    if (error) {
+                        console.log("was an error on the step 2");
+                    }
+                    else {
+                        loadScript('07_03.js', function(error, script) {
+                            if (error) {
+                                console.log("was an error on the step 3");
+                            }
+                            else {
+                                console.log("all chains are finished");
+                            }
+                        });
+                    }
+                });
+            }
+       });
+    }
+	</script>
+</head>
+<body></body>
+</html>

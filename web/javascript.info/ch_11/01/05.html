@@ -1,0 +1,31 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>05</title>
+	<script type="text/javascript"> 
+    window.onload = function() {
+		function loadScript(src, callback) {
+			let script = document.createElement('script');
+            script.src = src;
+            
+            script.onload = () => callback(script);
+            
+            document.head.append(script);
+		}
+        
+        loadScript('05_01.js', function(script) {
+            alert(`Cool, the ${script.src} is loaded, let's load one more`);
+            
+            loadScript('05_02.js', function(script) {
+                alert(`Cool, the 2-nd ${script.src} is loaded, let's load one more`);
+                
+                loadScript('05_03.js', function(script) {
+                    alert(`Cool, the 3-d ${script.src} is loaded`);
+                });
+            });
+        });
+    }
+	</script>
+</head>
+<body></body>
+</html>
