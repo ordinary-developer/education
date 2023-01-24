@@ -1,0 +1,17 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>08</title>
+	<script type="text/javascript"> 
+    window.onload = function() {
+        new Promise((resolve, reject) => {
+            setTimeout(() => resolve("value"), 2000);
+        })
+        
+        .finally(() => alert("Promise ready"))
+        .then(result => alert(result));
+    }
+	</script>
+</head>
+<body></body>
+</html>
