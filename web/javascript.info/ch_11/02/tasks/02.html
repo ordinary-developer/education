@@ -1,0 +1,41 @@
+<!-- EXERCISE -->
+<!--
+
+Delay with a promise
+
+The build-in function setTimeout uses callbacks.
+Create a promise-based alternative.
+
+The function delay(ms) should return a promise.
+That promise should resolve after 'ms' milliseconds,
+so that we can add '.then' to it, like this:
+```
+function delay(ms) {
+    // your code
+}
+
+delay(3000).then(() => alert('runs after 3 seconds'));
+```
+
+!-->
+
+
+<!-- SOLUTION -->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>02</title>
+	<script type="text/javascript">     
+    window.onload = function() {
+        function delay(ms) {
+            return new Promise(function(resolve, reject) {
+                setTimeout(() => resolve(1), ms);
+            });
+        }
+        
+        delay(3000).then((ret) => alert('runs after 3 seconds'));        
+    }
+	</script>
+</head>
+<body></body>
+</html>
