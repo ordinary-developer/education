@@ -8,8 +8,8 @@ void helloFunc() {
 
 class HelloFuncObj {
     public:
-        void operator () () const  {
-            std::cout << "Hello from a func obj" << std::endl;
+        void operator () () const {
+            std::cout << "Hello from a function object." << std::endl;
         }
 };
 
@@ -18,11 +18,11 @@ int main() {
     std::cout << std::endl;
 
     std::thread t1{helloFunc};
-    
+
     HelloFuncObj helloFuncObj{};
     std::thread t2{helloFuncObj};
 
-    std::thread t3([]{ std::cout << "Hello from a lambda" << std::endl; });
+    std::thread t3([]{ std::cout << "Hello from a lambda." << std::endl; });
 
     if (t1.joinable())
         t1.join();
