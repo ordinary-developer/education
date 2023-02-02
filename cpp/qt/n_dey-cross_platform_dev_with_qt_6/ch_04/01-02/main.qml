@@ -1,4 +1,5 @@
-import QtQuick
+import QtQuick 2.15
+import QtQuick.Window 2.15
 
 Window {
     width: 640
@@ -8,6 +9,6 @@ Window {
 
     Text {
         anchors.centerIn: parent
-        text: "Hello World!"
+        text: "Hello World"
     }
 }
