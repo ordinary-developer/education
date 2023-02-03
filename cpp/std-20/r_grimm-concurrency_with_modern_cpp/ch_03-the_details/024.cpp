@@ -17,6 +17,12 @@ int main() {
 
     std::cout << std::endl;
 
+    std::swap(t1, t2);
+    std::cout << "FROM MAIN: id of t1 " << t1.get_id() << std::endl;
+    std::cout << "FROM MAIN: id of t2 " << t2.get_id() << std::endl;
+
+    std::cout << std::endl;
+
     std::cout << "FROM MAIN: id of main = " << std::this_thread::get_id() << std::endl;
 
     std::cout << std::endl;
