@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    const QUrl url(u"qrc:/prj/main.qml"_qs);
+    const QUrl url("qrc:/prj/main.qml");
 
     qmlRegisterType<CustomObject>("MyCustomObject", 1, 0, "CustomObject");
 

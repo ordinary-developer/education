@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    const QUrl url(u"qrc:/main.qml"_qs);
+    const QUrl url("qrc:/main.qml");
 
     QQmlComponent component(&engine, "qrc:/CustomItem.qml");
     QObject * object = component.create();
