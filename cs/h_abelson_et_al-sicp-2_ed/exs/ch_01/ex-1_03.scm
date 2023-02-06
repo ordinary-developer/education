@@ -6,17 +6,7 @@
 ; larger numbers
 
 
-; -------------
-; [solution] =>
-#lang sicp
 
-; [exercise] =>
-; define a procedure that takes three numbers
-; as arguments and returns the sum of the squares of the two
-; larger numbers
-
-
-; -------------
 ; [solution] =>
 (define (sum-of-squares-of-two-max param1 param2 param3)
     (define (min2 p1 p2) (if (< p1 p2) p1 p2))    
@@ -45,19 +35,19 @@ assert
 ;; --------------------
 ;; yet another solution
 (define (sum-of-squares-of-two-max-02 param1 param2 param3)
-	(define (max p1 p2) (if (> p1 p2) p1 p2))
-	(define (first-max p1 p2 p3) (max (max p1 p2) p3))
-	(define (square p) (* p p))
-	
-	(cond ((= param1 (first-max param1 param2 param3))
-		      (+ (square param1) (square (max param2 param3))))
-		  ((= param2 (first-max param1 param2 param3))
-		      (+ (square param2) (square (max param1 param3))))
-		  ((= param3 (first-max param1 param2 param3))
-		      (+ (square param3) (square (max param1 param2))))))
+    (define (max p1 p2) (if (> p1 p2) p1 p2))
+    (define (first-max p1 p2 p3) (max (max p1 p2) p3))
+    (define (square p) (* p p))
+
+    (cond ((= param1 (first-max param1 param2 param3))
+              (+ (square param1) (square (max param2 param3))))
+          ((= param2 (first-max param1 param2 param3))
+              (+ (square param2) (square (max param1 param3))))
+          ((= param3 (first-max param1 param2 param3))
+              (+ (square param3) (square (max param1 param2))))))
 
 (define assert-02
-	(= 5
+    (= 5
        (sum-of-squares-of-two-max-02 0 1 2)
        (sum-of-squares-of-two-max-02 0 2 1)
        (sum-of-squares-of-two-max-02 1 0 2)
