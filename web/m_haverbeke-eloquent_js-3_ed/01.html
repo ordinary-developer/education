@@ -56,8 +56,50 @@
             
             console.log(`half of 100 is ${100 / 2}`);
         }
-	}	
-	</script>
+        console.log("\n");
+        
+        // logical operators
+        console.log("logical operators ->\n");
+        {
+            console.log(true && false);
+            console.log(true && true);
+            
+            console.log(false || true);
+            console.log(false || false);
+            
+            console.log(!true);
+            console.log(!false);
+            
+            console.log(1 + 1 == 2 && 10 * 10 > 50);
+            
+            console.log(true ? 1 : 2);
+            console.log(false ? 1 : 2);
+        }
+        console.log("\n");
+        
+        // automatic type convertion
+        console.log("automatic type convertion ->n");
+        {
+            console.log(8 * null);
+            console.log("5" - 1);
+            console.log("5" + 1);
+            console.log("five" * 2);
+            console.log(false == 0);
+            
+            console.log(null == undefined);
+            console.log(null == 0);
+        }
+        console.log("\n");
+        
+        
+        // short-circuiting of logical operators
+        console.log("short-circuting of logical operatoors ->n");
+        {
+            console.log(null || "user");
+            console.log("Agnes" || "user");
+        }
+    }
+    </script>
 </head>
 <body></body>
 </html>
