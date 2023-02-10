@@ -334,46 +334,51 @@ assert-14
 
 
 
-;; ----------------
-;; another solution
-(define (sum_of_largest param1 param2 param3)
-    (define (sum_of_sqrs param1 param2) (+ (* param1 param1) (* param2 param2)))
+;; --------------------
+;; yet another solution
+(define (sum-of-squares-of-two-max-15 param1 param2 param3)
+    (define (min2 p1 p2) (if (< p1 p2) p1 p2))
+    (define (max2 p1 p2) (if (> p1 p2) p1 p2))
+    (define (sum-of-squares p1 p2) (+ (* p1 p1) (* p2 p2)))
     
-    (sum_of_sqrs (max param1 param2) (max (min param1 param2) param3)))
+    (sum-of-squares (max2 param1 param2) (max2 (min2 param1 param2) param3)))
+
+(define assert-15
+    (= 5
+       (sum-of-squares-of-two-max-15 0 1 2)
+       (sum-of-squares-of-two-max-15 0 2 1)
+       (sum-of-squares-of-two-max-15 1 0 2)
+       (sum-of-squares-of-two-max-15 1 2 0)
+       (sum-of-squares-of-two-max-15 2 0 1)
+       (sum-of-squares-of-two-max-15 2 1 0)))
+assert-15
 
 
-(define ret (=
-    5
-    (sum_of_largest 0 1 2)
-    (sum_of_largest 0 2 1)
-    (sum_of_largest 1 0 2)
-    (sum_of_largest 1 2 0)
-    (sum_of_largest 2 0 1)
-    (sum_of_largest 2 1 0)))
-(display ret) (newline)
 
-
-
-;; ----------------
-;; another solution
-(define (sum_of_largest param1 param2 param3)
-    (define first_max 
-        (max (max param1 param2) param3))
-    (define second_max
-        (max (max (min param1 param2) (min param2 param3)) (min param1 param3)))
-        
-    (+ (* first_max first_max) (* second_max second_max)))
+;; --------------------
+;; yet another solution
+(define (sum-of-squares-of-two-max-16 param1 param2 param3)
+    (define (min2 p1 p2) (if (< p1 p2) p1 p2))
+    (define (max2 p1 p2) (if (> p1 p2) p1 p2))
     
+    (define (first-max p1 p2 p3)
+        (max2 (max2 p1 p2) p3))
+    (define (second-max p1 p2 p3)
+        (max2 (max2 (min2 p1 p2) (min2 p2 p3))
+              (min2 p1 p3)))
+              
+   (+ (* (first-max param1 param2 param3) (first-max param1 param2 param3))
+      (* (second-max param1 param2 param3) (second-max param1 param2 param3))))
 
-(define ret (=
-    5
-    (sum_of_largest 0 1 2)
-    (sum_of_largest 0 2 1)
-    (sum_of_largest 1 0 2)
-    (sum_of_largest 1 2 0)
-    (sum_of_largest 2 0 1)
-    (sum_of_largest 2 1 0)))
-(display ret) (newline)
+(define assert-16
+    (= 5
+       (sum-of-squares-of-two-max-16 0 1 2)
+       (sum-of-squares-of-two-max-16 0 2 1)
+       (sum-of-squares-of-two-max-16 1 0 2)
+       (sum-of-squares-of-two-max-16 1 2 0)
+       (sum-of-squares-of-two-max-16 2 0 1)
+       (sum-of-squares-of-two-max-16 2 1 0)))
+assert-16
 
 
 
