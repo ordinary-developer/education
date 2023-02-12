@@ -1,30 +1,145 @@
 <html>
 <head>
-	<title>02</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<script type="text/javascript"> 
-	window.onload = function() {
-		// looping a triangle
-		console.log("[looping a triangle] =>");
-		{
-			for (let i = 1; i <= 8; i++) {
-				let str = '';
-				for (let j = 0; j < i; j++) {
-					str += '#';
-				}
-				console.log(str);
-			}
-		}
-		console.log("\n\n");
-		
-		
-		// author's solution
-		console.log("[author's solution] =>");
-		{
-			for (let line = "#"; line.length < 8; line += "#")
-				console.log(line);
-		}
-		console.log("\n\n");
+    <title>02</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript"> 
+    window.onload = function() {
+        // 01: Looping a triangle
+        console.log("[looping a triangle] =>");
+        {
+            for (let i = 1; i <= 8; i++) {
+                let str = '';
+                for (let j = 0; j < i; j++) {
+                    str += '#';
+                }
+                console.log(str);
+            }
+        }
+        console.log("\n");
+
+        // author's solution
+        console.log("[author's solution] =>");
+        {
+            for (let line = "#"; line.length < 8; line += "#")
+                console.log(line);
+        }
+        console.log("\n\n");
+
+
+        // 02: FizzBuzz
+        console.log("[FizzBuzz] =>\n");
+        {
+            console.log("version 1:\n");
+            {
+                for (let i = 1; i < 101; i++) {
+                    let str = ""
+                    if (!(i % 3)) {
+                        str = "Fizz";
+                    }
+                    else if (!(i % 5)) {
+                        str = "Buzz";
+                    }
+                    else {
+                        str = i.toString()
+                    }
+                    console.log(str);
+                }
+            }
+            console.log("\n");
+
+            console.log("version 2:\n");
+            {
+                for (let i = 1; i < 101; i++) {
+                    let str = ""
+                    if (!(i % 3) && !(i % 5)) {
+                        str = "FizzBuzz";
+                    }
+                    else if (!(i % 3)) {
+                        str = "Fizz";
+                    }
+                    else if (!(i % 5)) {
+                        str = "Buzz";
+                    }
+                    else {
+                        str = i.toString();
+                    }
+                    console.log(str);
+                }
+            }
+            console.log("\n");
+        }
+
+        // author's solution
+        console.log("[author's solution] => \n");
+        {
+            for (let n = 1; n <= 100; n++) {
+                let output = "";
+                if (n % 3 == 0) output += "Fizz";
+                if (n % 5 == 0) output += "Buzz";
+                console.log(output || n);
+            }
+        }
+        console.log("\n\n");
+
+
+        // 03: Chessboard
+        console.log("[Chessboard] =>\n");
+        {
+            console.log("version 1:\n");
+            {
+                let str = "";
+                for (let i = 0; i < 8; i++) {
+                    str += (i % 2 == 0 ? "# # # #" : " # # # # ");
+                    if (i != 7) {
+                        str += "\n";
+                    }
+               }
+               console.log(str);
+            }
+            console.log("\n");
+
+            console.log("version 2:\n");
+            {
+                const width = 4;
+                const height = 8;
+
+                let str = "";
+                for (let i = 0; i < height; i++) {
+                    if (i % 2 != 0) {
+                        str += " ";
+                    }
+                    for (let j = 0; j < width; j++) {
+                        str += "# ";
+                    }
+                    str += "\n";
+                }
+
+                console.log(str);
+            }
+        }
+        console.log("\n");
+
+        // author's version
+        console.log("[author's version] =>\n");
+        {
+            let size = 8;
+
+            let board = "";
+
+            for (let y = 0; y < size; y++) {
+                for (let x = 0; x < size; x++) {
+                    if ((x + y) % 2 == 0) {
+                        board += " ";
+                    }
+                    else {
+                        board += "#";
+                    }
+                }
+                board += "\n";
+            }
+
+            console.log(board);
+        }
 	}
 	</script>
 </head>
