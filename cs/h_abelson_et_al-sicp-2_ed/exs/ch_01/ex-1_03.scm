@@ -525,50 +525,48 @@ assert-22
 
 
 
-;; ----------------
-;; another solution
-(define (sum_of_largest param1 param2 param3)
-    (define (sum_of_sqrs param1 param2) (+ (* param1 param1) (* param2 param2)))
-    
-    (cond ((and (or (> param1 param2) (> param1 param3)) 
-                (or (> param2 param1) (> param2 param3))) (sum_of_sqrs param1 param2))
-          ((and (or (> param2 param1) (> param2 param3)) 
-                (or (> param3 param1) (> param3 param2))) (sum_of_sqrs param2 param3))
-          ((and (or (> param1 param2) (> param1 param3)) 
-                (or (> param3 param1) (> param3 param2))) (sum_of_sqrs param1 param3))))
+;; --------------------
+;; yet another solution
+(define (sum-of-squares-of-two-max-23 param1 param2 param3)
+    (define (sum-of-squares p1 p2) (+ (* p1 p1) (* p2 p2)))
+
+    (cond ((and (or (> param1 param2) (> param1 param3))
+                (or (> param2 param1) (> param2 param3))) (sum-of-squares param1 param2))
+          ((and (or (> param2 param1) (> param2 param3))
+                (or (> param3 param1) (> param3 param2))) (sum-of-squares param2 param3))
+          ((and (or (> param1 param2) (> param1 param3))
+                (or (> param3 param1) (> param3 param2))) (sum-of-squares param1 param3))))
+
+(define assert-23
+    (= 5
+       (sum-of-squares-of-two-max-23 0 1 2)
+       (sum-of-squares-of-two-max-23 0 2 1)
+       (sum-of-squares-of-two-max-23 1 0 2)
+       (sum-of-squares-of-two-max-23 1 2 0)
+       (sum-of-squares-of-two-max-23 2 0 1)
+       (sum-of-squares-of-two-max-23 2 1 0)))
+assert-23
 
 
-(define ret (=
-    5
-    (sum_of_largest 0 1 2)
-    (sum_of_largest 0 2 1)
-    (sum_of_largest 1 0 2)
-    (sum_of_largest 1 2 0)
-    (sum_of_largest 2 0 1)
-    (sum_of_largest 2 1 0)))
-(display ret) (newline)
 
+;; --------------------
+;; yet another solution
+(define (sum-of-squares-of-two-max-24 param1 param2 param3)
+    (define (sum-of-squares p1 p2) (+ (* p1 p1) (* p2 p2)))
 
+    (cond ((and (< param1 param2) (< param1 param3)) (sum-of-squares param2 param3))
+          ((and (< param2 param1) (< param2 param3)) (sum-of-squares param1 param3))
+          ((and (< param3 param2) (< param3 param1)) (sum-of-squares param1 param2))))
 
-;; ----------------
-;; another solution
-(define (sum_of_largest param1 param2 param3)
-    (define (sum_of_sqrs param1 param2) (+ (* param1 param1) (* param2 param2)))
-
-    (cond ((and (< param1 param2) (< param1 param3)) (sum_of_sqrs param2 param3))
-          ((and (< param2 param1) (< param2 param3)) (sum_of_sqrs param1 param3))    
-          ((and (< param3 param2) (< param3 param1)) (sum_of_sqrs param1 param2))))
-
-
-(define ret (=
-    5
-    (sum_of_largest 0 1 2)
-    (sum_of_largest 0 2 1)
-    (sum_of_largest 1 0 2)
-    (sum_of_largest 1 2 0)
-    (sum_of_largest 2 0 1)
-    (sum_of_largest 2 1 0)))
-(display ret) (newline)
+(define assert-24
+    (= 5
+       (sum-of-squares-of-two-max-24 0 1 2)
+       (sum-of-squares-of-two-max-24 0 2 1)
+       (sum-of-squares-of-two-max-24 1 0 2)
+       (sum-of-squares-of-two-max-24 1 2 0)
+       (sum-of-squares-of-two-max-24 2 0 1)
+       (sum-of-squares-of-two-max-24 2 1 0)))
+assert-24
 
 
 
