@@ -11,15 +11,14 @@
 
 ; -------------
 ; [solution] =>
-(define (a_plus_abs_b a b)
+(define (a-plus-abs-b a b)
     ((if (> b 0) + -) a b))
 
 (define assert
-(= 3
-   (a_plus_abs_b 1 2)
-   (a_plus_abs_b 1 (- 2))
-   (a_plus_abs_b 3 0))
-)
+    (= 3
+       (a-plus-abs-b 1 2)
+       (a-plus-abs-b 1 (- 2))
+       (a-plus-abs-b 3 0)))
 assert
 
 ; Notes:
