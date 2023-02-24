@@ -292,6 +292,23 @@
             console.log("\n");
         }
         console.log("\n");
+
+        console.log("summary ->\n");
+        {
+            const f = function(a) {
+                console.log(a + 2);
+            };
+            f(42);
+
+            function g(a, b) {
+                return a * b * 3.5;
+            }
+            console.log(g(17, 42));
+
+            let h = a => a % 3;
+            console.log(h(42));
+        }
+        console.log("\n");
     }
     </script>
 </head>
