@@ -1,4 +1,4 @@
-;; [exercise]
+; [exercise] =>
 ; Each of the following two procedures
 ; defines a method for adding two positive integers
 ; in terms of the procedures `inc`,
@@ -18,11 +18,11 @@
 ; Are these process iterative or recursive?
 
 
-
-;; [solution]
+; -------------
+; [solution] =>
+#lang sicp
 (define (inc a) (+ a 1))
 (define (dec a) (- a 1))
-
 
 ; the `plus1` procedure
 (define (plus1 a b)
@@ -57,6 +57,6 @@
 ; 9
 
 
-;; conclusion
+; conclusion
 ; `plus1` is a linear recursive process
 ; 'plus2' is an iterative process
