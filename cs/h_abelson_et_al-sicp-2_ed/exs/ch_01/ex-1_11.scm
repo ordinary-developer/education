@@ -1,9 +1,11 @@
-;; [exercise]
+#lang sicp
+
+; [exercise] =>
 ; A function `f` is defined by the rule that
 ;          _
-;         | n if n < 3,
+;         | n if n < 3
 ; f(n) = <
-;         | f(n - 1) + 2f(n - 2) + 3f(n - 3) if n >= 3.
+;         | f(n - 1) + 2f(n - 2) + 3f(n - 3) if n >= 3
 ;          _
 ; Write a procedures that computes `f`
 ; by means of a recursive process.
@@ -11,38 +13,81 @@
 ; by means of an iterative process.
 
 
-;; [solution]
-;; # recursive process
-(define (f_r n)
-    (if (< n 3) 
-        n
-        (+ (f_r (- n 1))
-           (* 2 (f_r (- n 2))) 
-           (* 3 (f_r (- n 3))))))
 
-;; # iterative process
-(define (f_i n)
+; -------------
+; [solution] =>
+; recursive process
+; recursive process
+(display "the recursive process ->") (display "\n")
+(define (f-recur n)
+    (if (< n 3) n
+        (+ (f-recur (- n 1))
+           (* 2 (f-recur (- n 2)))
+           (* 3 (f-recur (- n 3))))))
+
+(f-recur 0)
+(f-recur 1)
+(f-recur 2)
+(f-recur 3)
+(f-recur 5)
+(f-recur 10)
+(f-recur 17) 
+(display "\n")
+
+; iterative process (first version)
+(display "the iterative process (first version) ->") (display "\n")
+(define (f-iter-01 n)
     (define (iter a b c counter)
         (if (= counter 0)
             c
             (iter (+ a (* 2 b) (* 3 c)) a b (- counter 1))))
-    
+
     (iter 2 1 0 n))
 
-;; # iterative process with a block structure
-(define (f_i_aux n)
+(f-iter-01 0)
+(f-iter-01 1)
+(f-iter-01 2)
+(f-iter-01 3)
+(f-iter-01 5)
+(f-iter-01 10)
+(f-iter-01 17) 
+(display "\n")
+
+; iterative process (second version)
+(display "the iterative process (second version) ->") (display "\n")
+(define (f-iter-02 n)
     (define (iter a b c counter)
         (if (> counter n)
             c
             (iter (+ a (* 2 b) (* 3 c)) a b (+ counter 1))))
-    
+            
     (iter 2 1 0 1))
 
-(display (= (f_r 1) (f_i 1) (f_i_aux 1)))
-    (display " ") (display (= (f_r 2) (f_i 2) (f_i_aux 2)))
-    (display " ") (display (= (f_r 3) (f_i 3) (f_i_aux 3)))
-    (display " ") (display (= (f_r 4) (f_i 4) (f_i_aux 4)))
-    (display " ") (display (= (f_r 5) (f_i 5) (f_i_aux 5)))
-    (display " ") (display (= (f_r 7) (f_i 7) (f_i_aux 7)))
-    (display " ") (display (= (f_r 10) (f_i 10) (f_i_aux 10)))
-    (display " ") (display (= (f_r 15) (f_i 15) (f_i_aux 15))) (newline)
+(f-iter-02 0)
+(f-iter-02 1)
+(f-iter-02 2)
+(f-iter-02 3)
+(f-iter-02 5)
+(f-iter-02 10)
+(f-iter-02 17) 
+(display "\n") 
+
+; iterative process (third version)
+(display "the iterative process (third version) ->") (display "\n")
+(define (f-iter-03 n)
+    (define (iter a b c counter)
+        (if (= counter n)
+            c
+            (iter (+ a (* 2 b) (* 3 c)) a b (+ counter 1))))
+
+    (iter 2 1 0 0))
+
+(f-iter-03 0)
+(f-iter-03 1)
+(f-iter-03 2)
+(f-iter-03 3)
+(f-iter-03 5)
+(f-iter-03 10)
+(f-iter-03 17) 
+(display "\n")
+
