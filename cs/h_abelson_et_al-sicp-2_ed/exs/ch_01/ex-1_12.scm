@@ -97,3 +97,33 @@
          (are-equal (- 1) (coef 4 (str-len 4)))
     ))
 (output-test "'coef' func" coef-assert)
+
+
+
+; --------------------
+; yet another solution
+; rows and columns start with 1
+(define (coef-02 row col)
+    (cond ((> col row) 0)
+          ((= col 1) 1)
+          ((+ (coef-02 (- row 1) (- col 1)) (coef-02 (- row 1) col)))))
+
+(define coef-assert-02
+    (and (are-equal 1 (coef-02 1 1))
+         (are-equal 1 (coef-02 2 1))
+         (are-equal 1 (coef-02 2 2))
+         (are-equal 1 (coef-02 3 1))
+         (are-equal 2 (coef-02 3 2))
+         (are-equal 1 (coef-02 3 3))
+         (are-equal 1 (coef-02 4 1))
+         (are-equal 3 (coef-02 4 2))
+         (are-equal 3 (coef-02 4 3))
+         (are-equal 1 (coef-02 4 4))
+         (are-equal 1 (coef-02 5 1))
+         (are-equal 4 (coef-02 5 2))
+         (are-equal 6 (coef-02 5 3))
+         (are-equal 4 (coef-02 5 4))
+         (are-equal 1 (coef-02 5 5))
+    )
+)
+(output-test "'coef-02' func" coef-assert-02)
