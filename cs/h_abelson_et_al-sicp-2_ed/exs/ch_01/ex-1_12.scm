@@ -101,12 +101,13 @@
 
 
 ; --------------------
-; yet another solution
+; yet another solution (works only for valid indices)
 ; rows and columns start with 1
 (define (coef-02 row col)
-    (cond ((> col row) 0)
-          ((= col 1) 1)
-          ((+ (coef-02 (- row 1) (- col 1)) (coef-02 (- row 1) col)))))
+    (if (or (= col 1) (= col row))
+        1
+        (+ (coef-02 (- row 1) (- col 1))
+           (coef-02 (- row 1) col))))
 
 (define coef-assert-02
     (and (are-equal 1 (coef-02 1 1))
@@ -127,3 +128,33 @@
     )
 )
 (output-test "'coef-02' func" coef-assert-02)
+
+
+
+; --------------------
+; yet another solution
+; rows and columns start with 1
+(define (coef-03 row col)
+    (cond ((> col row) 0)
+          ((= col 1) 1)
+          ((+ (coef-03 (- row 1) (- col 1)) (coef-03 (- row 1) col)))))
+
+(define coef-assert-03
+    (and (are-equal 1 (coef-03 1 1))
+         (are-equal 1 (coef-03 2 1))
+         (are-equal 1 (coef-03 2 2))
+         (are-equal 1 (coef-03 3 1))
+         (are-equal 2 (coef-03 3 2))
+         (are-equal 1 (coef-03 3 3))
+         (are-equal 1 (coef-03 4 1))
+         (are-equal 3 (coef-03 4 2))
+         (are-equal 3 (coef-03 4 3))
+         (are-equal 1 (coef-03 4 4))
+         (are-equal 1 (coef-03 5 1))
+         (are-equal 4 (coef-03 5 2))
+         (are-equal 6 (coef-03 5 3))
+         (are-equal 4 (coef-03 5 4))
+         (are-equal 1 (coef-03 5 5))
+    )
+)
+(output-test "'coef-03' func" coef-assert-03)
