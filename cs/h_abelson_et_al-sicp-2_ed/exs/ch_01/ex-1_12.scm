@@ -158,3 +158,64 @@
     )
 )
 (output-test "'coef-03' func" coef-assert-03)
+
+
+
+; --------------------
+; yet another solution
+; rows and columns start with 1
+; (the first condition: `(or (< row col) (< col 1))`
+;  will never be fulfilled for valid indices)
+(define (coef-04 row col)
+    (cond ((or (< row col) (< col 1)) 0)
+          ((or (= col 1) (= col row)) 1)
+          (else (+ (coef-04 (- row 1) (- col 1))
+                   (coef-04 (- row 1) col)))))
+
+(define coef-assert-04
+    (and (are-equal 1 (coef-04 1 1))
+         (are-equal 1 (coef-04 2 1))
+         (are-equal 1 (coef-04 2 2))
+         (are-equal 1 (coef-04 3 1))
+         (are-equal 2 (coef-04 3 2))
+         (are-equal 1 (coef-04 3 3))
+         (are-equal 1 (coef-04 4 1))
+         (are-equal 3 (coef-04 4 2))
+         (are-equal 3 (coef-04 4 3))
+         (are-equal 1 (coef-04 4 4))
+         (are-equal 1 (coef-04 5 1))
+         (are-equal 4 (coef-04 5 2))
+         (are-equal 6 (coef-04 5 3))
+         (are-equal 4 (coef-04 5 4))
+    ))
+(output-test "'coef-04' func" coef-assert-04)
+
+
+
+; --------------------
+; yet another solution
+; rows and columns start with 1
+; (the same as `coef-02`)
+(define (coef-05 row col)
+    (cond ((= col 1) 1)
+          ((= col row) 1)
+          (else (+ (coef-05 (- row 1) (- col 1))
+                   (coef-05 (- row 1) col)))))
+
+(define coef-assert-05
+    (and (are-equal 1 (coef-05 1 1))
+         (are-equal 1 (coef-05 2 1))
+         (are-equal 1 (coef-05 2 2))
+         (are-equal 1 (coef-05 3 1))
+         (are-equal 2 (coef-05 3 2))
+         (are-equal 1 (coef-05 3 3))
+         (are-equal 1 (coef-05 4 1))
+         (are-equal 3 (coef-05 4 2))
+         (are-equal 3 (coef-05 4 3))
+         (are-equal 1 (coef-05 4 4))
+         (are-equal 1 (coef-05 5 1))
+         (are-equal 4 (coef-05 5 2))
+         (are-equal 6 (coef-05 5 3))
+         (are-equal 4 (coef-05 5 4))
+    ))
+(output-test "'coef-05' func" coef-assert-05)
