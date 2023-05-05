@@ -268,6 +268,72 @@
 			console.log(prepend(10, prepend(20, null)));
 			console.log(nth(arrayToList([10, 20, 30]), 1));
 		}
+        
+        // Ex 4: deep comparison
+		console.log("\n\n[Ex 4: Deep comparison] =>\n");
+        {
+            function deepEqual(lhs, rhs) {
+                if (lhs === null)
+                    return rhs === null;
+                    
+                if ("object" !== typeof lhs)
+                    return ("object" === typeof rhs ? false : lhs === rhs);
+                    
+                if ("object" !== typeof rhs)
+                    return false
+                    
+                for (let prop of Object.keys(lhs)) {
+                    if (!Object.hasOwn(rhs, prop)) {
+                        return false
+                    }
+                    
+                    if (!deepEqual(lhs[prop], rhs[prop])) {
+                        return false
+                    }
+                }
+                
+                return true
+            }
+       
+            console.log(true === deepEqual(17, 17));
+            console.log(false === deepEqual(17, 42));
+            console.log(false === deepEqual(null, 17));
+           
+            console.log(true === deepEqual({ val1: "val1", val2: "val2" }, { val1: "val1", val2: "val2" }));
+            console.log(false === deepEqual(17, { val1: "val1", val2: "val2" }));
+            console.log(false === deepEqual(null, { val1: "val1", val2: "val2" }));
+        }
+        
+        // Ex 4: deep comparison (author's solution)
+        console.log("\n\n[Ex 4: Deep comparison (author's solution)] =>\n");
+        {
+            function deepEqual(a, b) {
+                if (a === b) 
+                    return true;
+                
+                if (a == null || typeof a != "object" ||
+                    b == null || typeof b != "object")
+                {
+                    return false;
+                }
+                
+                let keysA = Object.keys(a), keysB = Object.keys(b);
+                
+                if (keysA.length != keysB.length)
+                    return false;
+                    
+                for (let key of keysA)
+                    if (!keysB.includes(key) || !deepEqual(a[key], b[key]))
+                        return false;
+                        
+                return true;
+            }
+            
+            let obj = { here: { is: "an" }, object: 2 };
+            console.log(true === deepEqual(obj, obj));
+            console.log(false === deepEqual(obj, { here: 1, object: 2 }));
+            console.log(true === deepEqual(obj, { here: { is: "an" }, object: 2 }));
+        }
 	}
 	</script>
 </head>
