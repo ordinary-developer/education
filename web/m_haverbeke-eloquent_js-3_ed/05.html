@@ -5,8 +5,8 @@
 	<script src="./05_scripts.js"></script>
 	<script type="text/javascript"> 
 	window.onload = function() {
-		// abstract repetition
-		console.log("[abstracting repetition] =>");
+		// Abstract repetition
+		console.log("[Abstracting repetition] =>");
 		{
 			for (let i = 0; i < 10; i++) {
 				console.log(i);
@@ -34,9 +34,8 @@
 		}
 		console.log("\n\n");
 		
-		
-		// higher-order functions
-		console.log("[higher-order functions] =>");
+		// Higher-order functions
+		console.log("[Higher-order functions] =>");
 		{
 			function greaterThan(n) {
 				return m => m > n;
@@ -69,9 +68,23 @@
 		}
 		console.log("\n\n");
 		
-		
-		// script data set
-		console.log("[filtering arrays] =>");
+		// Script data set
+        console.log("[Script data set] =>");
+        {
+            const entry = {
+                name: "Coptic",
+                ranges: [[994, 1008], [11392, 11508], [11513, 11520]],
+                direction: "ltr",
+                year: -200,
+                living: false,
+                link: "https://en.wikipedia.org/wiki/Coptic_alphabet"
+            };
+            console.log(entry);
+        }
+        console.log("\n\n");
+        
+        // Filtering arrays
+		console.log("[Filtering arrays] =>");
 		{
 			function filter(array, test) {
 				let passed = [];
@@ -88,9 +101,8 @@
 		}
 		console.log("\n\n");
 		
-		
-		// transforming with map
-		console.log("[transforming with map] =>");
+		// Transforming with map
+		console.log("[Transforming with map] =>");
 		{
 			function map(array, transform) {
 				let mapped = [];
@@ -107,9 +119,8 @@
 		}
 		console.log("\n\n");
 		
-		
-		// summarizing with reduce
-		console.log("[summarizing with reduce] =>");
+		// Summarizing with reduce
+		console.log("[Summarizing with reduce] =>");
 		{
 			function reduce(array, combine, start) {
 				let current = start;
@@ -134,9 +145,8 @@
 		}
 		console.log("\n\n");
 		
-		
-		// composability
-		console.log("[composability] =>");
+		// Composability
+		console.log("[Composability] =>");
 		{
 			function characterCount(script) {
 				return script.ranges.reduce((count, [from, to]) => {
@@ -175,9 +185,8 @@
 		}
 		console.log("\n\n");
 		
-		
-		// strings and character codes
-		console.log("[strings and character codes] =>");
+		// Strings and character codes
+		console.log("[Strings and character codes] =>");
 		{
 			function characterScript(code) {
 				for (let script of SCRIPTS) {
@@ -208,9 +217,8 @@
 		}
 		console.log("\n\n");
 		
-		
-		// recognizing text
-		console.log("[recognizing text] =>");
+		// Recognizing text
+		console.log("[Recognizing text] =>");
 		{
 			function characterScript(code) {
 				for (let script of SCRIPTS) {
@@ -258,7 +266,6 @@
 			console.log(textScripts('英国的狗说"woof", 俄罗斯的狗说"тяв"'));
 		}
 		console.log("\n\n");
-		
 	}
 	</script>
 </head>
