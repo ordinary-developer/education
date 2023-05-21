@@ -83,6 +83,90 @@
                         Rabbit.prototype);
         }
         console.log("\n\n");
+
+        // Class Notation
+        console.log("[Class notation] =>");
+        {
+            class Rabbit {
+                constructor(type) {
+                    this.type = type;
+                }
+                speak(line) {
+                    console.log(`The ${this.type} rabbit says '${line}'`);
+                }
+            }
+            let killerRabbit = new Rabbit("killer");
+            let blackRabbit = new Rabbit("black");
+
+            killerRabbit.speak("line for the killer rabbit");
+            blackRabbit.speak("line for the black rabbit");
+
+            let object = new class { getWord() { return "hello"; } };
+            console.log(object.getWord());
+        }
+        console.log("\n\n");
+
+        // Overriding derived properties
+        console.log("[Overriding derived properties] =>");
+        {
+            class Rabbit {
+                constructor(type) {
+                    this.type = type;
+                }
+                speak(line) {
+                    console.log(`The ${this.type} rabbit says '${line}'`);
+                }
+            }
+
+            let killerRabbit = new Rabbit("killer");
+            let blackRabbit = new Rabbit("black");
+
+            Rabbit.prototype.teeth = "small";
+            console.log(killerRabbit.teeth);
+
+            killerRabbit.teeth = "long, sharp, and bloddy";
+            console.log(killerRabbit.teeth);
+
+            console.log(blackRabbit.teeth);
+
+            console.log(Rabbit.prototype.teeth);
+
+            console.log(Array.prototype.toString ==
+                        Object.prototype.toString);
+            console.log([1, 2].toString());
+
+            console.log(Object.prototype.toString.call([1, 2]));
+        }
+        console.log("\n\n");
+
+        // Maps
+        console.log("[Maps] =>");
+        {
+            let ages = {
+                Boris: 39,
+                Liang: 22,
+                Julia: 62
+            };
+
+            console.log(`Julia is ${ages["Julia"]}`);
+            console.log("Is Jack's age known?", "Jack" in ages);
+            console.log("Is toString's age known?", "toString" in ages);
+ 
+            console.log("toString" in Object.create(null));
+
+            let ages2 = new Map();
+            ages2.set("Boris", 39);
+            ages2.set("Liang", 22);
+            ages2.set("Julia", 62);
+ 
+            console.log(`Julia is ${ages2.get("Julia")}`);
+            console.log("Is Jack's age known?", ages2.has("Jack"));
+            console.log(ages2.has("toString"));
+
+            console.log({x: 1}.hasOwnProperty("x"));
+            console.log({x: 1}.hasOwnProperty("toString"));
+        }
+        console.log("\n\n");
     }
     </script>
 </head>
