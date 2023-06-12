@@ -1,7 +1,7 @@
 #lang sicp
 
 ;; Naming and the Environment
-(display "=> Naming and the Environment")(newline)
+(display "[Naming and the Environment] =>")(newline)
 
 (define size 2)
 size
@@ -9,6 +9,8 @@ size
 
 (define pi 3.14159)
 (define radius 10)
-(* pi (* radius radius)) 
+
+(* pi (* radius radius))
+
 (define circumference (* 2 pi radius))
 circumference
