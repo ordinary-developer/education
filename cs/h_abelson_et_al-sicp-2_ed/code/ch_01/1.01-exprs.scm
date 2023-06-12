@@ -1,9 +1,10 @@
 #lang sicp
 
 ;; Expressions
-(display "=> Expressions")(newline)
+(display "[Expressions] =>")(newline)
 
 486
+
 (+ 137 349)
 (- 1000 334)
 (* 5 99)
@@ -16,7 +17,7 @@
 (+ (* 3 5) (- 10 6))
 
 (+ (* 3 (+ (* 2 4) (+ 3 5))) (+ (- 10 7) 6))
-    
+
 (+ (* 3
       (+ (* 2 4)
          (+ 3 5)))
