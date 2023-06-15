@@ -1,77 +1,92 @@
 <html>
 <head>
-	<title>05</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<script src="./05_scripts.js"></script>
-	<script type="text/javascript"> 
-	window.onload = function() {
-		// Abstract repetition
-		console.log("[Abstracting repetition] =>");
-		{
-			for (let i = 0; i < 10; i++) {
-				console.log(i);
-			}
-			
-			function repeatLog(n) {
-				for (let i = 0; i < n; i++) {
-					console.log(i);
-				}
-			}
-			repeatLog(10);
-			
-			function repeat(n, action) {
-				for (let i = 0; i < n; i++) {
-					action(i);
-				}
-			}
-			repeat(3, console.log);
-			
-			let labels = [];
-			repeat(5, i => {
-				labels.push(`Unit ${i + 1}`);
-			});
-			console.log(labels);
-		}
-		console.log("\n\n");
-		
-		// Higher-order functions
-		console.log("[Higher-order functions] =>");
-		{
-			function greaterThan(n) {
-				return m => m > n;
-			}
-			let greaterThan10 = greaterThan(10);
-			console.log(greaterThan10(11));
-			
-			function noisy(f) {
-				return (...args) => {
-					console.log("calling with", args);
-					let result = f(...args);
-					console.log("called with", args, ", returned", result);
-					return result;
-				};
-			}
-			noisy(Math.min)(3, 2, 1);
-			
-			function unless(test, then) {
-				if (!test)
-					then();
-			}
-			
-			repeat(3, n => {
-				unless(n % 2 == 1, () => {
-					console.log(n, "is even");
-				});
-			});
-			
-			["A", "B"].forEach(l => console.log(l));
-		}
-		console.log("\n\n");
-		
-		// Script data set
-        console.log("[Script data set] =>");
+    <title>05</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="./05_scripts.js"></script>
+    <script type="text/javascript"> 
+    window.onload = function() {
+        // Higher-order functions
+        console.log("[Higher-order functions] =>\n");
         {
-            const entry = {
+            let total = 0, count = 1;
+            while (count <= 10) {
+                total += count;
+                count += 1;
+            }
+            console.log(total);
+        }
+        console.log("\n");
+
+        console.log("[Abstracting repetition] =>\n");
+        {
+            for (let i = 0; i < 10; i++) {
+                console.log(i);
+            }
+
+            function repeatLog(n) {
+                for (let i = 0; i < n; i++) {
+                    console.log(i);
+                }
+            }
+            repeatLog(10);
+
+            function repeat(n, action) {
+                for (let i = 0; i < n; i++) {
+                    action(i);
+                }
+            }
+            repeat(3, console.log);
+
+            let labels = [];
+            repeat(5, i => {
+                labels.push(`Unit ${i + 1}`);
+            });
+            console.log(labels);
+        }
+        console.log("\n");
+
+        console.log("[Higher-order functions] =>\n");
+        {
+            function greaterThan(n) {
+                return m => m > n;
+            }
+
+            let greaterThan10 = greaterThan(10);
+            console.log(greaterThan10(11));
+
+            function noisy(f) {
+                return (...args) => {
+                    console.log("calling with", args);
+                    let result = f(...args);
+                    console.log("called with", args, ", returned", result);
+                };
+            }
+            noisy(Math.min)(3, 2, 1);
+
+            function repeat(n, action) {
+                for (let i = 0; i < n; i++) {
+                    action(i);
+                }
+            }
+ 
+            function unless(test, then) {
+                if (!test)
+                    then();
+            }
+
+            repeat(3, n => {
+                unless(n % 2 == 1, () => {
+                    console.log(n, "is even");
+                });
+            });
+ 
+            ["A", "B"].forEach(l => console.log(l));
+        }
+        console.log("\n");
+
+        console.log("[Script data set] =>\n");
+        {
+            let val = {
                 name: "Coptic",
                 ranges: [[994, 1008], [11392, 11508], [11513, 11520]],
                 direction: "ltr",
@@ -79,195 +94,177 @@
                 living: false,
                 link: "https://en.wikipedia.org/wiki/Coptic_alphabet"
             };
-            console.log(entry);
+            console.log(val);
         }
-        console.log("\n\n");
+        console.log("\n");
+
+        console.log("[Filtering arrays] =>\n");
+        {
+            function filter(array, test) {
+                let passed = [];
+                for (let element of array) {
+                    if (test(element)) {
+                        passed.push(element);
+                    }
+                }
+                return passed;
+            }
+            console.log(filter(SCRIPTS, script => script.living));
+
+            console.log(SCRIPTS.filter(s => s.direction == "ttb"));
+        }
+        console.log("\n");
+
+        console.log("[Transforming with map] =>\n");
+        {
+            function map(array, transform) {
+                let mapped = [];
+                for (let element of array) {
+                    mapped.push(transform(element));
+                }
+                return mapped;
+            }
+
+            let rtlScripts = SCRIPTS.filter(s => s.direction == "rtl");
+            console.log(map(rtlScripts, s => s.name));
+
+            console.log(SCRIPTS.filter(s => s.direction == "rtl").map(s => s.name));
+        }
+        console.log("\n");
+
+        console.log("[Summarizing with reduce] =>\n");
+        {
+            function reduce(array, combine, start) {
+                let current = start;
+                for (let element of array) {
+                    current = combine(current, element);
+                }
+                return current;
+            }
+            console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));
+
+            console.log([1, 2, 3, 4].reduce((a, b) => a + b));
+            console.log([1, 2, 3, 4].reduce((a, b) => a + b, 0));
+
+            function characterCount(script) {
+                return script.ranges.reduce((count, [from, to]) => {
+                    return count + (to - from);
+                }, 0);
+            }
+            console.log(SCRIPTS.reduce((a, b) => {
+                return characterCount(a) < characterCount(b) ? b : a;
+            }));
+        }
+        console.log("\n");
+
+        console.log("[Composability] =>\n");
+        {
+            function characterCount(script) {
+                return script.ranges.reduce((count, [from, to]) => {
+                    return count + (to - from);
+                }, 0);
+            }
         
-        // Filtering arrays
-		console.log("[Filtering arrays] =>");
-		{
-			function filter(array, test) {
-				let passed = [];
-				for (let element of array) {
-					if (test(element)) {
-						passed.push(element);
-					}
-				}
-				return passed;
-			}
-			console.log(filter(SCRIPTS, script => script.living));
-			
-			console.log(SCRIPTS.filter(s => s.direction == "ttb"));
-		}
-		console.log("\n\n");
-		
-		// Transforming with map
-		console.log("[Transforming with map] =>");
-		{
-			function map(array, transform) {
-				let mapped = [];
-				for (let element of array) {
-					mapped.push(transform(element));
-				}
-				return mapped;
-			}
-			let rtlScripts = SCRIPTS.filter(s => s.direction == "rtl");
-			console.log(map(rtlScripts, s => s.name));
-			
-			console.log(SCRIPTS.map(s => s.name));
-			console.log(SCRIPTS.filter(s => s.direction == "rtl").map(s => s.name));
-		}
-		console.log("\n\n");
-		
-		// Summarizing with reduce
-		console.log("[Summarizing with reduce] =>");
-		{
-			function reduce(array, combine, start) {
-				let current = start;
-				for (let element of array) {
-					current = combine(current, element);
-				}
-				return current;
-			}
-			console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));
-		
-			console.log([1, 2, 3, 4].reduce((a, b) => a + b));
-		
-			function characterCount(script) {
-				return script.ranges.reduce((count, [from, to]) => {
-					return count + (to - from);
-				}, 0);
-			}
-			
-			console.log(SCRIPTS.reduce((a, b) => {
-				return characterCount(a) < characterCount(b) ? b : a;
-			}));
-		}
-		console.log("\n\n");
-		
-		// Composability
-		console.log("[Composability] =>");
-		{
-			function characterCount(script) {
-				return script.ranges.reduce((count, [from, to]) => {
-					return count + (to - from);
-				}, 0);
-			}
-			
-			let biggest = null;
-			for (let script of SCRIPTS)
-			{
-				if (biggest == null ||
-					characterCount(biggest) < characterCount(script))
-				{
-					biggest = script;
-				}
-			}
-			console.log(biggest);
-			
-			function average(array) {
-				return array.reduce((a, b) => a + b) / array.length;
-			}
-			
-			console.log(Math.round(average(
-				SCRIPTS.filter(s => s.living).map(s => s.year))));
-			console.log(Math.round(average(
-				SCRIPTS.filter(s => !s.living).map(s => s.year))));
-				
-			let total = 0, count = 0;
-			for (let script of SCRIPTS) {
-				if (script.living) {
-					total += script.year;
-					count += 1;
-				}
-			}
-			console.log(Math.round(total / count));
-		}
-		console.log("\n\n");
-		
-		// Strings and character codes
-		console.log("[Strings and character codes] =>");
-		{
-			function characterScript(code) {
-				for (let script of SCRIPTS) {
-					if (script.ranges.some(([from, to]) => {
-						return code >= from && code < to;
-					}))
-					{
-						return script;
-					}
-				}
-				
-				return null;
-			}
-			console.log(characterScript(121));
-			
-			let horseShoe = "🐴👟";
-			console.log(horseShoe);
-			console.log(horseShoe.length);
-			console.log(horseShoe[0]);
-			console.log(horseShoe.charCodeAt(0));
-			console.log(horseShoe.codePointAt(0));
-			
-			let roseDragon = "🌹🐉";
-			for (let char of roseDragon) {
-				console.log(char);
-				console.log(char.codePointAt(0));
-			}
-		}
-		console.log("\n\n");
-		
-		// Recognizing text
-		console.log("[Recognizing text] =>");
-		{
-			function characterScript(code) {
-				for (let script of SCRIPTS) {
-					if (script.ranges.some(([from, to]) => {
-						return code >= from && code < to;
-					}))
-					{
-						return script;
-					}
-				}
-				
-				return null;
-			}
-			
-			function countBy(items, groupName) {
-				let counts = [];
-				for (let item of items) {
-					let name = groupName(item);
-					let known = counts.findIndex(c => c.name == name);
-					if (known == -1) {
-						counts.push({name, count: 1});
-					}
-					else {
-						counts[known].count++;
-					}
-				}
-				return counts;
-			}
-			console.log(countBy([1, 2, 3, 4, 5], n => n > 2));
-			
-			function textScripts(text) {
-				let scripts = countBy(text, char => {
-					let script = characterScript(char.codePointAt(0));
-					return script ? script.name : "none";
-				}).filter(({name}) => name != "none");
-				
-				let total = scripts.reduce((n, {count}) => n + count, 0);
-				if (total == 0) 
-					return "No scripts found";
-				
-				return scripts.map(({name, count}) => {
-					return `${Math.round(count * 100 / total)}% ${name}`;
-				}).join(", ");
-			}
-			console.log(textScripts('英国的狗说"woof", 俄罗斯的狗说"тяв"'));
-		}
-		console.log("\n\n");
-	}
-	</script>
+            let biggest = null;
+            for (let script of SCRIPTS) {
+                if (biggest == null ||
+                    characterCount(biggest) < characterCount(script))
+                {
+                    biggest = script;
+                }
+            }
+            console.log(biggest);
+ 
+            function average(array) {
+                return array.reduce((a, b) => a + b) / array.length;
+            }
+
+            console.log(Math.round(average(
+                SCRIPTS.filter(s => s.living).map(s => s.year))));
+            console.log(Math.round(average(
+                SCRIPTS.filter(s => !s.living).map(s => s.year))));
+
+            let total = 0, count = 0;
+            for (let script of SCRIPTS) {
+                if (script.living) {
+                    total += script.year;
+                    count += 1;
+                }
+            }
+            console.log(Math.round(total / count));
+        }
+        console.log("\n");
+
+        console.log("[Strings and character codes] =>\n");
+        {
+            function characterScript(code) {
+                for (let script of SCRIPTS) {
+                    if (script.ranges.some(([from, to]) => code >= from && code < to)) {
+                        return script;
+                    }
+                }
+                return null;
+            }
+            console.log(characterScript(121));
+
+            let horseShoe = "🐴👟";
+            console.log(horseShoe.length);
+            console.log(horseShoe[0]);
+            console.log(horseShoe.charCodeAt(0));
+            console.log(horseShoe.codePointAt(0));
+
+            let roseDragon = "🌹🐉";
+            for (let char of roseDragon) {
+                console.log(char);
+            }
+        }
+        console.log("\n");
+
+        console.log("[Recognizing text] =>\n");
+        {
+            function characterScript(code) {
+                for (let script of SCRIPTS) {
+                    if (script.ranges.some(([from, to]) => code >= from && code < to)) {
+                        return script;
+                    }
+                }
+                return null;
+            }
+
+            function countBy(items, groupName) {
+                let counts = [];
+                for (let item of items) {
+                    let name = groupName(item);
+                    let known = counts.findIndex(c => c.name == name);
+                    if (known == -1) {
+                        counts.push({name, count: 1});
+                    }
+                    else {
+                        counts[known].count++;
+                    }
+                }
+                return counts;
+            }
+            console.log(countBy([1, 2, 3, 4, 5], n => n > 2));
+
+            function textScripts(text) {
+                let scripts = countBy(text, ch => {
+                    let script = characterScript(ch.codePointAt(0));
+                    return script ? script.name : "none";
+                }).filter(({name}) => name != "none");
+
+                let total = scripts.reduce((n, {count}) => n + count, 0);
+                if (total == 0)
+                    return "No scripts found";
+
+                return scripts.map(({name, count}) => {
+                    return `${Math.round(count * 100 / total)}% ${name}`;
+                }).join(", ");
+            }
+            console.log(textScripts('英国的狗说"woof", 俄罗斯的狗说"тяв"'));
+        }
+    }
+    </script>
 </head>
 <body>
 </body>
