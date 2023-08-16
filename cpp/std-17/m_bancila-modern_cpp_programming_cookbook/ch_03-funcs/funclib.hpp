@@ -7,6 +7,7 @@
 #include <queue>
 namespace funclib {
 
+// #region map
 template <typename F, typename R> // for std::array, std::vector, std::list, c-like array
 constexpr R mapf(F&& f, R const& r) {
     R ret{r};
@@ -34,7 +35,9 @@ constexpr std::queue<T> mapf(F&& f, std::queue<T> const& q) {
     }
     return ret;
 }
-
+// #endregion
+ 
+// #region [fold]
 template <typename F, typename R, typename T> // for std::array, std::vector, std::list, std::map
 constexpr T foldl(F&& f, R&& r, T i) {
     return std::accumulate(
@@ -46,5 +49,18 @@ constexpr T foldr(F&& f, R&& r, T i) {
     return std::accumulate(
         std::crbegin(r), std::crend(r), std::move(i), std::forward<F>(f));
 }
+// #endregion
 
-} // -> funclib
+// #region [compose]
+template <typename F, typename G> 
+constexpr auto compose(F&& f, G&& g) {
+    return [=](auto const& x) { return f(g(x)); };
+}
+
+template <typename F, typename... R>
+constexpr auto compose(F&& f, R&&... r) {
+    return [=](auto const& x) { return f(compose(r...)(x)); };
+}
+// #endregion
+
+} // #end funclib 
