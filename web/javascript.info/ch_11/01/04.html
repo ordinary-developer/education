@@ -1,28 +1,27 @@
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>04</title>
-	<script type="text/javascript"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>04</title>
+    <script type="text/javascript"> 
     window.onload = function() {
-		function loadScript(src, callback) {
-			let script = document.createElement('script');
+        function loadScript(src, callback) {
+            let script = document.createElement('script');
             script.src = src;
-            
+
             script.onload = () => callback(script);
-            
+
             document.head.append(script);
-		}
-        
+        }
+
         loadScript('04_01.js', function(script) {
             alert(`Cool, the ${script.src} is loaded, let's load one more`);
-            
+
             loadScript('04_02.js', function(script) {
-                
                 alert(`Cool, the 2-nd ${script.src} is loaded`);
             });
         });
     }
-	</script>
+    </script>
 </head>
 <body></body>
 </html>

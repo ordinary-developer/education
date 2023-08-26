@@ -1,22 +1,22 @@
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>03</title>
-	<script type="text/javascript"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>03</title>
+    <script type="text/javascript"> 
     window.onload = function() {
-		function loadScript(src, callback) {
-			let script = document.createElement('script');
-            script.src = src;            
-            script.onload = () => callback(script);            
+        function loadScript(src, callback) {
+            let script = document.createElement('script');
+            script.src = src;
+            script.onload = () => callback(script);
             document.head.append(script);
-		}
-        
+        }
+
         loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', script => {
             alert(`Cool, the script ${script.src} is loaded`);
             alert( _ );
         });
     }
-	</script>
+    </script>
 </head>
 <body></body>
 </html>

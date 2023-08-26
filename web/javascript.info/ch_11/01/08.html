@@ -1,48 +1,49 @@
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>07</title>
-	<script type="text/javascript"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>08</title>
+    <script type="text/javascript"> 
     window.onload = function() {
-		function loadScript(src, callback) {
-			let script = document.createElement('script');
+        function loadScript(src, callback) {
+            let script = document.createElement('script');
             script.src = src;
-            
+
             script.onload = () => callback(null, script);
-            
+            script.onerror = () => callback(new Error(`Script load error for ${script.src}`));
+
             document.head.append(script);
-		}
-        
+        }
+
         loadScript('08_01.js', step1);
-        
+
         function step1(error, script) {
             if (error) {
-                console.log("was an error on the step 1");
+                console.log('was an error on the step 1');
             }
             else {
                 loadScript('08_02.js', step2);
             }
         }
-        
+
         function step2(error, script) {
             if (error) {
-                console.log("was an error on the step 2");
+                console.log('was an error on the step 2');
             }
             else {
                 loadScript('08_03.js', step3);
             }
         }
-        
+
         function step3(error, script) {
             if (error) {
-                console.log("was an error on the step 3");
+                console.log('was an error on the step 3');
             }
             else {
-                console.log("all chaines are finished");
+                console.log('all chaines are finished');
             }
         }
     }
-	</script>
+    </script>
 </head>
 <body></body>
 </html>

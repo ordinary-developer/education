@@ -1,24 +1,24 @@
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>02</title>
-	<script type="text/javascript"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>02</title>
+    <script type="text/javascript"> 
     window.onload = function() {
-		function loadScript(src, callback) {
-			let script = document.createElement('script');
+        function loadScript(src, callback) {
+            let script = document.createElement('script');
             script.src = src;
-            
+
             script.onload = () => callback(script);
-            
+
             document.head.append(script);
-		}
-        
+        }
+
         loadScript('02.js', function(script) {
             console.log(`html -> load script: ${script.src}`);
             function_from_js();
         });
     }
-	</script>
+    </script>
 </head>
 <body></body>
 </html>
