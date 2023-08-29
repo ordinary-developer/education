@@ -1,0 +1,76 @@
+<!-- EXERCISE -->
+<!--
+Animated circle with promise
+
+Rewrite the showCircle function 
+in the solution of the task 'Animated circle with callback' so 
+that it returns a promise instaed of accepting a callback.
+
+The new usage:
+```
+showCircle(150, 150, 100).then(div => {
+    div.classList.add('message-ball');
+    div.append("Hello, world!");
+});
+```
+
+Take the solution of the task 'Animated circle with callback' as the base.
+
+
+<!-- SOLUTION -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>03</title>
+    
+    <style>
+        .message-ball {
+            font-size: 20px;
+            line-height: 200px;
+            text-align: center;
+        }
+        .circle {
+            transition-property: width, height;
+            transition-duration: 2s;
+            position: fixed;
+            transform: translateX(-50%) translateY(-50%);
+            background-color: red;
+            border-radius: 50%;
+        }
+    </style></head>
+<body>
+    <button onclick="go()">Click me</button>
+
+    <script>
+        function go() {
+            showCircle(150, 150, 100).then(div => {
+                div.classList.add('message-ball');
+                div.append("Hello, world!");
+            });
+        }
+
+        function showCircle(cx, cy, radius) {
+            let div = document.createElement('div');
+            div.style.width = 0;
+            div.style.height = 0;
+            div.style.left = cx + 'px';
+            div.style.top = cy + 'px';
+            div.className = 'circle';
+            document.body.append(div);
+
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    div.style.width = radius * 2 + 'px';
+                    div.style.height = radius * 2 + 'px';
+
+                    div.addEventListener('transitionend', function handler() {
+                        div.removeEventListener('transitionend', handler);
+                        resolve(div);
+                    });
+                }, 0);
+            });
+        }
+    </script>
+</body>
+</html>
