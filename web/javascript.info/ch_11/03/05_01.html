@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>05_01</title>
+    <script type="text/javascript"> 
+    window.onload = function() {
+        fetch('https://javascript.info/article/promise-chaining/user.json')
+        .then(function(response) {
+            return response.text();
+        })
+        .then(function(text) {
+            alert(text);
+        });
+    }
+    </script>
+</head>
+<body></body>
+</html>
