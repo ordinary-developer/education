@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>02</title>
+    <script type="text/javascript"> 
+    window.onload = function() {
+        fetch('https://javascript.info/article/promise-chaining/user.json')
+        .then(response => response.json())
+        .then(user => fetch(`https://api.github.com/user${user.name}`))
+        .then(githubUser => new Promise((resolve, reject) => {
+            let img = document.createElement('img');
+            img.src = githubUser.avatar_url;
+            img.className = "promise-avatar-example";
+            document.body.append(img);
+            
+            setTimeout(() => {
+                img.remove();
+                resolve(githubUser);
+            }, 3000);
+        }))
+        
+        .catch(error => alert(error.message));
+    }
+    </script>
+</head>
+<body></body>
+</html>
