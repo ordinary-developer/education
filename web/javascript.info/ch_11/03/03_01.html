@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>03_</title>
+    <title>03_01</title>
     <script type="text/javascript"> 
     window.onload = function() {
         function loadScript(src) {
@@ -17,12 +17,12 @@
             });
         }
         
-        loadScript("03_01.js")
+        loadScript("03_script_01.js")
         .then(function(script) {
-            return loadScript("03_02.js");
+            return loadScript("03_script_02.js");
         })
         .then(function(script) {
-            return loadScript("03_03.js");
+            return loadScript("03_script_03.js");
         })
         .then(function(script) {
             function_01();
