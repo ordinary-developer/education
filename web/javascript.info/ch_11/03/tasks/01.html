@@ -1,0 +1,76 @@
+<!-- EXERCISE -->
+<!--
+Promise: then versus catch
+
+Are these code fragments equal? In other words, do they behave the same way
+in any circumstances, for any handler functions?
+
+```
+promise.then(f1).catch(f2);
+```
+
+Versus:
+
+```
+promise.then(f1, f2);
+```
+!-->
+
+
+<!-- SOLUTION -->
+<!--
+The answer is: no, they are not equal.
+
+The difference is that if an error happens in f1, then it is handled by .catch here:
+```
+promise
+  .then(f1)
+  .catch(f2);
+```
+
+But not here:
+```
+promise
+  .then(f1, f2);
+```
+
+That's becuase an error is passed down the chain, and in the second code piece there's not chain below f1.
+
+In other words, .then passes results/errors to the next .then/catch.
+So in the first example, there's a catch below,
+and in the second one there isn't, so the error is unhandled.
+-->
+
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>01</title>
+    <script type="text/javascript">
+        const function_01 = function() {
+            new Promise(function(resolve, reject) {
+                resolve(1);
+            })
+            .then(function() {
+                throw new Error("Whoops!");
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+        };
+        
+        const function_02 = function() {
+            new Promise(function(resolve, reject) {
+                resolve(1);
+            })
+            .then(
+                function() { throw new Error("Whoops!"); },
+                function(error) { console.log("an error was catched"); });
+        };
+        
+        function_01();
+        function_02();
+    </script>
+</head>
+<body></body>
+</html>
