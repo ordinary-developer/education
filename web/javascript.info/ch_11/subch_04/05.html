@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>05</title>
+    <script type="text/javascript"> 
+    window.onload = function() {
+        const function_01 = function() {
+            new Promise((reslve, reject) => {
+                throw new Error("Whoops!");
+            })
+            .catch(function(error) {
+                alert("The error is handled, continue normally");
+            })
+            .then(() => alert("Next successful handler runs"));
+        };
+        
+        const function_02 = function() {
+            new Promise((resolve, reject) => {
+                throw new Error("Whoops!");
+            })
+            .catch(function(error) {
+                if (error instanceof URIError) {
+                    console.log("handle the URIError");
+                }
+                else {
+                    alert("Can't handle such an error");
+                    throw error;
+                }
+            })
+            .then(function() {
+                console.log("this code will never be executed");
+            })
+            .catch(error => {
+                alert(`The unknown error has occurred: ${error}`);
+            });
+        };
+        
+        function_01();
+        function_02();
+    }
+    </script>
+</head>
+<body></body>
+</html>

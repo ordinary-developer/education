@@ -1,0 +1,44 @@
+<!-- EXERCISE -->
+<!--
+Error in setTimeout
+
+What do you think? Will the .catch trigger? Explain your answer.
+```
+new Promise(function(resolve, reject) {
+    setTimeout(() => {
+        throw new Error("Whoops!");
+    }, 1000);
+}).catch(alert);
+```
+!-->
+
+
+<!-- SOLUTION -->
+<!--
+The answer is: no, it won't:
+
+As said in the chapter, there's an "implicit try..catch" around the function code.
+So all synchronous errors are handled.
+
+But here the error is generated not while the executor is running, but later.
+So the promise can't handle it.
+!-->
+
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>01</title>
+    <script type="text/javascript"> 
+
+    window.onload = function() {
+        new Promise(function(resolve, reject) {
+            setTimeout(() => {
+                throw new Error("Whoops!");
+            }, 1000);
+        }).catch(alert);
+    }
+    </script>
+</head>
+<body></body>
+</html>

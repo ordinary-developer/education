@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>05</title>
+    <script type="text/javascript"> 
+    window.onload = function() {
+        window.addEventListener('unhandledrejection', function(event) {
+            alert(event.promise);
+            alert(event.reason);
+        });
+        
+        new Promise(function() {
+            throw new Error("Whoops!");
+        });
+    }
+    </script>
+</head>
+<body></body>
+</html>
