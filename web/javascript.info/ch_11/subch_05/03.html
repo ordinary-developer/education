@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>03</title>
+    <script type="text/javascript"> 
+    window.onload = function() {
+        let names = ['aliakan', 'remy', 'jeresig'];
+        
+        let requests = names.map(name => fetch(`https://api.github.com/users/${name}`));
+        
+        Promise.all(requests)
+        .then(responses => {
+            for (let response of responses) {
+                alert(`${response.url}: ${response.status}`);
+            }
+        
+            return responses;
+        })
+        .then(responses => Promise.all(responses.map(r => r.json())))
+        .then(users => users.forEach(user => alert(user.name)));
+    }
+    </script>
+</head>
+<body></body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>02</title>
+    <script type="text/javascript"> 
+    window.onload = function() {
+        let urls = [
+            'https://api.github.com/users/aliakan',
+            'https://api.github.com/users/remy',
+            'https://api.github.com/users/jeresig'
+        ];
+        
+        let requests = urls.map(url => fetch(url));
+        
+        Promise.all(requests)
+        .then(responses => responses.forEach(
+            response => alert(`${response.url}: ${response.status}`)
+        )); 
+    }
+    </script>
+</head>
+<body></body>
+</html>
