@@ -5,6 +5,7 @@
 
 std::mutex mut{};
 
+
 void workOnRes() {
     mut.lock();
     std::this_thread::sleep_for(std::chrono::milliseconds{5000});
@@ -17,4 +18,6 @@ int main(){
     std::thread t2(workOnRes);
     t1.join();
     t2.join();
+
+    return 0;
 }
