@@ -15,7 +15,9 @@ public:
     }
 };
 
+
 Spinlock spin{};
+
 
 void workOnRes() {
     spin.lock();
@@ -29,4 +31,6 @@ int main(){
     std::thread t2(workOnRes);
     t1.join();
     t2.join();
+
+    return 0;
 }
