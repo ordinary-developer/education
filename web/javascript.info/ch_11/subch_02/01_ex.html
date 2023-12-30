@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>01_ex</title>
+    <script type="text/javascript">
+    window.onload = function() {
+        const baseMode = false;
+        
+        baseMode ? main() : mainEx();
+    }
+
+    function main() {
+        let promise = new Promise(function(resolve, reject) {
+            setTimeout(() => resolve("done"), 100);
+        });
+    }
+
+    function mainEx() {
+        func_01();
+        func_02();
+        func_03();
+        func_04();
+        func_05();
+        func_06();
+        func_07();
+    }
+
+    function func_01() {
+        new Promise(function(resolve, reject) {
+            setTimeout(() => resolve("done 01"), 100);
+        })
+
+        .then(val => console.log(val));
+    }
+
+    function func_02() {
+        new Promise((resolve, reject) => {
+            setTimeout(() => resolve("done 02"), 100);
+        })
+
+        .then(val => console.log(val));
+    }
+
+    function func_03() {
+        new Promise((resolve, _) => {
+            setTimeout(() => resolve("done 03"), 100);
+        })
+
+        .then(val => console.log(val));
+    }
+
+    function func_04() {
+        new Promise((resolve, _) => setTimeout(() => resolve("done 04"), 100))
+
+        .then(val => console.log(val));
+    }
+
+    function func_05() {
+        new Promise(resolve => setTimeout(() => resolve("done_05"), 100)).then(val => console.log(val));
+    }
+
+    function func_06() { new Promise(resolve => setTimeout(resolve, 100, "done_06")).then(val => console.log(val)); }
+
+    function func_07() { return new Promise(f => setTimeout(f, 100, "done_07")).then(val => console.log(val)); }
+
+    </script>
+</head>
+
+</html>
