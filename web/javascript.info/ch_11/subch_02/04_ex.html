@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>4_ex</title>
+    <script type="text/javascript">
+    window.onload = function() {
+        const baseMode = false;
+        
+        baseMode ? main() : mainEx();
+    }
+    
+    function main() {
+        let promise = new Promise(function(resolve, reject) {
+            setTimeout(() => reject(new Error("Whoops!")), 100);
+        });
+        
+        promise.then(
+            result => alert(result),
+            error => alert(error)
+        );
+    }
+    
+    function mainEx() {
+        func01();
+        func02();
+        func03();
+        func04();
+        func05();
+        func06();
+        func07();
+        func08();
+    }
+    
+    function func01() {
+        new Promise(function(resolve, reject) {
+            setTimeout(() => reject(new Error("Whoops!")), 100);
+        })
+        
+        .then(
+            val => console.log(val),
+            err => console.log(err));
+    }
+    
+    function func02() {
+        new Promise((resolve, reject) => { setTimeout(() => reject(new Error("Whoops!")), 100); })
+        
+        .then(
+            val => console.log(val),
+            err => console.log(err));
+    }
+    
+    function func03() {
+        new Promise((_, reject) => { setTimeout(() => reject(new Error("Whoops!")), 100); })
+        .then(
+            val => console.log(val),
+            err => console.log(err));
+    }
+    
+    function func04() {
+        new Promise((_, reject) => setTimeout(() => reject(new Error("Whoops!")), 100))
+        .then(
+            val => console.log(val),
+            err => console.log(err));
+    }
+    
+    function func05() {
+        new Promise((_, reject) => setTimeout(reject, 100, new Error("Whoops!")))
+        .then(
+            val => console.log(val),
+            err => console.log(err));
+    }
+    
+    function func06() {
+        new Promise((_, reject) => setTimeout(reject, 100, new Error("Whoops!")))
+        .then(val => console.log(val), err => console.log(err));
+    }
+    
+    function func07() {
+        new Promise((_, reject) => setTimeout(reject, 100, new Error("Whoops!")))
+        .then(_ => {}, err => console.log(err));
+    }
+    
+    function func08() {
+        new Promise((_, reject) => setTimeout(reject, 100, new Error("Whoops!")))
+        .then(null, err => console.log(err));
+    }
+    
+    </script>
+</head>
+
+<body></body>
+
+</html>

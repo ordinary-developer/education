@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>5_ex</title>
+    <script type="text/javascript">
+    window.onload = function() {
+        const baseMode = false;
+        
+        baseMode ? main() : mainEx();
+    }
+    
+    function main() {
+        let promise = new Promise(resolve => {
+            setTimeout(() => resolve("done!"), 100);
+        });
+        
+        promise.then(alert);
+    }
+    
+    function mainEx() {
+        func01();
+        func02();
+        func03();
+    }
+    
+    function func01() {
+        new Promise(resolve => {
+            setTimeout(() => resolve("done 01"), 100);
+        })
+        
+        .then(console.log);
+    }
+    
+    function func02() {
+        new Promise(resolve => setTimeout(() => resolve("done 02"), 100))
+        .then(console.log);
+    }
+    
+    function func03() {
+        new Promise(resolve => setTimeout(resolve, 100, "done 03")).then(console.log);
+    }
+    
+    </script>
+</head>
+
+<body></body>
+
+</html>

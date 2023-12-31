@@ -1,0 +1,124 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>3_ex</title>
+    <script type="text/javascript">
+    window.onload = function() {
+        const baseMode = false;
+        
+        baseMode ? main() : mainEx();
+    }
+    
+    function main() {
+        let promise = new Promise(function(resolve, reject) {
+            setTimeout(() => resolve("done!"), 100);
+        });
+        
+        promise.then(
+            result => alert(result),
+            error => alert(error)
+        );
+    }
+    
+    function mainEx() {
+        func01();
+        func02();
+        func03();
+        func04();
+        func05();
+        func06();
+        func07();
+        func08();
+        func09();
+        func10();
+        func11();
+    }
+    
+    function func01() {
+        new Promise(function(resolve, reject) {
+            setTimeout(() => resolve("done 01"), 100);
+        })
+        
+        .then(
+            result => console.log(result),
+            err => console.log(err));
+    }
+    
+    function func02() {
+        new Promise((resolve, reject) => {
+            setTimeout(() => resolve("done 02"), 100);
+        })
+        
+        .then(
+            result => console.log(result),
+            err => console.log(err));
+    }
+    
+    function func03() {
+        new Promise((resolve, reject) => { setTimeout(() => resolve("done 03"), 100); })
+        
+        .then(
+            result => console.log(result),
+            err => console.log(err));
+    }
+    
+    function func04() {
+        new Promise((resolve, reject) => setTimeout(() => resolve("done 04"), 100))
+        
+        .then(
+            result => console.log(result),
+            err => console.log(err));
+    }
+    
+    function func05() {
+        new Promise((resolve, _) => setTimeout(() => resolve("done 05"), 100))
+        
+        .then(
+            result => console.log(result),
+            err => console.log(err));
+    }
+    
+    function func06() {
+        new Promise(resolve => setTimeout(() => resolve("done 06"), 100))
+        
+        .then(
+            result => console.log(result),
+            err => console.log(err));
+    }
+    
+    function func07() {
+        new Promise(resolve => setTimeout(resolve, 100, "done 07"))
+        
+        .then(
+            result => console.log(result),
+            err => console.log(err));
+    }
+    
+    function func08() {
+        new Promise(resolve => setTimeout(resolve, 100, "done 08"))
+        
+        .then(val => console.log(val), err => console.log(err));
+    }
+    
+    function func09() {
+        new Promise(resolve => setTimeout(resolve, 100, "done 09"))
+        .then(val => console.log(val), _ => {});
+    }
+    
+    function func10() {
+        new Promise(resolve => setTimeout(resolve, 100, "done 10"))
+        .then(val => console.log(val), null)
+    }
+    
+    function func11() {
+        new Promise(resolve => setTimeout(resolve, 100, "done 11"))
+        .then(val => console.log(val));
+    }
+    
+    </script>
+</head>
+
+<body></body>
+
+</html>
