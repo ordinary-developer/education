@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>08_ex</title>
+    
+    <script type="text/javascript">
+    window.onload = function() {
+        const baseMode = false;
+        
+        baseMode ? main() : mainEx();
+    }
+    
+    function main() {
+        new Promise((resolve, reject) => {
+            throw new Error("error");
+        })
+        
+        .finally(() => alert("Promise is ready"))
+        .catch(err => alert(err));
+    }
+    
+    function mainEx() {
+        func01();
+        func02();
+        func03();
+    }
+    
+    function func01() {
+        new Promise((resolve, reject) => {
+            throw new Error("error 01");
+        })
+        
+        .finally(() => console.log("promise is ready 01"))
+        .catch(err => console.log(err));
+    }
+    
+    function func02() {
+        new Promise((_, reject) => { throw new Error("Error 02"); })
+        .finally(() => console.log("promise is ready 02"))
+        .catch(err => console.log(err));
+    }
+    
+    function func03() {
+        new Promise((_, reject) => { throw new Error("Error 03"); })
+        .finally(() => console.log("promise is ready 03"))
+        .catch(console.log);
+    }
+    
+    </script>
+    
+</head>
+
+</html>
