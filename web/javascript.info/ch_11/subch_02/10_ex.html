@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>10_ex</title>
+    
+    <script type="text/javascript">
+    window.onload = function() {
+        const baseMode = false;
+        
+        baseMode ? main() : mainEx();
+    }
+    
+    function main() {
+        function loadScript(src, callback) {
+            let script = document.createElement('script');
+            
+            script.src = src;
+            script.onload = () => callback(null, script);
+            script.onerror = () => callback(new Error(`Script load error for ${src}`));
+            
+            document.head.append(script);
+        }
+        
+        loadScript('10.js', function(error, script) {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                console.log('html -> load script callback');
+            }
+        });
+    }
+    
+    function mainEx() {
+        function embedAndLoadScript(url, callback) {
+            let scriptElement = document.createElement('script');
+            
+            scriptElement.src     = url;
+            scriptElement.onload  = () => callback(null, scriptElement);
+            scriptElement.onerror = () => callback(new Error(`Script load error for ${url}`));
+            
+            document.head.append(scriptElement);
+        }
+        
+        embedAndLoadScript('10.js',
+            (error, scriptElement) => console.log(error ? error : 'html -> load script callback'));
+    } 
+    </script>
+</head>
+
+<body></body>
+
+</html>
