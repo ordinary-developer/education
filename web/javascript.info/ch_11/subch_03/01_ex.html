@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>01_ex</title>
+    
+    <script type="text/javascript">
+    window.onload = function() {
+        const baseMode = false;
+        
+        baseMode ? main() : mainEx();
+    }
+    
+    function main() {
+        new Promise(function(resolve, reject) {
+            setTimeout(() => resolve(1), 1000);
+        })
+        
+        .then(function(result) {
+            alert(result);
+            return result * 2;
+        })
+        
+        .then(function(result) {
+            alert(result);
+            return result * 2;
+        })
+        
+        .then(function(result) {
+            alert(result);
+            return result * 2;
+        });
+    }
+    
+    function mainEx() {
+        new Promise(resolve => setTimeout(resolve, 1000, 1))
+        
+        .then(val => {
+            console.log(val);
+            return val * 2;
+        })
+        
+        .then(val => {
+            console.log(val);
+            return val * 2;
+        })
+        
+        .then(val => {
+            console.log(val)
+            return val * 2;
+        });
+    }
+    </script>
+</head>
+
+<body></body>
+
+</html>
