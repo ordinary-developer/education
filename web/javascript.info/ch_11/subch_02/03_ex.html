@@ -33,6 +33,7 @@
         func09();
         func10();
         func11();
+		func12();
     }
     
     function func01() {
@@ -108,13 +109,17 @@
     
     function func10() {
         new Promise(resolve => setTimeout(resolve, 100, "done 10"))
-        .then(val => console.log(val), null)
+        .then(val => console.log(val), null);
     }
     
     function func11() {
         new Promise(resolve => setTimeout(resolve, 100, "done 11"))
         .then(val => console.log(val));
     }
+	
+	function func12() {
+		new Promise(resolve => setTimeout(resolve, 100, "done 12")).then(console.log);
+	}
     
     </script>
 </head>

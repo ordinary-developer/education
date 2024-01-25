@@ -30,6 +30,7 @@
         func06();
         func07();
         func08();
+		func09();
     }
     
     function func01() {
@@ -85,6 +86,11 @@
         new Promise((_, reject) => setTimeout(reject, 100, new Error("Whoops!")))
         .then(null, err => console.log(err));
     }
+
+	function func09() {
+		new Promise((_, reject) => setTimeout(reject, 100, new Error("Whoops!")))
+		.then(null, console.log);
+	}
     
     </script>
 </head>
