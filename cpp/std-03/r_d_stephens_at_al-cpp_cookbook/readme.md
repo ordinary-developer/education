@@ -1,5 +1,4 @@
-Project information
--------------------
+# Info
 
 This folder contains my files 
 (my code snippets and my synopses about the main book's topics) 
