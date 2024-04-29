@@ -5,4 +5,4 @@ This subfolder contains my files
 
 *ISBN-13 (pbk)*: 978-1-4842-5883-5
 
-* ISBN-13 (electronic)*: 978-1-4842-5884-2
+*ISBN-13 (electronic)*: 978-1-4842-5884-2
