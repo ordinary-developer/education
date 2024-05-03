@@ -3,6 +3,6 @@ import QtQuick
 Rectangle {
     width: 48
     height: 48
-    color: "#f0f0f0"
+    color: "#67c111"
     border.color: Qt.lighter(color)
 }
