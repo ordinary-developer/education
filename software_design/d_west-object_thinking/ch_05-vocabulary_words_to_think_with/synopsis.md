@@ -1,12 +1,9 @@
-Chapter 5 - Vocabulary: words to think with
-===========================================
+# Chapter 5 - Vocabulary: words to think with
 
-Base approach
--------------
+## Base approach
 Different philosophy + new metaphors = object vocabulary.
 
-Terms
------
+## Terms
 #### Essential terms
 Object, Responsibility, Message, Protocol(or public interface).
 
@@ -18,8 +15,7 @@ Pattern.
 #### Implementation Terms
 Method, Variable, Dynamic Binding.
 
-Essential term description
---------------------------
+## Essential term description
 #### Object
 Everything is an object!
 An object is anything capable of providing a limited set
@@ -37,4 +33,3 @@ A message can be imperative, informational, or interrogatory in nature.
 #### Interface (Protocol)
 The collection of messages that an object responds to and the state changes
 it will accept registrations for constitue its interface.
-
