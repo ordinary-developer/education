@@ -1,8 +1,7 @@
-Chapter 8 - Thinking toward design
-==================================
+# Chapter 8 - Thinking toward design
 
-Getting required knowledge
---------------------------
+## Getting required knowledge
+
 An object has four ways to gain access to the knowledge:
 - It can store that knowledge in an instance variable
   (V - variable).
@@ -17,14 +16,14 @@ An object has four ways to gain access to the knowledge:
 
 Use argument (A) and method (M).
 
-A tipical West-approach
------------------------
-#### Widget
+# A tipical West-approach
+
+## Widget
 A widget can be represented by a "dataEntryWidget" object 
 that has appearace, behavior (responsibilities) and a set of rule objects
 (for validating its content).
 
-#### Forms
+## Forms
 A form object is an ordered collection os elements.
 An element might be a string or a dataEntryWidget.
 A form has an appearance, behavoir (respsonsiblities)
