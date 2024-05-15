@@ -1,10 +1,8 @@
-Chapter 8 - All the World's a Stage
-===================================
+# Chapter 8 - All the World's a Stage
 
-Static relationships
---------------------
+## Static relationships
 
-#### Is-a-Kind-of relationship
+### Is-a-Kind-of relationship
 Your taxonomy must follow two rules:
 - Exibit a single line of descent (single inheritance) base on nothing
   but the behaviors of the objects.
@@ -15,7 +13,7 @@ Your taxonomy must follow two rules:
    calling for an object from its superclass and still get behavior
    you expected).
 
-#### Collaborates-with relationship
+### Collaborates-with relationship
 Collaborations should occur inside the encapsulation barrier,
 with:
 - objects occupying instance variables;
@@ -24,15 +22,14 @@ with:
 
 (Global variables should be avoided)
 
-#### MVC
+### MVC
 An eventDispatcher is a simple two-dimensional table,
 the first of which contains a list of events
 that can be dispatched and the second column 
 of which contains a collection (possibly and ordered collection)
 of notificationRequest objects.
 
-Constraints
------------
+## Constraints
 Implementing constrains in the affected method 
 or a manager/controller object, makes objects brittle.
 So implementing constraints can be done with a rule object
@@ -42,8 +39,7 @@ A rule is an ordered collection of variables, constants, and operators.
 
 Rules are recursive. Any element of a rule can be replaced with a rule.
 
-Unit-tests
------------
+## Unit-tests
 For every message you listed (message protocol) first tests are:
 - When the message is sent to the object, 
   is the expected object returned?
