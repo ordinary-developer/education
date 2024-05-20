@@ -1,0 +1,193 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>02</title>
+
+    <script type="text/javascript">
+    window.onload = function() {
+        // bindings
+        console.log("bindings ->\n");
+        {
+            let caught = 5 * 5;
+
+            let ten = 10;
+            console.log(ten * ten);
+
+            let mood = "light";
+            console.log(mood);
+            mood = "dark";
+            console.log(mood);
+
+            let luigisDebt = 140;
+            luigisDebt = luigisDebt - 35;
+            console.log(luigisDebt);
+
+            let one = 1, two = 2;
+            console.log(one + two);
+
+            var name = "Ayda";
+            const greeting = "Hello ";
+            console.log(greeting + name);
+        }
+        console.log("\n");
+        
+        // functions
+        console.log("functions ->\n");
+        {
+            //prompt("Enter passcode");
+        }
+        console.log("\n");
+        
+        // return values
+        console.log("return values ->\n");
+        {
+            console.log(Math.max(2, 4));
+            console.log(Math.min(2, 4) + 100);
+        }
+        
+        // control flow
+        console.log("control flow ->\n");
+        {
+            //let theNumber = Number(prompt("Pick a number"));
+            //console.log("Your number is the square root of " + theNumber * theNumber);
+        }
+        console.log("\n");
+
+        // conditional execution
+        console.log("conditional execution ->\n");
+        {
+            /*let theNumber = Number(prompt("Pick a number"));
+            if (!Number.isNaN(theNumber)) {
+                console.log("Your number is the square root of " + theNumber * theNumber);
+            }*/
+
+            if (1 + 1 == 2)
+                console.log("It's true");
+
+            /*let theNumber = Number(prompt("Pick a number"));
+            if (!Number.isNaN(theNumber)) {
+                console.log("Your number is the square root of " + theNumber * theNumber);
+            }
+            else {
+                console.log("Hey. Why didn't you giv me a number?");
+            }*/
+
+            /*let num = Number(prompt("Pick a number"));
+            if (num < 10) {
+                console.log("Small");
+            }
+            else if (num < 100) {
+                console.log("Medium");
+            }
+            else {
+                console.log("Large");
+            }*/
+        }
+        console.log("\n");
+        // while and do loops
+        console.log("while and do loops ->\n");
+        {
+            console.log(0);
+            console.log(2);
+            console.log(4);
+            console.log(6);
+            console.log(8);
+            console.log(10);
+            console.log(12);
+
+            let number = 0;
+            while (number <= 12) {
+                console.log(number);
+                number = number + 2;
+            }
+
+            let result = 1;
+            let counter = 0;
+            while (counter < 10) {
+                result = result * 2;
+                counter = counter + 1;
+            }
+            console.log(result);
+
+            /*let yourName;
+            do {
+                yourName = prompt("Who are you?");
+            } while (!yourName);
+            console.log(yourName);*/
+        }
+        
+        // indenting code
+        console.log("indenting code ->\n");
+        {
+            if (false != true) {
+                console.log("That makes sense.");
+                if (1 < 2) {
+                    console.log("No surprise there.");
+                }
+            }
+        }
+        console.log("\n");
+
+        // for loops
+        console.log("for loops ->\n");
+        {
+            for (let number = 0; number <= 12; number = number + 2) {
+                console.log(number);
+            }
+
+            let result = 1;
+            for (let counter = 0; counter < 10; counter = counter + 1) {
+                result = result * 2;
+            }
+            console.log(result);
+
+            for (let current = 20; ; current = current + 1) {
+                if (current % 7 == 0) {
+                    console.log(current);
+                    break;
+                }
+            }
+        }
+        console.log("\n");
+
+        // updates bindings succinctly
+        console.log("update bindings succinctly ->\n");
+        {
+            let counter = 0;
+            counter = counter + 1;
+            counter + 1;
+            console.log(counter);
+
+            for (let number = 0; number <= 12; number += 2) {
+                console.log(number);
+            }
+
+            counter--;
+            counter++;
+            console.log(counter);
+        }
+        console.log("\n");
+
+        // dispatching on a value with switch
+        console.log("dispatching on a value with switch\n");
+        {
+            /*switch (prompt("What is the weather like?")) {
+                case "rainy":
+                    console.log("Remember to brin an umbrella.");
+                    break;
+                case "sunny":
+                    console.log("Dress lightly.");
+                case "cloudy":
+                    console.log("Go outside.");
+                    break;
+                default:
+                    console.log("Unknown weather type!");
+                    break;
+            }*/
+        }
+        console.log("\n");
+    }
+    </script>
+</head>
+<body></body>
+</html>
