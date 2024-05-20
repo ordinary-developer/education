@@ -84,6 +84,7 @@
             }*/
         }
         console.log("\n");
+
         // while and do loops
         console.log("while and do loops ->\n");
         {
@@ -115,7 +116,7 @@
             } while (!yourName);
             console.log(yourName);*/
         }
-        
+
         // indenting code
         console.log("indenting code ->\n");
         {
@@ -141,24 +142,23 @@
             }
             console.log(result);
 
-            for (let current = 20; ; current = current + 1) {
+            for (let current = 20; ;current = current + 1) {
                 if (current % 7 == 0) {
                     console.log(current);
                     break;
                 }
             }
         }
-        console.log("\n");
 
-        // updates bindings succinctly
+        // update binding succinctly
         console.log("update bindings succinctly ->\n");
         {
             let counter = 0;
             counter = counter + 1;
-            counter + 1;
+            counter += 1;
             console.log(counter);
 
-            for (let number = 0; number <= 12; number += 2) {
+            for (let number = 0; number <= 12; number +=2) {
                 console.log(number);
             }
 
@@ -168,17 +168,17 @@
         }
         console.log("\n");
 
-        // dispatching on a value with switch
+        // dispathcing on a value with switch
         console.log("dispatching on a value with switch\n");
         {
             /*switch (prompt("What is the weather like?")) {
                 case "rainy":
-                    console.log("Remember to brin an umbrella.");
+                    console.log("Remember to bring an umbrella.");
                     break;
                 case "sunny":
-                    console.log("Dress lightly.");
+                    console.log("Dress ligthly");
                 case "cloudy":
-                    console.log("Go outside.");
+                    console.log("Go outside");
                     break;
                 default:
                     console.log("Unknown weather type!");
