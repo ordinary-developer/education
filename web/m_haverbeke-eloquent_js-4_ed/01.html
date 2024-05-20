@@ -1,0 +1,131 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>01</title>
+
+    <script type="text/javascript">
+    window.onload = function() {
+        // numbers
+        console.log("numbers ->\n");
+        {
+            console.log(13);
+            console.log(9.81);
+            console.log(2.998e8);
+        }
+        console.log("\n");
+
+        // arithmetic
+        console.log("arithmetic ->\n");
+        {
+            console.log(100 + 4 * 11);
+            console.log((100 + 4) * 11);
+            console.log(1 - 2 + 1);
+            console.log((1 - 2 ) + 1);
+            console.log(314 % 100);
+            console.log(144 % 12);
+        }
+        console.log("\n");
+
+        // special numbers
+        console.log("special numbers ->\n");
+        {
+            console.log(Infinity);
+            console.log(-Infinity);
+            console.log(Infinity - 1);
+            console.log(NaN);
+            console.log(0 / 0);
+            console.log(Infinity - Infinity);
+        }
+        console.log("\n");
+
+        // strings
+        console.log("strings ->\n");
+        {
+            console.log(`Down on the sea`);
+            console.log("Lie on the ocean");
+            console.log("float on the ocean");
+
+            console.log(`line1
+                line2
+                line3`);
+
+            console.log("This is the first line\nAnd this is the second");
+
+            console.log("A newline character is written like \"\\n\".");
+
+            console.log("con"+ "cat"+ "e" + "nate");
+
+            console.log(`half of 100 is ${100 / 2}`);
+        }
+        console.log("\n");
+
+        // unary operators
+        console.log("unary operators ->\n");
+        {
+            console.log(typeof 4.5);
+            console.log(typeof "x");
+            console.log(- (10 - 2));
+        }
+        console.log("\n");
+
+        // comparision
+        console.log("comparsion ->\n");
+        {
+            console.log(3 > 2);
+            console.log(3 < 2);
+
+            console.log("Aardvark" < "Zoroaster");
+
+            console.log("Garnet" != "Ruby");
+            console.log("Pearl" == "Amethyst");
+
+            console.log(NaN == NaN);
+        }
+        console.log("\n");
+
+        // logical operators
+        console.log("logical operators ->\n");
+        {
+            console.log(true && false);
+            console.log(true && true);
+
+            console.log(false || true);
+            console.log(false || false);
+
+            console.log(1 + 1 == 2 && 10 * 10 > 50);
+
+            console.log(true ? 1 : 2);
+            console.log(false ? 1 : 2);
+        }
+        console.log("\n");
+
+        // automatic type conversion
+        console.log("automatic type conversion ->\n");
+        {
+            console.log(8 * null);
+            console.log("5" - 1);
+            console.log("5" + 1);
+            console.log("five" * 2);
+            console.log(false == 0);
+
+            console.log(null == undefined);
+            console.log(null == 0);
+        }
+        console.log("\n");
+
+        // short-circuiting of logical operators
+        console.log("short-circuiting of logical operators ->\n");
+        {
+            console.log(null || "user");
+            console.log("Agnes" || "user");
+
+            console.log(0 || 0);
+            console.log(0 ?? 100);
+            console.log(null ?? 100);
+        }
+        console.log("\n");
+    }
+    </script>
+</head>
+<body></body>
+</html>
