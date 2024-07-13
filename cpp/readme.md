@@ -14,9 +14,13 @@ https://www.onlinegdb.com/online_c++_compiler
 https://codeinterview.io/
 https://codeanywhere.com/
 
-command for the `coliru` compler:
-```
+# Misc
+the command for the `coliru` compler:
+```sh
 > g++ -std=c++23 -O2 -Wall -pedantic -pthread main.cpp && ./a.out
 ```
 
-
+or more detailed:
+```sh
+g++ -std=c++23  -O2 -Wall -Wextra -pedantic -pthread -pedantic-errors main.cpp -lm  -latomic  && ./a.out
+```
