@@ -1,4 +1,5 @@
 #include <atomic>
+#include <iostream>
 #include <thread>
 
 
@@ -16,13 +17,12 @@ public:
 };
 
 
-Spinlock spin{};
-
+Spinlock spinlock{};
 
 void workOnRes() {
-    spin.lock();
-    // a critical section here
-    spin.unlock();
+    spinlock.lock();
+    std::cout << "working on resources..." << std::endl;
+    spinlock.unlock();
 }
 
 
