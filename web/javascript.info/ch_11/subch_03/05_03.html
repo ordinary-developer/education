@@ -14,6 +14,8 @@
             img.src = githubUser.avatar_url;
             img.className = "promise-avatar-example";
             document.body.append(img);            
+
+			setTimeout(() => img.remove(), 3000);
         })
     }
     </script>
