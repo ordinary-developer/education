@@ -6,15 +6,15 @@
     <script type="text/javascript"> 
     window.onload = function() {
         const function_01 = function() {
-            new Promise((reslve, reject) => {
+            new Promise((resolve, reject) => {
                 throw new Error("Whoops!");
             })
             .catch(function(error) {
-                alert("The error is handled, continue normally");
+                alert("The error is handled, continue normally"); 
             })
             .then(() => alert("Next successful handler runs"));
         };
-        
+
         const function_02 = function() {
             new Promise((resolve, reject) => {
                 throw new Error("Whoops!");
@@ -35,7 +35,7 @@
                 alert(`The unknown error has occurred: ${error}`);
             });
         };
-        
+
         function_01();
         function_02();
     }

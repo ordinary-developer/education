@@ -7,18 +7,22 @@
     window.onload = function() {
         const function_01 = function() {
             new Promise((resolve, reject) => {
-            }).then((result) => {
+                resolve();
+            })
+            .then(() => { 
                 throw new Error("Whoops!");
-            }).catch(alert);
+            })
+            .catch(alert);
         }
-        
+
         const function_02 = function() {
             new Promise((resolve, reject) => {
-            }).then((result) => {
-                bambambam(); // no such a function
-            }).catch(alert);
+                resolve();
+            })
+            .then(() => noSuchFunction())
+            .catch(alert);
         }
-        
+
         function_01();
         function_02();
     }
