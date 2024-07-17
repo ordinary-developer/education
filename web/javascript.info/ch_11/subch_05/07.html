@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>07</title>
+    <script type="text/javascript"> 
+    window.onload = function() {
+        if (!Promise.myAllSettled) {
+            const rejectHandler = reason => ({ status: 'rejected', reason });
+            const resolveHandler = value => ({ status: 'fulfilled', value });
+         
+            Promise.myAllSettled = function(promises) {
+                const convertedPromises = promises.map(
+                    p => Promise.resolve(p).then(resolveHandler, rejectHandler));
+                return Promise.all(convertedPromises);
+            }
+        }
+         
+        let urls = [
+            'https://api.github.com/users/aliakan',
+            'https://api.github.com/users/remy',
+            'https://no-such-url'
+        ];
+        
+        Promise.myAllSettled(urls.map(url => fetch(url)))
+        .then(results => {
+            results.forEach((result, idx) => {
+                alert("fulfilled" === result.status
+                    ? `${urls[idx]}: ${result.value.status}`
+                    : `${urls[idx]}: ${result.reason}`);
+            });
+        });
+    }
+    </script>
+</head>
+<body></body>
+</html>

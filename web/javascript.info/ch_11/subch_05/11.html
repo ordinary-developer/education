@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>11</title>
+    <script type="text/javascript"> 
+    window.onload = function() {
+        let cache = new Map();
+        
+        function loadCached(url) {
+            if (cache.has(url)) {
+                return Promise.resolve(cache.get(url));
+            }
+            
+            return fetch(url)
+                   .then(response => response.text())
+                   .then(text => {
+                       cache.set(url, text)
+                       return text;
+                   });
+        }
+        
+        let url = 'https://javascript.info/article/promise-chaining/user.json'
+        
+        loadCached(url)
+        .then(alert)
+        .then(() => loadCached(url))
+        .then(alert);
+    }
+    </script>
+</head>
+<body></body>
+</html>

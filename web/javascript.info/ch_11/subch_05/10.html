@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>10</title>
+    <script type="text/javascript"> 
+    window.onload = function() {
+        Promise.any([
+            new Promise((resolve, reject) => setTimeout(() => reject(new Error("Ouch!")), 1000)),
+            new Promise((resolve, reject) => setTimeout(() => reject(new Error("Error!")), 2000))
+        ])
+        .catch(error => {
+            console.log(error.constructor.name);
+            console.log(error.errors[0]);
+            console.log(error.errors[1]);
+        });
+    }
+    </script>
+</head>
+<body></body>
+</html>

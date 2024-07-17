@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>06</title>
+    <script type="text/javascript"> 
+    window.onload = function() {
+        let urls = [
+            'https://api.github.com/users/aliakan',
+            'https://api.github.com/users/remy',
+            'https://no-such-url'
+        ];
+        
+        Promise.allSettled(urls.map(url => fetch(url)))
+        .then(results => {
+            results.forEach((result, idx) => {
+                alert("fulfilled" === result.status
+                    ? `${urls[idx]}: ${result.value.status}`
+                    : `${urls[idx]}: ${result.reason}`);
+            });
+        });
+ 
+    }
+    </script>
+</head>
+<body></body>
+</html>
