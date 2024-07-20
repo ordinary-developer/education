@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>03</title>
+    <script type="text/javascript"> 
+    window.onload = function() {
+        let promise = Promise.reject(new Error("Promise Failed!"));
+        promise.catch(err => alert('caught'));
+
+        window.addEventListener('unhandledrejection', event => alert(event.reason));
+    }
+    </script>
+</head>
+<body></body>
+</html>
