@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>07</title>
+    <script type="text/javascript"> 
+    window.onload = function() {
+        class Waiter {
+            async wait() {
+                return await Promise.resolve(1);
+            }
+        }
+
+        new Waiter()
+            .wait()
+            .then(alert);
+    }
+    </script>
+</head>
+<body></body>
+</html>

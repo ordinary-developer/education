@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>06</title>
+    <script type="text/javascript"> 
+    window.onload = function() {
+        class Thenable {
+            constructor(num) {
+                this.num = num;
+            }
+
+            then(resolve, reject) {
+                alert(resolve);
+                setTimeout(() => resolve(this.num * 2), 1000);
+            }
+        }
+
+        async function f() {
+            let result = await new Thenable(1);
+            alert(result);
+        }
+
+        f();
+    }
+    </script>
+</head>
+<body></body>
+</html>
