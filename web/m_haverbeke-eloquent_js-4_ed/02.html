@@ -3,10 +3,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>02</title>
 
-    <script type="text/javascript">
+    <script type="text/javascript"> 
     window.onload = function() {
-        // bindings
-        console.log("bindings ->\n");
+        // Bindings
+        console.log("[Bindings] ->");
         {
             let caught = 5 * 5;
 
@@ -28,65 +28,77 @@
             var name = "Ayda";
             const greeting = "Hello ";
             console.log(greeting + name);
-        }
-        console.log("\n");
-        
-        // functions
-        console.log("functions ->\n");
+       }
+       console.log("");
+
+        // Functions
+        console.log("[Functions] ->");
         {
             //prompt("Enter passcode");
         }
-        console.log("\n");
-        
-        // return values
-        console.log("return values ->\n");
+        console.log("");
+
+        // The console.log function
+        console.log("[The console.log function] ->");
+        {
+            let x = 30;
+            console.log("the value of x is", x);
+        }
+        console.log("");
+
+        // Return values
+        console.log("[Return values] ->");
         {
             console.log(Math.max(2, 4));
-            console.log(Math.min(2, 4) + 100);
+            console.log(Math.min(2, 4,) + 100);
         }
-        
-        // control flow
-        console.log("control flow ->\n");
+        console.log("");
+
+        // Control flow
+        console.log("[Control flow] ->");
         {
-            //let theNumber = Number(prompt("Pick a number"));
-            //console.log("Your number is the square root of " + theNumber * theNumber);
+            // let theNumber = Number(prompt("Pick a number"));
+            // console.log("Your number is the square root of " +
+            //     theNumber * theNumber);
         }
-        console.log("\n");
+        console.log("");
 
-        // conditional execution
-        console.log("conditional execution ->\n");
+        // Conditional execution
+        console.log("[Conditional execution] ->");
         {
-            /*let theNumber = Number(prompt("Pick a number"));
-            if (!Number.isNaN(theNumber)) {
-                console.log("Your number is the square root of " + theNumber * theNumber);
-            }*/
+            // let theNumber = Number(prompt("Pick a number"));
+            // if (!Number.isNaN(theNumber)) {
+            //    console.log("Your number is the square root of " +
+            //        theNumber * theNumber);
+            // }
 
-            if (1 + 1 == 2)
-                console.log("It's true");
+            if (1 + 1 == 2) console.log("It's true");
 
-            /*let theNumber = Number(prompt("Pick a number"));
-            if (!Number.isNaN(theNumber)) {
-                console.log("Your number is the square root of " + theNumber * theNumber);
-            }
-            else {
-                console.log("Hey. Why didn't you giv me a number?");
-            }*/
+            // let theNumber = Number(prompt("Pick a number"));
+            // if (!Number.isNaN(theNumber)) {
+                // console.log("Your number is the square root of " +
+                    // theNumber * theNumber);
+            // } 
+            // else {
+                // console.log("Hey. Why didn't you give me a number?");
+            // }
 
-            /*let num = Number(prompt("Pick a number"));
-            if (num < 10) {
-                console.log("Small");
-            }
-            else if (num < 100) {
-                console.log("Medium");
-            }
-            else {
-                console.log("Large");
-            }*/
+            // let num = Number(prompt("Pick a number"));
+
+            // if (num < 10) {
+                // console.log("Small");
+            // }
+            // else if (num < 100) {
+                // console.log("Medium");
+            // }
+            // else {
+                // console.log("Large");
+            // }
         }
-        console.log("\n");
+        console.log("");
 
-        // while and do loops
-        console.log("while and do loops ->\n");
+        // While and do loops
+        console.log("[While and do loops] ->");
         {
             console.log(0);
             console.log(2);
@@ -95,7 +107,7 @@
             console.log(8);
             console.log(10);
             console.log(12);
-
+ 
             let number = 0;
             while (number <= 12) {
                 console.log(number);
@@ -110,15 +122,18 @@
             }
             console.log(result);
 
-            /*let yourName;
-            do {
-                yourName = prompt("Who are you?");
-            } while (!yourName);
-            console.log(yourName);*/
-        }
+            console.log(2 ** 10);
 
-        // indenting code
-        console.log("indenting code ->\n");
+            // let yourName;
+            // do {
+                // yourName = prompt("Who are you?");
+            // } while (!yourName);
+            // console.log("Hello " + yourName);
+        }
+        console.log("");
+ 
+        // Indenting code
+        console.log("[Indenting code] ->");
         {
             if (false != true) {
                 console.log("That makes sense.");
@@ -127,10 +142,10 @@
                 }
             }
         }
-        console.log("\n");
+        console.log("");
 
-        // for loops
-        console.log("for loops ->\n");
+        // For loops
+        console.log("[For loops] ->");
         {
             for (let number = 0; number <= 12; number = number + 2) {
                 console.log(number);
@@ -141,52 +156,63 @@
                 result = result * 2;
             }
             console.log(result);
-
-            for (let current = 20; ;current = current + 1) {
+        }
+        console.log("");
+ 
+        // Breaking out of a loops
+        console.log("[Breaking out of a loop] ->");
+        {
+            for (let current = 20; ; current = current + 1) {
                 if (current % 7 == 0) {
                     console.log(current);
                     break;
                 }
             }
         }
-
-        // update binding succinctly
-        console.log("update bindings succinctly ->\n");
+        console.log("");
+ 
+        // Updating bindings succinctly
+        console.log("[Udating bindings succinctly] ->");
         {
-            let counter = 0;
-            counter = counter + 1;
-            counter += 1;
-            console.log(counter);
-
-            for (let number = 0; number <= 12; number +=2) {
+            for (let number = 0; number <= 12; number += 2) {
                 console.log(number);
             }
-
-            counter--;
-            counter++;
-            console.log(counter);
         }
-        console.log("\n");
+        console.log("");
 
-        // dispathcing on a value with switch
-        console.log("dispatching on a value with switch\n");
+        // Dispatching on a value with switch
+        console.log("[Dispatching on a value with switch] ->");
         {
-            /*switch (prompt("What is the weather like?")) {
-                case "rainy":
-                    console.log("Remember to bring an umbrella.");
-                    break;
-                case "sunny":
-                    console.log("Dress ligthly");
-                case "cloudy":
-                    console.log("Go outside");
-                    break;
-                default:
-                    console.log("Unknown weather type!");
-                    break;
-            }*/
+            // switch (prompt("What is the weather like?")) {
+                // case "rainy":
+                    // console.log("Remember to bring an umbrella.");
+                    // break;
+                // case "sunny":
+                    // console.log("Dress lightly.");
+                // case "cloudy":
+                    // console.log("Go outside.");
+                    // break;
+                // default:
+                    // console.log("Unknown weather type!");
+                    // break;
+            // }
         }
-        console.log("\n");
-    }
+        console.log("");
+
+        // Comments
+        console.log("[Comments] ->");
+        {
+            /*
+               I first foudn this number scrawled on the back of an old
+               notebook. Since then, it has often dropped by, showing up in
+               phone numbs and the serial numbers of producs that I've
+               bought. It obviously likes me, so I've decided to keep it.
+            */ 
+            const myNumber = 11213;
+            console.log(myNumber);
+        }
+        console.log("")
+     }
     </script>
 </head>
 <body></body>
