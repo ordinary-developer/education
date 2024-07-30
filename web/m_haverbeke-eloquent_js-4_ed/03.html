@@ -1,0 +1,281 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>03</title>
+
+    <script type="text/javascript"> 
+    window.onload = function() {
+        // defining a function
+        console.log("[Defining a function] ->");
+        {
+            const square = function(x) {
+                return x * x;
+            }
+            console.log(square(12));
+
+            const makeNoise = function() {
+                console.log("Pling!");
+            };
+            makeNoise();
+
+            const roundTo = function(n, step) {
+                let remainder = n % step;
+                return n - remainder + (remainder < step / 2 ? 0 : step);
+            };
+            console.log(roundTo(23, 10));
+        }
+        console.log("");
+
+        // binding and scopes
+        console.log("[Binding and scopes] ->");
+        {
+            let x = 10;
+            if (true) {
+                let y = 20;
+                var z = 30;
+            }
+
+            const halve = function(n) {
+                return n / 2;
+            }
+            let n = 10;
+            console.log(halve(100));
+            console.log(n);
+        }
+        console.log("");
+
+        // nested scope
+        console.log("[Nested scope] ->");
+        {
+            const hummus = function(factor) {
+                const ingredient = function(amount, unit, name) {
+                    let ingredientAmount = amount * factor;
+                    if (ingredientAmount > 1) {
+                        unit += "s";
+                    }
+                    console.log(`${ingredientAmount} ${unit} ${name}`);
+                };
+
+                ingredient(1, "can", "chickpeas");
+                ingredient(0.25, "cup", "tahini");
+                ingredient(0.25, "cup", "lemon juce");
+                ingredient(1, "clove", "garlic");
+                ingredient(2, "tablespoon", "olive oil");
+                ingredient(0.5, "teaspoon", "cumin");
+            };
+
+            hummus(42);
+        }
+        console.log("");
+
+        // Functions as values
+        console.log("[Functions as values] ->");
+        {
+            let launchMissiles = function() {
+                console.log("now");
+            };
+            safeMode = true;
+            if (safeMode) {
+                launchMissiles = function() { /* do nothing */ };
+            }
+            launchMissiles();
+        }
+        console.log("");
+
+        // Declaration notation
+        console.log("[Declaration notation] ->");
+        {
+            console.log("The future says: ", future());
+            function future() {
+                return "You'll never have flying cars";
+            }
+        }
+        console.log("");
+
+        // Arrow functions
+        console.log("[Arrow functions] ->");
+        {
+            const roundTo = (n, step) => {
+                let remainder = n % step;
+                return n - remainder + (remainder < step / 2 ? 0 : step);
+            };
+            console.log(roundTo(23, 10));
+
+            const square1 = (x) => { return x * x; };
+            const square2 = x => x * x;
+            console.log(square1(5));
+            console.log(square2(5));
+
+            const horn = () => {
+                console.log("Toot");
+            };
+            horn();
+        }
+        console.log("");
+
+        // The call stack
+        console.log("[The call stack] ->");
+        {
+            function greet(who) {
+                console.log("Hello " + who);
+            }
+            greet("Harry");
+            console.log("Bye");
+        }
+        console.log("");
+
+        // Optional arguments
+        console.log("[Optional arguments] ->");
+        {
+            function square(x) { return x * x; }
+            console.log(square(4, true, "hedgehog"));
+
+            function minus(a, b) {
+                if (b === undefined) return -a;
+                else return a - b;
+            }
+            console.log(minus(10));
+            console.log(minus(10, 5));
+
+            function roundTo(n, step = 1) {
+                let remainder = n % step;
+                return n - remainder + (remainder < step / 2 ? 0 : step);
+            }
+            console.log(roundTo(4.5));
+            console.log(roundTo(4.5, 2));
+
+            console.log("C", "0", 2);
+        }
+        console.log("");
+ 
+        // Closure
+        console.log("[Closure] ->");
+        {
+            function wrapValue(n) {
+                let local = n;
+                return () => local;
+            }
+            
+            let wrap1 = wrapValue(1);
+            let wrap2 = wrapValue(2);
+            console.log(wrap1());
+            console.log(wrap2());
+
+            function multiplier(factor) {
+                return number => number * factor;
+            }
+            let twice = multiplier(2);
+            console.log(twice(5));
+        }
+        console.log("");
+ 
+        // Recursion
+        console.log("[Recursion] ->");
+        {
+            function power(base, exponent) {
+                if (exponent == 0) {
+                    return 1;
+                }
+                else {
+                    return base * power(base, exponent - 1);
+                }
+            }
+            console.log(power(2, 3));
+ 
+            function findSolution(target) {
+                function find(current, history) {
+                    if (current == target) {
+                        return history;
+                    }
+                    else if (current > target) {
+                        return null;
+                    }
+                    else {
+                        return find(current + 5, `(${history} + 5)`)
+                            ?? find(current * 3, `(${history} * 3)`);
+                    }
+                }
+                return find(1, "1");
+            }
+            console.log(findSolution(24));
+        }
+        console.log("");
+
+        // Growing functions
+        console.log("[Growing functions] ->");
+        {
+            {
+                function printFarmInventory(cows, chickens) {
+                    let cowString = String(cows);
+                    while (cowString.length < 3) {
+                        cowString = "0" + cowString;
+                    }
+                    console.log(`${cowString} Cows`);
+                    let chickenString = String(chickens);
+                    while (chickenString.length < 3) {
+                        chickenString = "0" + chickenString;
+                    }
+                    console.log(`${chickenString} Chickens`);
+                }
+                printFarmInventory(7, 11);
+            }
+            
+            {
+                function printZeroPaddedWithLabel(number, label) {
+                    let numberString = String(number);
+                    while (numberString.length < 3) {
+                        numberString = "0" + numberString;
+                    }
+                    console.log(`${numberString} ${label}`);
+                }
+
+                function printFarmInventory(cows, chickens, pigs) {
+                    printZeroPaddedWithLabel(cows, "Cows");
+                    printZeroPaddedWithLabel(chickens, "Chickens");
+                    printZeroPaddedWithLabel(pigs, "Pigs");
+                }
+
+                printFarmInventory(7, 11, 3);
+            }
+ 
+            {
+                function zeroPad(number, width) {
+                    let string = String(number);
+                    while (string.length < width) {
+                        string = "0" + string;
+                    }
+                    return string;
+                }
+
+                function printFarmInventory(cows, chickens, pigs) {
+                    console.log(`${zeroPad(cows, 3)} Cows`);
+                    console.log(`${zeroPad(chickens, 3)} Chickens`);
+                    console.log(`${zeroPad(pigs, 3)} Pigs`);
+                }
+
+                printFarmInventory(7, 16, 3);
+            }
+        }
+        console.log("");
+ 
+        console.log("[Summary] ->");
+        {
+            const f = function(a) {
+                console.log(a + 2);
+            };
+            f(42);
+
+            function g(a, b) {
+                return a * b * 3.5;
+            }
+            console.log(g(17, 42));
+
+            let h = a => a % 3;
+            console.log(h(42));
+        }
+        console.log("");
+    }
+    </script>
+</head>
+<body></body>
+</html>
