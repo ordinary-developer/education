@@ -1,0 +1,452 @@
+<html>
+<head>
+    <title>06</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript"> 
+    window.onload = function() {
+        // Methods
+        console.log("[Methods] =>");
+        {
+            function speak(line) {
+                console.log(`The ${this.type} rabbit says '${line}'`);
+            }
+            let whiteRabbit = { type: "white", speak };
+            let hungryRabbit = { type: "hungry", speak };
+
+            whiteRabbit.speak("Oh my fur and whiskers");
+            hungryRabbit.speak("Got any carrots?");
+
+            speak.call(whiteRabbit, "Hurry");
+
+            let finder = {
+                find(array) {
+                    return array.some(v => v == this.value);
+                },
+                value: 5
+            };
+            console.log(finder.find([4, 5]));
+        }
+        console.log("");
+
+        // Prototypes
+        console.log("[Prototypes] ->");
+        {
+            let empty = {};
+            console.log(empty.toString);
+            console.log(empty.toString());
+
+            console.log(Object.getPrototypeOf({}) == Object.prototype);
+            console.log(Object.getPrototypeOf(Object.prototype));
+
+            console.log(Object.getPrototypeOf(Math.max) == Function.prototype);
+            console.log(Object.getPrototypeOf([]) == Array.prototype);
+
+            let protoRabbit = {
+                speak(line) {
+                    console.log(`The ${this.type} rabbit says '${line}'`);
+                }
+            };
+            let blackRabbit = Object.create(protoRabbit);
+            blackRabbit.type = "black";
+            blackRabbit.speak("I am fear and darkness");
+        }
+        console.log("");
+        
+        // Classes
+        console.log("[Classes] ->");
+        {
+            {
+                let protoRabbit = {
+                    speak(line) {
+                        console.log(`The ${this.type} rabbit says '${line}'`);
+                    }
+                };
+                function makeRabbit(type) {
+                    let rabbit = Object.create(protoRabbit);
+                    rabbit.type = type;
+                    return rabbit;
+                }
+                let blackRabbit = makeRabbit("black");
+                blackRabbit.speak("I am fear and darkness");
+            }
+            {
+                class Rabbit {
+                    constructor(type) {
+                        this.type = type;
+                    }
+                    speak(line) {
+                        console.log(`Then ${this.type} rabbit says '${line}'`);
+                    }
+                }
+                let killerRabbit = new Rabbit("killer");
+                killerRabbit.speak("I am a killer rabbit");
+
+                function ArchaicRabbit(type) {
+                    this.type = type;
+                }
+                ArchaicRabbit.prototype.speak = function(line) {
+                    console.log(`The ${this.type} rabbit says '${line}'`);
+                };
+                let oldSchoolRabbit = new ArchaicRabbit("old school");
+                oldSchoolRabbit.speak("I am an old school rabbit");
+
+                console.log(Object.getPrototypeOf(Rabbit) ==
+                    Function.prototype);
+                console.log(Object.getPrototypeOf(killerRabbit) ==
+                    Rabbit.prototype);
+
+                class Particle {
+                    speed = 10;
+                    constructor(position) {
+                        this.position = position;
+                    }
+                }
+                let particle1 = new Particle(20);
+                let particle2 = new Particle("a string");
+                console.log(`part1.pos = ${particle1.position}, part1.speed = ${particle1.speed}, part2.pos = ${particle2.position}, part2.speed = ${particle2.speed}`);
+                particle1.speed = 15;
+                particle2.speed = 20;
+                console.log(`part1.pos = ${particle1.position}, part1.speed = ${particle1.speed}, part2.pos = ${particle2.position}, part2.speed = ${particle2.speed}`);
+
+                let object = new class { getWord() { return "hello"; } };
+                console.log(object.getWord());
+            }
+        }
+        console.log("");
+
+        // Private properties
+        console.log("[Private properties] ->");
+        {
+            class SecretiveObject {
+                #getSecret() {
+                    return "I ate all the plums";
+                }
+                interrogate() {
+                    let shallISayIt = this.#getSecret();
+                    return "never";
+                }
+            }
+            let secretiveObject = new SecretiveObject();
+            console.log(secretiveObject.interrogate());
+
+            class RandomSource {
+                #max;
+                constructor(max) {
+                    this.#max = max;
+                }
+                getNumber() {
+                    return Math.floor(Math.random() * this.#max);
+                }
+            }
+            console.log(new RandomSource(10).getNumber());
+        }
+        console.log("");
+
+        // Overriding derived properties
+        console.log("[Overriding derived properties] ->");
+        {
+            class Rabbit {
+                constructor(type) {
+                    this.type = type;
+                }
+                speak(line) {
+                    console.log(`The ${this.type} rabbit says '${line}'`);
+                }
+            }
+            let killerRabbit = new Rabbit("killer");
+        
+            Rabbit.prototype.teeth = "small";
+            console.log(killerRabbit.teeth);
+
+            killerRabbit.teeth = "long, sharp, and bloody";
+            console.log(killerRabbit.teeth);
+
+            console.log((new Rabbit("basic")).teeth);
+            console.log(Rabbit.prototype.teeth);
+
+            console.log(Array.prototype.toString ==
+                Object.prototype.toString);
+            console.log([1, 2].toString());
+
+            console.log(Object.prototype.toString.call([1, 2]));
+        }
+        console.log("");
+ 
+        // Maps
+        console.log("[Maps] ->");
+        {
+            {
+                let ages = {
+                    Boris: 39,
+                    Liang: 22,
+                    Júlia: 62
+                };
+
+                console.log(`Júlia is ${ages["Júlia"]}`);
+                console.log("Is Jack's age known?", "Jack" in ages);
+                console.log("Is toString's age known?", "toString" in ages);
+            }
+
+            {
+                console.log("toString" in Object.create(null));
+            }
+
+            {
+                let ages = new Map();
+                ages.set("Boris", 39);
+                ages.set("Liang", 22);
+                ages.set("Júlia", 62);
+     
+                console.log(`Júlia is ${ages.get("Júlia")}`);
+                console.log("Is Jack's age known?", ages.has("Jack"));
+                console.log(ages.has("toString"));
+            }
+
+            {
+                console.log(Object.hasOwn({x: 1}, "x"));
+                console.log(Object.hasOwn({x: 1}, "toString"));
+            }
+        }
+        console.log("");
+
+        // Polymorphism
+        console.log("[Polymorphism] ->");
+        {
+            class Rabbit {
+                constructor(type) {
+                    this.type = type;
+                }
+                speak(line) {
+                    console.log(`The ${this.type} rabbit says '${line}'`);
+                }
+            }
+ 
+            let killerRabbit = new Rabbit("killer");
+
+            Rabbit.prototype.toString = function() {
+                return `a ${this.type} rabbit`;
+            };
+
+            console.log(String(killerRabbit));
+
+            Array.prototype.forEach.call({
+                length: 2,
+                0: "A",
+                1: "B"
+            }, elt => console.log(elt));
+        }
+        console.log("");
+
+        // Getters, setters, and statics
+        console.log("[Getters, setters, and statics] ->");
+        {
+            let varyingSize = {
+                get size() {
+                    return Math.floor(Math.random() * 100);
+                }
+            };
+            console.log(varyingSize.size);
+            console.log(varyingSize.size);
+
+            class Temperature { 
+                constructor(celsius) {
+                    this.celsius = celsius;
+                }
+                get fahrenheit() {
+                    return this.celsius * 1.8 + 32;
+                }
+                set fahrenheit(value) {
+                    this.celsius = (value - 32) / 1.8
+                }
+ 
+                static fromFahrenheit(value) {
+                    return new Temperature((value - 32) / 1.8);
+                }
+            }
+
+            let temp = new Temperature(22);
+            console.log(temp.fahrenheit);
+            temp.fahrenheiht = 86;
+            console.log(temp.celsius);
+
+            let boil = Temperature.fromFahrenheit(212);
+            console.log(boil.celsius);
+        }
+        console.log("");
+
+        // Symbols
+        console.log("[Symbols] ->");
+        {
+            class Rabbit {
+                constructor(type) {
+                    this.type = type;
+                }
+                speak(line) {
+                    console.log(`The ${this.type} rabbit says '${line}'`);
+                }
+            }
+
+            let killerRabbit = new Rabbit("killer");
+        
+            let sym = Symbol("name");
+            console.log(sym == Symbol("name"));
+
+            Rabbit.prototype[sym] = 55;
+            console.log(killerRabbit[sym]);
+ 
+            const length = Symbol("length");
+            Array.prototype[length] = 0;
+            console.log([1, 2].length);
+            console.log([1, 2][length]);
+
+            let myTrip = {
+                length: 2,
+                0: "Lankwitz",
+                1: "Babelsberg",
+                [length]: 21500
+            };
+            console.log(myTrip[length], myTrip.length);
+        }
+        console.log("");
+
+        // The iterator interface
+        console.log("[The iterator interface] ->");
+        {
+            let okIterator = "OK"[Symbol.iterator]();
+            console.log(okIterator.next());
+            console.log(okIterator.next());
+            console.log(okIterator.next());
+
+            class List {
+                constructor(value, rest) {
+                    this.value = value;
+                    this.rest = rest;
+                }
+                
+                get length() {
+                    return 1 + (this.rest ? this.rest.length : 0);
+                }
+
+                static fromArray(array) {
+                    let result = null;
+                    for (let i = array.length - 1; i >= 0; i--) {
+                        result = new this(array[i], result);
+                    }
+                    return result;
+                }
+            }
+            
+            class ListIterator {
+                constructor(list) {
+                    this.list = list;
+                }
+
+                next() {
+                    if (this.list == null) {
+                        return { done: true };
+                    }
+                    let value = this.list.value;
+                    this.list = this.list.rest;
+                    return { value, done: false };
+                }
+            }
+
+            List.prototype[Symbol.iterator] = function() {
+                return new ListIterator(this);
+            }
+            
+            let list = List.fromArray([1, 2, 3]);
+            for (let element of list) {
+                console.log(element);
+            }
+ 
+            console.log([..."PCI"]);
+        }
+        console.log("");
+
+        // Inheritance
+        console.log("[Inheritance] ->");
+        {
+            class List {
+                constructor(value, rest) {
+                    this.value = value;
+                    this.rest = rest;
+                }
+
+                get length() {
+                    return 1 + (this.rest ? this.rest.length : 0);
+                }
+
+                static fromArray(array) {
+                    let result = null;
+                    for (let i = array.length - 1; i >= 0; i--) {
+                        result = new this(array[i], result);
+                    }
+                    return result;
+                }
+            }
+
+            class LengthList extends List {
+                #length;
+
+                constructor(value, rest) {
+                    super(value, rest);
+                    this.#length = super.length;
+                }
+
+                get length() {
+                    return this.#length;
+                }
+            }
+
+            console.log(LengthList.fromArray([1, 2, 3]).length);
+        }
+        console.log("");
+
+        // The instanceof operator
+        console.log("[The instanceof operator] ->");
+        {
+            class List {
+                constructor(value, rest) {
+                    this.value = value;
+                    this.rest = rest;
+                }
+
+                get length() {
+                    return 1 + (this.rest ? this.rest.length : 0);
+                }
+
+                static fromArray(array) {
+                    let result = null;
+                    for (let i = array.length - 1; i >= 0; i--) {
+                        result = new this(array[i], result);
+                    }
+                    return result;
+                } 
+            }
+
+            class LengthList extends List {
+                #length;
+
+                constructor(value, rest) {
+                    super(value, rest);
+                    this.#length = super.length;
+                }
+
+                get length() {
+                    return this.#length;
+                }
+            }
+
+            console.log(
+                new LengthList(1, null) instanceof LengthList);
+            console.log(new LengthList(2, null) instanceof List);
+            console.log(new List(3, null) instanceof LengthList);
+            console.log([1] instanceof Array);
+        }
+        console.log("");
+    }
+    </script>
+</head>
+<body>
+</body>
