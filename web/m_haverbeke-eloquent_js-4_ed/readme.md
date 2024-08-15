@@ -3,5 +3,5 @@ This subfolder contains js code and exercise solutions from the book **"Eloquent
 
 ![book cover](https://eloquentjavascript.net/img/cover.jpg)
 
-# Misc
+# Miscellaneous
 [Book site](https://eloquentjavascript.net/)
