@@ -1,8 +1,5 @@
 # Information
-This subfolder contains my files (my code snippets and my synopses about the main book's topics) 
+This subfolder contains my files (my code snippets and my synopses about the main book's topics)
 for the book **"Pro Git"** 2-th edition by *Scott Chacon* and *Ben Straub*.
 
-It is free.
- 
-[link to it's site](https://git-scm.com/book/en/v2). 
-
+[Online version](https://git-scm.com/book/en/v2) (It is free).
