@@ -3,8 +3,8 @@ This subfolder contains my files (my code snippets and my synopses about the mai
 for the book  **"Qt 5.10"** by **Maks Shlee**.
 
 # HOWTOs
-## Run a qml app with the MinGW compiler
-- use a project from the `__qml_skeleton` directory
+## Run a qml app (5.X) with the MinGW compiler
+- use a project from the `__qml_5_skeleton` directory
 - open the project diretctory in the `cmd.exe` shell
 - set the `PATH` environment variable
   ```
