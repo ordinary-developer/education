@@ -1,5 +1,5 @@
 # Information
-This subfolder contains my files (my code snippets and my synopses about the main book's topics) for the book **"Concurrency with modern C++"** by *Rainer Grimm*.
+This subfolder contains my files (mainly code snippets) for the book **"Concurrency with modern C++"** by *Rainer Grimm*.
 
-![book cover](https://static.packt-cdn.com/products/9781839211027/cover/smaller "book cover")
-(_image from the Packt site_)
+![image from the Packt site](https://static.packt-cdn.com/products/9781839211027/cover/smaller "Image from the Packt site")
+(_Image from the Packt site_)
