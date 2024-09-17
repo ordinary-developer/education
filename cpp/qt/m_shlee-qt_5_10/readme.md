@@ -1,6 +1,5 @@
 # Information
-This subfolder contains my files (my code snippets and my synopses about the main book's topics) 
-for the book  **"Qt 5.10"** by **Maks Shlee**.
+This subfolder contains my files (mainly code snippets) for the book  **"Qt 5.10"** by **Maks Shlee**.
 
 # HOWTOs
 ## Run a qml app (5.X) with the MinGW compiler
