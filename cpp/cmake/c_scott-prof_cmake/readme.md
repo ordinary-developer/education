@@ -1,2 +1,2 @@
 # Information
-This subfolder contains my files (my code snippets and my synopses for the main book's topics) for the book  **"Professional CMake: A Practicle Guide"** by **Craig Scott**.
+This subfolder contains my files (mainly code snippets) for the book  **"Professional CMake: A Practicle Guide"** by **Craig Scott**.
