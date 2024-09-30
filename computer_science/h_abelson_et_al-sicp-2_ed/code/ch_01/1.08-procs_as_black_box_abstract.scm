@@ -1,7 +1,5 @@
 #lang sicp
 
-(display "=> Procedures as Black-Box Abstractions") (newline)
-
 (define (sqrt-01 x)
     (define (square x) (* x x))
     (define (abs x) (if (< x 0) (- x) x))

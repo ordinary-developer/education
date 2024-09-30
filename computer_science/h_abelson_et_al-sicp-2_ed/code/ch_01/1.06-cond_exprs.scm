@@ -1,7 +1,5 @@
 #lang sicp
 
-(display "[Conditional Expressions and Predicates] =>")(newline)
-
 (define (abs1 x)
     (cond ((> x 0) x)
           ((= x 0) 0)
