@@ -1,5 +1,4 @@
 # Information
+This subfolder contains my files (mainly code snippets) for the book  **"Advanced metaprogramming in classic c++"** by **Davide Di Gennaro**.
 
-This subfolder contains my files (my code snippets and my synopses about the main book's topics) for the book  **"Advanced metaprogramming in classic c++"** by **Davide Di Gennaro**.
-
-[Link to amazon](https://www.amazon.com/Advanced-Metaprogramming-Classic-Davide-Gennaro/dp/1484210115).
+[Link to Amazon](https://www.amazon.com/Advanced-Metaprogramming-Classic-Davide-Gennaro/dp/1484210115).
