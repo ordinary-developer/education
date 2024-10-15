@@ -1,6 +1,7 @@
 #include <iostream>
 #include <thread>
 
+
 void helloFunction() {
     std::cout << "Hello from a function." << '\n';
 }
@@ -11,6 +12,7 @@ public:
         std::cout << "Hello from a function object." << '\n';
     }
 };
+
 
 int main() {
     std::cout << '\n';

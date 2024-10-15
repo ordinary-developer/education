@@ -1,6 +1,7 @@
-#include <thread>
 #include <iostream>
+#include <thread>
 #include <utility>
+
 
 class scoped_thread {
     std::thread t;
@@ -18,6 +19,7 @@ public:
     scoped_thread(scoped_thread&) = delete;
     scoped_thread& operator = (scoped_thread const&) = delete;
 };
+
 
 int main() {
     scoped_thread(std::thread([]{ std::cout << std::this_thread::get_id() << '\n'; }));

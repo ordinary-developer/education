@@ -4,6 +4,7 @@
 
 using namespace std::literals;
 
+
 int main() {
     std::jthread nonInterruptable([] {
         int counter{0};
@@ -13,7 +14,7 @@ int main() {
             ++counter;
         }
     });
-    
+
     std::jthread interruptable([](std::stop_token stoken) {
         int counter{0};
         while (counter < 10) {
@@ -25,14 +26,14 @@ int main() {
             ++counter;
         }
     });
-    
+
     std::this_thread::sleep_for(1s);
     
     std::cout << '\n';
     std::cout << "Main thread interrupts both jthreads" << '\n';
-    
+
     nonInterruptable.request_stop();
     interruptable.request_stop();
-    
+
     std::cout << "ok" << std::endl;
 }

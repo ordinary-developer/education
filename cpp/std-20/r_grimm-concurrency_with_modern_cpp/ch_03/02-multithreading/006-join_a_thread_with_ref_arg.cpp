@@ -2,6 +2,7 @@
 #include <iostream>
 #include <thread>
 
+
 class Sleeper {
 public:
     Sleeper(int& i_) : i{i_} {};
@@ -17,6 +18,7 @@ public:
 private:
     int& i;
 };
+
 
 int main() {
     std::cout << '\n';

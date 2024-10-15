@@ -1,6 +1,7 @@
-#include <iostream>
 #include <functional>
+#include <iostream>
 #include <thread>
+
 
 struct Account {
     int amount;
@@ -10,6 +11,7 @@ void transferMoney(int amount, Account& from, Account& to) {
     from.amount -= amount;
     to.amount += amount;
 }
+
 
 int main() {
     Account acc1{10}, acc2{20};
