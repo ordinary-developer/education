@@ -5,7 +5,7 @@ Window {
     visible: true
     width: 640
     height: 480
-    
+
     Rectangle {
         width: {
             var w = parent.width / 5
@@ -13,9 +13,9 @@ Window {
             return w
         }
         height: parent.height / 5
-        
+
         anchors.centerIn: parent
-        
+
         color: "gray"
     }
 }
