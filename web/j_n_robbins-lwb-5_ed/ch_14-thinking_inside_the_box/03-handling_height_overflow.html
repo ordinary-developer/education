@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>03-handling_height_overflow</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+    p.decorated1 {
+        background: #f2f5d5;
+        box-sizing: content-box;
+        overflow: visible;
+        width: 600px;
+        height: 50px;
+        padding: 20px;
+        border: 5px solid gray;
+        margin: 20px;
+    }
+
+    p.decorated2 {
+        background: #f2f5d5;
+        box-sizing: content-box;
+        overflow: hidden;
+        width: 600px;
+        height: 50px;
+        padding: 20px;
+        border: 5px solid gray;
+        margin: 20px;
+    }
+
+    p.decorated3 {
+        background: #f2f5d5;
+        box-sizing: content-box;
+        overflow: scroll;
+        width: 600px;
+        height: 50px;
+        padding: 20px;
+        border: 5px solid gray;
+        margin: 20px;
+    }
+
+    p.decorated4 {
+        background: #f2f5d5;
+        box-sizing: content-box;
+        overflow: auto;
+        width: 600px;
+        height: 50px;
+        padding: 20px;
+        border: 5px solid gray;
+        margin: 20px;
+    }
+
+    p.decorated5 {
+        background: #f2f5d5;
+        box-sizing: border-box;
+        overflow: visible;
+        width: 600px;
+        height: 50px;
+        padding: 20px;
+        border: 5px solid gray;
+        margin: 20px;
+    }
+
+    p.decorated6 {
+        background: #f2f5d5;
+        box-sizing: border-box;
+        overflow: hidden;
+        width: 600px;
+        height: 50px;
+        padding: 20px;
+        border: 5px solid gray;
+        margin: 20px;
+    }
+
+    p.decorated7 {
+        background: #f2f5d5;
+        box-sizing: border-box;
+        overflow: scroll;
+        width: 600px;
+        height: 50px;
+        padding: 20px;
+        border: 5px solid gray;
+        margin: 20px;
+    }
+
+    p.decorated8 {
+        background: #f2f5d5;
+        box-sizing: border-box;
+        overflow: auto;
+        width: 600px;
+        height: 50px;
+        padding: 20px;
+        border: 5px solid gray;
+        margin: 20px;
+    }
+
+    </style>
+</head>
+<body>
+    <p class="decorated1">Nullam in urna nibh. Sed eleifend lorem sit amet ipsum eleifend blandit. Pellentesque dapibus volutpat odio eu tempor. Proin id tincidunt nisi, sed sodales metus. Pellentesque feugiat nec nisl a luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus sodales lectus mauris, sit amet imperdiet leo posuere ac. Quisque sed nunc vel metus mollis congue sagittis pharetra lorem. Suspendisse non felis orci. Integer venenatis, justo in malesuada cursus, orci lacus posuere dolor, et faucibus massa quam ut sapien. Aliquam quis orci posuere nisi fringilla vulputate at a nulla. Suspendisse cursus interdum nisl a tincidunt.</p><hr />
+
+    <p class="decorated2">Nullam in urna nibh. Sed eleifend lorem sit amet ipsum eleifend blandit. Pellentesque dapibus volutpat odio eu tempor. Proin id tincidunt nisi, sed sodales metus. Pellentesque feugiat nec nisl a luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus sodales lectus mauris, sit amet imperdiet leo posuere ac. Quisque sed nunc vel metus mollis congue sagittis pharetra lorem. Suspendisse non felis orci. Integer venenatis, justo in malesuada cursus, orci lacus posuere dolor, et faucibus massa quam ut sapien. Aliquam quis orci posuere nisi fringilla vulputate at a nulla. Suspendisse cursus interdum nisl a tincidunt.</p><hr />
+
+    <p class="decorated3">Nullam in urna nibh. Sed eleifend lorem sit amet ipsum eleifend blandit. Pellentesque dapibus volutpat odio eu tempor. Proin id tincidunt nisi, sed sodales metus. Pellentesque feugiat nec nisl a luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus sodales lectus mauris, sit amet imperdiet leo posuere ac. Quisque sed nunc vel metus mollis congue sagittis pharetra lorem. Suspendisse non felis orci. Integer venenatis, justo in malesuada cursus, orci lacus posuere dolor, et faucibus massa quam ut sapien. Aliquam quis orci posuere nisi fringilla vulputate at a nulla. Suspendisse cursus interdum nisl a tincidunt.</p><hr />
+
+    <p class="decorated4">Nullam in urna nibh. Sed eleifend lorem sit amet ipsum eleifend blandit. Pellentesque dapibus volutpat odio eu tempor. Proin id tincidunt nisi, sed sodales metus. Pellentesque feugiat nec nisl a luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus sodales lectus mauris, sit amet imperdiet leo posuere ac. Quisque sed nunc vel metus mollis congue sagittis pharetra lorem. Suspendisse non felis orci. Integer venenatis, justo in malesuada cursus, orci lacus posuere dolor, et faucibus massa quam ut sapien. Aliquam quis orci posuere nisi fringilla vulputate at a nulla. Suspendisse cursus interdum nisl a tincidunt.</p><hr />
+
+    <hr />
+    <hr />
+
+    <p class="decorated5">Nullam in urna nibh. Sed eleifend lorem sit amet ipsum eleifend blandit. Pellentesque dapibus volutpat odio eu tempor. Proin id tincidunt nisi, sed sodales metus. Pellentesque feugiat nec nisl a luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus sodales lectus mauris, sit amet imperdiet leo posuere ac. Quisque sed nunc vel metus mollis congue sagittis pharetra lorem. Suspendisse non felis orci. Integer venenatis, justo in malesuada cursus, orci lacus posuere dolor, et faucibus massa quam ut sapien. Aliquam quis orci posuere nisi fringilla vulputate at a nulla. Suspendisse cursus interdum nisl a tincidunt.</p><hr />
+
+    <p class="decorated6">Nullam in urna nibh. Sed eleifend lorem sit amet ipsum eleifend blandit. Pellentesque dapibus volutpat odio eu tempor. Proin id tincidunt nisi, sed sodales metus. Pellentesque feugiat nec nisl a luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus sodales lectus mauris, sit amet imperdiet leo posuere ac. Quisque sed nunc vel metus mollis congue sagittis pharetra lorem. Suspendisse non felis orci. Integer venenatis, justo in malesuada cursus, orci lacus posuere dolor, et faucibus massa quam ut sapien. Aliquam quis orci posuere nisi fringilla vulputate at a nulla. Suspendisse cursus interdum nisl a tincidunt.</p><hr />
+
+    <p class="decorated7">Nullam in urna nibh. Sed eleifend lorem sit amet ipsum eleifend blandit. Pellentesque dapibus volutpat odio eu tempor. Proin id tincidunt nisi, sed sodales metus. Pellentesque feugiat nec nisl a luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus sodales lectus mauris, sit amet imperdiet leo posuere ac. Quisque sed nunc vel metus mollis congue sagittis pharetra lorem. Suspendisse non felis orci. Integer venenatis, justo in malesuada cursus, orci lacus posuere dolor, et faucibus massa quam ut sapien. Aliquam quis orci posuere nisi fringilla vulputate at a nulla. Suspendisse cursus interdum nisl a tincidunt.</p><hr />
+
+    <p class="decorated8">Nullam in urna nibh. Sed eleifend lorem sit amet ipsum eleifend blandit. Pellentesque dapibus volutpat odio eu tempor. Proin id tincidunt nisi, sed sodales metus. Pellentesque feugiat nec nisl a luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus sodales lectus mauris, sit amet imperdiet leo posuere ac. Quisque sed nunc vel metus mollis congue sagittis pharetra lorem. Suspendisse non felis orci. Integer venenatis, justo in malesuada cursus, orci lacus posuere dolor, et faucibus massa quam ut sapien. Aliquam quis orci posuere nisi fringilla vulputate at a nulla. Suspendisse cursus interdum nisl a tincidunt.</p><hr />
+</body>
