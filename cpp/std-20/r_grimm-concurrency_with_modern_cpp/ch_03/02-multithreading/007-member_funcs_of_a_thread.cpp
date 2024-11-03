@@ -29,6 +29,7 @@ int main() {
     std::cout << '\n';
 
     std::cout << "t1.joinable(): " << t1.joinable() << '\n';
+    std::cout << "t2.joinable(): " << t2.joinable() << '\n';
 
     std::cout << '\n';
 
@@ -38,6 +39,7 @@ int main() {
     std::cout << '\n';
 
     std::cout << "t1.joinable(): " << t1.joinable() << '\n';
+    std::cout << "t2.joinable(): " << t2.joinable() << '\n';
 
     std::cout << '\n';
 }
