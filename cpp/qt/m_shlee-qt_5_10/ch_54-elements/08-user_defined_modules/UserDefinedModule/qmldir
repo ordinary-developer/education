@@ -1,0 +1,3 @@
+module UserDefinedModule
+TextField 1.2 TextField-1.2.qml
+TextField 1.1 TextField-1.1.qml
