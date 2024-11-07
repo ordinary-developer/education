@@ -1,7 +1,7 @@
 import QtQuick 2.8
-import QtQuick.Window 2.2
+import QtQuick.Controls 2.2
 
-Window {
+ApplicationWindow {
     visible: true
     width: 150
     height: 100
@@ -9,7 +9,7 @@ Window {
     Item {
         anchors.fill: parent
 
-        TextField {
+        MyTextField {
             x: 10
             y: 20
             color: "yellow"

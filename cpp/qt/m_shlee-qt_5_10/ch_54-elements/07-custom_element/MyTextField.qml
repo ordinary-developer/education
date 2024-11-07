@@ -2,7 +2,7 @@ import QtQuick 2.8
 
 Rectangle {
     property alias text: txt.text
-    property string name: "TextField"
+    property string name: "MyTextField"
 
     width: txt.width
     height: txt.height

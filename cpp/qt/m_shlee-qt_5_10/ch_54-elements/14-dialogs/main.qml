@@ -40,8 +40,8 @@ ApplicationWindow {
         modality: Qt.WindowModal
         title: "Select font"
         onAccepted: {
-            messageDialog.informativeText = "Selected font: " + font
-            messageDialog.visible = true
+            messageDialog.informativeText = "Selected font: " + font;
+            messageDialog.visible = true;
         }
     }
 
