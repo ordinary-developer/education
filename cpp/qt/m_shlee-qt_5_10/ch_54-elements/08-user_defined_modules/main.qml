@@ -1,7 +1,11 @@
 import QtQuick 2.8
 import QtQuick.Window 2.2
 
-import UserDefinedModule 1.1
+// for the last version
+import "UserDefinedModule"
+
+// for the specified version
+//import "UserDefinedModule" 1.1
 
 Window {
     visible: true
