@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title>06_exercises</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript"> 
+    window.onload = function() {
+        // Exercise 01: A vector type
+        console.log("[Ex 01: A vector type] =>");
+        {
+            class Vec {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                }
+
+                plus(other) {
+                    return new Vec(this.x + other.x, this.y + other.y);
+                }
+
+                minus(other) {
+                    return new Vec(this.x - other.x, this.y - other.y);
+                }
+                
+                get length() {
+                    return Math.sqrt(this.x * this.x + this.y * this.y);
+                }
+            }
+
+            const v1 = new Vec(1, 2);
+            const v2 = new Vec(3, 4);
+            console.log(`v1.x = ${v1.x}, v1.y = ${v1.y}, v2.x = ${v2.x}, v2.y = ${v2.y}`);
+            
+            const v3 = v1.plus(v2);
+            const v4 = v1.minus(v2);
+            console.log(`v3.x = ${v3.x}, v3.y = ${v3.y}, v4.x = ${v4.x}, v4.y = ${v4.y}`);
+
+            console.log(
+                `v1.length = ${v1.length.toFixed(2)}, v2.length = ${v2.length.toFixed(2)}, ` +
+                `v3.length = ${v3.length.toFixed(2)}, v4.length = ${v4.length.toFixed(2)}`);
+        }
+        console.log("\n");
+
+        // Exercise 01: A vector type (author's solution)
+        console.log("[Ex 01: A vector type (author's solution)] =>");
+        {
+            class Vec {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                }
+
+                plus(other) {
+                    return new Vec(this.x + other.x, this.y + other.y);
+                }
+
+                minus(other) {
+                    return new Vec(this.x - other.x, this.y - other.y);
+                }
+
+                get length() {
+                    return Math.sqrt(this.x * this.x + this.y * this.y);
+                }
+            }
+
+            console.log(new Vec(1, 2).plus(new Vec(2, 3)));
+            console.log(new Vec(1, 2).minus(new Vec(2, 3)));
+            console.log(new Vec(3, 4).length);
+        }
+        console.log("\n");
+    }
+    </script>
+</head>
+<body>
+</body>
