@@ -67,6 +67,314 @@
             console.log(new Vec(3, 4).length);
         }
         console.log("\n");
+        
+        // Exercise 02: Groups (without hints)
+        console.log("[Ex 02: Groups (without hints)] =>");
+        {
+            class Group {
+                #data;
+
+                constructor() {
+                    this.#data = []
+                }
+
+                add(item) {
+                    if (this.#data.indexOf(item) < 0) {
+                        this.#data.push(item);
+                    }
+                }
+
+                delete(item) {
+                    const idx = this.#data.indexOf(item);
+                    if (idx < 0) {
+                        return;
+                    }
+
+                    this.#data.splice(idx, 1);
+                }
+
+                has(item) {
+                    return this.#data.indexOf(item) >= 0;
+                }
+
+                static from(other) {
+                    let group = new Group();
+                    for (let item of other) {
+                        group.add(item);
+                    }
+                    return group;
+                }
+
+                get data() {
+                    return this.#data;
+                }
+            }
+
+            let group = Group.from([10, 20]);
+            console.log(group.has(10));
+            console.log(group.has(30));
+            group.add(10);
+            group.delete(10);
+            console.log(group.has(10));
+        }
+        console.log("\n");
+
+        // Exercise 02: Groups (with hints)
+        console.log("[Ex 02: Groups (with hints)] =>");
+        {
+            class Group {
+                constructor() {
+                    this.data = []
+                }
+
+                add(item) {
+                    if (!this.has(item))
+                        this.data.push(item);
+                }
+
+                has(item) { 
+                    return this.data.includes(item);
+                }
+
+                delete(item) {
+                    this.data = this.data.filter(element => element !== item);
+                }
+
+                static from(other) {
+                    let group = new Group()
+                    for (let item of other)
+                        group.add(item);
+                    return group;
+                }
+            }
+
+            let group = Group.from([10, 20]);
+            console.log(group.has(10));
+            console.log(group.has(30));
+            group.add(10);
+            group.delete(10);
+            console.log(group.has(10));
+        }
+        console.log("\n");
+ 
+        // Exercise 02: Groups (author's solution)
+        console.log("[Ex 02: Groups (author's solution)] =>");
+        {
+            class Group {
+                #members = [];
+
+                add(value) {
+                    if (!this.has(value)) {
+                        this.#members.push(value);
+                    }
+                }
+
+                delete(value) {
+                    this.#members = this.#members.filter(v => v !== value);
+                }
+
+                has(value) {
+                    return this.#members.includes(value);
+                }
+
+                static from(collection) {
+                    let group = new Group;
+                    for (let value of collection) {
+                        group.add(value);
+                    }
+                    return group;
+                }
+            }
+
+            let group = Group.from([10, 20]);
+            console.log(group.has(10));
+            console.log(group.has(30));
+            group.add(10);
+            group.delete(10);
+            console.log(group.has(10));
+        }
+        console.log("\n");
+        
+        // Exercise 03: Iterable groups (without hints)
+        console.log("[Ex 03: Iterable groups (without hints)] =>");
+        {
+            class Group {
+                constructor() {
+                    this.data = []
+                }
+
+                add(item) {
+                    if (!this.has(item)) {
+                        this.data.push(item);
+                    }
+                }
+                
+                has(item) {
+                    return this.data.includes(item);
+                }
+                
+                delete(item) {
+                    if (this.has(item)) {
+                        this.data = this.data.filter(i => i !== item);
+                    }
+                }
+                
+                static from(other) {
+                    let group = new Group();
+                    for (let item of other) {
+                        group.add(item);
+                    }
+                    return group;
+                }
+            }
+            
+            class GroupIterator {
+                constructor(group) {
+                    this.group = group
+                    this.index = 0
+                }
+                
+                next() {
+                    if (this.group.data.length <= this.index) {
+                        return { done: true };
+                    }
+                    
+                    const value = this.group.data[this.index]
+                    this.index++;
+                    return { value, done: false };
+                }
+            }
+            
+            Group.prototype[Symbol.iterator] = function() {
+                return new GroupIterator(this);
+            }
+            
+            for (let value of Group.from(["a", "b", "c"])) {
+                console.log(value);
+            }
+        }
+        console.log("\n");
+        
+        // Exercise 03: Iterable groups (with hints)
+        console.log("[Ex 03: Iterable groups (with hints)] =>");
+        {
+            class Group {
+                constructor() {
+                    this.data = [];
+                }
+                
+                add(item) {
+                    if (!this.has(item)) {
+                        this.data.push(item);
+                    }
+                }
+                
+                has(item) {
+                    return this.data.includes(item);
+                }
+                
+                delete(item) {
+                    if (this.has(item)) {
+                        this.data = this.data.filter(i => i !== item);
+                    }
+                }
+                
+                static from(arrayData) {
+                    let group = new Group()
+                    for (const item of arrayData) {
+                        group.add(item);
+                    }
+                    return group;
+                }
+            }
+            
+            class GroupIterator {
+                constructor(group) {
+                    this.group = group
+                    this.i = 0
+                }
+                
+                next() {
+                    if (this.group.data.length <= this.i) {
+                        return { done: true };
+                    }
+                    
+                    const value = this.group.data[this.i];
+                    this.i++;
+                    return { value, done: false };
+                }
+            }
+            
+            Group.prototype[Symbol.iterator] = function() {
+                return new GroupIterator(this);
+            }
+            
+            for (let value of Group.from(["a", "b", "c"])) {
+                console.log(value);
+            }
+        }
+        console.log("\n");
+        
+        // Exercise 03: Iterable groups (with hints)
+        console.log("[Ex 03: Iterable groups (author's solution)] =>");
+        {
+            class Group {
+                #members = [];
+                
+                add(value) {
+                    if (!this.has(value)) {
+                        this.#members.push(value);
+                    }
+                }
+                
+                has(value) {
+                    return this.#members.includes(value);
+                }
+                
+                delete(value) {
+                    this.#members = this.#members.filter(v => v !== value);
+                }
+                
+                static from(collection) {
+                    let group = new Group;
+                    for (let value of collection) {
+                        group.add(value);
+                    }
+                    return group;
+                }
+                
+                [Symbol.iterator]() {
+                    return new GroupIterator(this.#members);
+                }
+            }
+            
+            class GroupIterator {
+                #members;
+                #position;
+                
+                constructor(members) {
+                    this.#members = members;
+                    this.#position = 0;
+                }
+                
+                next() {
+                    if (this.#position >= this.#members.length) {
+                        return { done: true };
+                    }
+                    else {
+                        let result = {value: this.#members[this.#position],
+                                      done: false};
+                        this.#position++;
+                        return result;
+                    }
+                }
+            }
+            
+            for (let value of Group.from(["a", "b", "c"])) {
+                console.log(value);
+            }
+        }
+        console.log("\n");
     }
     </script>
 </head>
