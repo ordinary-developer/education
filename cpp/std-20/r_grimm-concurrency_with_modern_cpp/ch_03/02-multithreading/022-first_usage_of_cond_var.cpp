@@ -4,41 +4,40 @@
 #include <thread>
 
 
-std::mutex mutex;
-std::condition_variable condVar;
+std::mutex gMutex;
+std::condition_variable gCondVar;
 
-bool dataReady{false};
+bool gDataReady{false};
 
 void doTheWork() {
-    std::cout << "Processing shared data." << '\n';
+    std::cout << "[ .... ] worker: processing shared data" << std::endl;
 }
 
 void waitingForWork() {
-    std::cout << "Worker: Waiting for work." << '\n';
-    std::unique_lock<std::mutex> lock(mutex);
-    condVar.wait(lock, []{ return dataReady; });
-
+    std::cout << "[ .... ] worker: waiting for work" << std::endl;
+    std::unique_lock<std::mutex> lock(gMutex);
+    gCondVar.wait(lock, []{ return gDataReady; });
     doTheWork();
-    std::cout << "Work done." << '\n';
+    std::cout << "[  ok  ] worker: work done" << std::endl;
 }
 
 void setDataReady() {
     {
-        std::lock_guard<std::mutex> lock(mutex);
-        dataReady = true;
+        std::lock_guard<std::mutex> _(gMutex);
+        gDataReady = true;
     }
-    std::cout << "Sender: Data is ready." << '\n';
-    condVar.notify_one();
+    std::cout << "[  ok  ] sender: data is ready" << std::endl;
+    gCondVar.notify_one();
 }
 
 
 int main() {
-    std::cout << '\n';
+    std::cout << "[  ok  ] starting the app" << std::endl;
 
     std::thread t1(waitingForWork);
     std::thread t2(setDataReady);
     t1.join();
     t2.join();
 
-    std::cout << '\n';
+    std::cout << std::endl;
 }
