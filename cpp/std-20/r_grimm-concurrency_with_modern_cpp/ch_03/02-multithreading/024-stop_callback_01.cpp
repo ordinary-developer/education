@@ -9,10 +9,10 @@ using namespace std::literals;
 
 auto func = [](std::stop_token stoken) {
     int counter{0};
-    auto thread_id = std::this_thread::get_id();
-    std::stop_callback callback(stoken, [&counter, thread_id] {
-        std::cout << "Thread id: " << thread_id
-                  << "; counter; " << counter << '\n';
+    auto threadId = std::this_thread::get_id();
+    std::stop_callback callback(stoken, [&counter, threadId] {
+        std::cout << "Thread id: " << threadId
+                  << "; counter: " << counter << std::endl;
     });
     while (counter < 10) {
         std::this_thread::sleep_for(0.2s);
@@ -20,19 +20,16 @@ auto func = [](std::stop_token stoken) {
     }
 };
 
-int main() {
-    std::cout << '\n';
 
+int main() {
     std::vector<std::jthread> vecThreads(10);
-    for (auto& thr: vecThreads) {
-        thr = std::jthread(func);
-    }
+    for (auto & t : vecThreads)
+        t = std::jthread(func);
 
     std::this_thread::sleep_for(1s);
 
-    for (auto& thr: vecThreads) {
-        thr.request_stop();
-    }
+    for (auto & t : vecThreads)
+        t.request_stop();
 
-    std::cout << '\n';
+    std::cout << std::endl;
 }

@@ -17,18 +17,16 @@ void func(std::stop_token stopToken) {
         callbacks.emplace_back(stopToken, [i] { std::cout << i; });
     }
     std::this_thread::sleep_for(100ms);
-    std::cout << '\n';
+    std::cout << std::endl;
 }
 
 
 int main() {
-    std::cout << '\n';
-
-    std::jthread thr1 = std::jthread(func);
-    std::jthread thr2 = std::jthread(func);
+    std::jthread t1 = std::jthread(func);
+    std::jthread t2 = std::jthread(func);
     std::this_thread::sleep_for(50ms);
-    thr1.request_stop();
-    thr2.request_stop();
+    t1.request_stop();
+    t2.request_stop();
 
-    std::cout << '\n';
+    std::cout << std::endl;
 }
