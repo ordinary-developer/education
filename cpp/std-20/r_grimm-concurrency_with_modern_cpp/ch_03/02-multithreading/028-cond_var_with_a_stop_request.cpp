@@ -1,6 +1,5 @@
-#include <condition_variable>
-#include <thread>
 #include <iostream>
+#include <condition_variable>
 #include <chrono>
 #include <mutex>
 #include <thread>
@@ -8,38 +7,33 @@
 using namespace std::literals;
 
 
-std::mutex mut;
-std::condition_variable_any condVar;
+std::mutex gMut;
+std::condition_variable_any gCondVar;
 
-bool dataReady;
+bool gDataReady;
 
 void receiver(std::stop_token stopToken) {
-    std::cout << "Waiting" << '\n';
-    
-    std::unique_lock<std::mutex> lock(mut);
-    bool ret = condVar.wait(lock, stopToken, []{ return dataReady; });
-    if (ret) {
-        std::cout << "Notification received: " << '\n';
-    }
-    else {
-        std::cout << "Stop request received" << '\n';
-    }
+    std::cout << "[ .... ] receiver: waiting" << std::endl;
+
+    std::unique_lock<std::mutex> lock(gMut);
+    bool ret = gCondVar.wait(lock, stopToken, []{ return gDataReady; });
+    std::cout << "[ .... ] receiver: " << (ret ? "a notification has been received"
+                                               : "a stop request has been received")
+                                       << std::endl;
 }
 
 void sender() {
-    std::this_thread::sleep_for(5ms);        
+    std::this_thread::sleep_for(5ms);
     {
-        std::lock_guard<std::mutex> lock(mut);
-        dataReady = true;
-        std::cout << "Send notification" << '\n';
+        std::lock_guard<std::mutex> _(gMut);
+        gDataReady = true;
+        std::cout << "[ .... ] sender: has been sending a notification" << std::endl;
     }
-    condVar.notify_one();
+    gCondVar.notify_one();
 }
 
 
 int main() {
-    std::cout << '\n';
-
     std::jthread t1(receiver);
     std::jthread t2(sender);
 
@@ -48,5 +42,5 @@ int main() {
     t1.join();
     t2.join();
 
-    std::cout << '\n';
+    std::cout << std::endl;
 }
