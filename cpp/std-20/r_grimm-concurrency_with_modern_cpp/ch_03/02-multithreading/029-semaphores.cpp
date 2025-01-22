@@ -4,35 +4,34 @@
 #include <vector>
 
 
-std::vector<int> myVec{};
+std::vector<int> gMyVec{};
 
-std::counting_semaphore<1> prepareSignal(0);
+std::counting_semaphore<1> gPrepareSignal(0);
 
 void prepareWork() {
-    myVec.insert(myVec.end(), { 0, 1, 0, 3 });
-    std::cout << "Sender: Data prepared." << '\n';
-    prepareSignal.release();
+    gMyVec.insert(gMyVec.end(), { 0, 1, 0, 3});
+    std::cout << "[ .... ] sender: data have been prepared" << std::endl;
+    gPrepareSignal.release();
+    std::cout << "[ .... ] sender: the signal has been sent" << std::endl;
 }
 
 void completeWork() {
-    std::cout << "Waiter: Waiting for data." << '\n';
-    prepareSignal.acquire();
-    myVec[2] = 2;
-    std::cout << "Waiter: Complete the work." << '\n';
-    for (auto i: myVec) {
+    std::cout << "[ .... ] waiter: waiting for data" << std::endl;
+    gPrepareSignal.acquire();
+    gMyVec[2] = 2;
+    std::cout << "[ .... ] waiter: complete the work, values = ";
+    for (auto i : gMyVec) {
         std::cout << i << " ";
     }
-    std::cout << '\n';
+    std::cout << std::endl;
 }
 
 
 int main() {
-    std::cout << '\n';    
-
     std::thread t1(prepareWork);
     std::thread t2(completeWork);
     t1.join();
     t2.join();
 
-    std::cout << '\n';
+    std::cout << std::endl;
 }
