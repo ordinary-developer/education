@@ -7,11 +7,11 @@
 
 static const int NUM = 100'000'000;
 
-long long getDotProduct(std::vector<int>& v, std::vector<int>& w) {
+long long getDotProduct(std::vector<int> & v, std::vector<int> & w) {
     auto vSize = v.size();
 
-    auto future1 = std::async([&] {
-        return std::inner_product(&v[0], &v[vSize / 4], &w[0], 0LL);    
+    auto future1 = std::async([&]{
+        return std::inner_product(&v[0], &v[vSize / 4], &w[0], 0LL);
     });
 
     auto future2 = std::async([&]{
@@ -31,12 +31,8 @@ long long getDotProduct(std::vector<int>& v, std::vector<int>& w) {
 
 
 int main() {
-    std::cout << '\n';
-
     std::random_device seed;
-
     std::mt19937 engine(seed());
-
     std::uniform_int_distribution<int> dist(0, 100);
 
     std::vector<int> v, w;
@@ -47,7 +43,5 @@ int main() {
         w.push_back(dist(engine));
     }
 
-    std::cout << "getDotProduct(v, w): " << getDotProduct(v, w) << '\n';
-
-    std::cout << '\n';
+    std::cout << "[ .... ] getDorProduct(v, w): " << getDotProduct(v, w) << std::endl;
 }
