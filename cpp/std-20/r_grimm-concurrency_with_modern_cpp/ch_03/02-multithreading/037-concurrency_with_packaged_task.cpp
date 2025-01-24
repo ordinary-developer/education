@@ -1,4 +1,4 @@
-#include <utility>
+#include <iostream>
 #include <future>
 #include <iostream>
 #include <thread>
@@ -6,20 +6,18 @@
 
 
 class SumUp {
-    public:
-        int operator()(int beg, int end) {
-            long long int sum{0};
-            for (int i = beg; i < end; ++i) {
-                sum += i;
-            }
-            return sum;
+public:
+    int operator()(int beg, int end) {
+        long long int sum{0};
+        for (int i = beg; i < end; ++i) {
+            sum += i;
         }
+        return sum;
+    }
 };
 
 
 int main() {
-    std::cout << '\n';
-
     SumUp sumUp1;
     SumUp sumUp2;
     SumUp sumUp3;
@@ -31,14 +29,15 @@ int main() {
     std::packaged_task<int(int, int)> sumTask3(sumUp3);
     std::packaged_task<int(int, int)> sumTask4(sumUp4);
 
-    // create the futures
+    // create the future
     std::future<int> sumResult1 = sumTask1.get_future();
     std::future<int> sumResult2 = sumTask2.get_future();
     std::future<int> sumResult3 = sumTask3.get_future();
     std::future<int> sumResult4 = sumTask4.get_future();
 
     // push the tasks on the container
-    std::deque<std::packaged_task<int(int, int)>> allTasks;
+    std::deque<std::packaged_task<int(int,int)>> allTasks;
+
     allTasks.push_back(std::move(sumTask1));
     allTasks.push_back(std::move(sumTask2));
     allTasks.push_back(std::move(sumTask3));
@@ -50,19 +49,16 @@ int main() {
 
     // perform each calculation in a separate thread
     while (not allTasks.empty()) {
-        std::packaged_task<int(int, int)> myTask = std::move(allTasks.front());
+        std::packaged_task<int(int, int)> task = std::move(allTasks.front());
         allTasks.pop_front();
-        std::thread sumThread(std::move(myTask), begin, end);
+        std::thread sumThread(std::move(task), begin, end);
         begin = end;
         end += increment;
         sumThread.detach();
     }
 
     // pick up the results
-    auto sum = sumResult1.get() + sumResult2.get() +
-               sumResult3.get() + sumResult4.get();
+    auto sum = sumResult1.get() + sumResult2.get() + sumResult3.get() + sumResult4.get();
 
-    std::cout << "sum of 0 .. 10000 = " << sum << '\n';
-
-    std::cout << '\n';
+    std::cout << "[ .... ] sum of 0 .. 10'000 = " << sum << std::endl;
 }
