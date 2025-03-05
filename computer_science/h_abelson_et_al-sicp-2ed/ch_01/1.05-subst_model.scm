@@ -1,9 +1,9 @@
 #lang sicp
 
-;; # Applicative-order evaluation ("evaluate the arguments and then apply")
+;; # Applicative-order evaluation
+;; ("first reduce, than expand") or ("evaluate the arguments and then apply")
 ;; The interpreter first evaluates the operator and operands
 ;; and then applies the resulting arguments.
-;; ("first reduce, then expand")
 
 ;; # Normal-order evaluation ("fully expand and then reduce")
 ;; The interpreter will first substitute operand expressions for parameters
@@ -15,12 +15,15 @@
 
 ;; Lisp uses applicative-order evaluation.
 
+
+;; A procedure to evaluate
 (define (square x) (* x x))
 (define (sum-of-squares x y)
     (+ (square x) (square y)))
 (define (f a)
     (sum-of-squares (+ a 1) (* a 2)))
 (define a 5)
+
 
 ;; Applicative-order evaluation
 (f a)
@@ -31,6 +34,7 @@
 (+ (* 6 6) (* 10 10))
 (+ 36 100)
 136
+
 
 ;; Normal-order evalution
 (f a)
