@@ -9,17 +9,17 @@
 ;   ((if (> b 0) + -) a b))     
 
 
+
 ; -------------
 ; [solution] =>
 (define (a-plus-abs-b a b)
     ((if (> b 0) + -) a b))
 
-(define assert
-    (= 3
-       (a-plus-abs-b 1 2)
-       (a-plus-abs-b 1 (- 2))
-       (a-plus-abs-b 3 0)))
+(define assert (= 3
+                  (a-plus-abs-b 1 2)
+                  (a-plus-abs-b 1 (- 2))
+                  (a-plus-abs-b 3 0)))
 assert
 
-; Notes:
-; This procedure returns the sum of the "a" parameter and the modulo of the "b" parameter.
+; Note:
+; This procedure returns the sum of the "a" parameter and the absolute value of the "b" parameter.

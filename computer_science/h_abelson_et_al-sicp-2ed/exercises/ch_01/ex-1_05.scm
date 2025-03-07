@@ -1,3 +1,5 @@
+#lang sicp
+
 ; [exercise] =>
 ; Ben Bitdiddle has invetend a test to determine
 ; whter the interpreter he is faced with
@@ -21,6 +23,7 @@
 ;  The predicate expression is evaluated first,
 ;  and the result determines whether to evaluate the consequent
 ;  or the alternative expression.)
+
 
 
 ; -------------
