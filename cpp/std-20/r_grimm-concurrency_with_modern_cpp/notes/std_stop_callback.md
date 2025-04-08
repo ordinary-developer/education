@@ -7,7 +7,7 @@ The calls of
 of `std::stop_source` are thread-safe.
 
 ### `std::stop_callback`
-The `std::stop_callback` constructor registers the callback function for the `std::stop_token` (given by the associated `std::stop_source`) and its destructor unregisters it.
+The `std::stop_callback` constructor registers the callback function for the `std::stop_token` and its destructor unregisters it.
 
 The callback function is invoked
 
