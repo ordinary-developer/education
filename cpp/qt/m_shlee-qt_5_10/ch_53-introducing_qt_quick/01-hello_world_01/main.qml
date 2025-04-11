@@ -10,7 +10,9 @@ Window {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            console.log(qsTr('Clicked on background. Text: "' + textEdit.text + '"'))
+            console.log(qsTr('Clicked on background. Text: "'
+                             + textEdit.text + '"')
+                       )
         }
     }
 
