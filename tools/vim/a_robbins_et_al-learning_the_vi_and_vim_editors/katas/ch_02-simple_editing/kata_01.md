@@ -8,9 +8,10 @@ your edits as you make them
 ```
 
 Then type:
-- set the cursor the "c" symbol of the "cursor" word
+- Esc
+- set the cursor the "c" symbol of the "cursor" word (by j,k,h,l)
 - `j`, `k`, `2j`, `2k`
-- set the cursor the "s" symbol of the "seeing" word
+- set the cursor the "s" symbol of the "seeing" word (by j,k,h,l)
 - `k`, `j`, `2k`, `2j`,
 - `h`, `l`, `2h`, `2l`, `l`, `h`, `2l`, `2h`
 - `b`, `w`, `B`, `W`
