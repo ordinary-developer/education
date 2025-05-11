@@ -1,5 +1,3 @@
-# Chapter 2 - Simple Editing
-
 ## Kata 01 - Moving the cursor
 Type a text:
 ```
@@ -9,6 +7,7 @@ and more, while seeing the results of
 your edits as you make them
 ```
 
+Then type:
 - set the cursor the "c" symbol of the "cursor" word
 - `j`, `k`, `2j`, `2k`
 - set the cursor the "s" symbol of the "seeing" word
