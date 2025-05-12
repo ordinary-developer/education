@@ -5,11 +5,11 @@
 #include <thread>
 
 
-std::barrier gWorkDoneBarrier(6);
-std::mutex gCoutMutex;
+std::barrier workDone(6);
+std::mutex coutMutex;
 
-void synchronizedOut(const std::string & s) noexcept {
-    std::lock_guard<std::mutex> _(gCoutMutex);
+void synchronizedOut(const std::string& s) noexcept {
+    std::lock_guard<std::mutex> lock(coutMutex);
     std::cout << s;
 }
 
@@ -17,30 +17,34 @@ class FullTimeWorker {
 public:
     FullTimeWorker(std::string name) : name_(name) {};
 
-    void operator()() {
-        synchronizedOut("[ .... ]" + name_ + ": Morning work has been done\n");
-        gWorkDoneBarrier.arrive_and_wait();
-        synchronizedOut("[ .... ]" + name_ + ": Afternoon work has been done\n");
-        gWorkDoneBarrier.arrive_and_wait();
+    void operator() () {
+        synchronizedOut(name_ + ": " + "Morning work done!\n");
+        workDone.arrive_and_wait();
+        synchronizedOut(name_ + ": " + "Afternoon work done!\n");
+        workDone.arrive_and_wait();
     }
+
 private:
-    std::string name_;    
+    std::string name_;
 };
 
 class PartTimeWorker {
 public:
-    PartTimeWorker(std::string name) : name_(name) { };
+    PartTimeWorker(std::string name) : name_(name) {};
 
-    void operator()() {
-        synchronizedOut("[ .... ]" + name_ + ": Morning work done\n");
-        gWorkDoneBarrier.arrive_and_drop();
+    void operator() () {
+        synchronizedOut(name_ + ": " + "Morning work done!\n");
+        workDone.arrive_and_drop();
     }
+
 private:
     std::string name_;
 };
 
 
 int main() {
+    std::cout << '\n';
+
     FullTimeWorker herb("  Herb");
     std::thread herbWork(herb);
 
