@@ -4,26 +4,26 @@
 #include <thread>
 
 
-std::latch gWorkDoneLatch(6);
-std::latch gGoHomeLatch(1);
+std::latch workDone(6);
+std::latch goHome(1);
 
-std::mutex gCoutMutex; 
+std::mutex coutMutex;
 
 void synchronizedOut(const std::string s) {
-    std::lock_guard<std::mutex> _(gCoutMutex);
+    std::lock_guard<std::mutex> lock(coutMutex);
     std::cout << s;
 }
 
 class Worker {
 public:
-    Worker(std::string name) : name_(name) {}
+    Worker(std::string name) : name_(name) {};
 
-    void operator()() {
-        synchronizedOut("[ .... ] " + name_ + ": " + "Work done!\n");
-        gWorkDoneLatch.count_down();
+    void operator() () {
+        synchronizedOut(name_ + ": " + "Work done!\n");
+        workDone.count_down();
 
-        gGoHomeLatch.wait();
-        synchronizedOut("[ .... ] " + name_ + ": " + "Good bye!\n");
+        goHome.wait();
+        synchronizedOut(name_ + ": " + "Good bye!\n");
     }
 
 private:
@@ -32,7 +32,9 @@ private:
 
 
 int main() {
-    std::cout << "[ .... ] BOSS: START WORKING!" << std::endl;
+    std::cout << '\n';
+
+    std::cout << "BOSS: START WORKING! " << '\n';
 
     Worker herb("  Herb");
     std::thread herbWork(herb);
@@ -52,13 +54,13 @@ int main() {
     Worker david("            David");
     std::thread davidWork(david);
 
-    gWorkDoneLatch.wait();
+    workDone.wait();
 
-    std::cout << "[ .... ] " << std::endl;
+    std::cout << '\n';
 
-    
-    std::cout << "[ .... ] BOSS: GO HOME!" << std::endl;
-    gGoHomeLatch.count_down();
+    goHome.count_down();
+
+    std::cout << "BOSS: GO HOME!" << '\n';
 
     herbWork.join();
     scottWork.join();

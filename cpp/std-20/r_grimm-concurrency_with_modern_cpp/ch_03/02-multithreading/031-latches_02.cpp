@@ -4,11 +4,11 @@
 #include <thread>
 
 
-std::latch gWorkDoneLatch(6);
-std::mutex gCoutMutex;
+std::latch workDone(6);
+std::mutex coutMutex;
 
-void synchronizedOut(const std::string & s) {
-    std::lock_guard<std::mutex> _(gCoutMutex);
+void synchronizedOut(const std::string& s) {
+    std::lock_guard<std::mutex> _(coutMutex);
     std::cout << s;
 }
 
@@ -16,10 +16,10 @@ class Worker {
 public:
     Worker(std::string name) : name_(name) {};
 
-    void operator()() {
-        synchronizedOut("[ .... ]" + name_ + ": Work done!\n");
-        gWorkDoneLatch.arrive_and_wait();
-        synchronizedOut("[ .... ]" + name_ + ": see you tomorrow!\n");
+    void operator() () {
+        synchronizedOut(name_ + ": " + "Work done!\n");
+        workDone.arrive_and_wait();
+        synchronizedOut(name_ + ": " + "See you tomorrow!\n");
     }
 
 private:
@@ -28,6 +28,8 @@ private:
 
 
 int main() {
+    std::cout << '\n';
+
     Worker herb("  Herb");
     std::thread herbWork(herb);
 
