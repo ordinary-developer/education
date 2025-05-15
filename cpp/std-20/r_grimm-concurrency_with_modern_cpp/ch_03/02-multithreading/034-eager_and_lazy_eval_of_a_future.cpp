@@ -1,27 +1,31 @@
 #include <chrono>
 #include <future>
 #include <iostream>
-#include <thread>
 
 
 int main() {
-    auto begin = std::chrono::system_clock::now();
+	std::cout << '\n';
 
-    auto asyncLazy = std::async(std::launch::deferred, 
-                                []{ return std::chrono::system_clock::now(); });
-    auto asyncEager = std::async(std::launch::async,
-                                 []{ return std::chrono::system_clock::now(); });
+	auto begin = std::chrono::system_clock::now();
 
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+	auto asyncLazy = std::async(std::launch::deferred,
+		[] { return std::chrono::system_clock::now(); });
 
-    auto lazyStart = asyncLazy.get() - begin;
-    auto eagerStart = asyncEager.get() - begin;
+	auto asyncEager = std::async(std::launch::async,
+		[] { return std::chrono::system_clock::now(); });
 
-    auto lazyDuration = std::chrono::duration<double>(lazyStart).count();
-    auto eagerDuration = std::chrono::duration<double>(eagerStart).count();
+	std::this_thread::sleep_for(std::chrono::seconds(1));
 
-    std::cout << "[ .... ] asyncLazy evaluated after: " << lazyDuration << " seconds" << std::endl;
-    std::cout << "[ .... ] asyncEager evaluated after: " << eagerDuration << " seconds" << std::endl;
+	auto lazyStart = asyncLazy.get() - begin;
+	auto eagerStart = asyncEager.get() - begin;
 
-    std::cout << std::endl;
+	auto lazyDuration = std::chrono::duration<double>(lazyStart).count();
+	auto eagerDuration = std::chrono::duration<double>(eagerStart).count();
+
+	std::cout << "asyncLazy evaluated after : " << lazyDuration
+		<< " seconds." << '\n';
+	std::cout << "asyncEager evaluated after: " << eagerDuration
+		<< " seconds." << '\n';
+
+	std::cout << '\n';
 }

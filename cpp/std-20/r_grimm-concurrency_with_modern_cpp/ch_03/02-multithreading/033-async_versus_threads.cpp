@@ -4,13 +4,16 @@
 
 
 int main() {
-    int res;
-    std::thread t([&]{ res = 2000 + 11; });
-    t.join();
-    std::cout << "[ .... ] res: " << res << std::endl;
+	std::cout << '\n';
 
-    auto f = std::async([]{ return 2000 + 11; });
-    std::cout << "[ .... ] f.get(): " << f.get() << std::endl;
+	int res;
 
-    std::cout << std::endl;
+	std::thread t([&] { res = 2000 + 11; });
+	t.join();
+	std::cout << "res: " << res << '\n';
+
+	auto fut = std::async([] { return 2000 + 11; });
+	std::cout << "fut.get(): " << fut.get() << '\n';
+
+	std::cout << '\n';
 }

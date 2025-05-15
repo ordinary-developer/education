@@ -1,21 +1,23 @@
-#include <iostream>
 #include <chrono>
 #include <future>
+#include <iostream>
 #include <thread>
 
 
 int main() {
-    auto _ = std::async(std::launch::async, []{
-        std::this_thread::sleep_for(std::chrono::seconds(2));
-        std::cout << "[ .... ] first thread" << std::endl;
-    });
-    (void)_;
+	std::cout << '\n';
 
-    auto __ = std::async(std::launch::async, []{
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-        std::cout << "[ .... ] second thread" << std::endl;
-    });
-    (void)__;
+	std::async(std::launch::async, [] {
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+		std::cout << "first thread" << '\n';
+	});
 
-    std::cout << "[ .... ] main thread" << std::endl;
+	std::async(std::launch::async, [] {
+		std::this_thread::sleep_for(std::chrono::seconds(1));
+		std::cout << "second thread" << '\n';
+	});
+
+	std::cout << "main thread" << '\n';
+
+	std::cout << '\n';
 }
