@@ -7,51 +7,44 @@
 std::mutex coutMutex;
 
 struct Div {
-    void operator() (std::promise<int> && intPromise, int a, int b) {
-        intPromise.set_value(a / b);
-    }
+	void operator()(std::promise<int>&& intPromise, int a, int b) {
+		intPromise.set_value(a / b);
+	}
 };
 
 struct Requestor {
-    void operator() (std::shared_future<int> shaFut) {
-        // lock std::cout
-        std::lock_guard<std::mutex> coutGuard(coutMutex);
-        
-        // get the thread id
-        std::cout << "threadId(" << std::this_thread::get_id() << "): ";
-        
-        std::cout << "20 / 10 = " << shaFut.get() << '\n';
-    }
+	void operator() (std::shared_future<int> shaFut) {
+		std::lock_guard<std::mutex> coutGuard(coutMutex);
+		std::cout << "threadId(" << std::this_thread::get_id() << "): ";
+		std::cout << "20/10 = " << shaFut.get() << '\n';
+	}
 };
 
 
 int main() {
-    std::cout << '\n';
+	std::cout << '\n';
 
-    // define the promises
-    std::promise<int> divPromise;
+	std::promise<int> divPromise;
 
-    // get the futures
-    std::shared_future<int> divResult = divPromise.get_future();
+	std::shared_future<int> divResult = divPromise.get_future();
 
-    // calculate the result in a separate thread
-    Div div;
-    std::thread divThread(div, std::move(divPromise), 20, 10);
+	Div div;
+	std::thread divThread(div, std::move(divPromise), 20, 10);
 
-    Requestor req;
-    std::thread sharedThread1(req, divResult);
-    std::thread sharedThread2(req, divResult);
-    std::thread sharedThread3(req, divResult);
-    std::thread sharedThread4(req, divResult);
-    std::thread sharedThread5(req, divResult);
+	Requestor req;
+	std::thread sharedThread1(req, divResult);
+	std::thread sharedThread2(req, divResult);
+	std::thread sharedThread3(req, divResult);
+	std::thread sharedThread4(req, divResult);
+	std::thread sharedThread5(req, divResult);
 
-    divThread.join();
+	divThread.join();
 
-    sharedThread1.join();
-    sharedThread2.join();
-    sharedThread3.join();
-    sharedThread4.join();
-    sharedThread5.join();
+	sharedThread1.join();
+	sharedThread2.join();
+	sharedThread3.join();
+	sharedThread4.join();
+	sharedThread5.join();
 
-    std::cout << '\n';
+	std::cout << '\n';
 }
