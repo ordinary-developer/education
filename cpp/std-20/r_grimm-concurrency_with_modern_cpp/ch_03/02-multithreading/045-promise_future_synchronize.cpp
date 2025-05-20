@@ -4,33 +4,32 @@
 
 
 void doTheWork() {
-    std::cout << "Processing shared data." << '\n';
+	std::cout << "Processing shared data" << '\n';
 }
 
-void waitingForWork(std::future<void> && fut) {
-    std::cout << "Worker: Waiting for work." << '\n';
-    fut.wait();
-    doTheWork();
-    std::cout << "Work done." << '\n';
+void waitingForWork(std::future<void>&& fut) {
+	std::cout << "Worker: Waiting for work." << '\n';
+	fut.wait();
+	doTheWork();
+	std::cout << "Work done." << '\n';
 }
 
-void setDataReady(std::promise<void> && prom) {
-    std::cout << "Sender: Datais ready." << '\n';
-    prom.set_value();
+void setDataReady(std::promise<void>&& prom) {
+	std::cout << "Sender: Data is ready." << '\n';
+	prom.set_value();
 }
-
 
 int main() {
-    std::cout << '\n';
+	std::cout << '\n';
 
-    std::promise<void> sendReady;
-    auto fut = sendReady.get_future();
+	std::promise<void> sendReady;
+	auto fut = sendReady.get_future();
 
-    std::thread t1(waitingForWork, std::move(fut));
-    std::thread t2(setDataReady, std::move(sendReady));
+	std::thread t1(waitingForWork, std::move(fut));
+	std::thread t2(setDataReady, std::move(sendReady));
 
-    t1.join();
-    t2.join(); 
+	t1.join();
+	t2.join();
 
-    std::cout << '\n';
+	std::cout << '\n';
 }
