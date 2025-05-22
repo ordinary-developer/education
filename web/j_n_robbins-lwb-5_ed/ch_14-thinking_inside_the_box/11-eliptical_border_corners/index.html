@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>index</title>
+
+    <style>
+        p {
+            width: 200px;
+            height: 100px;
+            background: darkorange;
+        }
+
+        p#decorated1 {
+            border-top-right-radius: 100px 50px;
+        }
+
+        p#decorated2 {
+            border-top-right-radius: 50px 20px;
+            border-top-left-radius: 50px 20px;
+        }
+
+        p#decorated3 {
+            border-radius: 60px / 40px;
+        }
+
+        p#decorated4 {
+            border-radius: 36px 40px 60px 20px / 12px 10px 30px 36px;
+        }
+
+    </style>
+</head>
+<body>
+    <p id="decorated1">Lorem ipsum dolor sit amet</p>
+    <p id="decorated2">Lorem ipsum dolor sit amet</p>
+    <p id="decorated3">Lorem ipsum dolor sit amet</p>
+    <p id="decorated4">Lorem ipsum dolor sit amet</p>
+</body>
