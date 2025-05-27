@@ -14,6 +14,7 @@ ApplicationWindow {
         Button {
             y: index * (parent.height / repeater.count)
             height: parent.height / repeater.count
+            width: parent.width
             text: modelData.title
             onClicked: {
                 messageDialog.visible = false;
@@ -50,7 +51,7 @@ ApplicationWindow {
         visible: false
         modality: Qt.WindowModal
         title: "Select file"
-        nameFilters: [ "Doc (*.txt *.html)", "All fiels (*)" ]
+        nameFilters: [ "Doc (*.txt *.html)", "All files (*)" ]
         onAccepted: {
             messageDialog.informativeText = "Selected files: " + fileUrls;
             messageDialog.visible = true;
