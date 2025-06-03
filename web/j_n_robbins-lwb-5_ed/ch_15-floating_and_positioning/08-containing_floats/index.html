@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>index</title>
+
+    <style>
+        #container1 {
+            background: #f2f5d5;
+            border: 2px dashed green;
+        }
+    
+        #container2 {
+            background: #f2f5d5;
+            border: 2px dashed green;
+        }
+        
+        #container2:after {
+            content: " ";
+            display: block;
+            clear: both;
+            background-color: #f2f5d5;
+            border: 2px dashed green;
+            padding: 1em;
+        }
+        
+        #container3 {
+            float: left;
+            width: 100%;
+            background: #f2f5d5;
+            border: 2px dashed green;
+        }
+        
+        p.decorated {
+            float: left;
+            width: 44%;
+            padding: 2%;
+        }
+    </style>
+</head>
+<body>
+    <div id="container1">
+        <p><b>P1: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ullamcorper mollis facilisis. Morbi pharetra nisi ligula. Maecenas varius tincidunt sem, a sagittis libero tempus non. Pellentesque id ex eget velit auctor facilisis vitae vitae dui. Maecenas bibendum tristique diam, ut rhoncus leo pharetra eu. Aenean sagittis molestie ipsum vel aliquet. Sed consequat, augue finibus semper tincidunt, erat libero scelerisque tellus, at varius mi metus eu nulla. In eget mattis erat. Vivamus quis leo sit amet dui lobortis dictum ut vehicula libero. Fusce quis scelerisque nunc. Nullam maximus at nisi at vestibulum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+
+        <p><b>P2: </b>Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam sodales est elementum dui pulvinar, quis venenatis orci gravida. Quisque efficitur mollis dui, non tincidunt velit. Donec a malesuada urna. Maecenas varius odio nec varius eleifend. Curabitur in augue pellentesque, semper tortor sodales, volutpat sapien. Mauris pellentesque dolor vitae eros varius aliquet. Nam turpis purus, volutpat eu vulputate ac, convallis at felis. Nulla a elit congue, lacinia eros ut, viverra nibh. Maecenas sagittis nisi ut iaculis condimentum. Fusce ac porta augue, eu vulputate lorem. Vestibulum eu dictum ipsum. In maximus odio ac suscipit scelerisque. Nam ultricies, sapien eget hendrerit porttitor, dui dui lacinia est, convallis tincidunt dui nisl nec magna.</p>
+    </div>
+
+    <hr />
+
+    <div id="container1">
+        <p class="decorated"><b>P3: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at mattis orci. Aenean aliquam mauris ligula, a laoreet dolor ullamcorper eget. Nullam in libero eget metus lobortis venenatis. Nam sed ultrices magna, quis varius nisl. Mauris laoreet viverra diam, non scelerisque orci. In vel pretium elit. Nunc enim tellus, ornare et ultrices a, egestas imperdiet purus. Suspendisse potenti. Nulla vitae mattis leo. Etiam egestas gravida porta. Nam tristique cursus nulla id mattis. In ex purus, viverra et ornare in, pharetra et eros. Sed gravida neque ut libero ornare, et faucibus est rutrum. Integer vehicula ligula eleifend mi elementum sodales.</p>
+
+        <p class="decorated"><b>P4: </b>Aliquam consequat metus est, vel bibendum diam dignissim euismod. Morbi in turpis nisi. Sed in magna a sapien suscipit tincidunt. Phasellus libero enim, suscipit sed faucibus id, auctor quis diam. Quisque maximus pretium purus, et dignissim diam varius non. Pellentesque turpis nisl, condimentum sit amet urna eu, vulputate cursus magna. Vivamus vitae orci ac quam ullamcorper interdum a ut lorem. Aliquam maximus odio et bibendum commodo. Fusce a consectetur diam, at scelerisque dolor. Cras at leo sapien. Aenean quis libero tincidunt, euismod lacus ut, bibendum urna.</p>
+    </div>
+
+    <hr />
+
+    <div id="container2">
+        <p class="decorated"><b>P5: </b>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse potenti. Sed iaculis lectus mauris, ut vehicula arcu viverra nec. Suspendisse vitae purus ornare, malesuada mauris sed, auctor turpis. Suspendisse ultricies convallis nisi, quis consectetur felis gravida eget. Maecenas porta, erat id sagittis placerat, lacus urna sagittis purus, et rutrum magna urna eget felis. Ut rutrum neque porta velit congue condimentum id vitae turpis. Sed in molestie arcu, vitae posuere sem. Ut efficitur enim sit amet odio tempus tincidunt. Praesent efficitur, nulla ac egestas egestas, turpis velit aliquam augue, at vestibulum leo nisi non felis. Ut blandit ante mi, ac finibus nunc tempor ac. Aliquam eu diam ante. Cras ex nisl, hendrerit quis purus eu, congue sollicitudin eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. In molestie, tortor in faucibus facilisis, ante quam iaculis mauris, eget cursus neque magna id ex.</p>
+
+        <p class="decorated"><b>P6: </b>Nam lectus sem, sagittis eu tellus quis, venenatis iaculis quam. Phasellus ornare, eros id iaculis dictum, purus urna consectetur metus, et faucibus justo justo ac mauris. Fusce consequat nisl et molestie consequat. Proin vestibulum nisi at sem efficitur, et molestie mauris rhoncus. Pellentesque tristique elit a dui aliquam lobortis id id tortor. Maecenas scelerisque nibh ornare nibh scelerisque, a auctor dui ornare. Curabitur et ligula ut sem luctus pretium. Morbi faucibus auctor dui, tempus tempor tortor consequat vel. Cras imperdiet lacus sed augue pretium ultricies. Vestibulum eget nisi odio.</p>
+    </div>
+
+    <hr />
+
+    <div id="container3">
+        <p class="decorated"><b>P7: </b>Duis ut aliquet nunc. In in eros in lorem malesuada venenatis nec faucibus risus. Praesent sit amet ex magna. Pellentesque non magna at mi convallis euismod id id augue. Nam scelerisque erat sit amet imperdiet placerat. Proin aliquet fringilla pharetra. Mauris convallis pharetra varius.</p>
+
+        <p class="decorated"><b>P8: </b>Donec vehicula urna laoreet, vestibulum magna id, viverra ligula. Nunc mattis nunc sit amet orci consectetur, id vehicula velit vestibulum. Duis sodales dui arcu, imperdiet rutrum nunc congue et. Cras mattis tincidunt sagittis. Aenean id mattis mi. Curabitur efficitur pharetra purus eget aliquet. Phasellus in ex vel ligula commodo mattis nec in arcu. Proin suscipit pretium mollis. Integer elementum id ante ut rhoncus. Sed auctor accumsan ligula eget bibendum. In ultricies imperdiet nisi, nec condimentum libero ornare in.</p>
+    </div>
+</body>
