@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>index</title>
+
+    <style>
+        div.standard {
+            width: 30px;
+            height: 150px;
+            background-color: lightgreen;
+        }
+        
+        div.with-position {
+            position: relative;
+            width: 300px;
+            height: 150px;
+            background-color: #C6DE89;
+        }
+
+        img.A {
+            position: absolute;
+            top: 50%;
+            left: 0%;
+        }
+        
+        img#B {
+            position: abosolute;
+            bottom: 0%;
+            right: 0%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="standard">
+        <img src="img.png" alt="" />
+    </div>
+
+    <hr />
+
+    <div class="standard">
+        <img class="A" src="img.png" alt="" />
+    </div>
+
+    <hr />
+    
+    <div class="standard">
+        <img class="B" src="img.png" alt="" />
+    </div>
+    
+    <hr />
+
+    <div class="with-position">
+        <img src="img.png" alt="" />
+    </div>
+
+    <hr />
+
+    <div class="with-position">
+        <img class="A" src="img.png" alt="" />
+    </div>
+
+    <hr />
+
+    <div class="with-position">
+        <img class="B" src="img.png" alt="" />
+    </div>
+</body>
+
+</html>
