@@ -1,2 +1,2 @@
 # Information
-This subfolder contains my files (mainly code snippets) for the book **"Mastering cpp multithreading"** by *Maya Posch*.
+This folder contains my files (mainly code snippets) for the book **"Mastering cpp multithreading"** by *Maya Posch*.
