@@ -3,12 +3,13 @@ import QtQuick.Controls 2.2
 
 ApplicationWindow {
     visible: true
+
     width: 640
     height: 480
 
     Rectangle {
         function maximum(a, b) {
-            return a > b ? a : b
+            return a > b ? a : b;
         }
 
         width: maximum(parent.width / 5, 100)
