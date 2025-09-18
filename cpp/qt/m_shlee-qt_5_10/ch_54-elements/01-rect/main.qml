@@ -3,6 +3,7 @@ import QtQuick.Controls 2.2
 
 ApplicationWindow {
     visible: true
+
     width: 360
     height: 360
 
@@ -10,11 +11,13 @@ ApplicationWindow {
         anchors.fill: parent
 
         Rectangle {
-            color: "darkkhaki"
             x: 100
             y: 50
+
             width: 170
             height: 200
+
+            color: "darkkhaki"
         }
     }
 }
