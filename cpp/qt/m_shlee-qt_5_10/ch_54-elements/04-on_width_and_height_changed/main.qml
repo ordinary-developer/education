@@ -3,6 +3,7 @@ import QtQuick.Controls 2.2
 
 ApplicationWindow {
     visible: true
+
     width: 200
     height: 200
 
@@ -12,6 +13,7 @@ ApplicationWindow {
         Rectangle {
             width: parent.width
             height: parent.height
+
             onWidthChanged: {
                 console.log("width changed: " + width);
             }
