@@ -1,4 +1,4 @@
-## Kata 01 - Moving the cursor
+# Kata - Moving the cursor
 Type a text:
 ```
 With a screen editor you can scroll the
@@ -8,7 +8,7 @@ your edits as you make them
 ```
 
 Then type:
-- Esc
+- ESC
 - set the cursor the "c" symbol of the "cursor" word (by j,k,h,l)
 - `j`, `k`, `2j`, `2k`
 - set the cursor the "s" symbol of the "seeing" word (by j,k,h,l)
