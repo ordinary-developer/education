@@ -3,6 +3,7 @@ import QtQuick.Controls 2.2
 
 ApplicationWindow {
     visible: true
+
     width: 360
     height: 360
 
@@ -20,6 +21,7 @@ ApplicationWindow {
 
             x: priv.nX
             y: priv.nY
+
             width: 170
             height: 200
         }
