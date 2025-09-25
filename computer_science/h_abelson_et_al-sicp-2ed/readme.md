@@ -1,8 +1,9 @@
-# SICP
+# sicp
 
-## Base information
-This subfolder contains my files (my code snippets and my synopses about the main book's topics) 
-for the book  **"Structure and interpretation of computer programs"** by **H. Abelson**, **G.J. Sussman**, **Julie Sussman**.  
+## base info
+this subfolder contains my files (my code snippets and my synopses about the main book's topics) 
+for the book  **"Structure and interpretation of computer programs"** by **H. Abelson**, **G.J. Sussman**, **Julie Sussman**
+
 ![SICP book cover](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/cover.jpg "SICP book cover")
 
 [online version](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)  
@@ -10,12 +11,12 @@ for the book  **"Structure and interpretation of computer programs"** by **H. Ab
 [oneline interactive version](https://xuanji.appspot.com/isicp/)  
 
 
-## Auxiliary
+## a`uxiliary
 [scheme-wiki](http://community.schemewiki.org/)  
 [some usefull thoughts about scip (and a few solutions to exercises)](https://tekkie.wordpress.com/)  
 
 
-## Solutions:
+## solutions:
 [scheme-wiki](http://community.schemewiki.org/?SICP-Solutions)  
 [scheme-drewhess.com](http://wiki.drewhess.com/wiki/Category:SICP_solutions)  
 [solutions from Adrian Stoll](https://adrianstoll.com/sicp/)  
@@ -33,13 +34,13 @@ for the book  **"Structure and interpretation of computer programs"** by **H. Ab
 [solutions from Paige Finkelstein (only for the first chapter)](https://github.com/bolducp/SICP)  
 [solutions with comments on russian](http://sicp.sergeykhenkin.com/)  
 
-Some links are not correct:  
+some links are not correct:  
 [solutions from JoT](http://jots-jottings.blogspot.com/p/sicp-exercise-index.html)  
 [solutions from evarga](https://evarga.gitbooks.io/solutions-guide-for-the-sicp-book/content/)  
 [other solutions from evarga](https://github.com/evarga/sicp-solutions)  
 
 
-## Other programming languages adoptions
+## other programming lang adoptions
 [js version](https://source-academy.github.io/sicp/)  
 [py version 01](https://composingprograms.com/)  
 [py version 02](https://wizardforcel.gitbooks.io/sicp-in-python/content/)  
