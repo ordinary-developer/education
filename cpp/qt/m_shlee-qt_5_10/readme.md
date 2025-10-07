@@ -1,8 +1,8 @@
-# Information
-This folder contains my files (mainly code snippets) for the book  **"Qt 5.10"** by *M. Shlee*.
+# info
+this folder contains my files (mainly code snippets) for the book  **"Qt 5.10"** by *M. Shlee*
 
-# HOWTOs
-## Run a qml app (5.X) with the MinGW compiler
+# howto
+## run a qml app (5.X) with the MinGW compiler
 - use a project from the `__qml_5_skeleton` directory
 - open the project diretctory in the `cmd.exe` shell
 - set the `PATH` environment variable
@@ -25,3 +25,4 @@ This folder contains my files (mainly code snippets) for the book  **"Qt 5.10"**
   .\debug\your_exe_file
   ```
   where _your_exe_file_ is generated executable file
+  
