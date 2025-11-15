@@ -1,4 +1,4 @@
-# Online C++ compilers
+# online C++ compilers
 https://replit.com/
 https://www.online-cpp.com/
 https://coliru.stacked-crooked.com/
@@ -14,7 +14,7 @@ https://www.onlinegdb.com/online_c++_compiler
 https://codeinterview.io/
 https://codeanywhere.com/
 
-# Misc
+# miscellaneous
 the command for the `coliru` compler:
 ```sh
 > g++ -std=c++23 -O2 -Wall -pedantic -pthread main.cpp && ./a.out
