@@ -1,7 +1,7 @@
-# Information
-This subfolder contains js code and exercise solutions from the book **"Eloquent JS"**, 4th edition by Marijn Haverbeke.
+# info
+this subfolder contains js code and exercise solutions from the book **"Eloquent JS"**, 4-th edition by Marijn Haverbeke
 
-![Title Page](https://eloquentjavascript.net/img/cover.jpg)
+![title page](https://eloquentjavascript.net/img/cover.jpg)
 
-# Miscellaneous
-[Book Site](https://eloquentjavascript.net/)
+# miscellaneous
+[book site](https://eloquentjavascript.net/)
