@@ -1,16 +1,16 @@
 #lang sicp
 
-;; # Applicative-order evaluation
-;; ("first reduce, than expand") or ("evaluate the arguments and then apply")
+;; # Applicative-order evaluation ("evaluate the arguments and then apply")
 ;; The interpreter first evaluates the operator and operands
-;; and then applies the resulting arguments.
+;; and then applies the resulting procedure to the resulting arguments.
+;; ("first reduce, then expand")
 
 ;; # Normal-order evaluation ("fully expand and then reduce")
 ;; The interpreter will first substitute operand expressions for parameters
-;; until it obtain an expression involving only primitive operators,
+;; until it obtains an expression involving only primitive operators,
 ;; and will then perform the evaluation.
 ;; (The interpreter will not evaluate the operands
-;; until their values were needed).
+;;  until their values are needed).
 ;; ("first expand, then reduce")
 
 ;; Lisp uses applicative-order evaluation.
