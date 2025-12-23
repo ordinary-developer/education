@@ -28,16 +28,16 @@
 
 ; -------------
 ; [solution] =>
-; # Applicative order
+; # applicative order
 ; (test 0 (p))
 ; will become
 ; (if (= 0 0) 0 (p))
 ; after that it will become
 ; (if (= 0 0) 0 (p))
-; and so on.
-; So this evaluation will never be completed.
+; and so on
+; so this evaluation will never be completed
 
-; # Normal order
+; # normal order
 ; (test 0 (p))
 ; will become
 ; (if (= 0 0) 0 (p))
@@ -45,4 +45,4 @@
 ; (if (#t) 0 (p))
 ; and after that it will become
 ; 0
-; So in this case the result of (test 0 (p)) will be '0'.
+; so in this case the result of (test 0 (p)) will be 0
