@@ -1,7 +1,7 @@
 #lang sicp
 
 ; [exercise] ->
-; translate the following expression into prefix form:
+; Translate the following expression into prefix form:
 ;
 ; 5 + 4 + (2 - (3 - (6 + 4/5)))
 ; ----------------------------
