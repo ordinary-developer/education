@@ -1,37 +1,30 @@
-﻿Project information
--------------------
-This repository contains my files for development technologies
+﻿# information
+this repository contains my files for development technologies
 (both for windows and linux)
-(my code snippets and my synopses about the main books' topics).
+(my code snippets and my synopses about the main books' topics)
 
 
-Installation
-------------
-Simply copy (clone the repository) and see and read it.
+# installation
+simply copy (clone the repository) and see and read it
 
  
-Basic usage
------------
+# basic usage
 ```
 $ git clone https://github.com/ordinary-developer/education.git
 ```
  
 
-License
--------
-This project is offered under the MIT license.
+# license
+this project is offered under the MIT license
 
 
-Contributing
-------------
-This project is a study project and doesn't need to be contributed.
+# contributing
+this project is a study project and doesn't need to be contributed
 
 
-Miscellaneous
--------------
-To provide correct access both in linux and windows os 
+# miscellaneous
+to provide correct access both in linux and windows os 
 it is necessary to use the next option:
 ```
 $ git config --global core.longpaths true
 ```
-
