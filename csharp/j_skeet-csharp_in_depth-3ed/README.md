@@ -1,4 +1,4 @@
-# info
+# information
 this folder contains materials (mainly code snippets) for the book "C# in depth" (3-d ed.) by Jon Skeet
 
 [link to Amazon](https://www.amazon.com/C-Depth-3rd-Jon-Skeet/dp/161729134X)
