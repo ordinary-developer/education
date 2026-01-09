@@ -1,4 +1,4 @@
-# info
+# information
 this folder contains my files (mainly code snippets) for the book  **"Qt 5.10"** by *M. Shlee*
 
 # howto
