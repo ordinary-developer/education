@@ -8,7 +8,7 @@ your edits as you make them
 ```
 
 - ESC
-- `2G`, ESC, `/c`, ENTER
+- `2G`, `/c`, ENTER
 - `j`, `k`, `2j`, `2k`
 - `j`, `l`
 - `k`, `j`, `2k`, `2j`,
