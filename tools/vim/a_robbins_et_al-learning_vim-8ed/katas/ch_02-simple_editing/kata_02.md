@@ -1,11 +1,11 @@
 # Kata - Movement by text block
-Type a text:
+text:
 ```
 cursor, delete lines, insert characters,
 cursor, delete lines, insert characters,
 ```
 
-Then type:
+kata:
 - ESC
 - `1G`
 - `w`, `r`, type '.', `u`
