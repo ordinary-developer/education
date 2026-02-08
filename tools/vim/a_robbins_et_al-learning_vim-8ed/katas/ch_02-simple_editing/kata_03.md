@@ -1,5 +1,5 @@
 # kata "Simple Edits"
-type the next text:
+text:
 ```
 With a editor you can scrooll the
 page, move the cursor, delete lines, nisret
@@ -11,6 +11,8 @@ you would edit a printed copy,
 screen editors are very popular.
 ```
 
+kata:
+- ESC
 - `1G`
 - `2w`, `i`, type "screen ", ESC, `4w`, `3l`, `x`
 - `j`, `W`, `cw`, type "insert", ESC
