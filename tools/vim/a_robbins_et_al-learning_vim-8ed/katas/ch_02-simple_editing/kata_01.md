@@ -1,5 +1,5 @@
 # kata "Moving the cursor"
-type the next text:
+text:
 ```
 With a screen editor you can scroll the
 page, move the cursor, delete lines,
@@ -7,6 +7,7 @@ and more, while seeing the results of
 your edits as you make them
 ```
 
+kata:
 - ESC
 - `2G`, `/c`, ENTER
 - `j`, `k`, `2j`, `2k`
