@@ -1,4 +1,4 @@
-# info
+# information
 this subfolder contains examples from the book **"JavaScript & jQuery the missing manual"**, 3-d edition by David Sawyer McFarland
 
 ![title page](https://learning.oreilly.com/library/cover/9781491948583/250w/)
