@@ -1,4 +1,4 @@
-# info
+# information
 the folder contains my files (mainly code snippets) for the book **"Learning Web Design"** *(5 ed.)* by *J. N. Robbins*
 (_ISBN-10:_ 1491960205, _ISBN-13:_ 978-1491960202)
 
