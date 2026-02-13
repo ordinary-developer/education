@@ -1,5 +1,4 @@
 # information
-this folder contains my files (mainly code snippets) for the book **"Concurrency with modern C++"** by *R. Grimm*
+this folder contains my files (mainly code snippets) for the book **"Concurrency with Modern C++"** by *R. Grimm*
 
-![image from the Packt site](https://static.packt-cdn.com/products/9781839211027/cover/smaller "Image from the Packt site")
-(_Image from the Packt site_)
+[a link to the book](https://leanpub.com/concurrencywithmodernc)
