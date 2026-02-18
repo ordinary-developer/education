@@ -14,11 +14,11 @@ void transferMoney(int amount, Account& from, Account& to) {
 
 
 int main() {
-    Account acc1{10}, acc2{20};
-    std::cout << "before: account1.amount = " << acc1.amount << ", account2.amount = " << acc2.amount << std::endl;
+    Account account1{10}, account2{20};
+    std::cout << "before: account1.amount = " << account1.amount << ", account2.amount = " << account2.amount << std::endl;
 
-    std::thread t(transferMoney, 5, std::ref(acc1), std::ref(acc2));
+    std::thread t(transferMoney, 5, std::ref(account1), std::ref(account2));
     t.join();
 
-    std::cout << "after: account1.amount = " << acc1.amount << ", account2.amount = " << acc2.amount << std::endl;
+    std::cout << "after: account1.amount = " << account1.amount << ", account2.amount = " << account2.amount << std::endl;
 }
